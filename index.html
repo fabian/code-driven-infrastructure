@@ -77,9 +77,67 @@ explained in the glossary that can be found in the appendix as well.
 
 <h3>Current Situation</h3>
 
+<p>
+WorldSkills International is a non-profit membership association which organizes
+a world championship in skilled professions every two years. To manage members 
+and to organize the preparation and execution of the competition the 
+organization runs multiple web applications. The mix of PHP and Java 
+applications consists of legacy systems and a newly developed software system 
+with a service-oriented architecture.
+</p>
+
+<p>
+All web software is running on rented virtual servers which are managed manually 
+using a web control panel (Parallels Plesk). Changes to the infrastructure are 
+done by one of the four internal software developers manually.
+</p>
+
+<p>
+Fundamental changes like the migration to a new server or the switch to a new 
+runtime engine require a lot of knowledge about the existing system and manual 
+testing of the new installation.
+</p>
+
 <h3>Objectives</h3>
 
+<p>
+The main goal of this thesis is to develop a concept for a versioned, testable 
+and reproducible infrastructure. Changes to the system should be visible for 
+the IT team and traceable if needed. As a result knowledge is shared in written 
+form.
+</p>
+
+<p>
+To achieve this goal, manual steps to build or change the infrastructure should 
+be replaced by code stored in a revision control system. Three different types 
+of software for provisioning of servers and deployment exist at the moment:
+</p>
+
+<ul>
+    <li>Software containers: all software needed to run an application is encapsulated and run in operating system-level virtualization (e.g. Docker, Rocket)</li>
+    <li>Configuration repository: A centralized repository with configuration files and software is used to configure servers (e.g. Chef, Puppet, CFEngine)</li>
+    <li>Remote command execution: Installation commands and configuration files are transmitted in a coordinated manner to a remote server (e.g. Ansible, Salt, Rex)</li>
+</ul>
+
+<p>
+These types of software should be evaluated in a proof-of-concept and an 
+architecture documentation as well as a test concept should be written.
+</p>
+
 <h3>Tasks</h3>
+
+<p>
+The following tasks will be completed by the student as part of the Bachelor thesis:
+</p>
+
+<ol>
+    <li>Analyze infrastructure requirements</li>
+    <li>Test requirements with popular representatives for each type of provisioning software (Docker, Ansible, Chef)</li>
+    <li>Evaluate provisioning software</li>
+    <li>Write architecture documentation</li>
+    <li>Develop test concept</li>
+    <li>Implement proof-of-concept with automated provisioning and deployment</li>
+</ol>
 
 <h3>Project Management</h3>
 
