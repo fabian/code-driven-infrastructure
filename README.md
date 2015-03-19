@@ -3,8 +3,8 @@
 ## Setup
 
 * Install [Prince](http://www.princexml.com)
-* `npm install -g bower`
-* `bower install`
+* `npm install`
+* `./node_modules/.bin/bower install`
 
 ## Generate PDF
 
