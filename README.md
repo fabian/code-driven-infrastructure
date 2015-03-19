@@ -5,6 +5,12 @@
 * Install [Prince](http://www.princexml.com)
 * `npm install`
 
+## Optimize SVGs
+
+```
+./node_modules/.bin/svgo --pretty images/*.svg
+```
+
 ## Generate PDF
 
 ```
