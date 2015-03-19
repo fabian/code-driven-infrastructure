@@ -1,7 +1,8 @@
 {
   "name": "fabian-bachelor-thesis",
   "private": true,
-  "devDependencies": {
-    "bower": "^1.3.12"
+  "dependencies": {
+    "jquery": "^1.11.2",
+    "normalize.css": "^3.0.2"
   }
 }

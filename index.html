@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>Code Driven Infrastructure and Deployment</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="css/doc.css">
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="js/doc.js"></script>
 </head>
 <body>
@@ -398,8 +398,6 @@ project as well as the dates of the most important milestones.
 
 <h3>System Context</h3>
 
-<h3>Definition of Done</h3>
-
 <h3>User Stories</h3>
 
 <figure>
@@ -410,40 +408,12 @@ project as well as the dates of the most important milestones.
 </colgroup>
 <tbody>
 <tr>
-<th>
-User Story
-</th>
-<td>
-As a reporter, I want to access the website after the Closing Ceremony so that 
-I can see how many Competitors from my country won a medal. During WorldSkills 
-Leipzig 2013 the highest load was with 4,400 sessions per hour during the 
-Closing Ceremony (4 pages/session).
-</td>
+<th>R1</th>
+<th>Zero-Downtime</th>
 </tr>
 <tr>
 <th>
-Acceptance Criteria
-</th>
-<td>
-The website responds within one second even with 5 concurrent users.
-</td>
-</tr>
-</table>
-<figcaption>US1</figcaption>
-</figure>
-
-<br/>
-
-<figure>
-<table>
-<colgroup>
-    <col width="20%" />
-    <col width="80%" />
-</colgroup>
-<tbody>
-<tr>
-<th>
-User Story
+Description
 </th>
 <td>
 As a developer, I want to publish a new version of a web service without 
@@ -461,7 +431,7 @@ within 10 minutes from the push.
 </td>
 </tr>
 </table>
-<figcaption>US2</figcaption>
+<figcaption>R1 Zero-Downtime</figcaption>
 </figure>
 
 <br/>
@@ -474,8 +444,12 @@ within 10 minutes from the push.
 </colgroup>
 <tbody>
 <tr>
+<th>R2</th>
+<th>Staging Area</th>
+</tr>
+<tr>
 <th>
-User Story
+Description
 </th>
 <td>
 As a developer, I want to test a new version of a web service in a staging area
@@ -493,8 +467,50 @@ functionality is available for testing in a staging environment within
 </td>
 </tr>
 </table>
-<figcaption>US3</figcaption>
+<figcaption>R2</figcaption>
 </figure>
+
+<h3>Non-functional requirements</h3>
+
+<p>
+Classification according to quality model of ISO/IEC 9126-1.
+</p>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>R3</th>
+<th>Load Time</th>
+</tr>
+<tr>
+<th>
+Classification
+</th>
+<td>
+Efficiency / Time Behaviour
+</td>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+During WorldSkills Leipzig 2013 the highest load was with 4,400 sessions per 
+hour during the Closing Ceremony (4 pages/session). The system must be able
+to answer requests within 1 second under this load.
+</td>
+</tr>
+</table>
+<figcaption>US2</figcaption>
+</figure>
+
+<h3>Definition of Done</h3>
+
 
 </div>
 
