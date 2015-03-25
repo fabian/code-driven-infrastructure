@@ -398,6 +398,18 @@ project as well as the dates of the most important milestones.
 
 <h3>System Context</h3>
 
+<p>
+Cloud solutions for managing applications exist, but are usually locked in on 
+the vendor and targeted at high volumes. Our scaling requirements are low as 
+the infrastructure needs to serve mainly the Competition and the Members and 
+they are both limited by other resources.
+</p>
+
+<p>
+All source code of applications is stored on GitHub. Codeship is used for 
+running automated tests and executing the deployment of new versions.
+</p>
+
 <h3>User Stories</h3>
 
 <figure>
@@ -408,7 +420,7 @@ project as well as the dates of the most important milestones.
 </colgroup>
 <tbody>
 <tr>
-<th>R1</th>
+<th>RX</th>
 <th>Zero-Downtime</th>
 </tr>
 <tr>
@@ -431,7 +443,7 @@ within 10 minutes from the push.
 </td>
 </tr>
 </table>
-<figcaption>R1 Zero-Downtime</figcaption>
+<figcaption>RX Zero-Downtime</figcaption>
 </figure>
 
 <br/>
@@ -444,7 +456,7 @@ within 10 minutes from the push.
 </colgroup>
 <tbody>
 <tr>
-<th>R2</th>
+<th>RX</th>
 <th>Staging Area</th>
 </tr>
 <tr>
@@ -467,13 +479,92 @@ functionality is available for testing in a staging environment within
 </td>
 </tr>
 </table>
-<figcaption>R2</figcaption>
+<figcaption>RX Staging Area</figcaption>
 </figure>
+
+<br/>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
+<th>PHP applications</th>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+As a developer I want to run multiple PHP applications so users can access 
+them. A PHP application usually needs a MySQL database and the source code 
+is stored on GitHub.
+</td>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+All PHP applications are running and can be accessed with a web browser.
+</td>
+</tr>
+</table>
+<figcaption>RX PHP applications</figcaption>
+</figure>
+
+<br/>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
+<th>Java applications</th>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+As a developer I want to run multiple Java applications on a Tomcat server so 
+users and other applications can use the services provided bu the applications. 
+A Java application usually needs a MySQL database, the source code is stored 
+on GitHub.
+</td>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+All Java applications are running and can be accessed over HTTP.
+</td>
+</tr>
+</table>
+<figcaption>RX Java applications</figcaption>
+</figure>
+
 
 <h3>Non-functional requirements</h3>
 
 <p>
-Classification according to quality model of ISO/IEC 9126-1.
+The following non-functional requirements are not conclusive but they are 
+the most critical ones. They are classified according to quality model of 
+ISO/IEC 25010:2011.
+</p>
+
+<p>
+The requirements are based on the current infrastrucutre and events in the past 
+related to it.
 </p>
 
 <figure>
@@ -484,7 +575,7 @@ Classification according to quality model of ISO/IEC 9126-1.
 </colgroup>
 <tbody>
 <tr>
-<th>R3</th>
+<th>RX</th>
 <th>Load Time</th>
 </tr>
 <tr>
@@ -492,7 +583,7 @@ Classification according to quality model of ISO/IEC 9126-1.
 Classification
 </th>
 <td>
-Efficiency / Time Behaviour
+Time Behaviour
 </td>
 </tr>
 <tr>
@@ -506,8 +597,147 @@ to answer requests within 1 second under this load.
 </td>
 </tr>
 </table>
-<figcaption>US2</figcaption>
+<figcaption>RX Load Time</figcaption>
 </figure>
+
+<br/>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
+<th>Open Source</th>
+</tr>
+<tr>
+<th>
+Classification
+</th>
+<td>
+Replaceability
+</td>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+All software used for infrastructure has to be built on open-source software.
+This guarantees that components can easily be ported to different providers 
+or maintainers. It also allows other Members to easily copy parts of the 
+infrastructure.
+</td>
+</tr>
+</table>
+<figcaption>RX Open Source</figcaption>
+</figure>
+
+<br/>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
+<th>Provider switch</th>
+</tr>
+<tr>
+<th>
+Classification
+</th>
+<td>
+Portability
+</td>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+The infrastructure can be ported to a different provider within 48 hours, in 
+case a provider shuts down its service or is no longer justifiable because of 
+his actions (e.g. security problems).
+</td>
+</tr>
+</table>
+<figcaption>RX Provider switch</figcaption>
+</figure>
+
+<br/>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
+<th>Test environment</th>
+</tr>
+<tr>
+<th>
+Classification
+</th>
+<td>
+Testability
+</td>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+To test changes to it, the whole infrastructure can be started 
+in a test environment.
+</td>
+</tr>
+</table>
+<figcaption>RX Test environment</figcaption>
+</figure>
+
+<br/>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
+<th>Encrypted passwords</th>
+</tr>
+<tr>
+<th>
+Classification
+</th>
+<td>
+Confidentiality
+</td>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+Server passwords should be stored only encrypted on third-party systems.
+</td>
+</tr>
+</table>
+<figcaption>RX Encrypted passwords</figcaption>
+</figure>
+
 
 <h3>Definition of Done</h3>
 
