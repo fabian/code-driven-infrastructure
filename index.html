@@ -92,8 +92,8 @@ with a service-oriented architecture.
 </figure>
 
 <p>
-All web software is running on rented virtual servers running Linux. They are
-managed manually using a web control panel (Parallels Plesk). Changes to the
+All web software is running on rented virtual servers running Linux. They are 
+managed manually using a web control panel (Parallels Plesk). Changes to the 
 infrastructure are done by one of the four internal software developers manually.
 </p>
 
@@ -394,6 +394,13 @@ project as well as the dates of the most important milestones.
 
 <h2 class="break">Requirements</h2>
 
+<h3>Overview</h3>
+
+<p>
+The following requirements were by analysing the existing infrastrucutre and 
+taking known problems into account.
+</p>
+
 <h3>Stakeholders</h3>
 
 <p>
@@ -414,9 +421,9 @@ stakeholders are also used in the system context diagram.
 <th>Description</th>
 </tr>
 <tr>
-<td>
+<th>
 Developer
-</td>
+</th>
 <td>
 Works at WorldSkills International and is responsible for the development and 
 maintenance of the infrastructure. There are four developers working full-time 
@@ -424,9 +431,9 @@ for WorldSkills International, there is no designated system administrator.
 </td>
 </tr>
 <tr>
-<td>
+<th>
 User
-</td>
+</th>
 <td>
 Interacts with applications running on the WorldSkills infrastructure. This 
 includes the Secretariat, Members, Competition personnel and website visitors. 
@@ -435,9 +442,9 @@ running services influence the requirements.
 </td>
 </tr>
 <tr>
-<td>
+<th>
 Hoster
-</td>
+</th>
 <td>
 Provides virtual Linux servers for the infrastructure. As they are in a highly 
 competitive and fast moving market they can become obsolete and need to be 
@@ -445,9 +452,9 @@ replaced with another hoster with a better offering.
 </td>
 </tr>
 <tr>
-<td>
+<th>
 GitHub
-</td>
+</th>
 <td>
 Hosts Git code repositories for WorldSkills International. Provides a web interface 
 for managing permissions of the repositories. They control how code can be 
@@ -455,9 +462,9 @@ accessed.
 </td>
 </tr>
 <tr>
-<td>
+<th>
 Codeship
-</td>
+</th>
 <td>
 Provides a hosted continuous integration software for WorldSkills International.
 The software is based on Linux with support for PHP, Java and JavaScript 
@@ -489,7 +496,387 @@ All source code of applications is stored on GitHub. Codeship is used for
 running automated tests and executing the deployment of new versions.
 </p>
 
-<h3>User Stories</h3>
+
+<h3 class="break">Applications</h3>
+
+<p>
+The current infrastructure consists of multiple applications deployed on three 
+servers. There is no requirement to keep them on separate servers. The 
+following figure shows their current location on existing servers only to give 
+an easier to understand overview. A detailed description of each applications 
+follows.
+</p>
+
+<figure>
+<img src="images/overview.svg" />
+<figcaption>System overview</figcaption>
+</figure>
+
+<p class="break">
+The following table lists all applications and their special requirements.
+</p>
+
+<figure>
+<table width="100%">
+<colgroup>
+    <col width="32%" />
+    <col width="20%" />
+    <col width="12%" />
+    <col width="12%" />
+    <col width="12%" />
+    <col width="12%" />
+</colgroup>
+<tbody>
+<tr>
+<th rowspan="2">Application</th>
+<th rowspan="2">Type</th>
+<th colspan="4">Requirements</th>
+</tr>
+<tr>
+<th>RabbitMQ</th>
+<th>MySQL</th>
+<th>JavaMail</th>
+<th>Uploads</th>
+</tr>
+<tr>
+<th>
+Web services
+</th>
+<td>
+Java
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+</tr>
+<tr>
+<th>
+Management
+</th>
+<td>
+Static
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+Auth
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+worldskills.org
+</th>
+<td>
+PHP
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+</tr>
+<tr>
+<th>
+WSC2015 website
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+</tr>
+<tr>
+<th>
+WSC2017 website
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+</tr>
+<tr>
+<th>
+Facebook Members
+</th>
+<td>
+Static
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+IL
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+Aggregator
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+Who-is-who
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+</tr>
+<tr>
+<th>
+Registrations
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+Forums
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+</tr>
+<tr>
+<th>
+Portal
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+</tr>
+<tr>
+<th>
+CIS demo
+</th>
+<td>
+Java
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+Rooms
+</th>
+<td>
+Java
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+Archive
+</th>
+<td>
+Java
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+Mailer
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+SMP
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+CPT
+</th>
+<td>
+PHP
+</td>
+<td>
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+</table>
+<figcaption>Application requirements</figcaption>
+</figure>
+
+
+<h3 class="break">User Stories</h3>
+
+<p>
+To describe the functional requirements for the new infrastructure user stories 
+are used.
+</p>
 
 <figure>
 <table width="100%">
