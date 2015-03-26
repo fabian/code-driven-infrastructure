@@ -8,7 +8,7 @@
 ## Optimize SVGs
 
 ```
-./node_modules/.bin/svgo --pretty images/*.svg
+./node_modules/.bin/svgo --pretty --folder images/
 ```
 
 ## Generate PDF
