@@ -119,6 +119,14 @@ table {
     page-break-inside: avoid;
 }
 
+table.full {
+    width: 100%;
+}
+
+table .col-twenty {
+    width: 20%;
+}
+
 table td,
 table th {
     padding: 0.4em 0.5em;
