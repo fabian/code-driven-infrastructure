@@ -117,6 +117,7 @@ a {
 table {
     border-collapse: collapse;
     page-break-inside: avoid;
+    width: 100%;
 }
 
 table td,
