@@ -396,6 +396,14 @@ project as well as the dates of the most important milestones.
 
 <h3>Stakeholders</h3>
 
+<p>
+Staff and WorldSkills Members.
+</p>
+
+<p>
+Four developers, no system administrator.
+</p>
+
 <h3>System Context</h3>
 
 <p>
@@ -553,6 +561,117 @@ All Java applications are running and can be accessed over HTTP.
 <figcaption>RX Java applications</figcaption>
 </figure>
 
+<br/>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
+<th>Server configuration</th>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+As a developer I want to change a server configuration file to optimize a setting.
+For example the MySQL Query Cache size needs to be increased. Another example 
+would be that the servlet container configuration needs a new variable due to 
+a change in the application.
+</td>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+A configuration file get modified and the change is pushed to the repository.
+The new configuration file is automatically deployed to the server and the 
+affected applications loads the new configuration.
+</td>
+</tr>
+</table>
+<figcaption>RX Server configuration</figcaption>
+</figure>
+
+<br/>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
+<th>Application deployment</th>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+As a developer I want to deploy a new version of an application so users can 
+benefit from new features or fixes.
+</td>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+A new version of an application gets pushed to the repository. Automated tests 
+of the application are executed and if they pass the application gets deployed 
+to the server.
+</td>
+</tr>
+</table>
+<figcaption>RX Application deployment</figcaption>
+</figure>
+
+<br/>
+
+<figure>
+<table>
+<colgroup>
+    <col width="20%" />
+    <col width="80%" />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
+<th>Hoster switch</th>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+As a developer I want to switch the server hoster so I can profit from a better 
+offer. Another reason could be that the current hoster shuts down or its no 
+longer justifiable because of his actions (e.g. security problems).
+</td>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+The infrastructure can be ported to a different provider within 48 hours. All 
+needed software is installed automatically, databases and user files are 
+transfered manually.
+</td>
+</tr>
+</table>
+<figcaption>RX Hoster switch</figcaption>
+</figure>
+
 
 <h3>Non-functional requirements</h3>
 
@@ -647,41 +766,6 @@ infrastructure.
 <tbody>
 <tr>
 <th>RX</th>
-<th>Provider switch</th>
-</tr>
-<tr>
-<th>
-Classification
-</th>
-<td>
-Portability
-</td>
-</tr>
-<tr>
-<th>
-Description
-</th>
-<td>
-The infrastructure can be ported to a different provider within 48 hours, in 
-case a provider shuts down its service or is no longer justifiable because of 
-his actions (e.g. security problems).
-</td>
-</tr>
-</table>
-<figcaption>RX Provider switch</figcaption>
-</figure>
-
-<br/>
-
-<figure>
-<table>
-<colgroup>
-    <col width="20%" />
-    <col width="80%" />
-</colgroup>
-<tbody>
-<tr>
-<th>RX</th>
 <th>Test environment</th>
 </tr>
 <tr>
@@ -697,8 +781,8 @@ Testability
 Description
 </th>
 <td>
-To test changes to it, the whole infrastructure can be started 
-in a test environment.
+To test configuration changes to it, the whole or part of the infrastructure 
+can be started in a test environment.
 </td>
 </tr>
 </table>
