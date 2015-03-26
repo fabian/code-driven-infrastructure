@@ -397,17 +397,16 @@ project as well as the dates of the most important milestones.
 <h3>Stakeholders</h3>
 
 <p>
-The following stakeholders have been observed in the current infrastructure
-and are based on the involved systems. They have a direct or indirect influence 
-on the requirements. Theses stakeholders are also used in the following context 
-diagram.
+The following stakeholders have been observed around the current infrastructure.
+They have a direct or indirect influence on the requirements. Theses 
+stakeholders are also used in the system context diagram.
 </p>
 
 <figure>
 <table>
 <colgroup>
-    <col width="30%" />
-    <col width="70%" />
+    <col width="20%" />
+    <col width="80%" />
 </colgroup>
 <tbody>
 <tr>
@@ -420,7 +419,8 @@ Developer
 </td>
 <td>
 Works at WorldSkills International and is responsible for the development and 
-maintenance of the infrastructure.
+maintenance of the infrastructure. There are four developers working full-time 
+for WorldSkills International, there is no designated system administrator. 
 </td>
 </tr>
 <tr>
@@ -428,8 +428,10 @@ maintenance of the infrastructure.
 User
 </td>
 <td>
-Is registered as a WorldSkills user and uses applications running on the 
-WorldSkills infrastructure.
+Interacts with applications running on the WorldSkills infrastructure. This 
+includes the Secretariat, Members, Competition personnel and website visitors. 
+Most of them are registered users. Their expectations for fast and continiously 
+running services influence the requirements.
 </td>
 </tr>
 <tr>
@@ -437,7 +439,9 @@ WorldSkills infrastructure.
 Hoster
 </td>
 <td>
-Company providing servers as a service.
+Provides virtual Linux servers for the infrastructure. As they are in a highly 
+competitive and fast moving market they can become obsolete and need to be 
+replaced with another hoster with a better offering.
 </td>
 </tr>
 <tr>
@@ -445,7 +449,9 @@ Company providing servers as a service.
 GitHub
 </td>
 <td>
-Repository hosting service used by WorldSkills International.
+Hosts Git code repositories for WorldSkills International. Provides a web interface 
+for managing permissions of the repositories. They control how code can be 
+accessed.
 </td>
 </tr>
 <tr>
@@ -453,20 +459,16 @@ Repository hosting service used by WorldSkills International.
 Codeship
 </td>
 <td>
-Continuous integration service provider used by WorldSkills International.
+Provides a hosted continuous integration software for WorldSkills International.
+The software is based on Linux with support for PHP, Java and JavaScript 
+applications. Their functionality defines how applications can be built and 
+deployed.
 </td>
 </tr>
 </table>
 <figcaption>Stakeholders</figcaption>
 </figure>
 
-<p>
-Staff and WorldSkills Members.
-</p>
-
-<p>
-Four developers, no system administrator.
-</p>
 
 <h3>System Context</h3>
 
