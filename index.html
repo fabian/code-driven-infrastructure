@@ -889,42 +889,6 @@ are used.
 <tbody>
 <tr>
 <th>RX</th>
-<th>Zero-Downtime</th>
-</tr>
-<tr>
-<th>
-Description
-</th>
-<td>
-As a developer, I want to publish a new version of a web service without 
-any downtime so new features are available to users.
-</td>
-</tr>
-<tr>
-<th>
-Acceptance Criteria
-</th>
-<td>
-A new version of a web service can be pushed and the old version keeps 
-responding to requests until the new version is ready. The new version is ready
-within 10 minutes from the push.
-</td>
-</tr>
-</table>
-<figcaption>RX Zero-Downtime</figcaption>
-</figure>
-
-<br/>
-
-<figure>
-<table class="full">
-<colgroup>
-    <col class="col-twenty" />
-    <col />
-</colgroup>
-<tbody>
-<tr>
-<th>RX</th>
 <th>Staging Area</th>
 </tr>
 <tr>
@@ -1078,7 +1042,7 @@ Description
 </th>
 <td>
 As a developer I want to deploy a new version of an application so users can 
-benefit from new features or fixes.
+benefit from new features or fixes. The deployment causes no downtime.
 </td>
 </tr>
 <tr>
@@ -1088,7 +1052,8 @@ Acceptance Criteria
 <td>
 A new version of an application gets pushed to the repository. Automated tests 
 of the application are executed and if they pass the application gets deployed 
-to the server.
+to the server. The old version keeps responding to requests until the new 
+version is ready.
 </td>
 </tr>
 </table>
