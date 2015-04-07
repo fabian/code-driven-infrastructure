@@ -431,7 +431,7 @@ maintenance of the infrastructure. There are four developers working full-time
 for WorldSkills International, there is no designated system administrator. 
 Developers have different backgrounds and therefor different knowledge about 
 specific components of the instrastructure but they all share the 
-responsibility for keeping the infrastructure running. They work from three
+responsibility for keeping the infrastructure running. They work from three 
 different time zones.
 </td>
 </tr>
@@ -885,7 +885,8 @@ Competition Planning Timetable with important deadlines
 
 <p>
 To describe the functional requirements for the new infrastructure user stories 
-are used.
+are used. They are prioritized in agreement with all developers in three 
+levels: Must, Should, Could.
 </p>
 
 <figure>
@@ -916,6 +917,10 @@ Acceptance Criteria
 <td>
 All PHP applications are running and can be accessed with a web browser.
 </td>
+</tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
 </tr>
 </table>
 <figcaption>RX PHP applications</figcaption>
@@ -952,6 +957,10 @@ Acceptance Criteria
 <td>
 All Java applications are running and can be accessed over HTTP.
 </td>
+</tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
 </tr>
 </table>
 <figcaption>RX Java applications</figcaption>
@@ -991,6 +1000,10 @@ The new configuration file is automatically deployed to the server and the
 affected applications loads the new configuration.
 </td>
 </tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
+</tr>
 </table>
 <figcaption>RX Server configuration</figcaption>
 </figure>
@@ -1028,6 +1041,10 @@ to the server. The old version keeps responding to requests until the new
 version is ready.
 </td>
 </tr>
+<tr>
+<th>Priority</th>
+<td>Should</td>
+</tr>
 </table>
 <figcaption>RX Application deployment</figcaption>
 </figure>
@@ -1059,10 +1076,14 @@ so I can make sure if works as expected.
 Acceptance Criteria
 </th>
 <td>
-A new version of a web service is pushed in a separate branch, the
-functionality is available for testing in a staging environment within
+A new version of a web service is pushed in a separate branch, the 
+functionality is available for testing in a staging environment within 
 10&nbsp;minutes from the push.
 </td>
+</tr>
+<tr>
+<th>Priority</th>
+<td>Should</td>
 </tr>
 </table>
 <figcaption>RX Staging Area</figcaption>
@@ -1101,6 +1122,10 @@ needed software is installed automatically, databases and user files are
 transfered manually.
 </td>
 </tr>
+<tr>
+<th>Priority</th>
+<td>Could</td>
+</tr>
 </table>
 <figcaption>RX Hoster switch</figcaption>
 </figure>
@@ -1111,7 +1136,7 @@ transfered manually.
 <p>
 The following non-functional requirements are not conclusive but they are 
 the most critical ones. They are classified according to quality model of 
-ISO/IEC 25010:2011.
+ISO/IEC 25010:2011 and prioritized in three levels: Must, Should, Could.
 </p>
 
 <p>
@@ -1147,6 +1172,10 @@ During WorldSkills Leipzig 2013 the highest load was with 4,400 sessions per
 hour during the Closing Ceremony (4 pages/session). The system must be able
 to answer requests within 1 second under this load.
 </td>
+</tr>
+<tr>
+<th>Priority</th>
+<td>Should</td>
 </tr>
 </table>
 <figcaption>RX Load Time</figcaption>
@@ -1184,6 +1213,10 @@ or maintainers. It also allows other Members to easily copy parts of the
 infrastructure.
 </td>
 </tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
+</tr>
 </table>
 <figcaption>RX Open Source</figcaption>
 </figure>
@@ -1218,6 +1251,10 @@ To test configuration changes to it, the whole or part of the infrastructure
 can be started in a test environment.
 </td>
 </tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
+</tr>
 </table>
 <figcaption>RX Test environment</figcaption>
 </figure>
@@ -1251,6 +1288,10 @@ Description
 Server passwords should be stored only encrypted on third-party systems.
 </td>
 </tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
+</tr>
 </table>
 <figcaption>RX Encrypted passwords</figcaption>
 </figure>
@@ -1283,6 +1324,10 @@ Description
 <td>
 All configuration files are stored in a code repository.
 </td>
+</tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
 </tr>
 </table>
 <figcaption>RX Configuration files</figcaption>
@@ -1318,6 +1363,10 @@ Every change must be traceable to a developer. Associated with every change is
 an explanation.
 </td>
 </tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
+</tr>
 </table>
 <figcaption>RX Change history</figcaption>
 </figure>
@@ -1351,6 +1400,10 @@ Description
 Applications that can be horizontally scaled can be installed on multiple 
 servers and served through a load balancer.
 </td>
+</tr>
+<tr>
+<th>Priority</th>
+<td>Could</td>
 </tr>
 </table>
 <figcaption>RX Horizontal scaling</figcaption>
@@ -1387,6 +1440,10 @@ needs unrestricted access to the server to debug the error and try out
 different solutions.
 </td>
 </tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
+</tr>
 </table>
 <figcaption>RX Superuser access</figcaption>
 </figure>
@@ -1421,6 +1478,10 @@ New software can be installed without restrictions. New features or analytics
 tools might require the installation of additional software.
 </td>
 </tr>
+<tr>
+<th>Priority</th>
+<td>Must</td>
+</tr>
 </table>
 <figcaption>RX Custom software</figcaption>
 </figure>
@@ -1436,9 +1497,9 @@ tools might require the installation of additional software.
 <h3>Introduction</h3>
 
 <p>
-Based on the given requirements the following evaluation defines the guiding
-principles for the architecture concept. It compares the different approaches
-for configuring and deploying software and how well they fit to the existing
+Based on the given requirements the following evaluation defines the guiding 
+principles for the architecture concept. It compares the different approaches 
+for configuring and deploying software and how well they fit to the existing 
 environment.
 </p>
 
