@@ -177,6 +177,10 @@ figure img {
     max-width: 100%;
 }
 
+figure pre {
+    text-align: left;
+}
+
 figure figcaption {
     page-break-before: avoid;
     font-size: 0.75em;

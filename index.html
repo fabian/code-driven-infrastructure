@@ -1519,6 +1519,151 @@ they are both limited by other resources.
 
 <h3>Software Containers</h3>
 
+<p>
+This type of software has recently became popular with Docker. The idea is to 
+use the advantages of a virtual machine (isolation, portability, efficiency) 
+while sharing resources. Docker has been chosen as it has been perceived as the 
+most active project. A similar projects is Rocket by CoreOS.
+</p>
+
+<p>
+Docker only works on Linux, so for development on Mac OS X the software 
+Boot2Docker is used on the development laptop. Installation instructions are 
+provided in the <a href="#ref-docker-docs">Docker documentation</a> in the 
+chapter <em>Installation for Mac OS X</em>.
+</p>
+
+<p>
+After the installation the virtual machine with the Linux running Docker 
+is then launched with the following two commands.
+</p>
+
+<figure>
+<pre><code>$ boot2docker init
+$ boot2docker start
+Waiting for VM and Docker daemon to start...
+.............ooo
+Started.
+Writing /Users/fabian/.boot2docker/certs/boot2docker-vm/ca.pem
+Writing /Users/fabian/.boot2docker/certs/boot2docker-vm/cert.pem
+Writing /Users/fabian/.boot2docker/certs/boot2docker-vm/key.pem
+
+To connect the Docker client to the Docker daemon, please set:
+    export DOCKER_HOST=tcp://192.168.59.103:2376
+    export DOCKER_CERT_PATH=/Users/fabian/.boot2docker/certs/boot2docker-vm
+    export DOCKER_TLS_VERIFY=1
+</code></pre>
+<figcaption>Boot2Docker initialization</figcaption>
+</figure>
+
+<h4>RX PHP applications</h4>
+
+<p>
+Docker publishes official images for certain applications and programming 
+languages in the Docker Hub Repository. There's also an official image for PHP 
+which can be found on <a href="#ref-docker-php">GitHub</a>. Maintained images 
+for <a href="#ref-php-versions">recent PHP versions</a> are provided with 
+built-in php-fpm or Apache for running the application as a service.
+</p>
+
+<p>
+To test the requirement, concrete5 (CMS) is packaged into Docker instances.
+Best practices recommend to run only one process per container.
+</p>
+
+<p>
+The MySQL server is started in a separate instance, so an additional Dockerfile 
+for MySQL is needed and then needs to be linked with the container running 
+concrete5. To simplify this Docker Compose can be used. It's a tool that 
+can start multiple Docker instances based on a configuration file.
+</p>
+
+<p>
+In a usual setup the application would run with PHP-FPM and a web server 
+(e.g. Nginx) would delegate the requests and also serve static files 
+(JavaScript, CSS, etc.). 
+Another problem is how static application files (JavaScript, CSS, etc.) are 
+served by the Nginx container. In an optimal setup all requests are 
+Multiple solutions exist for solving this problem with Docker:
+</p>
+
+<ul>
+<li>
+Put all application code inside a volume so it can be linked from the NGINX 
+instance. This also solves to problem of an atomic deployment as the code can 
+be update independendly from the PHP-FPM instance. However it destroys the idea 
+of having an immutable Docker image.
+</li>
+<li>
+In the PHP-FPM instance copy the static application files to a volume 
+everytime the instance starts. The NGINX instance then mounts that volume and 
+serves the files. This solution introduces a tight coupling between the two 
+containers and makes an atomic redeploy of only the PHP-FPM instance impossible 
+because as soon as a new version of the PHP-FPM instance is started up it 
+would override the files in the volume.
+</li>
+<li>
+Run PHP-FPM and NGINX in the same container and therefor serve the whole 
+application from one instance. This is against the Docker's best practices and 
+an additional load balancer would be needed to server multiple applications.
+</li>
+<li>
+Use Apache to both run the PHP application and serve the static files. This 
+seems like a step backwards as Apache is not kown for a low footprint and 
+it would require a separate Apache for each instance.
+</li>
+</ul>
+
+<p>
+None of the solutions are optimal but for simplicity the last approach is 
+chosen to further analyse the requirement.
+</p>
+
+<p>
+concrete5 needs some additional PHP extensions which can be installed with the 
+provided <code>docker-php-ext-install</code> command. The dependencies of the 
+PHP extensions need to be installed as well with the built-in package 
+management system. In the end all concrete5 files are copied to /var/www/html 
+so they can be served by Apache. The folder web/application/files is then
+added as a volume so user uploaded files can be stored there.
+</p>
+
+<figure>
+<pre><code>FROM php:5.6-apache
+
+RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev \
+    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+    && docker-php-ext-install gd
+
+RUN apt-get update && apt-get install -y zlib1g-dev \
+    && docker-php-ext-install zip
+
+RUN docker-php-ext-install pdo pdo_mysql
+
+RUN a2enmod rewrite
+
+ADD docker/apache.conf /etc/apache2/sites-enabled/
+
+COPY . /var/www/html
+
+VOLUME /var/www/html/web/application/files
+
+EXPOSE 80
+CMD ["apache2-foreground"]
+
+</code></pre>
+<figcaption>Dockerfile for concrete5</figcaption>
+</figure>
+
+<p>
+In conlusion it is possible to run PHP applications with Docker but it serving 
+PHP and static files from the same container is not optimal.
+</p>
+
+<p>
+Verdict: Pass with restrictions <img src="images/sign-check-alt.svg" width="16" height="16" alt="">
+</p>
+
 <h3>Configuration Repository</h3>
 
 <h3>Remote Command Execution</h3>
@@ -1578,17 +1723,34 @@ they are both limited by other resources.
 <h2 class="break">Appendix</h2>
 
 
-
 <h3>Bibliography</h3>
 
 <p id="ref-docker-book" class="reference-item">
-    <span class="ref">James Turnbull (2015): The Docker Book</span>. February 2015. Version&nbsp;1.50.
+    <span class="ref">James Turnbull (2015): The Docker Book</span>. February 2015. Version&nbsp;v1.5.0.
     ISBN&nbsp;9780988820234.
 </p>
 
 <p id="ref-taste-test" class="reference-item">
     <span class="ref">Matt Jaynes (2014): Taste Test: Puppet, Chef, SaltStack, Ansible</span>. June 2014.
-    <a href="https://devopsu.com/books/taste-test-puppet-chef-salt-stack-ansible.html">https://devopsu.com/books/taste-test-puppet-chef-salt-stack-ansible.html</a>
+    <a href="https://devopsu.com/books/taste-test-puppet-chef-salt-stack-ansible.html" target="_blank">https://devopsu.com/books/taste-test-puppet-chef-salt-stack-ansible.html</a>
+    (retrieved&nbsp;7.&nbsp;April&nbsp;2015)
+</p>
+
+<p id="ref-docker-docs" class="reference-item">
+    <span class="ref">Docker, Inc. (2015): Docker Documentation</span>. Version&nbsp;v1.5
+    <a href="https://docs.docker.com/v1.5/" target="_blank">https://docs.docker.com/v1.5/</a>
+    (retrieved&nbsp;7.&nbsp;April&nbsp;2015)
+</p>
+
+<p id="ref-docker-php" class="reference-item">
+    <span class="ref">Tianon Gravi (2015): Docker Official Image packaging for PHP</span>.
+    <a href="https://github.com/docker-library/php" target="_blank">https://github.com/docker-library/php</a>
+    (retrieved&nbsp;7.&nbsp;April&nbsp;2015)
+</p>
+
+<p id="ref-php-versions" class="reference-item">
+    <span class="ref">The PHP Group (2015): PHP Supported Versions</span>.
+    <a href="https://php.net/supported-versions.php" target="_blank">https://php.net/supported-versions.php</a>
     (retrieved&nbsp;7.&nbsp;April&nbsp;2015)
 </p>
 
@@ -1608,12 +1770,22 @@ version of the software used.
 <ul>
 <li>Mac OS X 10.10.2 Build 14C1514</li>
 <li>Git 1.9.5</li>
+<li>Boot2Docker 1.5.0 (Docker v1.5.0, Linux v3.18.5)</li>
+<li>Docker Compose 1.1.0</li>
+<li>VirtualBox 4.3.26 r98988</li>
 <li>Tower 2.2.0 Build 274</li>
 <li>Chocolat 3.1.4</li>
 <li>Prince 9.0 rev 5</li>
 </ul>
 
 <h3 class="break">Glossary</h3>
+
+<dl>
+    <dt>Mac OS X</dt>
+    <dd></dd>
+    <dt>PHP-FPM</dt>
+    <dd></dd>
+</dl>
 
 </div>
 
