@@ -1605,8 +1605,8 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <figure>
 <table class="full">
 <colgroup>
-    <col />
-    <col />
+    <col class="col-fifty" />
+    <col class="col-fifty" />
 </colgroup>
 <tbody>
 <tr>
@@ -1617,11 +1617,17 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <td>
 <ul>
 <li>Immutable applications</li>
+<li>Active community for Docker</li>
+<li>Software can be updated for each container independently</li>
+<li>Clear separation of concern</li>
+<li>Can be scaled well horizontally</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Additional virtualization layer</li>
+<li>Additional virtualization layer makes debugging harder</li>
+<li>Best practice recommends only one running process per instance</li>
+<li>Immutable applications require a load balancer</li>
 </ul>
 </td>
 </tr>

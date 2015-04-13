@@ -127,6 +127,10 @@ table .col-twenty {
     width: 20%;
 }
 
+table .col-fifty {
+    width: 20%;
+}
+
 table td,
 table th {
     padding: 0.4em 0.5em;
