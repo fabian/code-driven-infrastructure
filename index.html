@@ -1563,106 +1563,57 @@ Docker publishes official images for certain applications and programming
 languages in the Docker Hub Repository. There's also an official image for PHP 
 which can be found on <a href="#ref-docker-php">GitHub</a>. Maintained images 
 for <a href="#ref-php-versions">recent PHP versions</a> are provided with 
-built-in php-fpm or Apache for running the application as a service.
+built-in PHP-FPM or Apache for running the application as a service.
 </p>
 
 <p>
-To test the requirement, concrete5 (CMS) is packaged into Docker instances.
-Best practices recommend to run only one process per container.
+The easiest way to run a PHP application with Docker is to use Apache so the 
+application itself and static files (JavaScript, CSS, etc.) can both be served 
+from one process.
 </p>
 
 <p>
-The MySQL server is started in a separate instance, so an additional Dockerfile 
-for MySQL is needed and then needs to be linked with the container running 
-concrete5. To simplify this Docker Compose can be used. It's a tool that 
-can start multiple Docker instances based on a configuration file.
+The MySQL server would be started in a separate instance, so an additional 
+Dockerfile for MySQL is needed and then needs to be linked with the container 
+running the PHP application. To simplify this Docker Compose can be used. It's 
+a tool that can start multiple Docker instances based on a configuration file.
 </p>
 
 <p>
-In a usual setup the application would run with PHP-FPM and a web server 
-(e.g. Nginx) would delegate the requests and also serve static files 
-(JavaScript, CSS, etc.). 
-Another problem is how static application files (JavaScript, CSS, etc.) are 
-served by the Nginx container. In an optimal setup all requests are 
-Multiple solutions exist for solving this problem with Docker:
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
-<ul>
-<li>
-Put all application code inside a volume so it can be linked from the NGINX 
-instance. This also solves to problem of an atomic deployment as the code can 
-be update independendly from the PHP-FPM instance. However it destroys the idea 
-of having an immutable Docker image.
-</li>
-<li>
-In the PHP-FPM instance copy the static application files to a volume 
-everytime the instance starts. The NGINX instance then mounts that volume and 
-serves the files. This solution introduces a tight coupling between the two 
-containers and makes an atomic redeploy of only the PHP-FPM instance impossible 
-because as soon as a new version of the PHP-FPM instance is started up it 
-would override the files in the volume.
-</li>
-<li>
-Run PHP-FPM and NGINX in the same container and therefor serve the whole 
-application from one instance. This is against the Docker's best practices and 
-an additional load balancer would be needed to server multiple applications.
-</li>
-<li>
-Use Apache to both run the PHP application and serve the static files. This 
-seems like a step backwards as Apache is not kown for a low footprint and 
-it would require a separate Apache for each instance.
-</li>
-</ul>
-
-<p>
-None of the solutions are optimal but for simplicity the last approach is 
-chosen to further analyse the requirement.
-</p>
-
-<p>
-concrete5 needs some additional PHP extensions which can be installed with the 
-provided <code>docker-php-ext-install</code> command. The dependencies of the 
-PHP extensions need to be installed as well with the built-in package 
-management system. In the end all concrete5 files are copied to /var/www/html 
-so they can be served by Apache. The folder web/application/files is then
-added as a volume so user uploaded files can be stored there.
-</p>
+<h4>Summary</h4>
 
 <figure>
-<pre><code>FROM php:5.6-apache
-
-RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev \
-    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-    && docker-php-ext-install gd
-
-RUN apt-get update && apt-get install -y zlib1g-dev \
-    && docker-php-ext-install zip
-
-RUN docker-php-ext-install pdo pdo_mysql
-
-RUN a2enmod rewrite
-
-ADD docker/apache.conf /etc/apache2/sites-enabled/
-
-COPY . /var/www/html
-
-VOLUME /var/www/html/web/application/files
-
-EXPOSE 80
-CMD ["apache2-foreground"]
-
-</code></pre>
-<figcaption>Dockerfile for concrete5</figcaption>
+<table class="full">
+<colgroup>
+    <col />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+<tr>
+<td>
+<ul>
+<li>Immutable applications</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Additional virtualization layer</li>
+</ul>
+</td>
+</tr>
+</table>
+<figcaption>Summary Software Containers</figcaption>
 </figure>
 
-<p>
-In conlusion it is possible to run PHP applications with Docker but it serving 
-PHP and static files from the same container is not optimal.
-</p>
-
-<p>
-Verdict: Pass with restrictions <img src="images/sign-check-alt.svg" width="16" height="16" alt="">
-</p>
+<ul>
+</ul>
 
 <h3>Configuration Repository</h3>
 
