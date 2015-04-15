@@ -1285,8 +1285,8 @@ Description
 </th>
 <td>
 To test configuration changes to it, the whole or part of the infrastructure 
-can be started in a test environment. This is different from the staging
-environment in that the test environment can be local and automated tests are
+can be started in a test environment. This is different from the staging 
+environment in that the test environment can be local and automated tests are 
 executed against it.
 </td>
 </tr>
@@ -1324,9 +1324,9 @@ Confidentiality
 Description
 </th>
 <td>
-Server passwords should be stored only encrypted on third-party systems. The
-advantage of storing encrypted passwords in the code repository and sharing a
-key file instead of sharing the passwords in a file is that the file doesn't
+Server passwords should be stored only encrypted on third-party systems. The 
+advantage of storing encrypted passwords in the code repository and sharing a 
+key file instead of sharing the passwords in a file is that the file doesn't 
 need to be updated for everyone each time a password is added.
 </td>
 </tr>
@@ -1599,7 +1599,8 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 There are different ways how to implement this with Docker. One way would be to 
 build a new image, deploy it separatly and then route requests with a load 
 balancer to the new image. However as noted before, Docker doesn't provide 
-tools to do a deployment of the image nor to configure load balancing.
+tools to do a deployment of the image nor the orchestration of running 
+machines.
 </p>
 
 <p>
@@ -1641,6 +1642,94 @@ be automated with Docker.
 Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 </p>
 
+<h4>RX Configuration files</h4>
+
+<p>
+All configuration files can be stored in the code repository and then added 
+to the container during build time.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Change history</h4>
+
+<p>
+By storing all Dockerfiles and configuration files in a VCS and building the 
+container images on a CI server each change can be traced back.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Open Source</h4>
+
+<p>
+Both Docker and the registry server for Docker are Open Source on GitHub, 
+they are licensed under the Apache License.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Test environment</h4>
+
+<p>
+As with the staging environment Docker Compose can be used for starting 
+multiple containers quickly so tests can be executed.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Encrypted passwords</h4>
+
+<p>
+Secret data is usually passed as environment variables to the Docker container.
+Docker doesn't provide functionality for encrypting information.
+</p>
+
+<p>
+Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Superuser access</h4>
+
+<p>
+Containers can be accessed from the outside with different methods and 
+superuser access to the host system is required by Docker.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Custom software</h4>
+
+<p>
+There are some limitations of what can be run inside a container on the kernel
+level, but they are not affecting most use cases.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Horizontal scaling</h4>
+
+<p>
+Multiple instances of images can be started in parallel and Docker Swarm, a 
+clustering tool for Docker, can be used to manage them.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
 <h4>Summary</h4>
 
 <figure>
@@ -1676,8 +1765,10 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 <figcaption>Summary Software Containers</figcaption>
 </figure>
 
-<ul>
-</ul>
+<p>
+A comparison of all requirements can be found after the analysis of the three 
+different approaches.
+</p>
 
 <h3>Configuration Repository</h3>
 
@@ -1776,6 +1867,118 @@ RX Hoster switch
 </td>
 <td>
 <img src="images/sign-error.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Configuration files
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Change history
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Open Source
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Test environment
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Encrypted passwords
+</td>
+<td>
+<img src="images/sign-error.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Superuser access
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Custom software
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Horizontal scaling
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
