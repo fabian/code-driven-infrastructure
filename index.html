@@ -1556,6 +1556,13 @@ To connect the Docker client to the Docker daemon, please set:
 <figcaption>Boot2Docker initialization</figcaption>
 </figure>
 
+<p>
+Another useful tool is Docker Compose which allows multiple instances to be 
+started based on a configuration file. However it's usage in production is not 
+recommended at the moment as it's missing some features for managing managing 
+running instances.
+</p>
+
 <h4>RX PHP applications</h4>
 
 <p>
@@ -1592,12 +1599,80 @@ Repository as well. Multiple versions with for Java 7 and 8 are available.
 
 <p>
 Configuration and the application code can be copied to the working directory 
-of Tomcat and are read and started automatically. Again as with PHP, a MySQL 
-server would be started in a separate instance.
+of Tomcat and are read and started automatically. Multiple applications can be 
+bundled into one container or one container per application can be used. Again 
+as with PHP, a MySQL server would be started in a separate instance.
 </p>
 
 <p>
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Server configuration</h4>
+
+<p>
+To guarantee reproducable containers configuration files are usually copied 
+into the container at build time. This allows the container to be tested in a 
+staging environment and making guarantees the same result in the production 
+environment.
+</p>
+
+<p>
+Docker provides the tools to build the image and upload it to a central 
+repository, however it doesn't provide any tools to do an actual deployment 
+of the image to a live environment out of the box.
+</p>
+
+<p>
+Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Application deployment</h4>
+
+<p>
+There are different ways how to implement this with Docker. One way would be to 
+build a new image, deploy it separatly and then route requests with a load 
+balancer to the new image. However as noted before, Docker doesn't provide 
+tools to do a deployment of the image nor to configure load balancing.
+</p>
+
+<p>
+Another possibiliy would be to use volumes to deploy the new application into 
+the running container but this would require each application to have built-in 
+support for zero downtime deployment, which is not always the case (Tomcat 
+supports this with parallel deployment but not PHP).
+</p>
+
+<p>
+Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Staging Area</h4>
+
+<p>
+Containers can easily be started quickly in a new environment (e.g. a new 
+virtual server). Docker Compose can be used here for starting up multiple 
+containers at once. Database fixtures can be loaded from additional containers 
+which are linked to the database container.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Hoster switch</h4>
+
+<p>
+Thanks to the virtualization the only requirement for a new hoster would be 
+to run Docker. Transfer of the data is possible by launching additional 
+containers on the old server and mounting the data volumes. However the 
+installation of Docker would need to be done manually if the hoster doesn't 
+provide preinstalled Docker. Configuration of the host machine could also not 
+be automated with Docker.
+</p>
+
+<p>
+Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 </p>
 
 <h4>Summary</h4>
@@ -1664,13 +1739,13 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 RX PHP applications
 </td>
 <td>
-<img src="images/sign-check.svg" width="16" height="16" alt="Yes">
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-<img src="images/sign-check.svg" width="16" height="16" alt="Yes">
+
 </td>
 <td>
-<img src="images/sign-check.svg" width="16" height="16" alt="Yes">
+
 </td>
 </tr>
 <tr>
@@ -1678,13 +1753,69 @@ RX PHP applications
 RX Java applications
 </td>
 <td>
-<img src="images/sign-check.svg" width="16" height="16" alt="Yes">
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-<img src="images/sign-check.svg" width="16" height="16" alt="Yes">
+
 </td>
 <td>
-<img src="images/sign-check.svg" width="16" height="16" alt="Yes">
+
+</td>
+</tr>
+<tr>
+<td>
+RX Server configuration
+</td>
+<td>
+<img src="images/sign-error.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Application deployment
+</td>
+<td>
+<img src="images/sign-error.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Staging Area
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td>
+RX Hoster switch
+</td>
+<td>
+<img src="images/sign-error.svg" width="16" height="16" alt="">
+</td>
+<td>
+
+</td>
+<td>
+
 </td>
 </tr>
 </table>
@@ -1694,6 +1825,10 @@ RX Java applications
 <h3>Conclusion</h3>
 
 <p>
+Many advantages are not needed for a team of four developers but add 
+additional complexity. Also quickly setting up a development environment is not 
+as important as no new developers are expected to join the team within the 
+next 4 years.
 </p>
 
 </div>
