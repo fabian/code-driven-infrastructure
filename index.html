@@ -1772,6 +1772,52 @@ different approaches.
 
 <h3>Configuration Repository</h3>
 
+<p>
+Chef and Puppet are the most popular representatives for this type of software.
+It exists for a few years now and has the target to provide a central 
+repository for infrastructure configuration from which server clients regurarly 
+pull their changes. This kind of software type usually also provides a way to 
+use it without a central server but that looses the advantage of having a 
+central point to coordinate changes.
+</p>
+
+<p>
+Chef is usually also run on a Linux machine, so for development a virtual 
+machine with Linux is required. To simplify the setup of the virtual machine 
+Vagrant, a software to run virtual machines based on a configuration file, can 
+be used. After installing Vagrant a virtual machine can be started with a 
+Linux provided by Chef with all required software pre-installed:
+</p>
+
+<figure>
+<pre><code>$ vagrant up 
+Bringing machine 'default' up with 'virtualbox' provider...
+    default: The Berkshelf shelf is at "/Users/fabian/.berkshelf/…"
+==> default: Sharing cookbooks with VM
+==> default: Importing base box 'chef/ubuntu-14.04'...
+[…]
+==> default: Running provisioner: chef_solo...
+    default: Installing Chef (latest)...
+Generating chef JSON and uploading...
+==> default: Running chef-solo...
+==> default: stdin: is not a tty
+==> default: […] INFO: Forking chef instance to converge...
+==> default: […] INFO: *** Chef 12.2.1 ***
+==> default: […] INFO: Chef-client pid: 2030
+==> default: […] INFO: Setting the run_list to ["recipe[example-chef::default]"]
+==> default: […] INFO: Run List is [recipe[example-chef::default]]
+==> default: […] INFO: Run List expands to [example-chef::default]
+==> default: […] INFO: Starting Chef Run for example-chef-berkshelf
+==> default: […] INFO: Running start handlers
+==> default: […] INFO: Start handlers complete.
+==> default: […] INFO: Chef Run complete in 0.017230899 seconds
+==> default: […] INFO: Skipping removal of unused files from the cache
+==> default: […] INFO: Running report handlers
+==> default: […] INFO: Report handlers complete
+</code></pre>
+<figcaption>Vagrant initialization with Chef</figcaption>
+</figure>
+
 <h3>Remote Command Execution</h3>
 
 <h3>Comparison</h3>
@@ -1994,6 +2040,13 @@ RX Horizontal scaling
 <h3>Conclusion</h3>
 
 <p>
+Even though some software types don't comply with all requirements it should be 
+noted that these can often be filled with third-party tools or by switching to 
+a different software implementation. So the decision should not be based solely 
+on the requirements.
+</p>
+
+<p>
 Many advantages are not needed for a team of four developers but add 
 additional complexity. Also quickly setting up a development environment is not 
 as important as no new developers are expected to join the team within the 
@@ -2079,6 +2132,13 @@ next 4 years.
     (retrieved&nbsp;7.&nbsp;April&nbsp;2015)
 </p>
 
+<p id="ref-cooking-chef" class="reference-item">
+    <span class="ref">       Alexey Vasiliev aka leopard (2014):     Cooking Infrastructure by Chef</span>.
+    <a href="http://chef.leopard.in.ua/" target="_blank">http://chef.leopard.in.ua/</a>
+    (retrieved&nbsp;18.&nbsp;April&nbsp;2015)
+</p>
+
+
 
 <h3 class="break">List of Figures</h3>
 
@@ -2098,6 +2158,10 @@ version of the software used.
 <li>Boot2Docker 1.5.0 (Docker v1.5.0, Linux v3.18.5)</li>
 <li>Docker Compose 1.1.0</li>
 <li>VirtualBox 4.3.26 r98988</li>
+<li>Vagrant 1.7.2</li>
+<li>ChefDK 0.4.0</li>
+<li>Chef 12.0.3</li>
+<li>Berkshelf 3.2.3</li>
 <li>Tower 2.2.0 Build 274</li>
 <li>Chocolat 3.1.4</li>
 <li>Prince 9.0 rev 5</li>
