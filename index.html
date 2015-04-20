@@ -1441,7 +1441,7 @@ Changeability
 Description
 </th>
 <td>
-Applications that can be horizontally scaled can be installed on multiple 
+Applications - that can be horizontally scaled - can be installed on multiple 
 servers and served through a load balancer.
 </td>
 </tr>
@@ -1915,6 +1915,94 @@ needed.
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
+<h4>RX Configuration files</h4>
+
+<p>
+Configuration files can be stored as templates in the repository. They get 
+compiled and written to their target destination by Chef.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Change history</h4>
+
+<p>
+All cookbooks and templates can be stored in a VCS, a CI server uploads them 
+to the Chef server for distrubution to the clients.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Open Source</h4>
+
+<p>
+Chef Client, Chef Server and Chef Development Kit (DK) are Open Source on 
+GitHub, they are licensed under the Apache License.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Test environment</h4>
+
+<p>
+The cookbooks can also be used to configure the virtual machine the tests are 
+running on.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Encrypted passwords</h4>
+
+<p>
+Data bags allow to store variables for the Chef server. Confidential 
+information can be stored in encrypted Data Bags. The secret key can be shared 
+within the developers over other secure channels.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Superuser access</h4>
+
+<p>
+No restrictions about access to the server are imposed by Chef.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Custom software</h4>
+
+<p>
+Packages from the Linux distribution are easiest to install with Chef, but 
+also custom software can be downloaded and installed.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Horizontal scaling</h4>
+
+<p>
+Multiple Chef clients can connect to the same Chef server and the same 
+cookbooks can be installed on multiple hosts.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
 
 <h3>Remote Command Execution</h3>
 
@@ -2027,7 +2115,7 @@ RX Configuration files
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -2041,7 +2129,7 @@ RX Change history
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -2055,7 +2143,7 @@ RX Open Source
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -2069,7 +2157,7 @@ RX Test environment
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -2083,7 +2171,7 @@ RX Encrypted passwords
 <img src="images/sign-error.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -2097,7 +2185,7 @@ RX Superuser access
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -2111,7 +2199,7 @@ RX Custom software
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -2125,7 +2213,7 @@ RX Horizontal scaling
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
