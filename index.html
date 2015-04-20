@@ -2081,7 +2081,59 @@ many components rely on others and compability has to be figure out manually.
 </figure>
 
 
-<h3>Remote Command Execution</h3>
+<h3 class="break">Remote Command Execution</h3>
+
+<p>
+This is similar to the Configuration Repository, software to be installed and 
+commands to be executed are defined in text files. The main difference is that 
+instead of having a central server where everything is available to be pulled, 
+everything gets pushed to the hosts. In fact Configuration Repository software 
+like Chef also supports this kind of operation mode with Chef Solo.
+</p>
+
+<p>
+Ansible is used here because of its popularity and because it is only focused 
+on this kind of software type and is therefor optimized for this and less 
+complex.
+</p>
+
+<figure>
+<img src="images/ansible.png">
+<figcaption><a href="#ref-ansible">Logo Ansible</a></figcaption>
+</figure>
+
+<p>
+Ansible is running on Python and can be installed on a development machine as 
+a Python package according to the 
+<a href="#ref-ansible-docs">Ansible documentation</a>. Ansible uses SSH to 
+communicate to remote servers and execute commands on them. Directives are 
+organized in playbooks.
+</p>
+
+<p>
+Again Vagrant can be used to simplify the setup of a remote host and test the 
+playbooks. As Ansible requires no specific software on the host any Linux 
+distribution can be used within VirtualBox.
+</p>
+
+<figure>
+<pre><code>$ vagrant up 
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'ubuntu/trusty32'...
+[…]
+==> default: Running provisioner: ansible...
+[…] ansible-playbook […] site.yml
+
+PLAY [all] ******************************************************************** 
+
+GATHERING FACTS *************************************************************** 
+ok: [default]
+
+PLAY RECAP ******************************************************************** 
+default                    : ok=1    changed=0    unreachable=0    failed=0
+</code></pre>
+<figcaption>Vagrant initialization with Ansible</figcaption>
+</figure>
 
 <h3>Comparison</h3>
 
@@ -2413,6 +2465,19 @@ next 4 years.
     (retrieved&nbsp;20.&nbsp;April&nbsp;2015)
 </p>
 
+<p id="ref-ansible" class="reference-item">
+    <span class="ref">Ansible, Inc. (2015): Ansible</span>
+    <a href="http://www.ansible.com/" target="_blank">http://www.ansible.com/</a>
+    (retrieved&nbsp;20.&nbsp;April&nbsp;2015)
+</p>
+
+
+<p id="ref-ansible-docs" class="reference-item">
+    <span class="ref">Ansible, Inc. (2015): Ansible Documentation. April 2015</span>
+    <a href="http://docs.ansible.com/" target="_blank">http://docs.ansible.com/</a>
+    (retrieved&nbsp;20.&nbsp;April&nbsp;2015)
+</p>
+
 
 
 <h3 class="break">List of Figures</h3>
@@ -2420,7 +2485,7 @@ next 4 years.
 <ul id="figures"></ul>
 
 
-<h3>Software</h3>
+<h3 class="break">Software</h3>
 
 <p>
 The make the results of this thesis reproducable, the following list shows the
@@ -2441,6 +2506,9 @@ version of the software used.
 <li>Chocolat 3.1.4</li>
 <li>Prince 9.0 rev 5</li>
 <li>RubyGems.org 2.4.4</li>
+<li>Ansible 1.9.0.1</li>
+<li>Python 2.7.9</li>
+<li>pip 6.0.6</li>
 </ul>
 
 <h3 class="break">Glossary</h3>
