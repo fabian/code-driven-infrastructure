@@ -1735,7 +1735,21 @@ clustering tool for Docker, can be used to manage them.
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
-<h4>Analysis</h4>
+<h4>Summary</h4>
+
+<p>
+One notable property of Software Containers is their iteration speed. Due to 
+the way how file changes are saved by the filesystem, setup commands don't need 
+to be repeated each time but the resulting files can be restored withing 
+seconds. This makes experimenting with the container much faster than setting 
+up a complete virtual machine each time.
+</p>
+
+<p>
+It became clear that Docker itself is a great tool for reducing the overhead of 
+virtual machines, however it is not a complete solution for infrastructure 
+management (yet).
+</p>
 
 <figure>
 <table class="full">
@@ -2287,14 +2301,6 @@ RX Horizontal scaling
 </figure>
 
 <h3>Conclusion</h3>
-
-<p>
-One notable property of Software Containers is their iteration speed. Due to 
-the way how file changes are saved by the filesystem, setup commands don't need 
-to be repeated each time but the resulting files can be restored withing 
-seconds. This makes experimenting with the container much faster than setting 
-up a complete virtual machine each time.
-</p>
 
 <p>
 Even though some software types don't comply with all requirements it should be 
