@@ -2013,7 +2013,27 @@ cookbooks can be installed on multiple hosts.
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
-<h4>Analysis</h4>
+<h4>Summary</h4>
+
+<p>
+The installation of the Chef DK was a bit troubled as it relies overriding rbenv
+in the <code>PATH</code>. Some modifications to <code>.bash_profile</code> were
+needed to get it running properly.
+</p>
+
+<p>
+The possibility to test the cookbooks locally inside a virtual machine with 
+VirtualBox proved handy. However a few times the cookbook failed unexpectetly
+(e.g. because a wrong package was installed first accidentely) - a complete 
+reinstall then solved the problem but took quite some time.
+</p>
+
+<p>
+A popular cookbook that was initially selected for deploying Java applications 
+turned out to be incompatible with the latest version of the official Tomcat 
+cookbook for no obvious reason. In general the whole system seemed complex: 
+many components rely on others and compability has to be figure out manually.
+</p>
 
 <figure>
 <table class="full">
@@ -2031,12 +2051,14 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <ul>
 <li>Can be used to manage large number of servers</li>
 <li>Utilizes system packages</li>
+<li>Central server as single source for configuration</li>
 </ul>
 </td>
 <td>
 <ul>
 <li>Complex dependencies</li>
 <li>Maintained server or hosted solution for Chef server needed</li>
+<li>Complete reinstall is slow</li>
 </ul>
 </td>
 </tr>
