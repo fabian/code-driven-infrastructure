@@ -1818,6 +1818,104 @@ Generating chef JSON and uploading...
 <figcaption>Vagrant initialization with Chef</figcaption>
 </figure>
 
+<p>
+Chef organizes commands in <em>recipies</em> and <em>cookbooks</em>
+</p>
+
+<h4>RX PHP applications</h4>
+
+<p>
+Cookbooks for PHP are available in the Supermarket, the official repository
+for cookbooks. The PHP cookbook is published and maintained by the company
+behind Chef itself.
+</p>
+
+<p>
+However the functionality provided by the cookbook is mostly focused on PEAR,
+which is not a requirement. A more popular alternative is the apache2 cookbook
+maintained by Sander van Zoest. It not only provides the possibility to install
+Apache but also mod_php to run PHP together with a web server.
+</p>
+
+<p>
+For MySQL there's an official cookbook available as well which installs and
+starts a MySQL server as required.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+
+<h4>RX Java applications</h4>
+
+<p>
+The Supermarket also has an official cookbook for Tomcat. Java must be
+installed separately, the most popular cookbook in the Supermarket is from
+Agile Orbit. The same MySQL cookbook as mention before can be used.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+
+<h4>RX Server configuration</h4>
+
+<p>
+With Chef configuration files are usually built from templates which are
+stored in the repository. Once uploaded to the Chef server the client receives
+them, replaces the variables in them and puts them to the targeted location.
+In addition the service using the file can be restarted.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Application deployment</h4>
+
+<p>
+For Tomcat parallel deployment can be used here. The actual deployment to the
+server is done using the Tomcat Manager App.
+</p>
+
+<p>
+The <code>deploy</code> directive can be used to update a PHP application to
+the latest revision without causing any downtime. It uses symlinks to make the
+latest version only active when all dependencies have been installed.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Staging Area</h4>
+
+<p>
+Chef can be used to setup a virtual machine with the needed environment. Once
+the virtual machine with the Chef client is running it can pull all
+information needed to setup the environment from the Chef server.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Hoster switch</h4>
+
+<p>
+The Chef client needs to be installed manually on a new virtual machine if the
+hoster doesn't provide machines with Chef preinstalled. Once the Chef client is
+installed it can install all required software and configure the machine as
+needed.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+
 <h3>Remote Command Execution</h3>
 
 <h3>Comparison</h3>
@@ -1845,7 +1943,7 @@ RX PHP applications
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -1859,7 +1957,7 @@ RX Java applications
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -1873,7 +1971,7 @@ RX Server configuration
 <img src="images/sign-error.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -1887,7 +1985,7 @@ RX Application deployment
 <img src="images/sign-error.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -1901,7 +1999,7 @@ RX Staging Area
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
@@ -1915,7 +2013,7 @@ RX Hoster switch
 <img src="images/sign-error.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
 
