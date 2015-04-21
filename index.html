@@ -1131,7 +1131,7 @@ transfered manually.
 </figure>
 
 
-<h3>Non-functional requirements</h3>
+<h3 class="break">Non-functional requirements</h3>
 
 <p>
 The following non-functional requirements are not conclusive but they are 
@@ -1785,7 +1785,7 @@ clustering tool for Docker, can be used to manage them.
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
-<h4>Summary</h4>
+<h4 class="break">Summary Software Containers</h4>
 
 <p>
 One notable property of Software Containers is their iteration speed. Due to 
@@ -1844,7 +1844,7 @@ different approaches.
 <p>
 Chef and Puppet are the most popular representatives for this type of software.
 It exists for a few years now and has the target to provide a central 
-repository for infrastructure configuration from which server clients regurarly 
+repository for infrastructure configuration from which server clients regularly
 pull their changes. This kind of software type usually also provides a way to 
 use it without a central server but that looses the advantage of having a 
 central point to coordinate changes.
@@ -1857,11 +1857,11 @@ central point to coordinate changes.
 
 <p>
 Chef is used here because of the already existing knowledge of Ruby and its 
-popularity. Chef is usually running on a Linux machine, so for development a virtual 
+popularity. It is usually running on a Linux machine, so for development a virtual
 machine with Linux is required. To simplify the setup of the virtual machine 
-Vagrant, a software to run virtual machines based on a configuration file, can 
-be used. After installing Vagrant a virtual machine can be started with a 
-Linux provided by Chef with all required software pre-installed:
+Vagrant (a software to run virtual machines based on a configuration file) can
+be used. After installing Vagrant, a virtual machine can be started with a
+Linux image provided by Chef with all required software pre-installed:
 </p>
 
 <figure>
