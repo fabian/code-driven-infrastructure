@@ -1908,9 +1908,10 @@ behind Chef itself.
 
 <p>
 However the functionality provided by the cookbook is mostly focused on PEAR, 
-which is not a requirement. A more popular alternative is the apache2 cookbook
-maintained by Sander van Zoest. It not only provides the possibility to install 
-Apache but also mod_php to run PHP together with a web server.
+which is not a requirement. A more popular alternative is the 
+<a href="#ref-apache2-cookbook">apache2 cookbook</a>. It not only provides the 
+possibility to install Apache but also mod_php to run PHP together with a web 
+server.
 </p>
 
 <p>
@@ -1927,8 +1928,9 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 
 <p>
 The Supermarket also has an official cookbook for Tomcat. Java must be 
-installed separately, the most popular cookbook in the Supermarket is from 
-Agile Orbit. The same MySQL cookbook as mention before can be used.
+installed separately, again there's a <a href="#ref-java-cookbook">cookbook</a> 
+available in the Supermarket. The same MySQL cookbook as mention before can be 
+used.
 </p>
 
 <p>
@@ -2091,18 +2093,19 @@ cookbooks can be installed on multiple hosts.
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
-<h4>Summary</h4>
+
+<h4 class="break">Summary</h4>
 
 <p>
-The installation of the Chef DK was a bit troubled as it relies overriding rbenv
-in the <code>PATH</code>. Some modifications to <code>.bash_profile</code> were
-needed to get it running properly.
+The installation of the Chef DK was a bit troubled as it relies on overriding 
+rbenv in the <code>PATH</code>. Some modifications to 
+<code>.bash_profile</code> were needed to get it running properly.
 </p>
 
 <p>
 The possibility to test the cookbooks locally inside a virtual machine with 
 VirtualBox proved handy. However a few times the cookbook failed unexpectetly
-(e.g. because a wrong package was installed first accidentely) - a complete 
+(e.g. because a wrong package was accidentely installed first) - a complete 
 reinstall then solved the problem but took quite some time.
 </p>
 
@@ -2156,10 +2159,9 @@ like Chef also supports this kind of operation mode with Chef Solo.
 </p>
 
 <p>
-Ansible, Salt and Rex are implementations for this kind of software type.
-Ansible is used here because of its popularity and because it is only focused 
-on this kind of software type and is therefore optimized for this single 
-purpose and less complex.
+Ansible, Salt and Rex are implementations specific for this kind of software 
+type. Ansible is used here because because it is only focused on this kind of 
+software type and because of its popularity.
 </p>
 
 <figure>
@@ -2172,13 +2174,14 @@ Ansible is running on Python and can be installed on a development machine as
 a Python package according to the 
 <a href="#ref-ansible-docs">Ansible documentation</a>. Ansible uses SSH to 
 communicate to remote servers and execute commands on them. Directives are 
-organized in playbooks.
+organized in <em>playbooks</em> and <em>roles</em>.
 </p>
 
 <p>
 Again Vagrant can be used to simplify the setup of a remote host and test the 
-playbooks. As Ansible requires no specific software on the host any Linux 
-distribution can be used within VirtualBox.
+playbook. As Ansible requires no specific software on the host any Linux 
+distribution can be used within VirtualBox. The following snippet shows the 
+intitialization process of VirtualBox with Ansible:
 </p>
 
 <figure>
@@ -2402,7 +2405,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
 
-<h4>Summary</h4>
+<h4 class="break">Summary</h4>
 
 <p>
 Ansible was easy to install with pip and was instantly ready to use. Because 
@@ -2683,7 +2686,7 @@ R19 Horizontal scaling
 
 <p>
 Software Containers don't comply with all <em>Must</em> requirements,
-Configuration Repository misses one <em>Should</em> requirement 
+a Configuration Repository misses one <em>Should</em> requirement 
 (Learning curve), and Remote Command Execution matches all requirements.
 Even though some software types don't comply with all requirements it should be 
 noted that these can often be filled with third-party tools or by switching to 
@@ -2694,7 +2697,7 @@ a different software implementation.
 Many advantages are not needed for a team of four developers but add 
 additional complexity. Also quickly setting up a development environment is not 
 as important as no new developers are expected to join the team within the 
-next 4 years. However understanding the system easily is crucial as all 
+next four years. However understanding the system easily is crucial as all 
 developers need to be able to make quick changes to the infrastructure.
 </p>
 
@@ -2818,6 +2821,18 @@ this the infrastructure concept will use Remote Command Execution software
 <p id="ref-supermarket" class="reference-item">
     <span class="ref">Chef Software, Inc. (2015): Supermarket</span>.
     <a href="https://supermarket.chef.io/" target="_blank">https://supermarket.chef.io/</a>
+    (retrieved&nbsp;21.&nbsp;April&nbsp;2015)
+</p>
+
+<p id="ref-apache2-cookbook" class="reference-item">
+    <span class="ref">Sander van Zoest (2015): apache2 Cookbook</span>.
+    <a href="https://supermarket.chef.io/cookbooks/apache2" target="_blank">https://supermarket.chef.io/cookbooks/apache2</a>
+    (retrieved&nbsp;21.&nbsp;April&nbsp;2015)
+</p>
+
+<p id="ref-java-cookbook" class="reference-item">
+    <span class="ref">Agile Orbit (2015): java Cookbook</span>.
+    <a href="https://supermarket.chef.io/cookbooks/java" target="_blank">https://supermarket.chef.io/cookbooks/java</a>
     (retrieved&nbsp;21.&nbsp;April&nbsp;2015)
 </p>
 
