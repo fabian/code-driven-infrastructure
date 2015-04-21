@@ -2447,7 +2447,7 @@ responsibilities.
 <figcaption>Analysis Software Containers</figcaption>
 </figure>
 
-<h3>Comparison</h3>
+<h3 class="break">Conclusion</h3>
 
 <figure class="full">
 <table>
@@ -2678,20 +2678,29 @@ R19 Horizontal scaling
 <figcaption>Requirements comparison</figcaption>
 </figure>
 
-<h3>Conclusion</h3>
-
 <p>
+Software Containers don't comply with all <em>Must</em> requirements,
+Configuration Repository misses one <em>Should</em> requirement 
+(Learning curve), and Remote Command Execution matches all requirements.
 Even though some software types don't comply with all requirements it should be 
 noted that these can often be filled with third-party tools or by switching to 
-a different software implementation. So the decision should not be based solely 
-on the requirements.
+a different software implementation.
 </p>
 
 <p>
 Many advantages are not needed for a team of four developers but add 
 additional complexity. Also quickly setting up a development environment is not 
 as important as no new developers are expected to join the team within the 
-next 4 years.
+next 4 years. However understanding the system easily is crucial as all 
+developers need to be able to make quick changes to the infrastructure.
+</p>
+
+<p>
+The evaluation has shown that Software Containers are complex and would need 
+to be used together with additional tools, and that Remote Command Execution
+is easier to understand and maintain than a Configuration Repository. Based on 
+this the infrastructure concept will use Remote Command Execution software 
+(Ansible).
 </p>
 
 </div>
