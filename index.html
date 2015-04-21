@@ -1426,6 +1426,45 @@ tools might require the installation of additional software.
 <tbody>
 <tr>
 <th>RX</th>
+<th>Learning curve</th>
+</tr>
+<tr>
+<th>
+Classification
+</th>
+<td>
+Learnability
+</td>
+</tr>
+<tr>
+<th>
+Description
+</th>
+<td>
+How the software system to install and configure the infrastructure can be 
+learned quickly so all developers can make changes to the infrastructure 
+without spending days studying it.
+</td>
+</tr>
+<tr>
+<th>Priority</th>
+<td>Should</td>
+</tr>
+</table>
+<figcaption>RX Learning curve</figcaption>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>RX</th>
 <th>Horizontal scaling</th>
 </tr>
 <tr>
@@ -1724,6 +1763,17 @@ level, but they are not affecting most use cases.
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
+<h4>RX Learning curve</h4>
+
+<p>
+Immutable applications are a complex topic and Docker requires specific methods 
+for normal tasks.
+</p>
+
+<p>
+Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
+</p>
+
 <h4>RX Horizontal scaling</h4>
 
 <p>
@@ -2014,6 +2064,18 @@ also custom software can be downloaded and installed.
 
 <p>
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Learning curve</h4>
+
+<p>
+Chef has a complex architecture and many dependencies on other libraries.
+Developers not familiar with Ruby also need to learn the syntax and its 
+oddities first.
+</p>
+
+<p>
+Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 </p>
 
 <h4>RX Horizontal scaling</h4>
@@ -2312,6 +2374,18 @@ installed using Ansible.
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
+<h4>RX Learning curve</h4>
+
+<p>
+Ansible files are easy to read and the concept can be understood quickly. Only 
+the YAML syntax requires a bit of learning but most examples already give a 
+good idea how it works.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
 <h4>RX Horizontal scaling</h4>
 
 <p>
@@ -2567,6 +2641,20 @@ RX Custom software
 </td>
 <td>
 <img src="images/sign-check.svg" width="16" height="16" alt="">
+</td>
+<td>
+<img src="images/sign-check.svg" width="16" height="16" alt="">
+</td>
+</tr>
+<tr>
+<td>
+RX Learning curve
+</td>
+<td>
+<img src="images/sign-error.svg" width="16" height="16" alt="">
+</td>
+<td>
+<img src="images/sign-error.svg" width="16" height="16" alt="">
 </td>
 <td>
 <img src="images/sign-check.svg" width="16" height="16" alt="">
