@@ -2124,15 +2124,239 @@ Bringing machine 'default' up with 'virtualbox' provider...
 ==> default: Running provisioner: ansible...
 […] ansible-playbook […] site.yml
 
-PLAY [all] ******************************************************************** 
 
-GATHERING FACTS *************************************************************** 
+PLAY [all] ***********************************
+
+GATHERING FACTS ******************************
 ok: [default]
 
-PLAY RECAP ******************************************************************** 
-default                    : ok=1    changed=0    unreachable=0    failed=0
+PLAY RECAP ***********************************
+default                    : ok=1    changed=0
 </code></pre>
 <figcaption>Vagrant initialization with Ansible</figcaption>
+</figure>
+
+<h4>RX PHP applications</h4>
+
+<p>
+Ansible includes already most tools needed for installing and configuring
+software using the OS mechanisms. Examples for how to use them are provided 
+on GitHub by Ansible itself.
+</p>
+
+<p>
+Apache and mod_php can be installed with the OS packages, their configuration
+can be created with the Ansible template directive and the service directive 
+makes sure Apache is running. The source code of the PHP application can either 
+be copied to the host or cloned from Git.
+</p>
+
+<p>
+MySQL can be installed and configured the same way as Apache.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+
+<h4>RX Java applications</h4>
+
+<p>
+In the examples provided by Ansible they also describe how to install a 
+standalone instance of Tomcat. The installation package gets downloaded from the 
+Tomcat download server, extracted to an appropriate location, the configuration 
+files are created from templates and Tomcat is started as a service. MySQL can 
+be installed with the OS packages.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+
+<h4>RX Server configuration</h4>
+
+<p>
+Configuration files can be either simply copied to the server from the local 
+playbook or templates with variables can be used. Ansible checks if there were 
+any changes in the configuration file and notifies a service to restart if 
+needed. The playbook can also be run from an CI server.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Application deployment</h4>
+
+<p>
+For Tomcat parallel deployment can be used here again. The actual deployment 
+to the server can be done using the Tomcat Manager App or by using Ansible to 
+copy the file to the server.
+</p>
+
+<p>
+A combination of the <code>git</code> and <code>file</code> directives can be 
+used to checkout the latest version of the application and activate it with a 
+symlink as soon as all dependencies have been installed.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Staging Area</h4>
+
+<p>
+As long as Ansible can connect via SSH to a machine it can set it up as needed.
+Ansible can also launch new virtual machines in the cloud which is useful for 
+quickly starting a staging area.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Hoster switch</h4>
+
+<p>
+As mention before the only requirement on the host machine is the ability for 
+Ansible to connect to it. Once this is provided Ansible can setup the new 
+server as required. The only limitation is that Ansible differenciates between
+package management systems, so switching from Apt to YUM would require some 
+code changes, but this switch is out of scope of this requirement.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Configuration files</h4>
+
+<p>
+All configuration files can be stored as templates or raw files in the 
+VCS repository of the playbook. Ansible copies them to the target server when 
+executed.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Change history</h4>
+
+<p>
+The playbook and all it's files can be stored in the VCS. A CI server can run
+the playbook if a change has been made.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Open Source</h4>
+
+<p>
+Ansible is Open Source on GitHub and licenced under GNU General Public License 
+(GPL) v3.0.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Test environment</h4>
+
+<p>
+The playbook can also be executed locally to configure a test environment on
+the same machine.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Encrypted passwords</h4>
+
+<p>
+Ansible provides a tool called Vault to encrypt files with variables. The 
+encrypted file can automatically be encrypted when running the playbook. The 
+password can be stored in a separate file and shared among developers.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Superuser access</h4>
+
+<p>
+Ansible doesn't restrict how the server can be accessed. In fact Ansible 
+requires that the server can be access using SSH which is the prefered way for 
+developers to access the server as well.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Custom software</h4>
+
+<p>
+Operation system packages as well as custom downloaded software can be 
+installed using Ansible.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+<h4>RX Horizontal scaling</h4>
+
+<p>
+Ansible can connect to multiple servers and execute the defined commands there.
+Servers can also be grouped by their role so that only specific commands are 
+executed on certain servers.
+</p>
+
+<p>
+Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
+</p>
+
+
+
+<h4>Summary</h4>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-fifty" />
+    <col class="col-fifty" />
+</colgroup>
+<tbody>
+<tr>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+<tr>
+<td>
+<ul>
+<li>Few dependencies</li>
+<li>Easy to learn</li>
+<li>Utilizes system packages</li>
+<li>No central server needed</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Not distribution indepentent</li>
+<li>Limited reusability of playbooks</li>
+</ul>
+</td>
+</tr>
+</table>
+<figcaption>Analysis Software Containers</figcaption>
 </figure>
 
 <h3>Comparison</h3>
@@ -2163,7 +2387,7 @@ RX PHP applications
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2177,7 +2401,7 @@ RX Java applications
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2191,7 +2415,7 @@ RX Server configuration
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2205,7 +2429,7 @@ RX Application deployment
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2219,7 +2443,7 @@ RX Staging Area
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2233,7 +2457,7 @@ RX Hoster switch
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2247,7 +2471,7 @@ RX Configuration files
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2261,7 +2485,7 @@ RX Change history
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2275,7 +2499,7 @@ RX Open Source
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2289,7 +2513,7 @@ RX Test environment
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2303,7 +2527,7 @@ RX Encrypted passwords
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2317,7 +2541,7 @@ RX Superuser access
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2331,7 +2555,7 @@ RX Custom software
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 <tr>
@@ -2345,7 +2569,7 @@ RX Horizontal scaling
 <img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 <td>
-
+<img src="images/sign-check.svg" width="16" height="16" alt="">
 </td>
 </tr>
 </table>
