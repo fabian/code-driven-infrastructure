@@ -127,6 +127,10 @@ table .col-twenty {
     width: 20%;
 }
 
+table .col-fourty {
+    width: 40%;
+}
+
 table .col-fifty {
     width: 50%;
 }
