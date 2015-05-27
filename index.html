@@ -1621,7 +1621,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R03 Server configuration</h4>
 
 <p>
-To guarantee reproducible containers configuration files are usually copied
+To guarantee reproducible containers configuration files are usually copied 
 into the container at build time. This allows the container to be tested in a 
 staging environment and making guarantees the same result in the production 
 environment.
@@ -2170,7 +2170,7 @@ software type and because of its popularity.
 </figure>
 
 <p>
-Ansible is running on Python and can be installed on a development machine as 
+Ansible is a Python application and can be installed on a development machine as 
 a Python package according to the 
 <a href="#ref-ansible-docs">Ansible documentation</a>. Ansible uses SSH to 
 communicate to remote servers and execute commands on them. Directives are 
@@ -3008,7 +3008,117 @@ this the infrastructure concept will use Remote Command Execution software
 
 <h2 class="break">Concept</h2>
 
+<h3>Introduction</h3>
+
+<p>
+The following concept is based on the arc42 template, which provides a 
+guideline for documenting software architecture. Goals, constraints and the 
+scope (requirements related information) have already been documented in the 
+previous chapters. For easier understanding some core concepts of Ansible are
+outlined in this chapter.
+</p>
+
+<p>
+Ansible uses the term <em>playbook</em> to desribe the collective of 
+configuration files, provisioning and deployment instruction, and environment 
+specific variables. Each playbook can have multiple <em>roles</em> which allow 
+modular grouping of related files. Best practices how to organize playbooks and 
+roles are provided in the <a href="#ref-ansible-docs">Ansible documentation</a>.
+</p>
+
+<figure>
+<img src="images/ansible-explained.svg" />
+<figcaption>Playbook structure</figcaption>
+</figure>
+
+<p>
+A playbook can also be described as a better structured shell script that tells 
+the server which commands to execute in which order. Before the commands are 
+executed however, it checks if the command is still required or if it is 
+redundant. For configuration files it can check if the file needs to be updated 
+by comparing the desired content to the actual content on the server.
+</p>
+
+<p>
+Different environment variables can be grouped in <em>inventory</em> files. An
+inventory can contain a list of server addresses of an environment as well as
+configuration variables specific to that environment.
+</p>
+
+<figure>
+<pre><code>[webservers]
+foo.example.org
+bar.example.org
+
+[webservers:vars]
+proxy_host=proxy.example.org
+</code></pre>
+<figcaption>Example inventory</figcaption>
+</figure>
+
+<h3>Solution Strategy</h3>
+
+<p>
+The whole infrastructure is described in an Ansible playbook which is shared 
+with a Git repository on GitHub. Different services are split up into roles. 
+Inside the roles provisioning and deployment are separate tasks and can be 
+executed independently.
+</p>
+
+<p>
+Changes to the infrastructure are pushed to the Git repository and then 
+Ansible runs on the continious integration sytem Codeship to deploy the changes
+to the servers. Confidential information like passwords and encryption keys 
+are stored in encrypted Ansible Vaults.
+</p>
+
+<p>
+For application deployment the playbook is downloaded by the continious 
+integration system of the application and the required deployment tasks 
+are executed with Ansible to update the application on the server.
+</p>
+
 <h3>Architecture</h3>
+
+<h3>Design Decisions</h3>
+
+<h4>Playbook organization</h4>
+
+<p>
+A fundamental decision needs to be taken about the organization of the 
+playbooks. Each application has it's own repository and allows actions to be 
+executed after a push.
+</p>
+
+<p>
+Two variations are possible: One repository with one playbook for 
+infrastrucutre and deployment or a playbook in each application repository.
+</p>
+
+<h4>Usage of inventories</h4>
+
+<p>
+Ansible is built to also manage legacy infrastructures with existing servers,
+so the main purpose of inventories is to provide a list of servers grouped 
+by their function. But Ansible also has built-in server provisioners, which 
+allows to take the approach of an idempotent infrastructure one step further 
+and also create the virtual servers with Ansible as part of the playbook.
+</p>
+
+<p>
+Usually inventory files in Ansible playbooks contain a list of IP addresses or 
+server names which belong to the infrastructure, but with the proposed concept 
+the only server listed in the inventory file is <em>localhost</em>. This is 
+because the servers get added to the inventory list in memory while running the 
+playbook. If the servers don't exist yet, they get created; if they already 
+exist, their IP addresses are added to the inventory.
+</p>
+
+<p>
+This approach has the advantage that temporary environments (like staging) can 
+easily be created and existing IP addresses of existing servers don't need
+to be manually maintained inside an inventory file.
+</p>
 
 <h3>Deployment</h3>
 
