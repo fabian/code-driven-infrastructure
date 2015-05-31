@@ -3032,6 +3032,26 @@ roles are provided in the <a href="#ref-ansible-docs">Ansible documentation</a>.
 </figure>
 
 <p>
+The <a href="#ref-yaml">YAML</a> syntax is used in Ansible playbooks for 
+defining variables and commands to execute. The following is an example of a 
+file for setting up a webserver.
+</p>
+
+<figure>
+<pre><code>---
+- hosts: webservers
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  tasks:
+  - name: ensure apache is at the latest version
+    apt: name=apache2 state=latest
+</code></pre>
+<figcaption>Example Ansible file</figcaption>
+</figure>
+
+<p>
 A playbook can also be described as a better structured shell script that tells 
 the server which commands to execute in which order. Before the commands are 
 executed however, it checks if the command is still required or if it is 
@@ -3535,6 +3555,12 @@ to be manually maintained inside an inventory file.
 <p id="ref-ansible-devops" class="reference-item">
     <span class="ref">Jeff Geerling (2015): Ansible for DevOps</span>. May 2015.
     ISBN&nbsp;978-0-9863934-0-2.
+</p>
+
+<p id="ref-yaml" class="reference-item">
+    <span class="ref">Oren Ben-Kiki, Clark Evans, Ingy döt Net (2009): YAML Ain’t Markup Language</span>.
+    <a href="http://www.yaml.org/spec/1.2/spec.html" target="_blank">http://www.yaml.org/spec/1.2/spec.html</a>
+    (retrieved&nbsp;31.&nbsp;May&nbsp;2015)
 </p>
 
 
