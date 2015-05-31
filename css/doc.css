@@ -119,6 +119,10 @@ table {
     page-break-inside: avoid;
 }
 
+img.icon {
+    vertical-align: -0.2em;
+}
+
 table.full {
     width: 100%;
 }
@@ -147,6 +151,18 @@ table th {
 table.table-extended td,
 table.table-extended th {
     padding: 0.2em 0.8em;
+}
+
+table td.level-1 {
+    padding-left: 1.8em;
+}
+
+table td.level-2 {
+    padding-left: 3.1em;
+}
+
+table td.level-3 {
+    padding-left: 4.4em;
 }
 
 table ul {

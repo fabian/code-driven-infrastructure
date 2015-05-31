@@ -3014,7 +3014,7 @@ this the infrastructure concept will use Remote Command Execution software
 The following concept is based on the arc42 template, which provides a 
 guideline for documenting software architecture. Goals, constraints and the 
 scope (requirements related information) have already been documented in the 
-previous chapters. For easier understanding some core concepts of Ansible are
+previous chapters. For easier understanding some core concepts of Ansible are 
 outlined in this chapter.
 </p>
 
@@ -3040,8 +3040,8 @@ by comparing the desired content to the actual content on the server.
 </p>
 
 <p>
-Different environment variables can be grouped in <em>inventory</em> files. An
-inventory can contain a list of server addresses of an environment as well as
+Different environment variables can be grouped in <em>inventory</em> files. An 
+inventory can contain a list of server addresses of an environment as well as 
 configuration variables specific to that environment.
 </p>
 
@@ -3078,7 +3078,296 @@ integration system of the application and the required deployment tasks
 are executed with Ansible to update the application on the server.
 </p>
 
-<h3>Architecture</h3>
+<h3 class="break">Building Block View</h3>
+
+<p>
+This chapter explains the files and their organization withing the playbook 
+used to maintain the WorldSkills infrastructure.
+The most important parts of the playbook are the inventories and the roles, 
+they are displayed in the following overview diagram.
+</p>
+
+<figure class="full">
+<img src="images/playbook-overview.svg" />
+<figcaption>WorldSkills playbook overview</figcaption>
+</figure>
+
+<p>
+Enviroment specific variables are stored in different inventories. There are 
+two inventories: <em>prod</em> (for production) and <em>staging</em> (for 
+system tests). The actual inventory file only lists localhost, as the servers 
+are dynamically created/defined inside the role <em>servers</em>. As these 
+variables often contain sensitive information they are encrypted with Ansible 
+Vault.
+</p>
+
+<p>
+The role <em>common</em> is used to execute often used tasks like adding 
+public keys of all developers. Instead of hardcoding all servers in the 
+inventory file, they are created or fetched dynamically with the 
+<em>servers</em> role. Each software has its own role for the installation 
+and the setup of the configuration files. Additionally each self-developed 
+application has a role to define the deployment and the setup of configuration 
+files.
+</p>
+
+<p>
+The following table show the file structure of the playbook and explains 
+the function for most files.
+</p>
+
+<figure class="full">
+<table class="full">
+<colgroup>
+    <col class="col-fourty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+site.yml
+</td>
+<td>
+Delegate execution of commands to servers
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/folder.svg" width="16" height="16" class="icon">
+group_vars
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-1">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+all
+</td>
+<td>
+Global defaul variables (e.g. default database name)
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/folder.svg" width="16" height="16" class="icon">
+inventories
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-1">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+prod
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-2">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+hosts
+</td>
+<td>
+Inventory file with list of production servers
+</td>
+</tr>
+<tr>
+<td class="level-2">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+group_vars
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-3">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+all
+</td>
+<td>
+Variables for production (e.g. database password)
+</td>
+</tr>
+<tr>
+<td class="level-1">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+staging
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-2">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+hosts
+</td>
+<td>
+Inventory file with list of staging servers
+</td>
+</tr>
+<tr>
+<td class="level-2">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+group_vars
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-3">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+all
+</td>
+<td>
+Variables for staging environment
+</td>
+</tr>
+<tr>
+<td>
+<img src="images/folder.svg" width="16" height="16" class="icon">
+roles
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-1">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+apache
+</td>
+<td>
+Role for the installation and configuration of the webserver
+</td>
+</tr>
+<tr>
+<td class="level-2">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+defaults
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-3">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+main.yml
+</td>
+<td>
+Default webserver configuration variables (e.g. virtual hosts)
+</td>
+</tr>
+<tr>
+<td class="level-2">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+files
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-3">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+worldskills.org.crt
+</td>
+<td>
+SSL certificate
+</td>
+</tr>
+<tr>
+<td class="level-3">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+worldskills.org.key
+</td>
+<td>
+SSL key
+</td>
+</tr>
+<tr>
+<td class="level-2">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+handlers
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-3">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+main.yml
+</td>
+<td>
+Commands for restarting the webserver
+</td>
+</tr>
+<tr>
+<td class="level-2">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+tasks
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-3">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+vhosts.yml
+</td>
+<td>
+Setup of virtual hosts
+</td>
+</tr>
+<tr>
+<td class="level-3">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+main.yml
+</td>
+<td>
+Installation of the webserver and setup of the configuration files
+</td>
+</tr>
+<tr>
+<td class="level-2">
+<img src="images/folder.svg" width="16" height="16" class="icon">
+templates
+</td>
+<td>
+
+</td>
+</tr>
+<tr>
+<td class="level-3">
+<img src="images/file-empty.svg" width="16" height="16" class="icon">
+vhost.conf.j2
+</td>
+<td>
+Virtual host configuration file template
+</td>
+</tr>
+</table>
+<figcaption>Filestructure playbook</figcaption>
+</figure>
+
+<h3>Runtime View</h3>
+
+<h3>Deployment View</h3>
 
 <h3>Design Decisions</h3>
 
@@ -3120,7 +3409,7 @@ easily be created and existing IP addresses of existing servers don't need
 to be manually maintained inside an inventory file.
 </p>
 
-<h3>Deployment</h3>
+<h3>Technical Risks</h3>
 
 <h3>Testing</h3>
 
