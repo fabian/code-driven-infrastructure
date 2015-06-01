@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="670px" height="526.812px" viewBox="0 0 670 526.812" enable-background="new 0 0 670 526.812" xml:space="preserve">
+<path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M13,13.812h108v27H13V13.812z"/>
+<text transform="matrix(1 0 0 1 42.9824 31.8125)" font-family="'Helvetica'" font-size="12">playbook</text>
+<text transform="matrix(1 0 0 1 439.9746 31.8125)" font-family="'Helvetica'" font-size="12">digitalocean</text>
+<line fill="none" stroke="#CCCCCC" stroke-miterlimit="10" stroke-dasharray="4,4" x1="67" y1="40.812" x2="67" y2="517.812"/>
+<text transform="matrix(1 0 0 1 170.6582 31.8125)" font-family="'Helvetica'" font-size="12">role servers</text>
+<path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M148,13.812h108v27H148V13.812z"/>
+<line fill="none" stroke="#CCCCCC" stroke-miterlimit="10" stroke-dasharray="4,4" x1="202" y1="40.816" x2="202" y2="517.812"/>
+<path fill="#ECF0F1" stroke="#BDC3C7" stroke-miterlimit="10" d="M193,85.812h18v216h-18V85.812z"/>
+<path fill="#ECF0F1" stroke="#BDC3C7" stroke-miterlimit="10" d="M58,67.812h18v432H58V67.812z"/>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="76" y1="85.812" x2="185.82" y2="85.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="184.361,90.799 192.996,85.812 184.361,80.826 			"/>
+		</g>
+	</g>
+</g>
+<path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M418,13.812h108v27H418V13.812z"/>
+<line fill="none" stroke="#CCCCCC" stroke-miterlimit="10" stroke-dasharray="4,4" x1="472" y1="40.816" x2="472" y2="517.812"/>
+<path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M553,13.812h108v27H553V13.812z"/>
+<text transform="matrix(1 0 0 1 584.6621 31.8125)" font-family="'Helvetica'" font-size="12">server X</text>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="481" y1="157.812" x2="590.824" y2="157.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="589.365,162.799 598,157.812 589.365,152.826 			"/>
+		</g>
+	</g>
+</g>
+<line fill="none" stroke="#CCCCCC" stroke-miterlimit="10" stroke-dasharray="4,4" x1="607" y1="40.816" x2="607" y2="517.812"/>
+<path fill="#ECF0F1" stroke="#BDC3C7" stroke-miterlimit="10" d="M463,139.812h18v144h-18V139.812z"/>
+<path fill="#ECF0F1" stroke="#BDC3C7" stroke-miterlimit="10" d="M598,157.812h18v342h-18V157.812z"/>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="211" y1="139.812" x2="455.824" y2="139.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="454.365,144.799 463,139.812 454.365,134.826 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 532.3223 148.8125)" font-family="'Helvetica'" font-size="12">boot</text>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="462.996" y1="283.812" x2="218.176" y2="283.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="219.635,278.826 211,283.812 219.635,288.799 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="192.996" y1="301.812" x2="83.176" y2="301.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="84.635,296.826 76,301.812 84.635,306.799 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 107.6479 274.8125)" enable-background="new    "><tspan x="0" y="0" font-family="'Helvetica'" font-size="12">add servers</tspan><tspan x="0.331" y="14.4" font-family="'Helvetica'" font-size="12">to inventory</tspan></text>
+<text transform="matrix(1 0 0 1 321.3262 31.8125)" font-family="'Helvetica'" font-size="12">role X</text>
+<path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M283,13.812h108v27H283V13.812z"/>
+<line fill="none" stroke="#CCCCCC" stroke-miterlimit="10" stroke-dasharray="4,4" x1="337" y1="40.816" x2="337" y2="517.812"/>
+<path fill="#ECF0F1" stroke="#BDC3C7" stroke-miterlimit="10" d="M328,373.812h18v90h-18V373.812z"/>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="76" y1="373.812" x2="320.824" y2="373.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="319.365,378.799 328,373.812 319.365,368.826 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 117.9854 76.8125)" font-family="'Helvetica'" font-size="12">execute</text>
+<text transform="matrix(1 0 0 1 301.9873 130.8125)" font-family="'Helvetica'" font-size="12">create server</text>
+<text transform="matrix(1 0 0 1 291.9727 274.8125)" font-family="'Helvetica'" font-size="12">return ip address</text>
+<text transform="matrix(1 0 0 1 180.9854 364.8125)" font-family="'Helvetica'" font-size="12">execute</text>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="346" y1="391.812" x2="590.824" y2="391.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="589.365,396.799 598,391.812 589.365,386.826 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 427.9785 382.8125)" font-family="'Helvetica'" font-size="12">send commands</text>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="598" y1="445.812" x2="353.176" y2="445.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="354.635,440.826 346,445.812 354.635,450.799 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 438.6514 436.8125)" font-family="'Helvetica'" font-size="12">return status</text>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="328" y1="463.812" x2="83.176" y2="463.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="84.635,458.826 76,463.812 84.635,468.799 			"/>
+		</g>
+	</g>
+</g>
+<path fill="none" stroke="#7F8C8D" stroke-miterlimit="10" d="M13,337.812h648v144H13V337.812z"/>
+<polygon fill="#FFFFFF" stroke="#7F8C8D" stroke-miterlimit="10" points="13,373.812 49,373.812 67,355.812 67,337.812 13,337.812 
+	"/>
+<text transform="matrix(1 0 0 1 22 355.8125)" font-family="'Helvetica'" font-size="12">loop</text>
+<path fill="none" stroke="#7F8C8D" stroke-miterlimit="10" d="M13,103.812h648v144H13V103.812z"/>
+<polygon fill="#FFFFFF" stroke="#7F8C8D" stroke-miterlimit="10" points="13,139.812 49,139.812 67,121.812 67,103.812 13,103.812 
+	"/>
+<text transform="matrix(1 0 0 1 22 121.8125)" font-family="'Helvetica'" font-size="12">alt</text>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="211" y1="211.812" x2="455.824" y2="211.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="454.365,216.799 463,211.812 454.365,206.826 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 305.6553 202.8125)" font-family="'Helvetica'" font-size="12">fetch server</text>
+<g>
+	<g>
+		<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" x1="481" y1="229.812" x2="590.824" y2="229.812"/>
+		<g>
+			<polygon fill="#7F8C8D" points="589.365,234.799 598,229.812 589.365,224.826 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 501.6426 220.8125)" font-family="'Helvetica'" font-size="12">fetch ip address</text>
+<line fill="none" stroke="#7F8C8D" stroke-miterlimit="10" stroke-dasharray="4,4" x1="13" y1="175.812" x2="661" y2="175.812"/>
+<text transform="matrix(1 0 0 1 168.6514 454.8125)" font-family="'Helvetica'" font-size="12">report status</text>
+</svg>

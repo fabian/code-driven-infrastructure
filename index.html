@@ -3387,6 +3387,31 @@ Virtual host configuration file template
 
 <h3>Runtime View</h3>
 
+<p>
+The view explains the dynamic aspects of the playbook execution. In particular 
+the creation of the dynamic inventory and how they work together with the roles 
+are highlighted.
+</p>
+
+<figure>
+<img src="images/sequence.svg" />
+<figcaption>Playbook execution</figcaption>
+</figure>
+
+<p>
+While running the playbook, the first role that gets executed is the 
+<em>servers</em> role. This role doesn't execute any remote commands but runs 
+locally to connect to the DigitalOcean API. It either creates and boots the 
+servers if they don't exist yet or just fetches their information. The 
+returned IP addresses are added to the dynamic inventory so following commands 
+can be executed on the servers.
+</p>
+
+<p>
+Subsequently all other roles are executed. This includes setup of software and
+applications. The commands are sent to the remote servers by Ansible.
+</p>
+
 <h3>Deployment View</h3>
 
 <h3>Design Decisions</h3>
