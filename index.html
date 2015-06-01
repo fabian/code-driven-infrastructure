@@ -3412,7 +3412,38 @@ Subsequently all other roles are executed. This includes setup of software and
 applications. The commands are sent to the remote servers by Ansible.
 </p>
 
-<h3>Deployment View</h3>
+<h3 class="break">Deployment View</h3>
+
+<p>
+In the bigger context the playbook is not executed manually on the developer 
+machine but automated on a continious integration server.
+</p>
+
+<figure class="full">
+<img src="images/deployment.svg" />
+<figcaption>Deployment overview</figcaption>
+</figure>
+
+<p>
+Source code is stored in Git repositories on GitHub. The playbook and each 
+application have all their own private repository. The continuous integration 
+server Codeship has a build pipeline for each Git repository. Codeship has a 
+unique private SSH key for each pipeline. The public keys for those private 
+keys can be exported from the web interface and are deployed to GitHub to 
+guarantee access to the source code. They are also copied to the virtual 
+servers to allow Ansible to connect to the servers via SSH.
+</p>
+
+<p>
+Each application pipeline uses the playbook to provision the infrastructure and 
+then deploys the application to the targeted infrastructure. The servers 
+required for the production and staging environment are running with the hoster 
+DigitalOcean.
+</p>
+
+<p>
+
+</p>
 
 <h3>Design Decisions</h3>
 
@@ -3455,6 +3486,18 @@ to be manually maintained inside an inventory file.
 </p>
 
 <h3>Technical Risks</h3>
+
+<p>
+Superuser access to server of continious integration server
+</p>
+
+<p>
+Passwords encrypted with Vault
+</p>
+
+<p>
+Production data in staging environment
+</p>
 
 <h3>Testing</h3>
 
