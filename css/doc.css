@@ -320,8 +320,8 @@ figcaption[title]:after::footnote-call {
     page: front;
 }
 
-.front .logo {
-    margin-bottom: 2em;
+.front .cover {
+    margin-bottom: 14em;
 }
 
 #toc,
@@ -379,6 +379,10 @@ figcaption[title]:after::footnote-call {
     img {
         max-width: 100%;
         height: auto;
+    }
+
+    .front .cover {
+        margin-bottom: 1em;
     }
 
     .chapter {
