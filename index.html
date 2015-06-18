@@ -3472,6 +3472,29 @@ easily be created and existing IP addresses of existing servers don't need
 to be manually maintained inside an inventory file.
 </p>
 
+<h4>Ansible Tower</h4>
+
+<p>
+The company behind Ansible distributes also a commercial software called
+<a href="#ref-ansible-tower">Ansible Tower</a> for running playbooks with a
+user interface. The software provides a web interface with permission
+management, an audit trail and visualizations.
+</p>
+
+<figure>
+<img src="images/screenshot-ansible-tower.png" />
+<figcaption>Screenshot Ansible Tower</figcaption>
+</figure>
+
+<p>
+Ansible Tower was not used for this project due to the high price
+(starting at $5000 per year) and because it wouldn't bring many additional benefits.
+As all four developers responsible for the system are used to working with Git
+there's no need for a graphical user interface. It would also contradict the
+princile of having all changes driven by code and it's advantage of being able
+to easily trace a change.
+</p>
+
 <h3>Technical Risks</h3>
 
 <p>
@@ -3665,6 +3688,12 @@ branch the staging environment can be removed with a separate Ansible task.
     <span class="ref">Codeship (2015): Security Guidlines of Codeship</span>.
     <a href="https://codeship.com/security" target="_blank">https://codeship.com/security</a>
     (retrieved&nbsp;4.&nbsp;June&nbsp;2015)
+</p>
+
+<p id="ref-ansible-tower" class="reference-item">
+    <span class="ref">Ansible, Inc. (2015): Ansible Tower</span>.
+    <a href="http://www.ansible.com/tower" target="_blank">http://www.ansible.com/tower</a>
+    (retrieved&nbsp;18.&nbsp;June&nbsp;2015)
 </p>
 
 
