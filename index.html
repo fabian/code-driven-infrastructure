@@ -3476,27 +3476,27 @@ to be manually maintained inside an inventory file.
 
 <p>
 The following paragraphs outlines potential technical risks of the architecture
-concept. The factors convenience and security are often conflicting and need to
+concept. The factors convenience and security are often conflicting and need to 
 weighted in each case.
 </p>
 
 <p>
-One disadvantage of automating the server setup is that the executor needs full
-administration access to the servers. In the proposed concept the continious
-integration server has superuser access to all servers. This leads to two attack
-scenarios: An attacker could compromise the continious integration server to
-gain access to the servers. Or the attacker could compromise the source code
-repository and infiltrate the server through malicious commands. Both
-<a href="#ref-github-security">GitHub</a> and
-<a href="#ref-codeship-security">Codeship</a> take appropriate actions to
+One disadvantage of automating the server setup is that the executor needs full 
+administration access to the servers. In the proposed concept the continious 
+integration server has superuser access to all servers. This leads to two attack 
+scenarios: An attacker could compromise the continious integration server to 
+gain access to the servers. Or the attacker could compromise the source code 
+repository and infiltrate the server through malicious commands. Both 
+<a href="#ref-github-security">GitHub</a> and 
+<a href="#ref-codeship-security">Codeship</a> take appropriate actions to 
 prevent these kind of attacks.
 </p>
 
 <p>
-As the staging environment is always built by syncing databases from production
-the risk of data leakage increases as staging environments are often regarded as
-non-critical. By treating the staging environment as confidential as the
-production environment (e.g. encrypting staging passwords), incidents can be
+As the staging environment is always built by syncing databases from production 
+the risk of data leakage increases as staging environments are often regarded as 
+non-critical. By treating the staging environment as confidential as the 
+production environment (e.g. encrypting staging passwords), incidents can be 
 prevented.
 </p>
 
@@ -3504,23 +3504,28 @@ prevented.
 
 <p>
 Ansible provides two flags when running playbooks which are particularly useful
-for testing. <code>--syntax-check</code> validates the YAML syntax of the
+for testing. <code>--syntax-check</code> validates the YAML syntax of the 
 playbook and can be used to discover problems early.
 </p>
 
 <p>
-The flag <code>--check</code> runs the playbook in a special mode where a
-<em>dry run</em> is performed. In this mode no changes are made on remote
-systems, but all tasks are checked if they can be executed. Thanks to this it
-can easily be checked if the playbook would run or fail (e.g. because of some
-missing variables). Unfortunately this is not always possible as some modules
+The flag <code>--check</code> runs the playbook in a special mode where a 
+<em>dry run</em> is performed. In this mode no changes are made on remote 
+systems, but all tasks are checked if they can be executed. Thanks to this it 
+can easily be checked if the playbook would run or fail (e.g. because of some 
+missing variables). Unfortunately this is not always possible as some modules 
 require some dependencies to be installed (e.g. rabbitmq_plugins).
 </p>
 
 <p>
-Because of the restrictions of the check mode only the syntax check is
-performed as an automated test. Further testing can be done manually in the
+Because of the restrictions of the check mode only the syntax check is 
+performed as an automated test. Further testing can be done manually in the 
 staging environment.
+</p>
+
+<p>
+After testing is completed and the branch has been merged into the master 
+branch the staging environment can be removed with a separate Ansible task.
 </p>
 
 </div>
