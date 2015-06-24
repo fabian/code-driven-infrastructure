@@ -3185,6 +3185,61 @@ After testing is completed and the branch has been merged into the master branch
 
 <h3>Proof-of-concept</h3>
 
+<p>
+For the proof-of-concept the following reduced infrastructure has been selected to test the feasability of the concept focussing on the requirements. The proof-of-concept infrastructure includes a PHP application, two Java applications, one JavaScript application, multiple MySQL databases and RabbitMQ message queues.
+</p>
+
+<p>
+To prepare for horizontal scaling the databases are deployed to a separate server. Initial data fixtures are imported from the existing WorldSkills infrastructure (using an SSH connection).
+</p>
+
+<figure>
+<img src="images/proof-of-concept.svg" />
+<figcaption>Proof-of-concept infrastructure</figcaption>
+</figure>
+
+<h3>Challenges</h3>
+
+<p>
+During the implementation the following problems occured and had to be fixed. Outlined are descriptions of the problem, the steps taken and the final solutions.
+</p>
+
+<h4>Hierarchy of group_vars</h4>
+
+<p>
+Originally it was planned to use <em>group_vars</em> on the playbook level to define default values for various variables and override the values with environment specific values. However in Ansible <em>group_vars</em> on the playbook level precede inventory variables. This hieararchy was reversed in Ansible 1.7 due to a bug and is still <a href="#ref-ansible-github-9877">controversial</a>.
+</p>
+
+<p>
+The problem has been solved by moving the default values to the individual roles. This has the disadvantage that default values cannot be shared between roles. Hopefully Ansible will introduce default values on the playbook level in the future.
+</p>
+
+<h4>Problem SSH Connection closed</h4>
+
+<p>
+A problem that occured durring testing with DigitalOcean was that sometimes the servers couldn't be created properly. When trying to connect to the just created server via SSH the connection was always declined.
+</p>
+
+<figure>
+<pre><code>ssh root@46.101.135.160 Connection closed by 46.101.135.160
+</code></pre>
+</figure>
+
+<p>
+After reseting the root password of the server via the DigitalOcean web interface and connecting via their remote control interface it turned out the server was missing the SSH keys required to successfuly connect to it. Contacting the support of DigitalOcean didn't bring any new information, they assured that they are not aware of any software problem. As this problem only occurs sometimes it is most likely related to a race condition when deleting a server an creating a new one with the same name.
+</p>
+
+<h4>Problem MySQL socket</h4>
+
+<p>
+After running the playbook repeatedly, the PHP was suddendly unable to connect to the MySQL database. Investigating the problem it turned out that the MySQL socket had disappeared. After debugging the issue the problem could be tracked down to a problem in Ubuntu when the command <code>/etc/init.d/mysql restart</code> was executed. Due to a recent change in Ubuntu to upstart scripts this is actually a legacy command and <code>service mysql restart</code> should be executed instead.
+</p>
+
+<p>
+The main issue is that Ansible isn't using the correct restart command, so instead of relying on the Ansible <code>service</code> module, the correct command is now executed with the <code>shell</code> module directly. A fix for this bug will be available in <a href="#ref-ansible-github-999">Ansible 1.9.2</a>. After the release the <code>service</code> module can be used again.
+</p>
+
+
 <h3>Test Results</h3>
 
 <p>
@@ -3261,6 +3316,18 @@ After testing is completed and the branch has been merged into the master branch
     <span class="ref">Ansible, Inc. (2015): Ansible</span>.
     <a href="http://www.ansible.com/" target="_blank">http://www.ansible.com/</a>
     (retrieved&nbsp;20.&nbsp;April&nbsp;2015)
+</p>
+
+<p id="ref-ansible-github-9877" class="reference-item">
+    <span class="ref">Michael DeHaan (2014): Ansible GitHub issue #9877<span>.
+    <a href="https://github.com/ansible/ansible/issues/9877" target="_blank">https://github.com/ansible/ansible/issues/9877</a>
+    (retrieved&nbsp;24.&nbsp;June&nbsp;2015)
+</p>
+
+<p id="ref-ansible-github-999" class="reference-item">
+    <span class="ref">Michael DeHaan (2014): Ansible GitHub issue #999<span>.
+    <a href="https://github.com/ansible/ansible-modules-core/pull/999" target="_blank">https://github.com/ansible/ansible/issues/999</a>
+    (retrieved&nbsp;24.&nbsp;June&nbsp;2015)
 </p>
 
 <p id="ref-ansible-docs" class="reference-item">
@@ -3351,6 +3418,7 @@ The make the results of this thesis reproducible, the following list shows the v
 <li>Ansible 1.9.0.1</li>
 <li>Python 2.7.9</li>
 <li>pip 6.0.6</li>
+<li>Atom 0.211.0</li>
 </ul>
 
 <h3 class="break">Glossary</h3>
