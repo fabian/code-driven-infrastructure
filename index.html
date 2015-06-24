@@ -3158,6 +3158,20 @@ The flag <code>--check</code> runs the playbook in a special mode where a <em>dr
 Because of the restrictions of the check mode only the syntax check is performed as an automated test. Further testing can be done manually in the staging environment.
 </p>
 
+<h4>Staging environment</h4>
+
+<p>
+New functionality is developed in feature branches in the application repositories. To test new functionality which requires changes in multiple applications they all need to be deployed to the same staging environment. For this a branch naming convention is defined as following: Each time a branch starting with <code>staging-</code> is created, a new staging environment is automatically created.
+</p>
+
+<p>
+The first time an application uses the branch name, it boots the required servers and installs all applications from their master branches. Only the application using the branch name is installed from the branch.
+</p>
+
+<p>
+If another application creates a branch with the same name it will get deployed to the same staging environment. It makes sure the servers in the environment are in the desired state and as applications are only updated during the initial provisioning, the first application won't get overriden with the master branch.
+</p>
+
 <p>
 After testing is completed and the branch has been merged into the master branch the staging environment can be removed with a separate Ansible task.
 </p>
