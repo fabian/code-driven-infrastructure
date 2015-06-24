@@ -34,23 +34,15 @@ Co-Advisor: Silvan Spross<br/>
 <div class="chapter">
 
 <p>
-This thesis was done as part of a bachelor's degree study at ZHAW Zurich University of Applied Sciences in Zurich. The source code of this document is
-available online at
-<a href="https://github.com/fabian/bachelor-thesis">https://github.com/fabian/bachelor-thesis</a>.
+This thesis was done as part of a bachelor's degree study at ZHAW Zurich University of Applied Sciences in Zurich. The source code of this document is available online at <a href="https://github.com/fabian/bachelor-thesis">https://github.com/fabian/bachelor-thesis</a>.
 </p>
 
 <p>
-This document has been written in HTML and was converted into a PDF document
-with <a href="http://www.princexml.com/">Prince XML</a>. The font used is
-<em>Helvetica Neue</em>, created by D.&nbsp;Stempel&nbsp;AG and based on
-<em>Helvetica</em> by Max Miedinger.
+This document has been written in HTML and was converted into a PDF document with <a href="http://www.princexml.com/">Prince XML</a>. The font used is <em>Helvetica Neue</em>, created by D.&nbsp;Stempel&nbsp;AG and based on <em>Helvetica</em> by Max Miedinger.
 </p>
 
 <p>
-All sources are numbered [<em>n</em>] and listed in the bibliography in the
-appendix. Basic knowledge in computer science is required for reading and
-understanding the thesis. The most important acronyms and concepts are
-explained in the glossary that can be found in the appendix as well.
+All sources are numbered [<em>n</em>] and listed in the bibliography in the appendix. Basic knowledge in computer science is required for reading and understanding the thesis. The most important acronyms and concepts are explained in the glossary that can be found in the appendix as well.
 </p>
 
 </div>
@@ -81,12 +73,7 @@ explained in the glossary that can be found in the appendix as well.
 <h3>Current Situation</h3>
 
 <p>
-WorldSkills International is a non-profit membership association which organizes
-a world championship in skilled professions every two years. To manage members
-and to organize the preparation and execution of the competition the
-organization runs multiple web applications. The mix of PHP and Java
-applications consists of legacy systems and a newly developed software system
-with a service-oriented architecture.
+WorldSkills International is a non-profit membership association which organizes a world championship in skilled professions every two years. To manage members and to organize the preparation and execution of the competition the organization runs multiple web applications. The mix of PHP and Java applications consists of legacy systems and a newly developed software system with a service-oriented architecture.
 </p>
 
 <figure class="full">
@@ -95,30 +82,21 @@ with a service-oriented architecture.
 </figure>
 
 <p>
-All web software is running on rented virtual servers running Linux. They are
-managed manually using a web control panel (Parallels Plesk). Changes to the
-infrastructure are done by one of the four internal software developers manually.
+All web software is running on rented virtual servers running Linux. They are managed manually using a web control panel (Parallels Plesk). Changes to the infrastructure are done by one of the four internal software developers manually.
 </p>
 
 <p>
-Fundamental changes like the migration to a new server or the switch to a new
-runtime engine require a lot of knowledge about the existing system and manual
-testing of the new installation.
+Fundamental changes like the migration to a new server or the switch to a new runtime engine require a lot of knowledge about the existing system and manual testing of the new installation.
 </p>
 
 <h3>Objectives</h3>
 
 <p>
-The main goal of this thesis is to develop a concept for a versioned, testable
-and reproducible infrastructure. Changes to the system should be visible for
-the IT team and traceable if needed. As a result knowledge is shared in written
-form.
+The main goal of this thesis is to develop a concept for a versioned, testable and reproducible infrastructure. Changes to the system should be visible for the IT team and traceable if needed. As a result knowledge is shared in written form.
 </p>
 
 <p>
-To achieve this goal, manual steps to build or change the infrastructure should
-be replaced by code stored in a revision control system. Three different types
-of software for provisioning of servers and deployment exist at the moment:
+To achieve this goal, manual steps to build or change the infrastructure should be replaced by code stored in a revision control system. Three different types of software for provisioning of servers and deployment exist at the moment:
 </p>
 
 <ul>
@@ -128,9 +106,7 @@ of software for provisioning of servers and deployment exist at the moment:
 </ul>
 
 <p>
-These types of software should be evaluated and an architecture documentation
-as well as a test concept should be written. The proposed architecture should
-then be tested in a proof-of-concept.
+These types of software should be evaluated and an architecture documentation as well as a test concept should be written. The proposed architecture should then be tested in a proof-of-concept.
 </p>
 
 <h3>Tasks</h3>
@@ -151,8 +127,7 @@ The following tasks will be completed by the student as part of the Bachelor the
 <h3>Project Management</h3>
 
 <p>
-The following gantt diagramm shows an overview of the timeline during the
-project as well as the dates of the most important milestones.
+The following gantt diagramm shows an overview of the timeline during the project as well as the dates of the most important milestones.
 </p>
 
 <figure class="full">
@@ -401,16 +376,13 @@ project as well as the dates of the most important milestones.
 <h3>Overview</h3>
 
 <p>
-The following requirements were established by analysing the existing
-infrastrucutre and taking known problems into account.
+The following requirements were established by analysing the existing infrastrucutre and taking known problems into account.
 </p>
 
 <h3>Stakeholders</h3>
 
 <p>
-The following stakeholders have been found for the current infrastructure.
-They have a direct or indirect influence on the requirements. Theses
-stakeholders are also used in the system context diagram.
+The following stakeholders have been found for the current infrastructure. They have a direct or indirect influence on the requirements. Theses stakeholders are also used in the system context diagram.
 </p>
 
 <figure>
@@ -429,13 +401,7 @@ stakeholders are also used in the system context diagram.
 Developer
 </th>
 <td>
-Works at WorldSkills International and is responsible for the development and
-maintenance of the infrastructure. There are four developers working full-time
-for WorldSkills International, there is no designated system administrator.
-Developers have different backgrounds and therefor different knowledge about
-specific components of the instrastructure but they all share the
-responsibility for keeping the infrastructure running. They work from three
-different time zones.
+Works at WorldSkills International and is responsible for the development and maintenance of the infrastructure. There are four developers working full-time for WorldSkills International, there is no designated system administrator. Developers have different backgrounds and therefor different knowledge about specific components of the instrastructure but they all share the responsibility for keeping the infrastructure running. They work from three different time zones.
 </td>
 </tr>
 <tr>
@@ -443,10 +409,7 @@ different time zones.
 User
 </th>
 <td>
-Interacts with applications running on the WorldSkills infrastructure. This
-includes the Secretariat, Members, Competition personnel and website visitors.
-Most of them are registered users. Their expectations for fast and continuously
-running services influence the requirements.
+Interacts with applications running on the WorldSkills infrastructure. This includes the Secretariat, Members, Competition personnel and website visitors. Most of them are registered users. Their expectations for fast and continuously running services influence the requirements.
 </td>
 </tr>
 <tr>
@@ -454,9 +417,7 @@ running services influence the requirements.
 Hoster
 </th>
 <td>
-Provides virtual Linux servers for the infrastructure. As they are in a highly
-competitive and fast moving market they can become obsolete and need to be
-replaced with another hoster with a better offering.
+Provides virtual Linux servers for the infrastructure. As they are in a highly competitive and fast moving market they can become obsolete and need to be replaced with another hoster with a better offering.
 </td>
 </tr>
 <tr>
@@ -464,9 +425,7 @@ replaced with another hoster with a better offering.
 GitHub
 </th>
 <td>
-Hosts Git code repositories for WorldSkills International. Provides a web interface
-for managing permissions of the repositories. They control how code can be
-accessed.
+Hosts Git code repositories for WorldSkills International. Provides a web interface for managing permissions of the repositories. They control how code can be accessed.
 </td>
 </tr>
 <tr>
@@ -474,10 +433,7 @@ accessed.
 Codeship
 </th>
 <td>
-Provides a hosted continuous integration software for WorldSkills International.
-The software is based on Linux with support for PHP, Java and JavaScript
-applications. Their functionality defines how applications can be built and
-deployed.
+Provides a hosted continuous integration software for WorldSkills International. The software is based on Linux with support for PHP, Java and JavaScript applications. Their functionality defines how applications can be built and deployed.
 </td>
 </tr>
 </table>
@@ -493,27 +449,18 @@ deployed.
 </figure>
 
 <p>
-Both Developer and User need to interact with the infrastructure or the
-applications running on it. They have a direct influence on the requirements
-and lie within the system context.
+Both Developer and User need to interact with the infrastructure or the applications running on it. They have a direct influence on the requirements and lie within the system context.
 </p>
 
 <p>
-The source code of most applications is stored on GitHub. Codeship is used for
-running automated tests and executing the deployment of new versions. The
-hoster provides the servers for running the infrastrucutre. All three
-vendors influence the requirements indirectly with the constraints of their
-services. They are outside of the system context as they cannot be influenced.
+The source code of most applications is stored on GitHub. Codeship is used for running automated tests and executing the deployment of new versions. The hoster provides the servers for running the infrastrucutre. All three vendors influence the requirements indirectly with the constraints of their services. They are outside of the system context as they cannot be influenced.
 </p>
 
 
 <h3 class="break">Applications</h3>
 
 <p>
-The current infrastructure consists of multiple applications deployed on three
-servers. There is no requirement to keep them on separate servers. The
-following diagram gives an overview over all applications. A detailed
-description of each applications follows.
+The current infrastructure consists of multiple applications deployed on three servers. There is no requirement to keep them on separate servers. The following diagram gives an overview over all applications. A detailed description of each applications follows.
 </p>
 
 <figure>
@@ -887,9 +834,7 @@ Competition Planning Timetable with important deadlines
 <h3 class="break">User Stories</h3>
 
 <p>
-To describe the functional requirements for the new infrastructure user stories
-are used. They are prioritized in agreement with all developers in three
-levels: Must, Should, Could.
+To describe the functional requirements for the new infrastructure user stories are used. They are prioritized in agreement with all developers in three levels: Must, Should, Could.
 </p>
 
 <figure>
@@ -908,9 +853,7 @@ levels: Must, Should, Could.
 Description
 </th>
 <td>
-As a developer I want to run multiple PHP applications so users can access
-them. A PHP application usually needs a MySQL database and the source code
-is stored on GitHub.
+As a developer I want to run multiple PHP applications so users can access them. A PHP application usually needs a MySQL database and the source code is stored on GitHub.
 </td>
 </tr>
 <tr>
@@ -947,10 +890,7 @@ All PHP applications are running and can be accessed with a web browser.
 Description
 </th>
 <td>
-As a developer I want to run multiple Java applications on a Tomcat server so
-users and other applications can use the services provided bu the applications.
-A Java application usually needs a MySQL database, the source code is stored
-on GitHub.
+As a developer I want to run multiple Java applications on a Tomcat server so users and other applications can use the services provided bu the applications. A Java application usually needs a MySQL database, the source code is stored on GitHub.
 </td>
 </tr>
 <tr>
@@ -987,10 +927,7 @@ All Java applications are running and can be accessed over HTTP.
 Description
 </th>
 <td>
-As a developer I want to change a server configuration file to optimize a setting.
-For example the MySQL Query Cache size needs to be increased. Another example
-would be that the servlet container configuration needs a new variable due to
-a change in the application.
+As a developer I want to change a server configuration file to optimize a setting. For example the MySQL Query Cache size needs to be increased. Another example would be that the servlet container configuration needs a new variable due to a change in the application.
 </td>
 </tr>
 <tr>
@@ -998,9 +935,7 @@ a change in the application.
 Acceptance Criteria
 </th>
 <td>
-A configuration file get modified and the change is pushed to the repository.
-The new configuration file is automatically deployed to the server and the
-affected applications loads the new configuration.
+A configuration file get modified and the change is pushed to the repository. The new configuration file is automatically deployed to the server and the affected applications loads the new configuration.
 </td>
 </tr>
 <tr>
@@ -1029,8 +964,7 @@ affected applications loads the new configuration.
 Description
 </th>
 <td>
-As a developer I want to deploy a new version of an application so users can
-benefit from new features or fixes. The deployment causes no downtime.
+As a developer I want to deploy a new version of an application so users can benefit from new features or fixes. The deployment causes no downtime.
 </td>
 </tr>
 <tr>
@@ -1038,10 +972,7 @@ benefit from new features or fixes. The deployment causes no downtime.
 Acceptance Criteria
 </th>
 <td>
-A new version of an application gets pushed to the repository. Automated tests
-of the application are executed and if they pass the application gets deployed
-to the server. The old version keeps responding to requests until the new
-version is ready.
+A new version of an application gets pushed to the repository. Automated tests of the application are executed and if they pass the application gets deployed to the server. The old version keeps responding to requests until the new version is ready.
 </td>
 </tr>
 <tr>
@@ -1070,8 +1001,7 @@ version is ready.
 Description
 </th>
 <td>
-As a developer, I want to test a new version of a web service in a staging area
-so I can make sure if works as expected.
+As a developer, I want to test a new version of a web service in a staging area so I can make sure if works as expected.
 </td>
 </tr>
 <tr>
@@ -1079,9 +1009,7 @@ so I can make sure if works as expected.
 Acceptance Criteria
 </th>
 <td>
-A new version of a web service is pushed in a separate branch, the
-functionality is available for testing in a staging environment within
-10&nbsp;minutes from the push.
+A new version of a web service is pushed in a separate branch, the functionality is available for testing in a staging environment within 10&nbsp;minutes from the push.
 </td>
 </tr>
 <tr>
@@ -1110,9 +1038,7 @@ functionality is available for testing in a staging environment within
 Description
 </th>
 <td>
-As a developer I want to switch the server hoster so I can profit from a better
-offer. Another reason could be that the current hoster shuts down or its no
-longer justifiable because of his actions (e.g. security problems).
+As a developer I want to switch the server hoster so I can profit from a better offer. Another reason could be that the current hoster shuts down or its no longer justifiable because of his actions (e.g. security problems).
 </td>
 </tr>
 <tr>
@@ -1120,9 +1046,7 @@ longer justifiable because of his actions (e.g. security problems).
 Acceptance Criteria
 </th>
 <td>
-The infrastructure can be ported to a different provider within 48 hours. All
-needed software is installed automatically, databases and user files are
-transfered manually.
+The infrastructure can be ported to a different provider within 48 hours. All needed software is installed automatically, databases and user files are transfered manually.
 </td>
 </tr>
 <tr>
@@ -1137,14 +1061,11 @@ transfered manually.
 <h3 class="break">Non-functional requirements</h3>
 
 <p>
-The following non-functional requirements are not conclusive but they are
-the most critical ones. They are classified according to quality model of
-ISO/IEC 25010:2011 and prioritized in three levels: Must, Should, Could.
+The following non-functional requirements are not conclusive but they are the most critical ones. They are classified according to quality model of ISO/IEC 25010:2011 and prioritized in three levels: Must, Should, Could.
 </p>
 
 <p>
-The requirements are based on the current infrastructure and events in the past
-related to it.
+The requirements are based on the current infrastructure and events in the past related to it.
 </p>
 
 
@@ -1209,8 +1130,7 @@ Accountability
 Description
 </th>
 <td>
-Every change must be traceable to a developer. Associated with every change is
-an explanation.
+Every change must be traceable to a developer. Associated with every change is an explanation.
 </td>
 </tr>
 <tr>
@@ -1247,10 +1167,7 @@ Replaceability
 Description
 </th>
 <td>
-All software used for infrastructure has to be built on open-source software.
-This guarantees that components can easily be ported to different providers
-or maintainers. It also allows other Members to easily copy parts of the
-infrastructure.
+All software used for infrastructure has to be built on open-source software. This guarantees that components can easily be ported to different providers or maintainers. It also allows other Members to easily copy parts of the infrastructure.
 </td>
 </tr>
 <tr>
@@ -1287,10 +1204,7 @@ Testability
 Description
 </th>
 <td>
-To test configuration changes to it, the whole or part of the infrastructure
-can be started in a test environment. This is different from the staging
-environment in that the test environment can be local and automated tests are
-executed against it.
+To test configuration changes to it, the whole or part of the infrastructure can be started in a test environment. This is different from the staging environment in that the test environment can be local and automated tests are executed against it.
 </td>
 </tr>
 <tr>
@@ -1327,10 +1241,7 @@ Confidentiality
 Description
 </th>
 <td>
-Server passwords should be stored only encrypted on third-party systems. The
-advantage of storing encrypted passwords in the code repository and sharing a
-key file instead of sharing the passwords in a file is that the file doesn't
-need to be updated for everyone each time a password is added.
+Server passwords should be stored only encrypted on third-party systems. The advantage of storing encrypted passwords in the code repository and sharing a key file instead of sharing the passwords in a file is that the file doesn't need to be updated for everyone each time a password is added.
 </td>
 </tr>
 <tr>
@@ -1367,9 +1278,7 @@ Technical accessibility
 Description
 </th>
 <td>
-In case of a problem that only occurs in a certain environment, a developer
-needs unrestricted access to the server to debug the error and try out
-different solutions.
+In case of a problem that only occurs in a certain environment, a developer needs unrestricted access to the server to debug the error and try out different solutions.
 </td>
 </tr>
 <tr>
@@ -1406,8 +1315,7 @@ Interoperability
 Description
 </th>
 <td>
-New software can be installed without restrictions. New features or analytics
-tools might require the installation of additional software.
+New software can be installed without restrictions. New features or analytics tools might require the installation of additional software.
 </td>
 </tr>
 <tr>
@@ -1444,9 +1352,7 @@ Learnability
 Description
 </th>
 <td>
-How the software system to install and configure the infrastructure can be
-learned quickly so all developers can make changes to the infrastructure
-without spending days studying it.
+How the software system to install and configure the infrastructure can be learned quickly so all developers can make changes to the infrastructure without spending days studying it.
 </td>
 </tr>
 <tr>
@@ -1483,8 +1389,7 @@ Changeability
 Description
 </th>
 <td>
-Applications - that can be horizontally scaled - can be installed on multiple
-servers and served through a load balancer.
+Applications - that can be horizontally scaled - can be installed on multiple servers and served through a load balancer.
 </td>
 </tr>
 <tr>
@@ -1506,32 +1411,22 @@ servers and served through a load balancer.
 <h3>Introduction</h3>
 
 <p>
-Based on the given requirements the following evaluation defines the guiding
-principles for the architecture concept. It compares the different approaches
-for configuring and deploying software and how well they fit to the existing
-environment.
+Based on the given requirements the following evaluation defines the guiding principles for the architecture concept. It compares the different approaches for configuring and deploying software and how well they fit to the existing environment.
 </p>
 
 <p>
-Only specific attributes of the approaches and their software is analyzed,
-many general comparisons have been written before.
+Only specific attributes of the approaches and their software is analyzed, many general comparisons have been written before.
 </p>
 
 <p>
-Cloud solutions for managing applications exist, but are usually locked in on
-the vendor and targeted at high volumes. Our scaling requirements are low as
-the infrastructure needs to serve mainly the Competition and the Members and
-they are both limited by other resources.
+Cloud solutions for managing applications exist, but are usually locked in on the vendor and targeted at high volumes. Our scaling requirements are low as the infrastructure needs to serve mainly the Competition and the Members and they are both limited by other resources.
 </p>
 
 
 <h3>Software Containers</h3>
 
 <p>
-This type of software has recently became popular with Docker. The idea is to
-use the advantages of a virtual machine (isolation, portability, efficiency)
-while sharing resources. Docker has been chosen as it has been perceived as the
-most active project. A similar projects is Rocket by CoreOS.
+This type of software has recently became popular with Docker. The idea is to use the advantages of a virtual machine (isolation, portability, efficiency) while sharing resources. Docker has been chosen as it has been perceived as the most active project. A similar projects is Rocket by CoreOS.
 </p>
 
 <figure>
@@ -1540,15 +1435,11 @@ most active project. A similar projects is Rocket by CoreOS.
 </figure>
 
 <p>
-Docker only works on Linux, so for development on Mac OS X the software
-Boot2Docker is used on the development laptop. Installation instructions are
-provided in the <a href="#ref-docker-docs">Docker documentation</a> in the
-chapter <em>Installation for Mac OS X</em>.
+Docker only works on Linux, so for development on Mac OS X the software Boot2Docker is used on the development laptop. Installation instructions are provided in the <a href="#ref-docker-docs">Docker documentation</a> in the chapter <em>Installation for Mac OS X</em>.
 </p>
 
 <p>
-After the installation the virtual machine with the Linux running Docker
-is then launched with the following two commands.
+After the installation the virtual machine with the Linux running Docker is then launched with the following two commands.
 </p>
 
 <figure>
@@ -1570,33 +1461,21 @@ To connect the Docker client to the Docker daemon, please set:
 </figure>
 
 <p>
-Another useful tool is Docker Compose which allows multiple instances to be
-started based on a configuration file. However it's usage in production is not
-recommended at the moment as it's missing some features for managing managing
-running instances.
+Another useful tool is Docker Compose which allows multiple instances to be started based on a configuration file. However it's usage in production is not recommended at the moment as it's missing some features for managing managing running instances.
 </p>
 
 <h4>R01 PHP applications</h4>
 
 <p>
-Docker publishes official images for certain applications and programming
-languages in the Docker Hub Repository. There's also an official image for PHP
-which can be found on <a href="#ref-docker-php">GitHub</a>. Maintained images
-for <a href="#ref-php-versions">recent PHP versions</a> are provided with
-built-in Apache or PHP-FPM for running the application as a service.
+Docker publishes official images for certain applications and programming languages in the Docker Hub Repository. There's also an official image for PHP which can be found on <a href="#ref-docker-php">GitHub</a>. Maintained images for <a href="#ref-php-versions">recent PHP versions</a> are provided with built-in Apache or PHP-FPM for running the application as a service.
 </p>
 
 <p>
-The easiest way to run a PHP application with Docker is to use Apache so the
-application itself and static files (JavaScript, CSS, etc.) can both be served
-from one process.
+The easiest way to run a PHP application with Docker is to use Apache so the application itself and static files (JavaScript, CSS, etc.) can both be served from one process.
 </p>
 
 <p>
-The MySQL server would be started in a separate instance, so an additional
-Dockerfile for MySQL is needed and then needs to be linked with the container
-running the PHP application. To simplify this Docker Compose can be used. It's
-a tool that can start multiple Docker instances based on a configuration file.
+The MySQL server would be started in a separate instance, so an additional Dockerfile for MySQL is needed and then needs to be linked with the container running the PHP application. To simplify this Docker Compose can be used. It's a tool that can start multiple Docker instances based on a configuration file.
 </p>
 
 <p>
@@ -1606,15 +1485,11 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R02 Java applications</h4>
 
 <p>
-For Tomcat official images published are available from the Docker Hub
-Repository as well. Multiple versions with for Java 7 and 8 are available.
+For Tomcat official images published are available from the Docker Hub Repository as well. Multiple versions with for Java 7 and 8 are available.
 </p>
 
 <p>
-Configuration and the application code can be copied to the working directory
-of Tomcat and are read and started automatically. Multiple applications can be
-bundled into one container or one container per application can be used. Again
-as with PHP, a MySQL server would be started in a separate instance.
+Configuration and the application code can be copied to the working directory of Tomcat and are read and started automatically. Multiple applications can be bundled into one container or one container per application can be used. Again as with PHP, a MySQL server would be started in a separate instance.
 </p>
 
 <p>
@@ -1624,16 +1499,11 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R03 Server configuration</h4>
 
 <p>
-To guarantee reproducible containers configuration files are usually copied
-into the container at build time. This allows the container to be tested in a
-staging environment and making guarantees the same result in the production
-environment.
+To guarantee reproducible containers configuration files are usually copied into the container at build time. This allows the container to be tested in a staging environment and making guarantees the same result in the production environment.
 </p>
 
 <p>
-Docker provides the tools to build the image and upload it to a central
-repository, however it doesn't provide any tools to do an actual deployment
-of the image to a live environment out of the box.
+Docker provides the tools to build the image and upload it to a central repository, however it doesn't provide any tools to do an actual deployment of the image to a live environment out of the box.
 </p>
 
 <p>
@@ -1643,18 +1513,11 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 <h4>R04 Application deployment</h4>
 
 <p>
-There are different ways how to implement this with Docker. One way would be to
-build a new image, deploy it separatly and then route requests with a load
-balancer to the new image. However as noted before, Docker doesn't provide
-tools to do a deployment of the image nor the orchestration of running
-machines.
+There are different ways how to implement this with Docker. One way would be to build a new image, deploy it separatly and then route requests with a load balancer to the new image. However as noted before, Docker doesn't provide tools to do a deployment of the image nor the orchestration of running machines.
 </p>
 
 <p>
-Another possibiliy would be to use volumes to deploy the new application into
-the running container but this would require each application to have built-in
-support for zero downtime deployment, which is not always the case (Tomcat
-supports this with parallel deployment but not PHP).
+Another possibiliy would be to use volumes to deploy the new application into the running container but this would require each application to have built-in support for zero downtime deployment, which is not always the case (Tomcat supports this with parallel deployment but not PHP).
 </p>
 
 <p>
@@ -1664,10 +1527,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 <h4>R05 Staging area</h4>
 
 <p>
-Containers can easily be started quickly in a new environment (e.g. a new
-virtual server). Docker Compose can be used here for starting up multiple
-containers at once. Database fixtures can be loaded from additional containers
-which are linked to the database container.
+Containers can easily be started quickly in a new environment (e.g. a new virtual server). Docker Compose can be used here for starting up multiple containers at once. Database fixtures can be loaded from additional containers which are linked to the database container.
 </p>
 
 <p>
@@ -1677,12 +1537,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R06 Hoster switch</h4>
 
 <p>
-Thanks to the virtualization the only requirement for a new hoster would be
-to run Docker. Transfer of the data is possible by launching additional
-containers on the old server and mounting the data volumes. The installation
-of Docker would need to be done manually if the hoster doesn't provide
-preinstalled Docker. But more importantly the configuration of the host machine
-(e.g. SSH keys, logging, security settings) could not be automated with Docker.
+Thanks to the virtualization the only requirement for a new hoster would be to run Docker. Transfer of the data is possible by launching additional containers on the old server and mounting the data volumes. The installation of Docker would need to be done manually if the hoster doesn't provide preinstalled Docker. But more importantly the configuration of the host machine (e.g. SSH keys, logging, security settings) could not be automated with Docker.
 </p>
 
 <p>
@@ -1692,8 +1547,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 <h4>R11 Configuration files</h4>
 
 <p>
-All configuration files can be stored in the code repository and then added
-to the container during build time.
+All configuration files can be stored in the code repository and then added to the container during build time.
 </p>
 
 <p>
@@ -1703,8 +1557,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R12 Change history</h4>
 
 <p>
-By storing all Dockerfiles and configuration files in a VCS and building the
-container images on a CI server each change can be traced back.
+By storing all Dockerfiles and configuration files in a VCS and building the container images on a CI server each change can be traced back.
 </p>
 
 <p>
@@ -1714,8 +1567,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R13 Open Source</h4>
 
 <p>
-Both Docker and the registry server for Docker are Open Source on GitHub,
-they are licensed under the Apache License.
+Both Docker and the registry server for Docker are Open Source on GitHub, they are licensed under the Apache License.
 </p>
 
 <p>
@@ -1725,8 +1577,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R14 Test environment</h4>
 
 <p>
-As with the staging environment Docker Compose can be used for starting
-multiple containers quickly so tests can be executed.
+As with the staging environment Docker Compose can be used for starting multiple containers quickly so tests can be executed.
 </p>
 
 <p>
@@ -1736,8 +1587,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R15 Encrypted passwords</h4>
 
 <p>
-Secret data is usually passed as environment variables to the Docker container.
-Docker doesn't provide functionality for encrypting information.
+Secret data is usually passed as environment variables to the Docker container. Docker doesn't provide functionality for encrypting information.
 </p>
 
 <p>
@@ -1747,8 +1597,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 <h4>R16 Superuser access</h4>
 
 <p>
-Containers can be accessed from the outside with different methods and
-superuser access to the host system is required by Docker.
+Containers can be accessed from the outside with different methods and superuser access to the host system is required by Docker.
 </p>
 
 <p>
@@ -1758,8 +1607,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R17 Custom software</h4>
 
 <p>
-There are some limitations of what can be run inside a container on the kernel
-level, but they are not affecting most use cases.
+There are some limitations of what can be run inside a container on the kernel level, but they are not affecting most use cases.
 </p>
 
 <p>
@@ -1769,8 +1617,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R18 Learning curve</h4>
 
 <p>
-Immutable applications are a complex topic and Docker requires specific methods
-for normal tasks.
+Immutable applications are a complex topic and Docker requires specific methods for normal tasks.
 </p>
 
 <p>
@@ -1780,8 +1627,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 <h4>R19 Horizontal scaling</h4>
 
 <p>
-Multiple instances of images can be started in parallel and Docker Swarm, a
-clustering tool for Docker, can be used to manage them.
+Multiple instances of images can be started in parallel and Docker Swarm, a clustering tool for Docker, can be used to manage them.
 </p>
 
 <p>
@@ -1791,17 +1637,11 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4 class="break">Summary Software Containers</h4>
 
 <p>
-One notable property of Software Containers is their iteration speed. Due to
-the way how file changes are saved by the filesystem, setup commands don't need
-to be repeated each time but the resulting files can be restored withing
-seconds. This makes experimenting with the container much faster than setting
-up a complete virtual machine each time.
+One notable property of Software Containers is their iteration speed. Due to the way how file changes are saved by the filesystem, setup commands don't need to be repeated each time but the resulting files can be restored withing seconds. This makes experimenting with the container much faster than setting up a complete virtual machine each time.
 </p>
 
 <p>
-It became clear that Docker itself is a great tool for reducing the overhead of
-virtual machines, however it is not a complete solution for infrastructure
-management (yet).
+It became clear that Docker itself is a great tool for reducing the overhead of virtual machines, however it is not a complete solution for infrastructure management (yet).
 </p>
 
 <figure>
@@ -1838,19 +1678,13 @@ management (yet).
 </figure>
 
 <p>
-A comparison of all requirements can be found after the analysis of the three
-different approaches.
+A comparison of all requirements can be found after the analysis of the three different approaches.
 </p>
 
 <h3 class="break">Configuration Repository</h3>
 
 <p>
-Chef and Puppet are the most popular representatives for this type of software.
-It exists for a few years now and has the target to provide a central
-repository for infrastructure configuration from which server clients regularly
-pull their changes. This kind of software type usually also provides a way to
-use it without a central server but that looses the advantage of having a
-central point to coordinate changes.
+Chef and Puppet are the most popular representatives for this type of software. It exists for a few years now and has the target to provide a central repository for infrastructure configuration from which server clients regularly pull their changes. This kind of software type usually also provides a way to use it without a central server but that looses the advantage of having a central point to coordinate changes.
 </p>
 
 <figure>
@@ -1859,12 +1693,7 @@ central point to coordinate changes.
 </figure>
 
 <p>
-Chef is used here because of the already existing knowledge of Ruby and its
-popularity. It is usually running on a Linux machine, so for development a virtual
-machine with Linux is required. To simplify the setup of the virtual machine
-Vagrant (a software to run virtual machines based on a configuration file) can
-be used. After installing Vagrant, a virtual machine can be started with a
-Linux image provided by Chef with all required software pre-installed:
+Chef is used here because of the already existing knowledge of Ruby and its popularity. It is usually running on a Linux machine, so for development a virtual machine with Linux is required. To simplify the setup of the virtual machine Vagrant (a software to run virtual machines based on a configuration file) can be used. After installing Vagrant, a virtual machine can be started with a Linux image provided by Chef with all required software pre-installed:
 </p>
 
 <figure>
@@ -1903,23 +1732,15 @@ Chef organizes commands in <em>recipies</em> and <em>cookbooks</em>
 <h4>R01 PHP applications</h4>
 
 <p>
-Cookbooks for PHP are available in the
-<a href="#ref-supermarket">Supermarket</a>, the official repository
-for cookbooks. The PHP cookbook is published and maintained by the company
-behind Chef itself.
+Cookbooks for PHP are available in the <a href="#ref-supermarket">Supermarket</a>, the official repository for cookbooks. The PHP cookbook is published and maintained by the company behind Chef itself.
 </p>
 
 <p>
-However the functionality provided by the cookbook is mostly focused on PEAR,
-which is not a requirement. A more popular alternative is the
-<a href="#ref-apache2-cookbook">apache2 cookbook</a>. It not only provides the
-possibility to install Apache but also mod_php to run PHP together with a web
-server.
+However the functionality provided by the cookbook is mostly focused on PEAR, which is not a requirement. A more popular alternative is the <a href="#ref-apache2-cookbook">apache2 cookbook</a>. It not only provides the possibility to install Apache but also mod_php to run PHP together with a web server.
 </p>
 
 <p>
-For MySQL there's an official cookbook available as well which installs and
-starts a MySQL server as required.
+For MySQL there's an official cookbook available as well which installs and starts a MySQL server as required.
 </p>
 
 <p>
@@ -1930,10 +1751,8 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R02 Java applications</h4>
 
 <p>
-The Supermarket also has an official cookbook for Tomcat. Java must be
-installed separately, again there's a <a href="#ref-java-cookbook">cookbook</a>
-available in the Supermarket. The same MySQL cookbook as mention before can be
-used.
+The Supermarket also has an official cookbook for Tomcat. Java must be installed separately, again there's a <a href="#ref-java-cookbook">cookbook</a>
+available in the Supermarket. The same MySQL cookbook as mention before can be used.
 </p>
 
 <p>
@@ -1944,10 +1763,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R03 Server configuration</h4>
 
 <p>
-With Chef configuration files are usually built from templates which are
-stored in the repository. Once uploaded to the Chef server the client receives
-them, replaces the variables in them and puts them to the targeted location.
-In addition the service using the file can be restarted.
+With Chef configuration files are usually built from templates which are stored in the repository. Once uploaded to the Chef server the client receives them, replaces the variables in them and puts them to the targeted location. In addition the service using the file can be restarted.
 </p>
 
 <p>
@@ -1957,14 +1773,11 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R04 Application deployment</h4>
 
 <p>
-For Tomcat parallel deployment can be used here. The actual deployment to the
-server is done using the Tomcat Manager App.
+For Tomcat parallel deployment can be used here. The actual deployment to the server is done using the Tomcat Manager App.
 </p>
 
 <p>
-The <code>deploy</code> directive can be used to update a PHP application to
-the latest revision without causing any downtime. It uses symlinks to make the
-latest version only active when all dependencies have been installed.
+The <code>deploy</code> directive can be used to update a PHP application to the latest revision without causing any downtime. It uses symlinks to make the latest version only active when all dependencies have been installed.
 </p>
 
 <p>
@@ -1974,9 +1787,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R05 Staging area</h4>
 
 <p>
-Chef can be used to setup a virtual machine with the needed environment. Once
-the virtual machine with the Chef client is running it can pull all
-information needed to setup the environment from the Chef server.
+Chef can be used to setup a virtual machine with the needed environment. Once the virtual machine with the Chef client is running it can pull all information needed to setup the environment from the Chef server.
 </p>
 
 <p>
@@ -1986,10 +1797,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R06 Hoster switch</h4>
 
 <p>
-The Chef client needs to be installed manually on a new virtual machine if the
-hoster doesn't provide machines with Chef preinstalled. Once the Chef client is
-installed it can install all required software and configure the machine as
-needed.
+The Chef client needs to be installed manually on a new virtual machine if the hoster doesn't provide machines with Chef preinstalled. Once the Chef client is installed it can install all required software and configure the machine as needed.
 </p>
 
 <p>
@@ -1999,8 +1807,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R11 Configuration files</h4>
 
 <p>
-Configuration files can be stored as templates in the repository. They get
-compiled and written to their target destination by Chef.
+Configuration files can be stored as templates in the repository. They get compiled and written to their target destination by Chef.
 </p>
 
 <p>
@@ -2010,8 +1817,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R12 Change history</h4>
 
 <p>
-All cookbooks and templates can be stored in a VCS, a CI server uploads them
-to the Chef server for distrubution to the clients.
+All cookbooks and templates can be stored in a VCS, a CI server uploads them to the Chef server for distrubution to the clients.
 </p>
 
 <p>
@@ -2021,8 +1827,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R13 Open Source</h4>
 
 <p>
-Chef Client, Chef Server and Chef Development Kit (DK) are Open Source on
-GitHub, they are licensed under the Apache License.
+Chef Client, Chef Server and Chef Development Kit (DK) are Open Source on GitHub, they are licensed under the Apache License.
 </p>
 
 <p>
@@ -2032,8 +1837,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R14 Test environment</h4>
 
 <p>
-The cookbooks can also be used to configure the virtual machine the tests are
-running on.
+The cookbooks can also be used to configure the virtual machine the tests are running on.
 </p>
 
 <p>
@@ -2043,9 +1847,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R15 Encrypted passwords</h4>
 
 <p>
-Data bags allow to store variables for the Chef server. Confidential
-information can be stored in encrypted Data Bags. The secret key can be shared
-within the developers over other secure channels.
+Data bags allow to store variables for the Chef server. Confidential information can be stored in encrypted Data Bags. The secret key can be shared within the developers over other secure channels.
 </p>
 
 <p>
@@ -2065,8 +1867,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R17 Custom software</h4>
 
 <p>
-Packages from the Linux distribution are easiest to install with Chef, but
-also custom software can be downloaded and installed.
+Packages from the Linux distribution are easiest to install with Chef, but also custom software can be downloaded and installed.
 </p>
 
 <p>
@@ -2076,9 +1877,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R18 Learning curve</h4>
 
 <p>
-Chef has a complex architecture and many dependencies on other libraries.
-Developers not familiar with Ruby also need to learn the syntax and its
-oddities first.
+Chef has a complex architecture and many dependencies on other libraries. Developers not familiar with Ruby also need to learn the syntax and its oddities first.
 </p>
 
 <p>
@@ -2088,8 +1887,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 <h4>R19 Horizontal scaling</h4>
 
 <p>
-Multiple Chef clients can connect to the same Chef server and the same
-cookbooks can be installed on multiple hosts.
+Multiple Chef clients can connect to the same Chef server and the same cookbooks can be installed on multiple hosts.
 </p>
 
 <p>
@@ -2100,22 +1898,16 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4 class="break">Summary</h4>
 
 <p>
-The installation of the Chef DK was a bit troubled as it relies on overriding
-rbenv in the <code>PATH</code>. Some modifications to
+The installation of the Chef DK was a bit troubled as it relies on overriding rbenv in the <code>PATH</code>. Some modifications to
 <code>.bash_profile</code> were needed to get it running properly.
 </p>
 
 <p>
-The possibility to test the cookbooks locally inside a virtual machine with
-VirtualBox proved handy. However a few times the cookbook failed unexpectetly
-(e.g. because a wrong package was accidentely installed first) - a complete
-reinstall then solved the problem but took quite some time.
+The possibility to test the cookbooks locally inside a virtual machine with VirtualBox proved handy. However a few times the cookbook failed unexpectetly (e.g. because a wrong package was accidentely installed first) - a complete reinstall then solved the problem but took quite some time.
 </p>
 
 <p>
-A popular cookbook that was initially selected for deploying Java applications
-turned out to be incompatible with the latest version of the official Tomcat
-cookbook for no obvious reason. In general the whole system seemed complex:
+A popular cookbook that was initially selected for deploying Java applications turned out to be incompatible with the latest version of the official Tomcat cookbook for no obvious reason. In general the whole system seemed complex:
 many components rely on others and compability has to be figure out manually.
 </p>
 
@@ -2154,17 +1946,11 @@ many components rely on others and compability has to be figure out manually.
 <h3 class="break">Remote Command Execution</h3>
 
 <p>
-This is similar to the Configuration Repository, software to be installed and
-commands to be executed are defined in text files. The main difference is that
-instead of having a central server where everything is available to be pulled,
-everything gets pushed to the hosts. In fact Configuration Repository software
-like Chef also supports this kind of operation mode with Chef Solo.
+This is similar to the Configuration Repository, software to be installed and commands to be executed are defined in text files. The main difference is that instead of having a central server where everything is available to be pulled, everything gets pushed to the hosts. In fact Configuration Repository software like Chef also supports this kind of operation mode with Chef Solo.
 </p>
 
 <p>
-Ansible, Salt and Rex are implementations specific for this kind of software
-type. Ansible is used here because because it is only focused on this kind of
-software type and because of its popularity.
+Ansible, Salt and Rex are implementations specific for this kind of software type. Ansible is used here because because it is only focused on this kind of software type and because of its popularity.
 </p>
 
 <figure>
@@ -2173,18 +1959,11 @@ software type and because of its popularity.
 </figure>
 
 <p>
-Ansible is a Python application and can be installed on a development machine as
-a Python package according to the
-<a href="#ref-ansible-docs">Ansible documentation</a>. Ansible uses SSH to
-communicate to remote servers and execute commands on them. Directives are
-organized in <em>playbooks</em> and <em>roles</em>.
+Ansible is a Python application and can be installed on a development machine as a Python package according to the <a href="#ref-ansible-docs">Ansible documentation</a>. Ansible uses SSH to communicate to remote servers and execute commands on them. Directives are organized in <em>playbooks</em> and <em>roles</em>.
 </p>
 
 <p>
-Again Vagrant can be used to simplify the setup of a remote host and test the
-playbook. As Ansible requires no specific software on the host any Linux
-distribution can be used within VirtualBox. The following snippet shows the
-intitialization process of VirtualBox with Ansible:
+Again Vagrant can be used to simplify the setup of a remote host and test the playbook. As Ansible requires no specific software on the host any Linux distribution can be used within VirtualBox. The following snippet shows the intitialization process of VirtualBox with Ansible:
 </p>
 
 <figure>
@@ -2210,16 +1989,11 @@ default                    : ok=1    changed=0
 <h4>R01 PHP applications</h4>
 
 <p>
-Ansible includes already most tools needed for installing and configuring
-software using the OS mechanisms. Examples for how to use them are provided
-on GitHub by Ansible itself.
+Ansible includes already most tools needed for installing and configuring software using the OS mechanisms. Examples for how to use them are provided on GitHub by Ansible itself.
 </p>
 
 <p>
-Apache and mod_php can be installed with the OS packages, their configuration
-can be created with the Ansible template directive and the service directive
-makes sure Apache is running. The source code of the PHP application can either
-be copied to the host or cloned from Git.
+Apache and mod_php can be installed with the OS packages, their configuration can be created with the Ansible template directive and the service directive makes sure Apache is running. The source code of the PHP application can either be copied to the host or cloned from Git.
 </p>
 
 <p>
@@ -2234,11 +2008,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R02 Java applications</h4>
 
 <p>
-In the examples provided by Ansible they also describe how to install a
-standalone instance of Tomcat. The installation package gets downloaded from the
-Tomcat download server, extracted to an appropriate location, the configuration
-files are created from templates and Tomcat is started as a service. MySQL can
-be installed with the OS packages.
+In the examples provided by Ansible they also describe how to install a standalone instance of Tomcat. The installation package gets downloaded from the Tomcat download server, extracted to an appropriate location, the configuration files are created from templates and Tomcat is started as a service. MySQL can be installed with the OS packages.
 </p>
 
 <p>
@@ -2249,10 +2019,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R03 Server configuration</h4>
 
 <p>
-Configuration files can be either simply copied to the server from the local
-playbook or templates with variables can be used. Ansible checks if there were
-any changes in the configuration file and notifies a service to restart if
-needed. The playbook can also be run from an CI server.
+Configuration files can be either simply copied to the server from the local playbook or templates with variables can be used. Ansible checks if there were any changes in the configuration file and notifies a service to restart if needed. The playbook can also be run from an CI server.
 </p>
 
 <p>
@@ -2262,15 +2029,11 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R04 Application deployment</h4>
 
 <p>
-For Tomcat parallel deployment can be used here again. The actual deployment
-to the server can be done using the Tomcat Manager App or by using Ansible to
-copy the file to the server.
+For Tomcat parallel deployment can be used here again. The actual deployment to the server can be done using the Tomcat Manager App or by using Ansible to copy the file to the server.
 </p>
 
 <p>
-A combination of the <code>git</code> and <code>file</code> directives can be
-used to checkout the latest version of the application and activate it with a
-symlink as soon as all dependencies have been installed.
+A combination of the <code>git</code> and <code>file</code> directives can be used to checkout the latest version of the application and activate it with a symlink as soon as all dependencies have been installed.
 </p>
 
 <p>
@@ -2280,9 +2043,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R05 Staging area</h4>
 
 <p>
-As long as Ansible can connect via SSH to a machine it can set it up as needed.
-Ansible can also launch new virtual machines in the cloud which is useful for
-quickly starting a staging area.
+As long as Ansible can connect via SSH to a machine it can set it up as needed. Ansible can also launch new virtual machines in the cloud which is useful for quickly starting a staging area.
 </p>
 
 <p>
@@ -2292,11 +2053,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R06 Hoster switch</h4>
 
 <p>
-As mention before the only requirement on the host machine is the ability for
-Ansible to connect to it. Once this is provided Ansible can setup the new
-server as required. The only limitation is that Ansible differenciates between
-package management systems, so switching from Apt to YUM would require some
-code changes, but this switch is out of scope of this requirement.
+As mention before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differenciates between package management systems, so switching from Apt to YUM would require some code changes, but this switch is out of scope of this requirement.
 </p>
 
 <p>
@@ -2306,9 +2063,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R11 Configuration files</h4>
 
 <p>
-All configuration files can be stored as templates or raw files in the
-VCS repository of the playbook. Ansible copies them to the target server when
-executed.
+All configuration files can be stored as templates or raw files in the VCS repository of the playbook. Ansible copies them to the target server when executed.
 </p>
 
 <p>
@@ -2318,8 +2073,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R12 Change history</h4>
 
 <p>
-The playbook and all it's files can be stored in the VCS. A CI server can run
-the playbook if a change has been made.
+The playbook and all it's files can be stored in the VCS. A CI server can run the playbook if a change has been made.
 </p>
 
 <p>
@@ -2329,8 +2083,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R13 Open Source</h4>
 
 <p>
-Ansible is Open Source on GitHub and licenced under GNU General Public License
-(GPL) v3.0.
+Ansible is Open Source on GitHub and licenced under GNU General Public License (GPL) v3.0.
 </p>
 
 <p>
@@ -2340,8 +2093,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R14 Test environment</h4>
 
 <p>
-The playbook can also be executed locally to configure a test environment on
-the same machine.
+The playbook can also be executed locally to configure a test environment on the same machine.
 </p>
 
 <p>
@@ -2351,9 +2103,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R15 Encrypted passwords</h4>
 
 <p>
-Ansible provides a tool called Vault to encrypt files with variables. The
-encrypted file can automatically be encrypted when running the playbook. The
-password can be stored in a separate file and shared among developers.
+Ansible provides a tool called Vault to encrypt files with variables. The encrypted file can automatically be encrypted when running the playbook. The password can be stored in a separate file and shared among developers.
 </p>
 
 <p>
@@ -2363,9 +2113,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R16 Superuser access</h4>
 
 <p>
-Ansible doesn't restrict how the server can be accessed. In fact Ansible
-requires that the server can be access using SSH which is the prefered way for
-developers to access the server as well.
+Ansible doesn't restrict how the server can be accessed. In fact Ansible requires that the server can be access using SSH which is the prefered way for developers to access the server as well.
 </p>
 
 <p>
@@ -2375,8 +2123,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R17 Custom software</h4>
 
 <p>
-Operation system packages as well as custom downloaded software can be
-installed using Ansible.
+Operation system packages as well as custom downloaded software can be installed using Ansible.
 </p>
 
 <p>
@@ -2386,9 +2133,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R18 Learning curve</h4>
 
 <p>
-Ansible files are easy to read and the concept can be understood quickly. Only
-the YAML syntax requires a bit of learning but most examples already give a
-good idea how it works.
+Ansible files are easy to read and the concept can be understood quickly. Only the YAML syntax requires a bit of learning but most examples already give a good idea how it works.
 </p>
 
 <p>
@@ -2398,9 +2143,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R19 Horizontal scaling</h4>
 
 <p>
-Ansible can connect to multiple servers and execute the defined commands there.
-Servers can also be grouped by their role so that only specific commands are
-executed on certain servers.
+Ansible can connect to multiple servers and execute the defined commands there. Servers can also be grouped by their role so that only specific commands are executed on certain servers.
 </p>
 
 <p>
@@ -2411,17 +2154,11 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4 class="break">Summary</h4>
 
 <p>
-Ansible was easy to install with pip and was instantly ready to use. Because
-all servers are configured with SSH key authentication already, no
-additional setup is required to make Ansible usable on them.
+Ansible was easy to install with pip and was instantly ready to use. Because all servers are configured with SSH key authentication already, no additional setup is required to make Ansible usable on them.
 </p>
 
 <p>
-It is basically just a thing layer above shell scripts but provides all the
-tools needed for provisioning and maintaining a server (commands, services,
-config files). It lacks a few advanced features for highly complex setups, but
-the fact that it's easy to learn is useful in a small team with shared
-responsibilities.
+It is basically just a thing layer above shell scripts but provides all the tools needed for provisioning and maintaining a server (commands, services, config files). It lacks a few advanced features for highly complex setups, but the fact that it's easy to learn is useful in a small team with shared responsibilities.
 </p>
 
 <figure>
@@ -2688,22 +2425,15 @@ R19 Horizontal scaling
 </figure>
 
 <p>
-Software Containers don't comply with all <em>Must</em> requirements,
-a Configuration Repository misses one <em>Should</em> requirement
-(Learning curve), and Remote Command Execution matches all requirements.
+Software Containers don't comply with all <em>Must</em> requirements, a Configuration Repository misses one <em>Should</em> requirement (Learning curve), and Remote Command Execution matches all requirements.
 </p>
 
 <p>
-Even though Software Containers don't comply with all requirements it is still
-considered a useful concept if it gets combined with a Configuration
-Repository or Remote Command Execution for orchestration.
+Even though Software Containers don't comply with all requirements it is still considered a useful concept if it gets combined with a Configuration Repository or Remote Command Execution for orchestration.
 </p>
 
 <p>
-The following rough estimation for introducing a software type alone or
-together with Software Containers under regular workload also shows
-the result of the higher complexity of a Configuration Repository compared with
-Remote Command Execution.
+The following rough estimation for introducing a software type alone or together with Software Containers under regular workload also shows the result of the higher complexity of a Configuration Repository compared with Remote Command Execution.
 </p>
 
 <figure>
@@ -2804,11 +2534,7 @@ Software Containers
 </figure>
 
 <p>
-The introduction of an orchestration software together with Software Containers
-could be divided into two phases. In the first phase the
-orchestration could be set up with a Configuration Repository or Remote Command
-Execution for the existing infrastructure. In a second phase new applications
-which fit into the model of Software Containers could be adapted to those.
+The introduction of an orchestration software together with Software Containers could be divided into two phases. In the first phase the orchestration could be set up with a Configuration Repository or Remote Command Execution for the existing infrastructure. In a second phase new applications which fit into the model of Software Containers could be adapted to those.
 </p>
 
 
@@ -2987,21 +2713,11 @@ which fit into the model of Software Containers could be adapted to those.
 
 
 <p>
-Software Containers add additional complexity and their advantages are not
-urgently needed for a team of four developers. One of them being able to
-quickly setting up a development environment, which is not as important as
-no new developers are expected to join the team within the next four years.
-The initial concept will focus only on phase one based on the requirements
-and the time available.
+Software Containers add additional complexity and their advantages are not urgently needed for a team of four developers. One of them being able to quickly setting up a development environment, which is not as important as no new developers are expected to join the team within the next four years. The initial concept will focus only on phase one based on the requirements and the time available.
 </p>
 
 <p>
-The evaluation has shown that Remote Command Execution
-is easier to understand and maintain than a Configuration Repository.
-Understanding the system easily is crucial as all
-developers need to be able to make quick changes to the infrastructure. Based on
-this the infrastructure concept will use Remote Command Execution software
-(Ansible) to describe phase one mentioned above.
+The evaluation has shown that Remote Command Execution is easier to understand and maintain than a Configuration Repository. Understanding the system easily is crucial as all developers need to be able to make quick changes to the infrastructure. Based on this the infrastructure concept will use Remote Command Execution software (Ansible) to describe phase one mentioned above.
 </p>
 
 </div>
@@ -3014,11 +2730,7 @@ this the infrastructure concept will use Remote Command Execution software
 <h3>Introduction</h3>
 
 <p>
-The following concept is based on the arc42 template, which provides a
-guideline for documenting software architecture. Goals, constraints and the
-scope (requirements related information) have already been documented in the
-previous chapters. For easier understanding some core concepts of Ansible are
-outlined in this introduction.
+The following concept is based on the arc42 template, which provides a guideline for documenting software architecture. Goals, constraints and the scope (requirements related information) have already been documented in the previous chapters. For easier understanding some core concepts of Ansible are outlined in this introduction.
 </p>
 
 <figure>
@@ -3027,25 +2739,15 @@ outlined in this introduction.
 </figure>
 
 <p>
-Ansible uses the term <em>playbook</em> to describe the collective of
-configuration files, deployment instructions, and environment
-specific variables. Each playbook can have multiple <em>roles</em> which allow
-modular grouping of related files. Best practices how to organize playbooks and
-roles are provided in the <a href="#ref-ansible-docs">Ansible documentation</a>.
+Ansible uses the term <em>playbook</em> to describe the collective of configuration files, deployment instructions, and environment specific variables. Each playbook can have multiple <em>roles</em> which allow modular grouping of related files. Best practices how to organize playbooks and roles are provided in the <a href="#ref-ansible-docs">Ansible documentation</a>.
 </p>
 
 <p>
-A playbook can also be described as a better structured shell script that tells
-the server which commands to execute in which order. Before the commands are
-executed however, it checks if the command is still required or if it is
-redundant. For configuration files it can check if the file needs to be updated
-by comparing the desired content to the actual content on the server.
+A playbook can also be described as a better structured shell script that tells the server which commands to execute in which order. Before the commands are executed however, it checks if the command is still required or if it is redundant. For configuration files it can check if the file needs to be updated by comparing the desired content to the actual content on the server.
 </p>
 
 <p class="break">
-The <a href="#ref-yaml">YAML</a> syntax is used in playbooks for
-defining variables and commands to execute. The following is an example of a
-file for setting up a webserver.
+The <a href="#ref-yaml">YAML</a> syntax is used in playbooks for defining variables and commands to execute. The following is an example of a file for setting up a webserver.
 </p>
 
 <figure>
@@ -3063,9 +2765,7 @@ file for setting up a webserver.
 </figure>
 
 <p>
-Different environment variables can be grouped in <em>inventory</em> files. An
-inventory can contain a list of server addresses of an environment as well as
-configuration variables specific to that environment.
+Different environment variables can be grouped in <em>inventory</em> files. An inventory can contain a list of server addresses of an environment as well as configuration variables specific to that environment.
 </p>
 
 <figure>
@@ -3082,32 +2782,21 @@ proxy_host=proxy.example.org
 <h3>Solution Strategy</h3>
 
 <p>
-The whole infrastructure is described in an Ansible playbook which is shared
-with a Git repository on GitHub. Different services are split up into roles.
-Inside the roles provisioning and deployment are separate tasks and can be
-executed independently.
+The whole infrastructure is described in an Ansible playbook which is shared with a Git repository on GitHub. Different services are split up into roles. Inside the roles provisioning and deployment are separate tasks and can be executed independently.
 </p>
 
 <p>
-Changes to the infrastructure are pushed to the Git repository and then
-Ansible runs on the continuous integration sytem Codeship to deploy the changes
-to the servers. Confidential information like passwords and encryption keys
-are stored in encrypted Ansible Vaults.
+Changes to the infrastructure are pushed to the Git repository and then Ansible runs on the continuous integration sytem Codeship to deploy the changes to the servers. Confidential information like passwords and encryption keys are stored in encrypted Ansible Vaults.
 </p>
 
 <p>
-For application deployment the playbook is downloaded by the continuous
-integration system of the application and the required deployment tasks
-are executed with Ansible to update the application on the server.
+For application deployment the playbook is downloaded by the continuous integration system of the application and the required deployment tasks are executed with Ansible to update the application on the server.
 </p>
 
 <h3 class="break">Building Block View</h3>
 
 <p>
-This chapter explains the files and their organization within the playbook
-used to maintain the WorldSkills infrastructure.
-The most important parts of the playbook are the inventories and the roles,
-they are displayed in the following overview diagram.
+This chapter explains the files and their organization within the playbook used to maintain the WorldSkills infrastructure. The most important parts of the playbook are the inventories and the roles, they are displayed in the following overview diagram.
 </p>
 
 <figure class="full">
@@ -3116,27 +2805,15 @@ they are displayed in the following overview diagram.
 </figure>
 
 <p>
-Enviroment specific variables are stored in different inventories. There are
-two inventories: <em>prod</em> (for production) and <em>staging</em> (for
-system tests). The actual inventory file only lists localhost, as the servers
-are dynamically created. As enviroment  specific variables often contain
-sensitive information they are encrypted with Ansible Vault.
+Enviroment specific variables are stored in different inventories. There are two inventories: <em>prod</em> (for production) and <em>staging</em> (for system tests). The actual inventory file only lists localhost, as the servers are dynamically created. As enviroment  specific variables often contain sensitive information they are encrypted with Ansible Vault.
 </p>
 
 <p>
-The role <em>common</em> is used to execute often used tasks like adding
-public keys of all developers. Instead of hardcoding all servers in the
-inventory file, they are created or fetched dynamically with the
-<em>servers</em> role. Each software has its own role for the installation
-and the setup of the configuration files. Additionally each self-developed
-application has a role to define the deployment and the setup of configuration
-files.
+The role <em>common</em> is used to execute often used tasks like adding public keys of all developers. Instead of hardcoding all servers in the inventory file, they are created or fetched dynamically with the <em>servers</em> role. Each software has its own role for the installation and the setup of the configuration files. Additionally each self-developed application has a role to define the deployment and the setup of configuration files.
 </p>
 
 <p>
-The following table show the file structure of the playbook and explains
-the function for most files and folders. The role <em>apache</em> is used as an
-example, the structure applies for all roles.
+The following table show the file structure of the playbook and explains the function for most files and folders. The role <em>apache</em> is used as an example, the structure applies for all roles.
 </p>
 
 <figure class="full">
@@ -3373,9 +3050,7 @@ Virtual host configuration file template
 <h3>Runtime View</h3>
 
 <p>
-This view explains the dynamic aspects of the playbook execution. In particular
-the creation of the dynamic inventory and how they work together with the roles
-are highlighted.
+This view explains the dynamic aspects of the playbook execution. In particular the creation of the dynamic inventory and how they work together with the roles are highlighted.
 </p>
 
 <figure>
@@ -3384,24 +3059,17 @@ are highlighted.
 </figure>
 
 <p>
-While running the playbook, the first role that gets executed is the
-<em>servers</em> role. This role doesn't execute any remote commands but runs
-locally to connect to the DigitalOcean API. It either creates and boots the
-servers if they don't exist yet or just fetches their information. The
-returned IP addresses are added to the dynamic inventory so following commands
-can be executed on the servers.
+While running the playbook, the first role that gets executed is the <em>servers</em> role. This role doesn't execute any remote commands but runs locally to connect to the DigitalOcean API. It either creates and boots the servers if they don't exist yet or just fetches their information. The returned IP addresses are added to the dynamic inventory so following commands can be executed on the servers.
 </p>
 
 <p>
-Subsequently all other roles are executed. This includes setup of software and
-applications. The commands are sent to the remote servers by Ansible.
+Subsequently all other roles are executed. This includes setup of software and applications. The commands are sent to the remote servers by Ansible.
 </p>
 
 <h3 class="break">Deployment View</h3>
 
 <p>
-In the bigger context the playbook is not executed manually on the developer
-machine but automated on a continuous integration server.
+In the bigger context the playbook is not executed manually on the developer machine but automated on a continuous integration server.
 </p>
 
 <figure class="full">
@@ -3410,20 +3078,11 @@ machine but automated on a continuous integration server.
 </figure>
 
 <p>
-Source code is stored in Git repositories on GitHub. The playbook and each
-application have all their own private repository. The continuous integration
-server Codeship has a build pipeline for each Git repository. For each pipeline
-Codeship has a unique private SSH key. The public keys for those private
-keys can be exported from the web interface and are deployed to GitHub to
-guarantee access to the source code. They are also copied to the virtual
-servers to allow Ansible to connect to the servers via SSH.
+Source code is stored in Git repositories on GitHub. The playbook and each application have all their own private repository. The continuous integration server Codeship has a build pipeline for each Git repository. For each pipeline Codeship has a unique private SSH key. The public keys for those private keys can be exported from the web interface and are deployed to GitHub to guarantee access to the source code. They are also copied to the virtual servers to allow Ansible to connect to the servers via SSH.
 </p>
 
 <p>
-Each application pipeline uses the playbook to provision the infrastructure and
-then deploys the application to the targeted infrastructure. The servers
-required for the production and staging environment are running with the hoster
-DigitalOcean.
+Each application pipeline uses the playbook to provision the infrastructure and then deploys the application to the targeted infrastructure. The servers required for the production and staging environment are running with the hoster DigitalOcean.
 </p>
 
 <p>
@@ -3435,50 +3094,31 @@ DigitalOcean.
 <h4>Playbook organization</h4>
 
 <p>
-A fundamental decision of the project is how to organize and structure the
-playbooks. Each application has it's own repository and allows actions to be
-executed after a push.
+A fundamental decision of the project is how to organize and structure the playbooks. Each application has it's own repository and allows actions to be executed after a push.
 </p>
 
 <p>
-Two variations are possible: One repository with a playbook for the
-infrastrucutre and deployment, or a playbook in each application repository.
-The first approach has been chosen to easily allow sharing of variables from the
-infrastructure setup with application deployment.
+Two variations are possible: One repository with a playbook for the infrastrucutre and deployment, or a playbook in each application repository. The first approach has been chosen to easily allow sharing of variables from the infrastructure setup with application deployment.
 </p>
 
 <h4>Usage of inventories</h4>
 
 <p>
-Ansible is built to also manage legacy infrastructures with existing servers,
-so the main purpose of inventories is to provide a list of servers grouped
-by their function. But Ansible also has built-in server provisioners, which
-allows to take the approach of an idempotent infrastructure one step further
-and also create the virtual servers with Ansible as part of the playbook.
+Ansible is built to also manage legacy infrastructures with existing servers, so the main purpose of inventories is to provide a list of servers grouped by their function. But Ansible also has built-in server provisioners, which allows to take the approach of an idempotent infrastructure one step further and also create the virtual servers with Ansible as part of the playbook.
 </p>
 
 <p>
-Usually inventory files in Ansible playbooks contain a list of IP addresses or
-server names which belong to the infrastructure, but with the proposed concept
-the only server listed in the inventory file is <em>localhost</em>. This is
-because the servers get added to the inventory list in memory while running the
-playbook. If the servers don't exist yet, they get created; if they already
-exist, their IP addresses are added to the inventory.
+Usually inventory files in Ansible playbooks contain a list of IP addresses or server names which belong to the infrastructure, but with the proposed concept the only server listed in the inventory file is <em>localhost</em>. This is because the servers get added to the inventory list in memory while running the playbook. If the servers don't exist yet, they get created; if they already exist, their IP addresses are added to the inventory.
 </p>
 
 <p>
-This approach has the advantage that temporary environments (like staging) can
-easily be created and existing IP addresses of existing servers don't need
-to be manually maintained inside an inventory file.
+This approach has the advantage that temporary environments (like staging) can easily be created and existing IP addresses of existing servers don't need to be manually maintained inside an inventory file.
 </p>
 
 <h4>Ansible Tower</h4>
 
 <p>
-The company behind Ansible distributes also a commercial software called
-<a href="#ref-ansible-tower">Ansible Tower</a> for running playbooks with a
-user interface. The software provides a web interface with permission
-management, an audit trail and visualizations.
+The company behind Ansible distributes also a commercial software called <a href="#ref-ansible-tower">Ansible Tower</a> for running playbooks with a user interface. The software provides a web interface with permission management, an audit trail and visualizations.
 </p>
 
 <figure>
@@ -3487,68 +3127,39 @@ management, an audit trail and visualizations.
 </figure>
 
 <p>
-Ansible Tower was not used for this project due to the high price
-(starting at $5000 per year) and because it wouldn't bring many additional benefits.
-As all four developers responsible for the system are used to working with Git
-there's no need for a graphical user interface. It would also contradict the
-princile of having all changes driven by code and it's advantage of being able
-to easily trace a change.
+Ansible Tower was not used for this project due to the high price (starting at $5000 per year) and because it wouldn't bring many additional benefits. As all four developers responsible for the system are used to working with Git there's no need for a graphical user interface. It would also contradict the princile of having all changes driven by code and it's advantage of being able to easily trace a change.
 </p>
 
 <h3>Technical Risks</h3>
 
 <p>
-The following paragraphs outlines potential technical risks of the architecture
-concept. The factors convenience and security are often conflicting and need to
-weighted in each case.
+The following paragraphs outlines potential technical risks of the architecture concept. The factors convenience and security are often conflicting and need to weighted in each case.
 </p>
 
 <p>
-One disadvantage of automating the server setup is that the executor needs full
-administration access to the servers. In the proposed concept the continious
-integration server has superuser access to all servers. This leads to two attack
-scenarios: An attacker could compromise the continious integration server to
-gain access to the servers. Or the attacker could compromise the source code
-repository and infiltrate the server through malicious commands. Both
-<a href="#ref-github-security">GitHub</a> and
-<a href="#ref-codeship-security">Codeship</a> take appropriate actions to
-prevent these kind of attacks.
+One disadvantage of automating the server setup is that the executor needs full administration access to the servers. In the proposed concept the continious integration server has superuser access to all servers. This leads to two attack scenarios: An attacker could compromise the continious integration server to gain access to the servers. Or the attacker could compromise the source code repository and infiltrate the server through malicious commands. Both <a href="#ref-github-security">GitHub</a> and <a href="#ref-codeship-security">Codeship</a> take appropriate actions to prevent these kind of attacks.
 </p>
 
 <p>
-As the staging environment is always built by syncing databases from production
-the risk of data leakage increases as staging environments are often regarded as
-non-critical. By treating the staging environment as confidential as the
-production environment (e.g. encrypting staging passwords), incidents can be
-prevented.
+As the staging environment is always built by syncing databases from production the risk of data leakage increases as staging environments are often regarded as non-critical. By treating the staging environment as confidential as the production environment (e.g. encrypting staging passwords), incidents can be prevented.
 </p>
 
 <h3>Testing</h3>
 
 <p>
-Ansible provides two flags when running playbooks which are particularly useful
-for testing. <code>--syntax-check</code> validates the YAML syntax of the
-playbook and can be used to discover problems early.
+Ansible provides two flags when running playbooks which are particularly useful for testing. <code>--syntax-check</code> validates the YAML syntax of the playbook and can be used to discover problems early.
 </p>
 
 <p>
-The flag <code>--check</code> runs the playbook in a special mode where a
-<em>dry run</em> is performed. In this mode no changes are made on remote
-systems, but all tasks are checked if they can be executed. Thanks to this it
-can easily be checked if the playbook would run or fail (e.g. because of some
-missing variables). Unfortunately this is not always possible as some modules
-require some dependencies to be installed (e.g. rabbitmq_plugins).
+The flag <code>--check</code> runs the playbook in a special mode where a <em>dry run</em> is performed. In this mode no changes are made on remote systems, but all tasks are checked if they can be executed. Thanks to this it can easily be checked if the playbook would run or fail (e.g. because of some missing variables). Unfortunately this is not always possible as some modules require some dependencies to be installed (e.g. rabbitmq_plugins).
 </p>
 
 <p>
-Because of the restrictions of the check mode only the syntax check is
-performed as an automated test. Further testing can be done manually in the
-staging environment.
+Because of the restrictions of the check mode only the syntax check is performed as an automated test. Further testing can be done manually in the staging environment.
 </p>
 
 <p>
-After testing is completed and the branch has been merged into the master
-branch the staging environment can be removed with a separate Ansible task.
+After testing is completed and the branch has been merged into the master branch the staging environment can be removed with a separate Ansible task.
 </p>
 
 </div>
@@ -3706,8 +3317,7 @@ branch the staging environment can be removed with a separate Ansible task.
 <h3 class="break">Software</h3>
 
 <p>
-The make the results of this thesis reproducible, the following list shows the
-version of the software used.
+The make the results of this thesis reproducible, the following list shows the version of the software used.
 </p>
 
 <ul>
