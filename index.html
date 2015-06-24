@@ -3198,6 +3198,44 @@ To prepare for horizontal scaling the databases are deployed to a separate serve
 <figcaption>Proof-of-concept infrastructure</figcaption>
 </figure>
 
+<p>
+The proof-of-concept also includes the dynamic generation of staging environments based on branch naming. The source code for all applications and the Ansible playbook is stored in a separate organization on GitHub. The domain name <em>worldskills.ch</em> is used for the proof-of-concept.
+</p>
+
+<h4>Ansible playbook</h4>
+
+<p>
+The first role needed is the <em>servers</em> role which creates the servers on the DigitalOcean infrastructure. The servers are identified by their name, their IP address is stored for usage in other roles (e.g. <code>digital_ocean_ip_web</code>).
+</p>
+
+<figure>
+<pre><code>---
+- name: create droplet
+  digital_ocean:
+    state: present
+    command: droplet
+    name: "{{ item.key }}" # server name
+    [...]
+    size_id: 63 # 1 GB memory
+    image_id: 11836690 # Ubuntu 14.04
+    region_id: 10 # server region Frankfurt
+    unique_name: yes # identify server by name
+    client_id: "{{ digital_ocean_client_id }}"
+    api_key: "{{ digital_ocean_api_key }}"
+  register: droplets_response # store DigitalOcean response
+  with_dict: # loop over list of servers
+    web: {group: web}
+    api: {group: api}
+    database: {group: database}
+
+- name: store droplet ip # store IP addresses in variables
+  set_fact: "digital_ocean_ip_{{ item.item.key }}={{ item.droplet.ip_address }}"
+  with_items: droplets_response.results # loop over all servers
+</code></pre>
+<figcaption>Role servers</figcaption>
+</figure>
+
+
 <h3>Challenges</h3>
 
 <p>
