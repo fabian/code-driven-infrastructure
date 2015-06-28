@@ -3235,6 +3235,40 @@ The first role needed is the <em>servers</em> role which creates the servers on 
 <figcaption>Role servers</figcaption>
 </figure>
 
+<p>
+After running the servers role the servers are visible in the DigitalOcean web interface.
+</p>
+
+<figure class="full">
+<img src="images/screenshot-digitalocean-droplets.png" />
+<figcaption>Screenshot DigitalOcean servers</figcaption>
+</figure>
+
+<p>
+PHP and other required software is then installed and the configured with Ansible:
+</p>
+
+<figure>
+<pre><code>---
+- name: install
+  apt: name={{ item }} state=present # install software packages
+  with_items:
+    - php5
+    - libapache2-mod-php5
+    - php5-mysql
+    - php5-curl
+    - php5-gd
+    - php5-cli
+    - php5-intl
+  notify: restart apache # restart Apache after PHP installation
+
+- name: put configuration file in place
+  template: src=worldskills.ini.j2 dest="{{ php_ext_path }}/worldskills.ini"
+  notify: restart apache # restart Apache if configuration changes
+</code></pre>
+<figcaption>Role php tasks</figcaption>
+</figure>
+
 
 <h3>Challenges</h3>
 
