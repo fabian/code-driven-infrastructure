@@ -3327,6 +3327,12 @@ After running the playbook repeatedly, the PHP was suddendly unable to connect t
 The main issue is that Ansible isn't using the correct restart command, so instead of relying on the Ansible <code>service</code> module, the correct command is now executed with the <code>shell</code> module directly. A fix for this bug will be available in <a href="#ref-ansible-github-999">Ansible 1.9.2</a>. After the release the <code>service</code> module can be used again.
 </p>
 
+<h4>Missed handlers when task failed</h4>
+
+<p>
+If a task in a playbook fails, the execution stops. Queued handlers are lost. In the next run the handler might not be notified. A required restart gets forgotten. Solved with <code>force_handlers: True</code>.
+</p>
+
 
 <h3>Test Results</h3>
 
