@@ -3301,6 +3301,22 @@ A problem that occured durring testing with DigitalOcean was that sometimes the 
 After reseting the root password of the server via the DigitalOcean web interface and connecting via their remote control interface it turned out the server was missing the SSH keys required to successfuly connect to it. Contacting the support of DigitalOcean didn't bring any new information, they assured that they are not aware of any software problem. As this problem only occurs sometimes it is most likely related to a race condition when deleting a server an creating a new one with the same name.
 </p>
 
+<h4>Problem SSH connection timeout</h4>
+
+<p>
+Another similar SSH problem was the sometimes the SSH connection was reset while the Ansible playbook was running. A first part of the playbook was successfully executed on the database servers but the next part which was to be executed on the API servers failed with the following message.
+</p>
+
+<figure>
+<pre><code>ssh: connect to host 46.101.255.100 port 22: Connection timed out
+Couldn't read packet: Connection reset by peer
+</code></pre>
+</figure>
+
+<p>
+Checking the SSH timeout variables (ClientAliveInterval, ClientAliveCountMax, ServerAliveInterval) showed that the both the SSH server and the client are configured correctly. Manual testing of the SSH connection from Codeship to DigitalOcean by keeping the connection idle for some time also worked as expected. The problem could not be reproduced and happended only twice. Most likely a temporary network problem between Codeship and DigitalOcean.
+</p>
+
 <h4>Problem MySQL socket</h4>
 
 <p>
