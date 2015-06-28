@@ -3283,10 +3283,10 @@ Originally it was planned to use <em>group_vars</em> on the playbook level to de
 </p>
 
 <p>
-The problem has been solved by moving the default values to the individual roles. This has the disadvantage that default values cannot be shared between roles. Hopefully Ansible will introduce default values on the playbook level in the future.
+The problem has been solved by moving the default values to the individual roles. This has the disadvantage that default values can only be shared between roles that run on the same server. Hopefully Ansible will introduce default values on the playbook level in the future.
 </p>
 
-<h4>Problem SSH Connection closed</h4>
+<h4>Problem SSH connection closed</h4>
 
 <p>
 A problem that occured durring testing with DigitalOcean was that sometimes the servers couldn't be created properly. When trying to connect to the just created server via SSH the connection was always declined.
