@@ -3314,7 +3314,7 @@ With the deployment commands, the master branch gets deployed to the production 
 </figure>
 
 <p>
-All branches starting with <code>staging-</code> are deployed to a environment with the branch name. Codeship provides the current branch name as environment variable <code>$CI_BRANCH</code>. The variable <code>digital_ocean_droplet_prefix</code> gets overriden from the command line with the option <code>-e</code> (<code>--extra-vars</code>).
+All branches starting with <code>staging-</code> are deployed to a environment with the branch name. Codeship provides the current branch name as environment variable <code>$CI_BRANCH</code>. The variable <code>digital_ocean_droplet_prefix</code> gets overriden from the command line with the option <code>-e</code> (additional variables).
 </p>
 
 <figure>
@@ -3412,7 +3412,135 @@ If a task in an Ansible playbook fails, the execution of the whole playbook stop
 <h3>Test Results</h3>
 
 <p>
+The whole proof-of-concept infrastructure can be created in 27 minutes 21 seconds.
 </p>
+
+<figure>
+<pre><code class="small">PLAY [provision]
+TASK: [servers | create droplet]
+TASK: [servers | store ips]
+TASK: [servers | store private ips]
+TASK: [servers | create web domain]
+TASK: [servers | create events domain]
+TASK: [servers | create api domain]
+TASK: [servers | add hosts to the inventory group]
+PLAY [digital_ocean]
+TASK: [Wait for port 22 to become available.]
+
+PLAY [servers]
+GATHERING FACTS
+TASK: [common | remove Landscape packages (cause unnecessary delay)]
+TASK: [common | update apt cache once a day]
+TASK: [common | install development tools]
+TASK: [common | add public keys]
+TASK: [common | add GitHub to known hosts]
+TASK: [common | create working directory]
+
+PLAY [database]
+GATHERING FACTS
+TASK: [mysql | install]
+TASK: [mysql | install Python interface]
+TASK: [mysql | install Java interface]
+TASK: [mysql | create configuration file]
+TASK: [mysql | create worldskills_concrete5 database]
+TASK: [mysql | create worldskills_concrete5 user]
+TASK: [mysql | get worldskills_concrete5 dump from prod]
+TASK: [mysql | copy worldskills_concrete5 normalize script]
+TASK: [mysql | create worldskills_auth database]
+TASK: [mysql | create worldskills_auth user]
+TASK: [mysql | get worldskills_auth dump from prod]
+TASK: [mysql | copy worldskills_auth normalize script]
+TASK: [mysql | create worldskills_events database]
+TASK: [mysql | create worldskills_events user]
+TASK: [mysql | get worldskills_events dump from prod]
+TASK: [mysql | copy worldskills_events normalize script]
+TASK: [rabbitmq | import repository key]
+TASK: [rabbitmq | add apt repository]
+TASK: [rabbitmq | install]
+TASK: [rabbitmq | enable plugins]
+TASK: [rabbitmq | run service]
+TASK: [rabbitmq | add users]
+TASK: [rabbitmq | remove default guest user]
+NOTIFIED: [mysql | restart mysql]
+NOTIFIED: [mysql | import worldskills_concrete5 database]
+NOTIFIED: [mysql | run worldskills_concrete5 normalize script]
+NOTIFIED: [mysql | import worldskills_auth database]
+NOTIFIED: [mysql | run worldskills_auth normalize script]
+NOTIFIED: [mysql | import worldskills_events database]
+NOTIFIED: [mysql | run worldskills_events normalize script]
+NOTIFIED: [rabbitmq | restart rabbitmq]
+
+PLAY [api]
+GATHERING FACTS
+TASK: [tomcat | install Java]
+TASK: [tomcat | install]
+TASK: [tomcat | create configuration file]
+TASK: [tomcat | create logging configuration]
+TASK: [tomcat | run service]
+TASK: [tomcat | get wsideps from prod]
+TASK: [tomcat | add wsideps to classpath]
+TASK: [worldskills_api_auth | get WAR from prod]
+TASK: [worldskills_api_auth | deploy]
+TASK: [worldskills_api_events | get WAR from prod]
+TASK: [worldskills_api_events | deploy]
+NOTIFIED: [tomcat | restart tomcat]
+
+PLAY [web]
+GATHERING FACTS
+TASK: [apache | install]
+TASK: [apache | run service]
+TASK: [apache | enable mod_rewrite]
+TASK: [apache | add vhosts configuration]
+TASK: [apache | enable vhosts]
+TASK: [php | install]
+TASK: [php | ensure configuration directories exist]
+TASK: [php | put WorldSkills configuration file in place]
+TASK: [php | download Composer]
+TASK: [php | move Composer to global location]
+TASK: [npm | install]
+TASK: [npm | install packages]
+TASK: [worldskills_concrete5 | clone project]
+TASK: [worldskills_concrete5 | create shared directory]
+TASK: [worldskills_concrete5 | get files directory from prod]
+TASK: [worldskills_concrete5 | set release path]
+TASK: [worldskills_concrete5 | export a copy of the repo]
+TASK: [worldskills_concrete5 | check for existing files directory]
+TASK: [worldskills_concrete5 | remove existing files directory]
+TASK: [worldskills_concrete5 | link files directory]
+TASK: [worldskills_concrete5 | install Composer dependencies]
+TASK: [worldskills_concrete5 | create config]
+TASK: [worldskills_concrete5 | create properties file]
+TASK: [worldskills_concrete5 | link release to current]
+TASK: [worldskills_auth | clone project]
+TASK: [worldskills_auth | create shared directory]
+TASK: [worldskills_auth | create logs directory]
+TASK: [worldskills_auth | create log file]
+TASK: [worldskills_auth | set release path]
+TASK: [worldskills_auth | export a copy of the repo]
+TASK: [worldskills_auth | check for existing logs directory]
+TASK: [worldskills_auth | remove existing logs directory]
+TASK: [worldskills_auth | link logs directory]
+TASK: [worldskills_auth | install Composer dependencies]
+TASK: [worldskills_auth | create config]
+TASK: [worldskills_auth | link release to current]
+TASK: [worldskills_events | clone project]
+TASK: [worldskills_events | set release path]
+TASK: [worldskills_events | export a copy of the repo]
+TASK: [worldskills_events | install npm dependencies]
+TASK: [worldskills_events | install bower dependencies]
+TASK: [worldskills_events | create config]
+TASK: [worldskills_events | link release to current]
+NOTIFIED: [apache | restart apache]
+NOTIFIED: [worldskills_events | build worldskills_events]
+
+PLAY RECAP
+127.0.0.1                  : ok=7    changed=3    unreachable=0    failed=0
+46.101.255.100             : ok=21   changed=15   unreachable=0    failed=0
+46.101.255.101             : ok=54   changed=42   unreachable=0    failed=0
+46.101.255.110             : ok=40   changed=34   unreachable=0    failed=0
+</code></pre>
+<figcaption>Output playbook</figcaption>
+</figure>
 
 </div>
 
