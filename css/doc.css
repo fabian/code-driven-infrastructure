@@ -99,7 +99,8 @@ h2.nonr,
 h3.nonr,
 h4,
 p,
-figure {
+figure,
+dl {
     padding-left: 90px;
 }
 
@@ -215,6 +216,18 @@ figure pre {
 figure figcaption {
     page-break-before: avoid;
     font-size: 0.75em;
+}
+
+dt {
+    width: 140px;
+    font-weight: normal;
+    float: left;
+    clear: left;
+}
+
+dd {
+    margin-left: 140px;
+    margin-bottom: 1em;
 }
 
 
