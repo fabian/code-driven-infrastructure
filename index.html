@@ -3210,15 +3210,13 @@ The first role needed is the <em>servers</em> role which creates the servers on 
 
 <figure>
 <pre><code>---
-- name: create droplet
+- name: create servers
   digital_ocean:
-    state: present
     command: droplet
+    state: present
     name: "{{ item.key }}" # server name
-    [...]
     size_id: 63 # 1 GB memory
     image_id: 11836690 # Ubuntu 14.04
-    region_id: 10 # server region Frankfurt
     unique_name: yes # identify server by name
     client_id: "{{ digital_ocean_client_id }}"
     api_key: "{{ digital_ocean_api_key }}"
@@ -3228,7 +3226,7 @@ The first role needed is the <em>servers</em> role which creates the servers on 
     api: {group: api}
     database: {group: database}
 
-- name: store droplet ip # store IP addresses in variables
+- name: store server ips # store IP addresses in variables
   set_fact: "digital_ocean_ip_{{ item.item.key }}={{ item.droplet.ip_address }}"
   with_items: droplets_response.results # loop over all servers
 </code></pre>
@@ -3250,7 +3248,7 @@ PHP and other required software is then installed and the configured with Ansibl
 
 <figure>
 <pre><code>---
-- name: install
+- name: install PHP
   apt: name={{ item }} state=present # install software packages
   with_items:
     - php5
@@ -3258,8 +3256,6 @@ PHP and other required software is then installed and the configured with Ansibl
     - php5-mysql
     - php5-curl
     - php5-gd
-    - php5-cli
-    - php5-intl
   notify: restart apache # restart Apache after PHP installation
 
 - name: put configuration file in place
@@ -3267,6 +3263,85 @@ PHP and other required software is then installed and the configured with Ansibl
   notify: restart apache # restart Apache if configuration changes
 </code></pre>
 <figcaption>Role php tasks</figcaption>
+</figure>
+
+<h4>GitHub setup</h4>
+
+<p>
+An independent GitHub organization is used to keep the proof-of-concept separated from existing WorldSkills projects. All projects which are part of the proof-of-concept have been replicated as private repositories in this organization. Most notably is the new repository <em>worldskills-playbook</em> which contains the Ansible playbook.
+</p>
+
+<figure class="full">
+<img src="images/screenshot-github.png" />
+<figcaption>Screenshot GitHub repositories</figcaption>
+</figure>
+
+<h4>Codeship setup</h4>
+
+<p>
+Codeship knows setup, test and deployment commands. Setup and test commands are always executed, deploment commands can be different for each branch. Deployment commands are only executed if the test commands succeed. If there's a syntax error in the Ansible playbook, the deployment commands are not executed.
+</p>
+
+<p>
+The setup commands on Codeship install Ansible and other required software. The vault password is stored as an environment variable on Codeship. During setup the variable is written to a Vault password file. This approach prevents it from being displayed in the execution logs.
+</p>
+
+<figure>
+<pre><code>pip install ansible dopy httplib2
+echo $VAULT_PASSWORD > vault_password.txt
+</code></pre>
+</figure>
+
+<p>
+The test command then runs the syntax check of the main Ansible playbook file locally. The comma at the end of <code>localhost,</code> tells Ansible to use the passed string as inventory instead of trying to load an inventory file.
+</p>
+
+<figure>
+<pre><code>ansible-playbook -i localhost, site.yml --syntax-check
+</code></pre>
+</figure>
+
+<p>
+With the deployment commands, the master branch gets deployed to the production environment. The production inventory is loaded from the file <code>inventories/prod</code> and the Vault password file created with the setup commands is used for encrypting the production variables.
+</p>
+
+<figure>
+<pre><code>ansible-playbook \
+    -i inventories/prod \
+    --vault-password-file=vault_password.txt \
+    site.yml
+</code></pre>
+</figure>
+
+<p>
+All branches starting with <code>staging-</code> are deployed to a environment with the branch name. Codeship provides the current branch name as environment variable <code>$CI_BRANCH</code>. The variable <code>digital_ocean_droplet_prefix</code> gets overriden from the command line with the option <code>-e</code> (<code>--extra-vars</code>).
+</p>
+
+<figure>
+<pre><code>ansible-playbook \
+    -i inventories/staging \
+    --vault-password-file=vault_password.txt \
+    -e "digital_ocean_droplet_prefix=$CI_BRANCH" \
+    site.yml
+</code></pre>
+</figure>
+
+<p>
+All commands are logged and reported in the Codeship web interface.
+</p>
+
+<figure class="full">
+<img src="images/screenshot-codeship.png" />
+<figcaption>Screenshot Codeship execution</figcaption>
+</figure>
+
+<p>
+With a webhook the status of every build is also displayed in Slack, the chat application used by WorldSkills.
+</p>
+
+<figure>
+<img src="images/screenshot-slack.png" />
+<figcaption>Screenshot notification Slack</figcaption>
 </figure>
 
 
@@ -3298,7 +3373,7 @@ A problem that occured durring testing with DigitalOcean was that sometimes the 
 </figure>
 
 <p>
-After reseting the root password of the server via the DigitalOcean web interface and connecting via their remote control interface it turned out the server was missing the SSH keys required to successfuly connect to it. Contacting the support of DigitalOcean didn't bring any new information, they assured that they are not aware of any software problem. As this problem only occurs sometimes it is most likely related to a race condition when deleting a server an creating a new one with the same name.
+After reseting the root password of the server via the DigitalOcean web interface and connecting via their remote control interface it turned out the server was missing the SSH keys required to successfuly connect to it. Contacting the support of DigitalOcean didn't bring any new information, they assured that they are not aware of any software problem. As this problem only occurs sometimes it is most likely related to a race condition when deleting a server an creating a new one with the same name. Waiting at least 5 minutes before trying to create the same servers again solved the problem.
 </p>
 
 <h4>Problem SSH connection timeout</h4>
@@ -3330,7 +3405,7 @@ The main issue is that Ansible isn't using the correct restart command, so inste
 <h4>Missed handlers when task failed</h4>
 
 <p>
-If a task in a playbook fails, the execution stops. Queued handlers are lost. In the next run the handler might not be notified. A required restart gets forgotten. Solved with <code>force_handlers: True</code>.
+If a task in an Ansible playbook fails, the execution of the whole playbook stops. Queued handlers are lost if this happens and in the next run the handlers might not get notified again. Because of this a required restart easily gets forgotten and can caused unexpected server states (e.g. configuration file has been updated but a restart is required for loading the updated configuration). Luckily Ansible can be forced to always run handlers, even if a task fails with the setting <code>force_handlers:&nbsp;True</code>. This solved the problem of missed application restarts.
 </p>
 
 
@@ -3513,6 +3588,7 @@ The make the results of this thesis reproducible, the following list shows the v
 <li>Python 2.7.9</li>
 <li>pip 6.0.6</li>
 <li>Atom 0.211.0</li>
+<li>Slack 1.0.5</li>
 </ul>
 
 <h3 class="break">Glossary</h3>
