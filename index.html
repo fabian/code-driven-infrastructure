@@ -3265,6 +3265,16 @@ PHP and other required software is then installed and the configured with Ansibl
 <figcaption>Role php tasks</figcaption>
 </figure>
 
+<h4>Data synchronization</h4>
+
+<p>
+As the CMS of the website heavily depends on content in the database for working properly, the database must be synced from the current infrastructure to the proof-of-concept infrastructure. Additionally this synchronization must be done when creating a staging environment.
+</p>
+
+<p>
+Because Ansible is using SSH the server which the new database is running on can get an export of the database directly from the production database server.
+</p>
+
 <h4>GitHub setup</h4>
 
 <p>
@@ -3274,6 +3284,15 @@ An independent GitHub organization is used to keep the proof-of-concept separate
 <figure class="full">
 <img src="images/screenshot-github.png" />
 <figcaption>Screenshot GitHub repositories</figcaption>
+</figure>
+
+<p>
+Every commit is also display in Slack, the chat application used by WorldSkills. This guarantees that all developers are aware of the change.
+</p>
+
+<figure>
+<img src="images/screenshot-slack-github.png" />
+<figcaption>Screenshot commit in Slack</figcaption>
 </figure>
 
 <h4>Codeship setup</h4>
@@ -3336,13 +3355,17 @@ All commands are logged and reported in the Codeship web interface.
 </figure>
 
 <p>
-With a webhook the status of every build is also displayed in Slack, the chat application used by WorldSkills.
+With a webhook the status of every build is also displayed in Slack.
 </p>
 
 <figure>
 <img src="images/screenshot-slack.png" />
 <figcaption>Screenshot notification Slack</figcaption>
 </figure>
+
+<p>
+The danger of a race condition with multiple playbooks running at the same time is avoided by the Codeship plan which allows only one concurrent build.
+</p>
 
 
 <h3>Challenges</h3>
@@ -3412,11 +3435,11 @@ If a task in an Ansible playbook fails, the execution of the whole playbook stop
 <h3>Test Results</h3>
 
 <p>
-The whole proof-of-concept infrastructure can be created in 27 minutes 21 seconds.
+The whole proof-of-concept infrastructure can be created in 27 minutes.
 </p>
 
 <figure>
-<pre><code class="small">PLAY [provision]
+<pre><code class="small">PLAY [provision] **************************************************************
 TASK: [servers | create droplet]
 TASK: [servers | store ips]
 TASK: [servers | store private ips]
@@ -3427,7 +3450,7 @@ TASK: [servers | add hosts to the inventory group]
 PLAY [digital_ocean]
 TASK: [Wait for port 22 to become available.]
 
-PLAY [servers]
+PLAY [servers] ****************************************************************
 GATHERING FACTS
 TASK: [common | remove Landscape packages (cause unnecessary delay)]
 TASK: [common | update apt cache once a day]
@@ -3436,7 +3459,7 @@ TASK: [common | add public keys]
 TASK: [common | add GitHub to known hosts]
 TASK: [common | create working directory]
 
-PLAY [database]
+PLAY [database] ***************************************************************
 GATHERING FACTS
 TASK: [mysql | install]
 TASK: [mysql | install Python interface]
@@ -3470,7 +3493,7 @@ NOTIFIED: [mysql | import worldskills_events database]
 NOTIFIED: [mysql | run worldskills_events normalize script]
 NOTIFIED: [rabbitmq | restart rabbitmq]
 
-PLAY [api]
+PLAY [api] ********************************************************************
 GATHERING FACTS
 TASK: [tomcat | install Java]
 TASK: [tomcat | install]
@@ -3485,7 +3508,7 @@ TASK: [worldskills_api_events | get WAR from prod]
 TASK: [worldskills_api_events | deploy]
 NOTIFIED: [tomcat | restart tomcat]
 
-PLAY [web]
+PLAY [web] ********************************************************************
 GATHERING FACTS
 TASK: [apache | install]
 TASK: [apache | run service]
@@ -3533,7 +3556,7 @@ TASK: [worldskills_events | link release to current]
 NOTIFIED: [apache | restart apache]
 NOTIFIED: [worldskills_events | build worldskills_events]
 
-PLAY RECAP
+PLAY RECAP ********************************************************************
 127.0.0.1                  : ok=7    changed=3    unreachable=0    failed=0
 46.101.255.100             : ok=21   changed=15   unreachable=0    failed=0
 46.101.255.101             : ok=54   changed=42   unreachable=0    failed=0
@@ -3541,6 +3564,10 @@ PLAY RECAP
 </code></pre>
 <figcaption>Output playbook</figcaption>
 </figure>
+
+<p>
+As the whole playbook is idempotent, it can be executed repeatidly without making any changes. Executing it without making any modifications takes 8 minutes.
+</p>
 
 </div>
 
