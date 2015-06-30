@@ -3577,6 +3577,19 @@ As the whole playbook is idempotent, it can be executed repeatidly without makin
 <h2 class="break">Conclusions</h2>
 
 <p>
+One learning of this project is that idempotence is hard. This not only applies to Ansible but to every server management software. There are always multiple sources for changes on a modern computer system and almost infinite states exist. Reducing the configuration of the whole system to one repository (the Ansible playbook in this case) helps by reducing dependencies.
+</p>
+
+<p>
+Given that the whole infrastructure can be duplicated automatically one could think of using this for automated testing of every change to the Ansible playbook. However as the creation of such a testing environment takes more than 20 minutes every little change to the infrastructure would also take at least that long - so this option is not considered useful. Instead the choice of creating a staging environment is left up to developer if a certain change needs to be tested more detailed. Further testing tools (e.g. Selenium) can also easily be integrated with Ansible.
+</p>
+
+<p>
+The usage of Ansible makes the infrastrucutre more structured and changes more visible while keeping it flexible for future developments (like the integration of Docker).
+</p>
+
+<p>
+The time required to create the staging environment is considered a potential problem, especially as it gets worse with every additional application. The most time is used by the build of JavaScript and PHP applications. Storing compiled versions of these applications on a central server would improve the build time of a new staging environment but requires more development outside the scope of this project.
 </p>
 
 </div>
