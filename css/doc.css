@@ -179,8 +179,15 @@ table .even td {
     background-color: #f5f5f5;
 }
 
-pre code {
+code {
     font-size: 0.8em;
+}
+
+code.small {
+    font-size: 0.63em;
+}
+
+pre code {
     display: block;
     border-left: 1px solid #126396;
     padding: 0.5em 0 0.5em 19px;
@@ -390,9 +397,8 @@ figcaption[title]:after::footnote-call {
         margin-bottom: 2em;
     }
 
-    pre.code code,
-    p.code code {
-        font-size: 0.9em;
+    pre code {
+        font-size: 0.75em;
     }
 
     .break {
