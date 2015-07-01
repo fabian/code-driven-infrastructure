@@ -197,6 +197,10 @@ pre code {
     page-break-inside: avoid;
 }
 
+p + figure {
+    page-break-before: avoid;
+}
+
 figure {
     margin: 0;
     text-align: center;
