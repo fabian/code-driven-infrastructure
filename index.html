@@ -3537,8 +3537,11 @@ TASK: [worldskills_api_auth | deploy]
 TASK: [worldskills_api_events | get WAR from prod]
 TASK: [worldskills_api_events | deploy]
 NOTIFIED: [tomcat | restart tomcat]
+</code></pre>
+</figure>
 
-PLAY [web] ********************************************************************
+<figure>
+<pre><code class="small">PLAY [web] ********************************************************************
 GATHERING FACTS
 TASK: [apache | install]
 TASK: [apache | run service]
