@@ -3602,6 +3602,28 @@ PLAY RECAP ********************************************************************
 As the whole playbook is idempotent, it can be executed repeatidly without making any changes. Executing it without making any modifications takes 8 minutes.
 </p>
 
+<p>
+All system tests are executed after the main Ansible playbook. They check content on various URLs to make sure the applications are running as expected.
+</p>
+
+<figure>
+<pre><code class="small">PLAY [all] ********************************************************************
+TASK: [check Events API]
+TASK: [verify Events API]
+TASK: [check Auth API]
+TASK: [verify Auth API]
+TASK: [check concrete5]
+TASK: [verify concrete5]
+TASK: [check Auth application]
+TASK: [verify Auth application]
+TASK: [check Events application]
+TASK: [verify Events application]
+
+PLAY RECAP ********************************************************************
+localhost                  : ok=5    changed=0    unreachable=0    failed=0   </code></pre>
+<figcaption>Output system tests</figcaption>
+</figure>
+
 </div>
 
 
