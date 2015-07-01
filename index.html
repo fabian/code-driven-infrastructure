@@ -127,7 +127,7 @@ The following tasks will be completed by the student as part of the Bachelor the
 <h3>Project Management</h3>
 
 <p>
-The following gantt diagramm shows an overview of the timeline during the project as well as the dates of the most important milestones.
+The following gantt diagram shows an overview of the timeline during the project as well as the dates of the most important milestones.
 </p>
 
 <figure class="full">
@@ -376,7 +376,7 @@ The following gantt diagramm shows an overview of the timeline during the projec
 <h3>Overview</h3>
 
 <p>
-The following requirements were established by analysing the existing infrastrucutre and taking known problems into account.
+The following requirements were established by analysing the existing infrastructure and taking known problems into account.
 </p>
 
 <h3>Stakeholders</h3>
@@ -453,7 +453,7 @@ Both Developer and User need to interact with the infrastructure or the applicat
 </p>
 
 <p>
-The source code of most applications is stored on GitHub. Codeship is used for running automated tests and executing the deployment of new versions. The hoster provides the servers for running the infrastrucutre. All three vendors influence the requirements indirectly with the constraints of their services. They are outside of the system context as they cannot be influenced.
+The source code of most applications is stored on GitHub. Codeship is used for running automated tests and executing the deployment of new versions. The hoster provides the servers for running the infrastructure. All three vendors influence the requirements indirectly with the constraints of their services. They are outside of the system context as they cannot be influenced.
 </p>
 
 
@@ -1046,7 +1046,7 @@ As a developer I want to switch the server hoster so I can profit from a better 
 Acceptance Criteria
 </th>
 <td>
-The infrastructure can be ported to a different provider within 48 hours. All needed software is installed automatically, databases and user files are transfered manually.
+The infrastructure can be ported to a different provider within 48 hours. All needed software is installed automatically, databases and user files are transferred manually.
 </td>
 </tr>
 <tr>
@@ -1461,7 +1461,7 @@ To connect the Docker client to the Docker daemon, please set:
 </figure>
 
 <p>
-Another useful tool is Docker Compose which allows multiple instances to be started based on a configuration file. However it's usage in production is not recommended at the moment as it's missing some features for managing managing running instances.
+Another useful tool is Docker Compose which allows multiple instances to be started based on a configuration file. However it's usage in production is not recommended at the moment as it's missing some features for managing running instances.
 </p>
 
 <h4>R01 PHP applications</h4>
@@ -1513,11 +1513,11 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 <h4>R04 Application deployment</h4>
 
 <p>
-There are different ways how to implement this with Docker. One way would be to build a new image, deploy it separatly and then route requests with a load balancer to the new image. However as noted before, Docker doesn't provide tools to do a deployment of the image nor the orchestration of running machines.
+There are different ways how to implement this with Docker. One way would be to build a new image, deploy it separately and then route requests with a load balancer to the new image. However as noted before, Docker doesn't provide tools to do a deployment of the image nor the orchestration of running machines.
 </p>
 
 <p>
-Another possibiliy would be to use volumes to deploy the new application into the running container but this would require each application to have built-in support for zero downtime deployment, which is not always the case (Tomcat supports this with parallel deployment but not PHP).
+Another possibility would be to use volumes to deploy the new application into the running container but this would require each application to have built-in support for zero downtime deployment, which is not always the case (Tomcat supports this with parallel deployment but not PHP).
 </p>
 
 <p>
@@ -1637,7 +1637,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4 class="break">Summary Software Containers</h4>
 
 <p>
-One notable property of Software Containers is their iteration speed. Due to the way how file changes are saved by the filesystem, setup commands don't need to be repeated each time but the resulting files can be restored withing seconds. This makes experimenting with the container much faster than setting up a complete virtual machine each time.
+One notable property of Software Containers is their iteration speed. Due to the way how file changes are saved by the file system, setup commands don't need to be repeated each time but the resulting files can be restored within seconds. This makes experimenting with the container much faster than setting up a complete virtual machine each time.
 </p>
 
 <p>
@@ -1684,7 +1684,7 @@ A comparison of all requirements can be found after the analysis of the three di
 <h3 class="break">Configuration Repository</h3>
 
 <p>
-Chef and Puppet are the most popular representatives for this type of software. It exists for a few years now and has the target to provide a central repository for infrastructure configuration from which server clients regularly pull their changes. This kind of software type usually also provides a way to use it without a central server but that looses the advantage of having a central point to coordinate changes.
+Chef and Puppet are the most popular representatives for this type of software. It exists for a few years now and has the target to provide a central repository for infrastructure configuration from which server clients regularly pull their changes. This kind of software type usually also provides a way to use it without a central server but that loses the advantage of having a central point to coordinate changes.
 </p>
 
 <figure>
@@ -1726,7 +1726,7 @@ Generating chef JSON and uploading...
 </figure>
 
 <p>
-Chef organizes commands in <em>recipies</em> and <em>cookbooks</em>
+Chef organizes commands in <em>recipes</em> and <em>cookbooks</em>
 </p>
 
 <h4>R01 PHP applications</h4>
@@ -1817,7 +1817,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R12 Change history</h4>
 
 <p>
-All cookbooks and templates can be stored in a VCS, a CI server uploads them to the Chef server for distrubution to the clients.
+All cookbooks and templates can be stored in a VCS, a CI server uploads them to the Chef server for distribution to the clients.
 </p>
 
 <p>
@@ -1903,12 +1903,12 @@ The installation of the Chef DK was a bit troubled as it relies on overriding rb
 </p>
 
 <p>
-The possibility to test the cookbooks locally inside a virtual machine with VirtualBox proved handy. However a few times the cookbook failed unexpectetly (e.g. because a wrong package was accidentely installed first) - a complete reinstall then solved the problem but took quite some time.
+The possibility to test the cookbooks locally inside a virtual machine with VirtualBox proved handy. However a few times the cookbook failed unexpectedly (e.g. because a wrong package was accidentally installed first) - a complete reinstall then solved the problem but took quite some time.
 </p>
 
 <p>
 A popular cookbook that was initially selected for deploying Java applications turned out to be incompatible with the latest version of the official Tomcat cookbook for no obvious reason. In general the whole system seemed complex:
-many components rely on others and compability has to be figure out manually.
+many components rely on others and compatibility has to be figure out manually.
 </p>
 
 <figure>
@@ -1950,7 +1950,7 @@ This is similar to the Configuration Repository, software to be installed and co
 </p>
 
 <p>
-Ansible, Salt and Rex are implementations specific for this kind of software type. Ansible is used here because because it is only focused on this kind of software type and because of its popularity.
+Ansible, Salt and Rex are implementations specific for this kind of software type. Ansible is used here because it is only focused on this kind of software type and because of its popularity.
 </p>
 
 <figure>
@@ -1963,7 +1963,7 @@ Ansible is a Python application and can be installed on a development machine as
 </p>
 
 <p>
-Again Vagrant can be used to simplify the setup of a remote host and test the playbook. As Ansible requires no specific software on the host any Linux distribution can be used within VirtualBox. The following snippet shows the intitialization process of VirtualBox with Ansible:
+Again Vagrant can be used to simplify the setup of a remote host and test the playbook. As Ansible requires no specific software on the host any Linux distribution can be used within VirtualBox. The following snippet shows the initialization process of VirtualBox with Ansible:
 </p>
 
 <figure>
@@ -2053,7 +2053,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R06 Hoster switch</h4>
 
 <p>
-As mention before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differenciates between package management systems, so switching from Apt to YUM would require some code changes, but this switch is out of scope of this requirement.
+As mention before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differentiates between package management systems, so switching from Apt to YUM would require some code changes, but this switch is out of scope of this requirement.
 </p>
 
 <p>
@@ -2073,7 +2073,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R12 Change history</h4>
 
 <p>
-The playbook and all it's files can be stored in the VCS. A CI server can run the playbook if a change has been made.
+The playbook and all its files can be stored in the VCS. A CI server can run the playbook if a change has been made.
 </p>
 
 <p>
@@ -2113,7 +2113,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 <h4>R16 Superuser access</h4>
 
 <p>
-Ansible doesn't restrict how the server can be accessed. In fact Ansible requires that the server can be access using SSH which is the prefered way for developers to access the server as well.
+Ansible doesn't restrict how the server can be accessed. In fact Ansible requires that the server can be access using SSH which is the preferred way for developers to access the server as well.
 </p>
 
 <p>
@@ -2183,7 +2183,7 @@ It is basically just a thing layer above shell scripts but provides all the tool
 </td>
 <td>
 <ul>
-<li>Not distribution indepentent</li>
+<li>Not distribution independent</li>
 <li>Limited reusability of playbooks</li>
 <li>No programming in playbooks possible</li>
 </ul>
@@ -2805,7 +2805,7 @@ This chapter explains the files and their organization within the playbook used 
 </figure>
 
 <p>
-Enviroment specific variables are stored in different inventories. There are two inventories: <em>prod</em> (for production) and <em>staging</em> (for system tests). The actual inventory file only lists localhost, as the servers are dynamically created. As enviroment  specific variables often contain sensitive information they are encrypted with Ansible Vault.
+Environment specific variables are stored in different inventories. There are two inventories: <em>prod</em> (for production) and <em>staging</em> (for system tests). The actual inventory file only lists localhost, as the servers are dynamically created. As environment specific variables often contain sensitive information they are encrypted with Ansible Vault.
 </p>
 
 <p>
@@ -3044,7 +3044,7 @@ Virtual host configuration file template
 </td>
 </tr>
 </table>
-<figcaption>Filestructure playbook</figcaption>
+<figcaption>File structure playbook</figcaption>
 </figure>
 
 <h3>Runtime View</h3>
@@ -3098,7 +3098,7 @@ A fundamental decision of the project is how to organize and structure the playb
 </p>
 
 <p>
-Two variations are possible: One repository with a playbook for the infrastrucutre and deployment, or a playbook in each application repository. The first approach has been chosen to easily allow sharing of variables from the infrastructure setup with application deployment.
+Two variations are possible: One repository with a playbook for the infrastructure and deployment, or a playbook in each application repository. The first approach has been chosen to easily allow sharing of variables from the infrastructure setup with application deployment.
 </p>
 
 <h4>Usage of inventories</h4>
@@ -3127,17 +3127,17 @@ The company behind Ansible distributes also a commercial software called <a href
 </figure>
 
 <p>
-Ansible Tower was not used for this project due to the high price (starting at $5000 per year) and because it wouldn't bring many additional benefits. As all four developers responsible for the system are used to working with Git there's no need for a graphical user interface. It would also contradict the princile of having all changes driven by code and it's advantage of being able to easily trace a change.
+Ansible Tower was not used for this project due to the high price (starting at $5000 per year) and because it wouldn't bring many additional benefits. As all four developers responsible for the system are used to working with Git there's no need for a graphical user interface. It would also contradict the principle of having all changes driven by code and it's advantage of being able to easily trace a change.
 </p>
 
 <h3 class="break">Technical Risks</h3>
 
 <p>
-The following paragraphs outlines potential technical risks of the architecture concept. The factors convenience and security are often conflicting and need to weighted in each case.
+The following paragraphs outlines potential technical risks of the architecture concept. The factors convenience and security are often conflicting and need to be weighted in each case.
 </p>
 
 <p>
-One disadvantage of automating the server setup is that the executor needs full administration access to the servers. In the proposed concept the continious integration server has superuser access to all servers. This leads to two attack scenarios: An attacker could compromise the continious integration server to gain access to the servers. Or the attacker could compromise the source code repository and infiltrate the server through malicious commands. Both <a href="#ref-github-security">GitHub</a> and <a href="#ref-codeship-security">Codeship</a> take appropriate actions to prevent these kind of attacks.
+One disadvantage of automating the server setup is that the executor needs full administration access to the servers. In the proposed concept the continuous integration server has superuser access to all servers. This leads to two attack scenarios: An attacker could compromise the continuous integration server to gain access to the servers. Or the attacker could compromise the source code repository and infiltrate the server through malicious commands. Both <a href="#ref-github-security">GitHub</a> and <a href="#ref-codeship-security">Codeship</a> take appropriate actions to prevent these kind of attacks.
 </p>
 
 <p>
@@ -3169,7 +3169,7 @@ The first time an application uses the branch name, it boots the required server
 </p>
 
 <p>
-If another application creates a branch with the same name it will get deployed to the same staging environment. It makes sure the servers in the environment are in the desired state and as applications are only updated during the initial provisioning, the first application won't get overriden with the master branch.
+If another application creates a branch with the same name it will get deployed to the same staging environment. It makes sure the servers in the environment are in the desired state and as applications are only updated during the initial provisioning, the first application won't get overridden with the master branch.
 </p>
 
 <p>
@@ -3186,7 +3186,7 @@ After testing is completed and the branch has been merged into the master branch
 <h3>Proof-of-concept</h3>
 
 <p>
-For the proof-of-concept the following reduced infrastructure has been selected to test the feasability of the concept focussing on the requirements. The proof-of-concept infrastructure includes a PHP application, two Java applications, one JavaScript application, multiple MySQL databases and RabbitMQ message queues.
+For the proof-of-concept the following reduced infrastructure has been selected to test the feasibility of the concept focussing on the requirements. The proof-of-concept infrastructure includes a PHP application, two Java applications, one JavaScript application, multiple MySQL databases and RabbitMQ message queues.
 </p>
 
 <p>
@@ -3240,7 +3240,7 @@ Because Ansible is using SSH the server which the new database is running on can
 <h4 class="break">Vagrant setup</h4>
 
 <p>
-For local development the playbook can be executed in Vagrant. Ansible is configured as provisioner in Vagrant and point to the main playbook. As the Ubuntu image used by Vagrant has the root user disabled by default, the playbook is executed with the user <em>vagrant</em> and with superuser permissions (<code>sudo</code>). Environment specific variables like URLs are overriden with the <code>extra_vars</code> parameter. To simplify things all server groups are mapped to the default server, so only one virtual machine is needed to run the infrastructure locally.
+For local development the playbook can be executed in Vagrant. Ansible is configured as provisioner in Vagrant and point to the main playbook. As the Ubuntu image used by Vagrant has the root user disabled by default, the playbook is executed with the user <em>vagrant</em> and with superuser permissions (<code>sudo</code>). Environment specific variables like URLs are overridden with the <code>extra_vars</code> parameter. To simplify things all server groups are mapped to the default server, so only one virtual machine is needed to run the infrastructure locally.
 </p>
 
 <figure>
@@ -3288,7 +3288,7 @@ Every commit is also display in Slack, the chat application used by WorldSkills.
 <h4 class="break">Codeship setup</h4>
 
 <p>
-Codeship knows setup, test and deployment commands. Setup and test commands are always executed, deploment commands can be different for each branch. Deployment commands are only executed if the test commands succeed. If there's a syntax error in the Ansible playbook, the deployment commands are not executed.
+Codeship knows setup, test and deployment commands. Setup and test commands are always executed, deployment commands can be different for each branch. Deployment commands are only executed if the test commands succeed. If there's a syntax error in the Ansible playbook, the deployment commands are not executed.
 </p>
 
 <p>
@@ -3323,7 +3323,7 @@ With the deployment commands, the master branch gets deployed to the production 
 </figure>
 
 <p>
-All branches starting with <code>staging-</code> are deployed to a environment with the branch name. Codeship provides the current branch name as environment variable <code>$CI_BRANCH</code>. The variable <code>digital_ocean_droplet_prefix</code> gets overriden from the command line with the option <code>-e</code> (additional variables).
+All branches starting with <code>staging-</code> are deployed to a environment with the branch name. Codeship provides the current branch name as environment variable <code>$CI_BRANCH</code>. The variable <code>digital_ocean_droplet_prefix</code> gets overridden from the command line with the option <code>-e</code> (additional variables).
 </p>
 
 <figure>
@@ -3401,13 +3401,13 @@ After running the servers role the servers are visible in the DigitalOcean web i
 <h3 class="break">Challenges</h3>
 
 <p>
-During the implementation the following problems occured and had to be fixed. Outlined are descriptions of the problem, the steps taken and the final solutions.
+During the implementation the following problems occurred and had to be fixed. Outlined are descriptions of the problem, the steps taken and the final solutions.
 </p>
 
 <h4>Hierarchy of group_vars</h4>
 
 <p>
-Originally it was planned to use <em>group_vars</em> on the playbook level to define default values for various variables and override the values with environment specific values. However in Ansible <em>group_vars</em> on the playbook level precede inventory variables. This hieararchy was reversed in Ansible 1.7 due to a bug and is still <a href="#ref-ansible-github-9877">controversial</a>.
+Originally it was planned to use <em>group_vars</em> on the playbook level to define default values for various variables and override the values with environment specific values. However in Ansible <em>group_vars</em> on the playbook level precede inventory variables. This hierarchy was reversed in Ansible 1.7 due to a bug and is still <a href="#ref-ansible-github-9877">controversial</a>.
 </p>
 
 <p>
@@ -3417,7 +3417,7 @@ The problem has been solved by moving the default values to the individual roles
 <h4>Problem SSH connection closed</h4>
 
 <p>
-A problem that occured durring testing with DigitalOcean was that sometimes the servers couldn't be created properly. When trying to connect to the just created server via SSH the connection was always declined.
+A problem that occurred during testing with DigitalOcean was that sometimes the servers couldn't be created properly. When trying to connect to the just created server via SSH the connection was always declined.
 </p>
 
 <figure>
@@ -3426,7 +3426,7 @@ A problem that occured durring testing with DigitalOcean was that sometimes the 
 </figure>
 
 <p>
-After reseting the root password of the server via the DigitalOcean web interface and connecting via their remote control interface it turned out the server was missing the SSH keys required to successfuly connect to it. Contacting the support of DigitalOcean didn't bring any new information, they assured that they are not aware of any software problem. As this problem only occurs sometimes it is most likely related to a race condition when deleting a server an creating a new one with the same name. Waiting at least 5 minutes before trying to create the same servers again solved the problem.
+After resetting the root password of the server via the DigitalOcean web interface and connecting via their remote control interface it turned out the server was missing the SSH keys required to successfully connect to it. Contacting the support of DigitalOcean didn't bring any new information, they assured that they are not aware of any software problem. As this problem only occurs sometimes it is most likely related to a race condition when deleting a server an creating a new one with the same name. Waiting at least 5 minutes before trying to create the same servers again solved the problem.
 </p>
 
 <h4>Problem SSH connection timeout</h4>
@@ -3442,13 +3442,13 @@ Couldn't read packet: Connection reset by peer
 </figure>
 
 <p>
-Checking the SSH timeout variables (ClientAliveInterval, ClientAliveCountMax, ServerAliveInterval) showed that the both the SSH server and the client are configured correctly. Manual testing of the SSH connection from Codeship to DigitalOcean by keeping the connection idle for some time also worked as expected. The problem could not be reproduced and happended only twice. Most likely a temporary network problem between Codeship and DigitalOcean.
+Checking the SSH timeout variables (ClientAliveInterval, ClientAliveCountMax, ServerAliveInterval) showed that the both the SSH server and the client are configured correctly. Manual testing of the SSH connection from Codeship to DigitalOcean by keeping the connection idle for some time also worked as expected. The problem could not be reproduced and happened only twice. Most likely a temporary network problem between Codeship and DigitalOcean.
 </p>
 
 <h4>Problem MySQL socket</h4>
 
 <p>
-After running the playbook repeatedly, the PHP was suddendly unable to connect to the MySQL database. Investigating the problem it turned out that the MySQL socket had disappeared. After debugging the issue the problem could be tracked down to a problem in Ubuntu when the command <code>/etc/init.d/mysql restart</code> was executed. Due to a recent change in Ubuntu to upstart scripts this is actually a legacy command and <code>service mysql restart</code> should be executed instead.
+After running the playbook repeatedly, the PHP was suddenly unable to connect to the MySQL database. Investigating the problem it turned out that the MySQL socket had disappeared. After debugging the issue the problem could be tracked down to a problem in Ubuntu when the command <code>/etc/init.d/mysql restart</code> was executed. Due to a recent change in Ubuntu to upstart scripts this is actually a legacy command and <code>service mysql restart</code> should be executed instead.
 </p>
 
 <p>
@@ -3599,7 +3599,7 @@ PLAY RECAP ********************************************************************
 </figure>
 
 <p>
-As the whole playbook is idempotent, it can be executed repeatidly without making any changes. Executing it without making any modifications takes 8 minutes.
+As the whole playbook is idempotent, it can be executed repeatedly without making any changes. Executing it without making any modifications takes 8 minutes.
 </p>
 
 <p>
@@ -3640,7 +3640,7 @@ Given that the whole infrastructure can be duplicated automatically one could th
 </p>
 
 <p>
-The usage of Ansible makes the infrastrucutre more structured and changes more visible while keeping it flexible for future developments (like the integration of Docker).
+The usage of Ansible makes the infrastructure more structured and changes more visible while keeping it flexible for future developments (like the integration of Docker).
 </p>
 
 <p>
@@ -3831,6 +3831,10 @@ The make the results of this thesis reproducible, the following list shows the v
     <dd>Version control system: used to store and manage source code.</dd>
     <dt>Deployment</dt>
     <dd>Installing or updating a software on a server.</dd>
+    <dt>Symlink</dt>
+    <dd>Symbolic link: A file or directory pointing to another path.</dd>
+    <dt>Webhook</dt>
+    <dd>A URL that gets called by an online service after a specific action to let another service know about the outcome of the action.</dd>
 </dl>
 
 </div>
