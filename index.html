@@ -3275,6 +3275,34 @@ As the CMS of the website heavily depends on content in the database for working
 Because Ansible is using SSH the server which the new database is running on can get an export of the database directly from the production database server.
 </p>
 
+<h4>Vagrant setup</h4>
+
+<p>
+For local development the playbook can be executed in Vagrant. Ansible is configured as provisioner in Vagrant and point to the main playbook. As the Ubuntu image used by Vagrant has the root user disabled by default, the playbook is executed with the user <em>vagrant</em> and with superuser permissions (<code>sudo</code>). Environment specific variables like URLs are overriden with the <code>extra_vars</code> parameter. To simplify things all server groups are mapped to the default server, so only one virtual machine is needed to run the infrastructure locally.
+</p>
+
+<figure>
+<pre><code>config.vm.provision "ansible", run: "always" do |ansible|
+  ansible.playbook = "site.yml" # WorldSkills playbook
+  ansible.raw_arguments = ['--diff'] # show file changes
+  ansible.sudo = true # force sudo
+  ansible.extra_vars = {
+    ansible_ssh_user: "vagrant",
+    server_prefix: "",
+    worldskills_auth_url: "http://vagrant-auth.worldskills.ch/",
+    worldskills_events_url: "http://vagrant-events.worldskills.ch/",
+  }
+  ansible.groups = {
+    "servers" => ["default"],
+    "web" => ["default"],
+    "api" => ["default"],
+    "database" => ["default"],
+  }
+end
+</code></pre>
+<figcaption>Vagrant provisioner configuration</figcaption>
+</figure>
+
 <h4>GitHub setup</h4>
 
 <p>
