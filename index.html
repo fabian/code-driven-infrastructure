@@ -3130,7 +3130,7 @@ The company behind Ansible distributes also a commercial software called <a href
 Ansible Tower was not used for this project due to the high price (starting at $5000 per year) and because it wouldn't bring many additional benefits. As all four developers responsible for the system are used to working with Git there's no need for a graphical user interface. It would also contradict the princile of having all changes driven by code and it's advantage of being able to easily trace a change.
 </p>
 
-<h3>Technical Risks</h3>
+<h3 class="break">Technical Risks</h3>
 
 <p>
 The following paragraphs outlines potential technical risks of the architecture concept. The factors convenience and security are often conflicting and need to weighted in each case.
@@ -3205,44 +3205,6 @@ The proof-of-concept also includes the dynamic generation of staging environment
 <h4>Ansible playbook</h4>
 
 <p>
-The first role needed is the <em>servers</em> role which creates the servers on the DigitalOcean infrastructure. The servers are identified by their name, their IP address is stored for usage in other roles (e.g. <code>digital_ocean_ip_web</code>).
-</p>
-
-<figure>
-<pre><code>---
-- name: create servers
-  digital_ocean:
-    command: droplet
-    state: present
-    name: "{{ item.key }}" # server name
-    size_id: 63 # 1 GB memory
-    image_id: 11836690 # Ubuntu 14.04
-    unique_name: yes # identify server by name
-    client_id: "{{ digital_ocean_client_id }}"
-    api_key: "{{ digital_ocean_api_key }}"
-  register: droplets_response # store DigitalOcean response
-  with_dict: # loop over list of servers
-    web: {group: web}
-    api: {group: api}
-    database: {group: database}
-
-- name: store server ips # store IP addresses in variables
-  set_fact: "digital_ocean_ip_{{ item.item.key }}={{ item.droplet.ip_address }}"
-  with_items: droplets_response.results # loop over all servers
-</code></pre>
-<figcaption>Role servers</figcaption>
-</figure>
-
-<p>
-After running the servers role the servers are visible in the DigitalOcean web interface.
-</p>
-
-<figure class="full">
-<img src="images/screenshot-digitalocean-droplets.png" />
-<figcaption>Screenshot DigitalOcean servers</figcaption>
-</figure>
-
-<p>
 PHP and other required software is then installed and the configured with Ansible:
 </p>
 
@@ -3275,7 +3237,7 @@ As the CMS of the website heavily depends on content in the database for working
 Because Ansible is using SSH the server which the new database is running on can get an export of the database directly from the production database server.
 </p>
 
-<h4>Vagrant setup</h4>
+<h4 class="break">Vagrant setup</h4>
 
 <p>
 For local development the playbook can be executed in Vagrant. Ansible is configured as provisioner in Vagrant and point to the main playbook. As the Ubuntu image used by Vagrant has the root user disabled by default, the playbook is executed with the user <em>vagrant</em> and with superuser permissions (<code>sudo</code>). Environment specific variables like URLs are overriden with the <code>extra_vars</code> parameter. To simplify things all server groups are mapped to the default server, so only one virtual machine is needed to run the infrastructure locally.
@@ -3303,7 +3265,7 @@ end
 <figcaption>Vagrant provisioner configuration</figcaption>
 </figure>
 
-<h4>GitHub setup</h4>
+<h4 class="break">GitHub setup</h4>
 
 <p>
 An independent GitHub organization is used to keep the proof-of-concept separated from existing WorldSkills projects. All projects which are part of the proof-of-concept have been replicated as private repositories in this organization. Most notably is the new repository <em>worldskills-playbook</em> which contains the Ansible playbook.
@@ -3323,7 +3285,7 @@ Every commit is also display in Slack, the chat application used by WorldSkills.
 <figcaption>Screenshot commit in Slack</figcaption>
 </figure>
 
-<h4>Codeship setup</h4>
+<h4 class="break">Codeship setup</h4>
 
 <p>
 Codeship knows setup, test and deployment commands. Setup and test commands are always executed, deploment commands can be different for each branch. Deployment commands are only executed if the test commands succeed. If there's a syntax error in the Ansible playbook, the deployment commands are not executed.
@@ -3395,8 +3357,48 @@ With a webhook the status of every build is also displayed in Slack.
 The danger of a race condition with multiple playbooks running at the same time is avoided by the Codeship plan which allows only one concurrent build.
 </p>
 
+<h4 class="break">DigitalOcean setup</h4>
 
-<h3>Challenges</h3>
+<p>
+The servers for the infrastructure are created by the <em>servers</em> role with Ansible on DigitalOcean. The servers are identified by their name, their IP address is stored for usage in other roles (e.g. <code>digital_ocean_ip_web</code>).
+</p>
+
+<figure>
+<pre><code>---
+- name: create servers
+  digital_ocean:
+    command: droplet
+    state: present
+    name: "{{ item.key }}" # server name
+    size_id: 63 # 1 GB memory
+    image_id: 11836690 # Ubuntu 14.04
+    unique_name: yes # identify server by name
+    client_id: "{{ digital_ocean_client_id }}"
+    api_key: "{{ digital_ocean_api_key }}"
+  register: droplets_response # store DigitalOcean response
+  with_dict: # loop over list of servers
+    web: {group: web}
+    api: {group: api}
+    database: {group: database}
+
+- name: store server ips # store IP addresses in variables
+  set_fact: "digital_ocean_ip_{{ item.item.key }}={{ item.droplet.ip_address }}"
+  with_items: droplets_response.results # loop over all servers
+</code></pre>
+<figcaption>Role servers</figcaption>
+</figure>
+
+<p>
+After running the servers role the servers are visible in the DigitalOcean web interface.
+</p>
+
+<figure class="full">
+<img src="images/screenshot-digitalocean-droplets.png" />
+<figcaption>Screenshot DigitalOcean servers</figcaption>
+</figure>
+
+
+<h3 class="break">Challenges</h3>
 
 <p>
 During the implementation the following problems occured and had to be fixed. Outlined are descriptions of the problem, the steps taken and the final solutions.
@@ -3460,7 +3462,7 @@ If a task in an Ansible playbook fails, the execution of the whole playbook stop
 </p>
 
 
-<h3>Test Results</h3>
+<h3 class="break">Test Results</h3>
 
 <p>
 The whole proof-of-concept infrastructure can be created in 27 minutes.
