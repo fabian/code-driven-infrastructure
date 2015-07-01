@@ -3592,6 +3592,10 @@ The usage of Ansible makes the infrastrucutre more structured and changes more v
 The time required to create the staging environment is considered a potential problem, especially as it gets worse with every additional application. The most time is used by the build of JavaScript and PHP applications. Storing compiled versions of these applications on a central server would improve the build time of a new staging environment but requires more development outside the scope of this project.
 </p>
 
+<p>
+Another option of speeding up the creation of the staging environment would be to clone the server completely (on system level) instead of recreating it every time with Ansible. However this only works within the same hoster (not even with all hosters) and one of the targets of this projects was to be independent from the hoster. By recreating the servers each time the developers can be sure that the playbook is ready to be used with a different hoster.
+</p>
+
 </div>
 
 
