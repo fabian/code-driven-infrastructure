@@ -1478,7 +1478,7 @@ The easiest way to run a PHP application with Docker is to use Apache so the app
 The MySQL server would be started in a separate instance, so an additional Dockerfile for MySQL is needed and then needs to be linked with the container running the PHP application. To simplify this Docker Compose can be used. It's a tool that can start multiple Docker instances based on a configuration file.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1492,7 +1492,7 @@ For Tomcat official images published are available from the Docker Hub Repositor
 Configuration and the application code can be copied to the working directory of Tomcat and are read and started automatically. Multiple applications can be bundled into one container or one container per application can be used. Again as with PHP, a MySQL server would be started in a separate instance.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1506,7 +1506,7 @@ To guarantee reproducible containers configuration files are usually copied into
 Docker provides the tools to build the image and upload it to a central repository, however it doesn't provide any tools to do an actual deployment of the image to a live environment out of the box.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 </p>
 
@@ -1520,7 +1520,7 @@ There are different ways how to implement this with Docker. One way would be to 
 Another possibility would be to use volumes to deploy the new application into the running container but this would require each application to have built-in support for zero downtime deployment, which is not always the case (Tomcat supports this with parallel deployment but not PHP).
 </p>
 
-<p>
+<p class="affix">
 Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 </p>
 
@@ -1530,7 +1530,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 Containers can easily be started quickly in a new environment (e.g. a new virtual server). Docker Compose can be used here for starting up multiple containers at once. Database fixtures can be loaded from additional containers which are linked to the database container.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1540,7 +1540,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Thanks to the virtualization the only requirement for a new hoster would be to run Docker. Transfer of the data is possible by launching additional containers on the old server and mounting the data volumes. The installation of Docker would need to be done manually if the hoster doesn't provide preinstalled Docker. But more importantly the configuration of the host machine (e.g. SSH keys, logging, security settings) could not be automated with Docker.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 </p>
 
@@ -1550,7 +1550,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 All configuration files can be stored in the code repository and then added to the container during build time.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1560,7 +1560,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 By storing all Dockerfiles and configuration files in a VCS and building the container images on a CI server each change can be traced back.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1570,7 +1570,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Both Docker and the registry server for Docker are Open Source on GitHub, they are licensed under the Apache License.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1580,7 +1580,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 As with the staging environment Docker Compose can be used for starting multiple containers quickly so tests can be executed.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1590,7 +1590,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Secret data is usually passed as environment variables to the Docker container. Docker doesn't provide functionality for encrypting information.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 </p>
 
@@ -1600,7 +1600,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 Containers can be accessed from the outside with different methods and superuser access to the host system is required by Docker.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1610,7 +1610,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 There are some limitations of what can be run inside a container on the kernel level, but they are not affecting most use cases.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1620,7 +1620,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Immutable applications are a complex topic and Docker requires specific methods for normal tasks.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 </p>
 
@@ -1630,7 +1630,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 Multiple instances of images can be started in parallel and Docker Swarm, a clustering tool for Docker, can be used to manage them.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1743,7 +1743,7 @@ However the functionality provided by the cookbook is mostly focused on PEAR, wh
 For MySQL there's an official cookbook available as well which installs and starts a MySQL server as required.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1755,7 +1755,7 @@ The Supermarket also has an official cookbook for Tomcat. Java must be installed
 available in the Supermarket. The same MySQL cookbook as mention before can be used.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1766,7 +1766,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 With Chef configuration files are usually built from templates which are stored in the repository. Once uploaded to the Chef server the client receives them, replaces the variables in them and puts them to the targeted location. In addition the service using the file can be restarted.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1780,7 +1780,7 @@ For Tomcat parallel deployment can be used here. The actual deployment to the se
 The <code>deploy</code> directive can be used to update a PHP application to the latest revision without causing any downtime. It uses symlinks to make the latest version only active when all dependencies have been installed.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1790,7 +1790,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Chef can be used to setup a virtual machine with the needed environment. Once the virtual machine with the Chef client is running it can pull all information needed to setup the environment from the Chef server.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1800,7 +1800,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 The Chef client needs to be installed manually on a new virtual machine if the hoster doesn't provide machines with Chef preinstalled. Once the Chef client is installed it can install all required software and configure the machine as needed.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1810,7 +1810,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Configuration files can be stored as templates in the repository. They get compiled and written to their target destination by Chef.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1820,7 +1820,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 All cookbooks and templates can be stored in a VCS, a CI server uploads them to the Chef server for distribution to the clients.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1830,7 +1830,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Chef Client, Chef Server and Chef Development Kit (DK) are Open Source on GitHub, they are licensed under the Apache License.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1840,7 +1840,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 The cookbooks can also be used to configure the virtual machine the tests are running on.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1850,7 +1850,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Data bags allow to store variables for the Chef server. Confidential information can be stored in encrypted Data Bags. The secret key can be shared within the developers over other secure channels.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1860,7 +1860,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 No restrictions about access to the server are imposed by Chef.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1870,7 +1870,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Packages from the Linux distribution are easiest to install with Chef, but also custom software can be downloaded and installed.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -1880,7 +1880,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Chef has a complex architecture and many dependencies on other libraries. Developers not familiar with Ruby also need to learn the syntax and its oddities first.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 </p>
 
@@ -1890,7 +1890,7 @@ Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
 Multiple Chef clients can connect to the same Chef server and the same cookbooks can be installed on multiple hosts.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2000,7 +2000,7 @@ Apache and mod_php can be installed with the OS packages, their configuration ca
 MySQL can be installed and configured the same way as Apache.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2011,7 +2011,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 In the examples provided by Ansible they also describe how to install a standalone instance of Tomcat. The installation package gets downloaded from the Tomcat download server, extracted to an appropriate location, the configuration files are created from templates and Tomcat is started as a service. MySQL can be installed with the OS packages.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2022,7 +2022,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Configuration files can be either simply copied to the server from the local playbook or templates with variables can be used. Ansible checks if there were any changes in the configuration file and notifies a service to restart if needed. The playbook can also be run from an CI server.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2036,7 +2036,7 @@ For Tomcat parallel deployment can be used here again. The actual deployment to 
 A combination of the <code>git</code> and <code>file</code> directives can be used to checkout the latest version of the application and activate it with a symlink as soon as all dependencies have been installed.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2046,7 +2046,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 As long as Ansible can connect via SSH to a machine it can set it up as needed. Ansible can also launch new virtual machines in the cloud which is useful for quickly starting a staging area.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2056,7 +2056,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 As mention before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differentiates between package management systems, so switching from Apt to YUM would require some code changes, but this switch is out of scope of this requirement.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2066,7 +2066,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 All configuration files can be stored as templates or raw files in the VCS repository of the playbook. Ansible copies them to the target server when executed.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2076,7 +2076,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 The playbook and all its files can be stored in the VCS. A CI server can run the playbook if a change has been made.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2086,7 +2086,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Ansible is Open Source on GitHub and licenced under GNU General Public License (GPL) v3.0.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2096,7 +2096,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 The playbook can also be executed locally to configure a test environment on the same machine.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2106,7 +2106,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Ansible provides a tool called Vault to encrypt files with variables. The encrypted file can automatically be encrypted when running the playbook. The password can be stored in a separate file and shared among developers.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2116,7 +2116,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Ansible doesn't restrict how the server can be accessed. In fact Ansible requires that the server can be access using SSH which is the preferred way for developers to access the server as well.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2126,7 +2126,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Operation system packages as well as custom downloaded software can be installed using Ansible.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2136,7 +2136,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Ansible files are easy to read and the concept can be understood quickly. Only the YAML syntax requires a bit of learning but most examples already give a good idea how it works.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2146,7 +2146,7 @@ Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 Ansible can connect to multiple servers and execute the defined commands there. Servers can also be grouped by their role so that only specific commands are executed on certain servers.
 </p>
 
-<p>
+<p class="affix">
 Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
 </p>
 
@@ -2436,7 +2436,7 @@ Even though Software Containers don't comply with all requirements it is still c
 The following rough estimation for introducing a software type alone or together with Software Containers under regular workload also shows the result of the higher complexity of a Configuration Repository compared with Remote Command Execution.
 </p>
 
-<figure>
+<figure class="affix">
 <table class="full">
 <colgroup>
     <col />
@@ -3121,7 +3121,7 @@ This approach has the advantage that temporary environments (like staging) can e
 The company behind Ansible distributes also a commercial software called <a href="#ref-ansible-tower">Ansible Tower</a> for running playbooks with a user interface. The software provides a web interface with permission management, an audit trail and visualizations.
 </p>
 
-<figure>
+<figure class="affix">
 <img src="images/screenshot-ansible-tower.png" />
 <figcaption>Screenshot Ansible Tower</figcaption>
 </figure>
@@ -3244,7 +3244,7 @@ The proof-of-concept also includes the dynamic generation of staging environment
 The playbook repository is organized with roles. Each role is responible for the installation and configuration of the applications. The main playbook delegates the roles for execution to the servers.
 </p>
 
-<figure>
+<figure class="affix">
 <pre><code>- hosts: database
 
   roles:
@@ -3274,7 +3274,7 @@ The playbook repository is organized with roles. Each role is responible for the
 The PHP role is an example of software that gets installed with the package manager of the system (<em>apt</em>). The template module of Ansible is used to create the required configuration files. The same approach is used for the installation of MySQL, RabbitMQ, Tomcat and Apache.
 </p>
 
-<figure>
+<figure class="affix">
 <pre><code>- name: install PHP
   apt: name={{ item }} state=present # install software packages
   with_items:
@@ -3296,7 +3296,7 @@ The PHP role is an example of software that gets installed with the package mana
 Virtual hosts in Apache are also created with the template module and by linking the configuration files to <code>/etc/apache2/sites-available</code>.
 </p>
 
-<figure>
+<figure class="affix">
 <pre><code>- name: add configuration files
   template: >
     src="vhost.conf.j2"
@@ -3318,7 +3318,7 @@ Virtual hosts in Apache are also created with the template module and by linking
 Self-developed applications are installed by checking out the source code and then installing all dependencies.
 </p>
 
-<figure>
+<figure class="affix">
 <pre><code>- name: clone project
   git: >
     repo="git@github.com:worldskills-infrastructure/worldskills-events.git"
@@ -3472,7 +3472,7 @@ All branches starting with <code>staging-</code> are deployed to a environment w
 All commands are logged and reported in the Codeship web interface.
 </p>
 
-<figure class="full">
+<figure class="full affix">
 <img src="images/screenshot-codeship.png" />
 <figcaption>Screenshot Codeship execution</figcaption>
 </figure>
@@ -3567,7 +3567,7 @@ After resetting the root password of the server via the DigitalOcean web interfa
 Another similar SSH problem was the sometimes the SSH connection was reset while the Ansible playbook was running. A first part of the playbook was successfully executed on the database servers but the next part which was to be executed on the API servers failed with the following message.
 </p>
 
-<figure>
+<figure class="affix">
 <pre><code>ssh: connect to host 46.101.255.100 port 22: Connection timed out
 Couldn't read packet: Connection reset by peer
 </code></pre>
@@ -3738,7 +3738,7 @@ As the whole playbook is idempotent, it can be executed repeatedly without makin
 All system tests are executed after the main Ansible playbook. They check content on various URLs to make sure the applications are running as expected.
 </p>
 
-<figure>
+<figure class="affix">
 <pre><code class="small">PLAY [all] ********************************************************************
 TASK: [check Events API]
 TASK: [verify Events API]

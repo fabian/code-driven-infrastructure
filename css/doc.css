@@ -104,6 +104,13 @@ dl {
     padding-left: 90px;
 }
 
+p,
+li,
+table,
+pre code {
+    page-break-inside: avoid;
+}
+
 ul,
 ol {
     margin-left: 90px;
@@ -117,7 +124,6 @@ a {
 
 table {
     border-collapse: collapse;
-    page-break-inside: avoid;
 }
 
 img.icon {
@@ -194,10 +200,9 @@ pre code {
     border-left: 1px solid #126396;
     padding: 0.5em 0 0.5em 19px;
     background-color: #f6f6f6;
-    page-break-inside: avoid;
 }
 
-p + figure {
+* + *.affix {
     page-break-before: avoid;
 }
 
@@ -369,7 +374,6 @@ figcaption[title]:after::footnote-call {
 
 #toc > li {
     padding-bottom: 15px;
-    page-break-inside: avoid;
 }
 
 #toc .toc-nr {
