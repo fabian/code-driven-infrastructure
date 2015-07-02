@@ -1058,7 +1058,7 @@ The infrastructure can be ported to a different provider within 48 hours. All ne
 </figure>
 
 
-<h3 class="break">Non-functional requirements</h3>
+<h3 class="break">Non-functional Requirements</h3>
 
 <p>
 The following non-functional requirements are not conclusive but they are the most critical ones. They are classified according to quality model of ISO/IEC 25010:2011 and prioritized in three levels: Must, Should, Could.
@@ -3144,7 +3144,22 @@ One disadvantage of automating the server setup is that the executor needs full 
 As the staging environment is always built by syncing databases from production the risk of data leakage increases as staging environments are often regarded as non-critical. By treating the staging environment as confidential as the production environment (e.g. encrypting staging passwords), incidents can be prevented.
 </p>
 
-<h3>Testing</h3>
+<h3 class="break">Testing</h3>
+
+<p>
+The testing is divided into multiple stages which all aim to find bugs in the Ansible playbook. Testing of the self-developed applications has to be done by each application individually. All automated tests are executed on a continuous integration server.
+</p>
+
+<figure class="full">
+<img src="images/testing-flow.svg" />
+<figcaption>Testing flow</figcaption>
+</figure>
+
+<p>
+After each code change a syntax check of the Ansible playbook is performed. The playbook is then executed to create a temporary staging environment. To verify the integrity of the staging environment system tests are performed as a last step. Once the staging environment is ready manual tests can be executed depending on the change made. Testing during development can be done locally with Vagrant.
+</p>
+
+<h4>Syntax check</h4>
 
 <p>
 Ansible provides two flags when running playbooks which are particularly useful for testing. <code>--syntax-check</code> validates the YAML syntax of the playbook and can be used to discover problems early.
@@ -3155,7 +3170,7 @@ The flag <code>--check</code> runs the playbook in a special mode where a <em>dr
 </p>
 
 <p>
-Because of the restrictions of the check mode only the syntax check is performed as an automated test. Further testing can be done manually in the staging environment. Testing during development can be done locally with Vagrant.
+Because of the restrictions of the check mode only the syntax check is performed as an automated test.
 </p>
 
 <h4>Staging environment</h4>
@@ -3174,6 +3189,27 @@ If another application creates a branch with the same name it will get deployed 
 
 <p>
 After testing is completed and the branch has been merged into the master branch the staging environment can be removed with a separate Ansible task.
+</p>
+
+<h4>System tests</h4>
+
+<p>
+Simple system tests can be done with the <em>uri</em> module of Ansible. The module allows to send HTTP requests and store the response in a varible. The response can then be checked for certain content.
+</p>
+
+<figure>
+<pre><code>- name: check Auth API
+  action: uri url="https://api.worldskills.org/auth/ping" return_content=yes
+  register: uri_response
+
+- name: verify Auth API
+  fail: msg="Auth API not reachable"
+  when: "'pong' not in uri_response.content"</code></pre>
+<figcaption>Example system test</figcaption>
+</figure>
+
+<p>
+Testing the web interface of the applications also verifies that all underlying software like Apache and PHP are running properly. For each self-developed application at least one system should be created to make sure they are running as expected.
 </p>
 
 </div>
