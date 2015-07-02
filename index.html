@@ -3205,12 +3205,41 @@ The proof-of-concept also includes the dynamic generation of staging environment
 <h4>Ansible playbook</h4>
 
 <p>
-PHP and other required software is installed and configured with Ansible:
+The playbook repository is organized with roles. Each role is responible for the installation and configuration of the applications. The main playbook delegates the roles for execution to the servers.
 </p>
 
 <figure>
-<pre><code>---
-- name: install PHP
+<pre><code>- hosts: database
+
+  roles:
+    - mysql
+    - rabbitmq
+
+- hosts: api
+
+  roles:
+    - tomcat
+    - worldskills_api_auth
+    - worldskills_api_events
+
+- hosts: web
+
+  roles:
+    - apache
+    - php
+    - worldskills_concrete5
+    - worldskills_auth
+    - worldskills_events
+</code></pre>
+<figcaption>Main playbook</figcaption>
+</figure>
+
+<p>
+The PHP role is an example of software that gets installed with the package manager of the system (<em>apt</em>). The template module of Ansible is used to create the required configuration files. The same approach is used for the installation of MySQL, RabbitMQ, Tomcat and Apache.
+</p>
+
+<figure>
+<pre><code>- name: install PHP
   apt: name={{ item }} state=present # install software packages
   with_items:
     - php5
@@ -3225,6 +3254,74 @@ PHP and other required software is installed and configured with Ansible:
   notify: restart apache # restart Apache if configuration changes
 </code></pre>
 <figcaption>Role php tasks</figcaption>
+</figure>
+
+<p>
+Virtual hosts in Apache are also created with the template module and by linking the configuration files to <code>/etc/apache2/sites-available</code>.
+</p>
+
+<figure>
+<pre><code>- name: add configuration files
+  template: >
+    src="vhost.conf.j2"
+    dest="/etc/apache2/sites-available/{{ item.servername }}.conf"
+  with_items: vhosts
+  notify: restart apache
+
+- name: enable vhosts
+  file: >
+    src="/etc/apache2/sites-available/{{ item.servername }}.conf"
+    dest="/etc/apache2/sites-enabled/{{ item.servername }}.conf" state=link
+  with_items: vhosts
+  notify: restart apache
+</code></pre>
+<figcaption>Virtual hosts tasks</figcaption>
+</figure>
+
+<p>
+Self-developed applications are installed by checking out the source code and then installing all dependencies.
+</p>
+
+<figure>
+<pre><code>- name: clone project
+  git: >
+    repo="git@github.com:worldskills-infrastructure/worldskills-events.git"
+    dest="{{ worldskills_events_path }}/repo"
+    version="{{ worldskills_events_branch }}"
+    update="{{ worldskills_events_update }}"
+  register: worldskills_events_clone
+
+- name: set release path
+  set_fact: >
+    worldskills_events_release="{{ worldskills_events_path }}/releases/
+    {{ worldskills_events_clone.after }}"
+
+- name: export a copy of the repo
+  command: >
+    git checkout-index -a --prefix="{{ worldskills_events_release }}/"
+    chdir="{{ worldskills_events_path }}/repo"
+    creates="{{ worldskills_events_release }}"
+
+- name: install npm dependencies
+  npm: path="{{ worldskills_events_release }}"
+
+- name: install bower dependencies
+  command: >
+    bower install chdir="{{ worldskills_events_release }}"
+    creates="{{ worldskills_events_release }}/app/bower_components"
+
+- name: create config
+  template: >
+    src=config.js.j2 dest="{{ worldskills_events_release }}
+    /app/scripts/config.js"
+  notify: build worldskills_events
+
+- name: link release to current
+  file: >
+    state=link path="{{ worldskills_events_path }}/current"
+    src="{{ worldskills_events_release }}"
+</code></pre>
+<figcaption>Role Events application tasks</figcaption>
 </figure>
 
 <h4>Data synchronization</h4>
@@ -3364,8 +3461,7 @@ The servers for the infrastructure are created by the <em>servers</em> role with
 </p>
 
 <figure>
-<pre><code>---
-- name: create servers
+<pre><code>- name: create servers
   digital_ocean:
     command: droplet
     state: present
