@@ -3360,7 +3360,7 @@ Self-developed applications are installed by checking out the source code and th
 <figcaption>Role Events application tasks</figcaption>
 </figure>
 
-<h4>Data synchronization</h4>
+<h4 class="break">Data synchronization</h4>
 
 <p>
 As the CMS of the website heavily depends on content in the database for working properly, the database must be synced from the current infrastructure to the proof-of-concept infrastructure. Additionally this synchronization must be done when creating a staging environment.
@@ -3593,7 +3593,6 @@ The main issue is that Ansible isn't using the correct restart command, so inste
 If a task in an Ansible playbook fails, the execution of the whole playbook stops. Queued handlers are lost if this happens and in the next run the handlers might not get notified again. Because of this a required restart easily gets forgotten and can caused unexpected server states (e.g. configuration file has been updated but a restart is required for loading the updated configuration). Luckily Ansible can be forced to always run handlers, even if a task fails with the setting <code>force_handlers:&nbsp;True</code>. This solved the problem of missed application restarts.
 </p>
 
-
 <h3 class="break">Test Results</h3>
 
 <p>
@@ -3601,7 +3600,7 @@ The whole proof-of-concept infrastructure can be created in 27 minutes. The outp
 </p>
 
 <figure>
-<pre><code class="small">PLAY [provision] **************************************************************
+<pre><code class="long">PLAY [provision] **************************************************************
 TASK: [servers | create droplet]
 TASK: [servers | store ips]
 TASK: [servers | store private ips]
@@ -3669,11 +3668,8 @@ TASK: [worldskills_api_auth | deploy]
 TASK: [worldskills_api_events | get WAR from prod]
 TASK: [worldskills_api_events | deploy]
 NOTIFIED: [tomcat | restart tomcat]
-</code></pre>
-</figure>
 
-<figure>
-<pre><code class="small">PLAY [web] ********************************************************************
+PLAY [web] ********************************************************************
 GATHERING FACTS
 TASK: [apache | install]
 TASK: [apache | run service]
