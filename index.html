@@ -3768,11 +3768,15 @@ One learning of this project is that idempotence is hard. This not only applies 
 </p>
 
 <p>
+The promise of idempotence is also not true in every case with Ansible as some attributes require more attention to be changed. Changing the physical server location inside the <em>digital_ocean</em> module for example won't move the server from one location to another - the attribute is only used during creation of the server. Another example is the <em>copy</em> module which makes sure that a file exists in the specified location. The module checks this with every execution, however when the file path is changed (e.g. because it had a typo in it) it only makes sure the file exists in the new location. To delete the old file a separate task has to be written in Ansible. So the developers always have to be aware what the module exactly does and take care of cleanup operations by themselve.
+</p>
+
+<p>
 Given that the whole infrastructure can be duplicated automatically one could think of using this for automated testing of every change to the Ansible playbook. However as the creation of such a testing environment takes more than 20 minutes every little change to the infrastructure would also take at least that long - so this option is not considered useful. Instead the choice of creating a staging environment is left up to developer if a certain change needs to be tested more detailed. Further testing tools (e.g. Selenium) can also easily be integrated with Ansible.
 </p>
 
 <p>
-The usage of Ansible makes the infrastructure more structured and changes more visible while keeping it flexible for future developments (like the integration of Docker).
+In summary the usage of Ansible makes the infrastructure more structured and changes more visible while keeping it flexible for future developments (like the integration of Docker).
 </p>
 
 <p>
