@@ -3796,6 +3796,16 @@ The time required to create the staging environment is considered a potential pr
 Another option of speeding up the creation of the staging environment would be to clone the server completely (on system level) instead of recreating it every time with Ansible. However this only works within the same hoster (not even with all hosters) and one of the targets of this projects was to be independent from the hoster. By recreating the servers each time the developers can be sure that the playbook is ready to be used with a different hoster.
 </p>
 
+<h3>Recommendations</h3>
+
+<p>
+Using Ansible for provisioning and deployment of the infrastructure makes sense. It is recommended to extend the proof-of-concept playbook with all applications running on the current infrastructure. Once the setup of the new infrastructure is completed a migration to it can be done with Ansible as outlined.
+</p>
+
+<p>
+As the setup of a staging environment takes some time it's questionable how useful it is for small features. Investing into unit tests that can be executed locally is recommended here. Being able to replicate the complete infrastructure is useful for bigger features which join multiple services. The staging environment suits well for end-user tests and automated tests with tools like Selenium. It is recommended to implement the staging environment as described in the architecture documentation but use it only if needed and further invest in automated system tests.
+</p>
+
 </div>
 
 
