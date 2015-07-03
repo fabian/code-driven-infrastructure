@@ -3763,6 +3763,8 @@ localhost                  : ok=5    changed=0    unreachable=0    failed=0   </
 
 <h2 class="break">Conclusions</h2>
 
+<h3>Ansible and Idempotence</h3>
+
 <p>
 One learning of this project is that idempotence is hard. This not only applies to Ansible but to every server management software. There are always multiple sources for changes on a modern computer system and almost infinite states exist. Reducing the configuration of the whole system to one repository (the Ansible playbook in this case) helps by reducing dependencies.
 </p>
@@ -3778,6 +3780,8 @@ Given that the whole infrastructure can be duplicated automatically one could th
 <p>
 In summary the usage of Ansible makes the infrastructure more structured and changes more visible while keeping it flexible for future developments (like the integration of Docker).
 </p>
+
+<h3>Staging Environment</h3>
 
 <p>
 The time required to create the staging environment is considered a potential problem, especially as it gets worse with every additional application. The most time is used by the build of JavaScript and PHP applications. Storing compiled versions of these applications on a central server would improve the build time of a new staging environment but requires more development outside the scope of this project.
