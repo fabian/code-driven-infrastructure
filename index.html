@@ -3212,6 +3212,26 @@ Simple system tests can be done with the <em>uri</em> module of Ansible. The mod
 Testing the web interface of the applications also verifies that all underlying software like Apache and PHP are running properly. For each self-developed application at least one system should be created to make sure they are running as expected.
 </p>
 
+<h3 class="break">Migration</h3>
+
+<p>
+To migrate the existing infrastructure to the new automated infrastructure multiple steps need to be taken. Not only need all applications to be installed and configured on the new infrastructure but existing data needs to be transferred and DNS entries need to be updated.
+</p>
+
+<p>
+The following steps should be executed in the order outlined. Some have to be done manually, others can be automated with Ansible.
+</p>
+
+<ol>
+<li>Reduce DNS time to live (TTL), manual</li>
+<li>Create new infrastructure, automated</li>
+<li>Stop existing infrastructure, manual</li>
+<li>Synchronize database to new infrastructure, automated</li>
+<li>Synchronize user files to new infrastructure, automated</li>
+<li>Switch DNS entries, manual</li>
+<li>Increase DNS time to live (TTL), manual</li>
+</ol>
+
 </div>
 
 
