@@ -3232,6 +3232,10 @@ The following steps should be executed in the order outlined. Some have to be do
 <li>Increase DNS time to live (TTL), manual</li>
 </ol>
 
+<p>
+The first steps are reducing the time DNS entries are cached so the switch to the new server gets propagated faster. The new infrastructure is then created with the main Ansible playbook. Once the new infrastructure is ready the old one can be switch off so no changes can be made anymore by the user. To synchronize the database and user files from the existing infrastructure a separate Ansible playbook should be written so it can be executed on its own. After everything has been transferred to the new infrastructure the DNS entries can be changed to point to the new infrastructure and the DNS TTL can be increased again.
+</p>
+
 </div>
 
 
