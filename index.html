@@ -4207,11 +4207,7 @@ The first steps are reducing the time DNS entries are cached so the switch to th
 <h3>Proof-of-concept</h3>
 
 <p>
-For the proof-of-concept the following reduced infrastructure has been selected to test the feasibility of the concept focussing on the requirements. The proof-of-concept infrastructure includes a PHP application, two Java applications, one JavaScript application, multiple MySQL databases and RabbitMQ message queues.
-</p>
-
-<p>
-To prepare for horizontal scaling the databases are deployed to a separate server. Initial data fixtures are imported from the existing WorldSkills infrastructure (using an SSH connection).
+For the proof-of-concept the following reduced infrastructure has been selected to test the feasibility of the concept focussing on the requirements. The proof-of-concept infrastructure includes a PHP application (R01), two Java applications (R02), one JavaScript application, multiple MySQL databases and RabbitMQ message queues.
 </p>
 
 <figure>
@@ -4220,10 +4216,43 @@ To prepare for horizontal scaling the databases are deployed to a separate serve
 </figure>
 
 <p>
-The proof-of-concept also includes the dynamic generation of staging environments based on branch naming. The source code for all applications and the Ansible playbook is stored in a separate organization on GitHub. The domain name <em>worldskills.ch</em> is used for the proof-of-concept.
+The proof-of-concept also includes the dynamic generation of staging environments based on branch naming (R04). The source code for all applications and the Ansible playbook is stored in a separate organization on GitHub. The domain name <em>worldskills.ch</em> is used for the proof-of-concept.
 </p>
 
-<h4>Ansible playbook</h4>
+<p>
+To prepare for horizontal scaling (R19) the databases are deployed to a separate server. Initial data fixtures are imported from the existing WorldSkills infrastructure (using an SSH connection).
+</p>
+
+<p>
+All Must and Should requirements can be tested with the proof-of-concept infrastructure. The following list includes all requirements that are checked with the proof-of-concept infrastructure.
+</p>
+
+<ul>
+<li>R01 PHP applications</li>
+<li>R02 Java applications</li>
+<li>R03 Server configuration</li>
+<li>R04 Application deployment</li>
+<li>R05 Staging area</li>
+<li>R11 Configuration files</li>
+<li>R12 Change history</li>
+<li>R13 Open Source</li>
+<li>R14 Test environment</li>
+<li>R15 Encrypted passwords</li>
+<li>R16 Superuser access</li>
+<li>R17 Custom software</li>
+<li>R18 Learning curve</li>
+</ul>
+
+<p>
+The following Could requirements are not explicitly tested with the proof-of-concept infrastructure because of their complexity.
+</p>
+
+<ul>
+<li>R06 Hoster switch</li>
+<li>R19 Horizontal scaling</li>
+</ul>
+
+<h4 class="break">Ansible playbook</h4>
 
 <p>
 The playbook repository is organized with roles. Each role is responible for the installation and configuration of the applications. The main playbook delegates the roles for execution to the servers.
