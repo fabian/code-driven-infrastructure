@@ -1464,8 +1464,17 @@ To connect the Docker client to the Docker daemon, please set:
 Another useful tool is Docker Compose which allows multiple instances to be started based on a configuration file. However it's usage in production is not recommended at the moment as it's missing some features for managing running instances.
 </p>
 
-<h4>R01 PHP applications</h4>
+<h4>Requirements analysis</h4>
 
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R01 PHP applications</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Docker publishes official images for certain applications and programming languages in the Docker Hub Repository. There's also an official image for PHP which can be found on <a href="#ref-docker-php">GitHub</a>. Maintained images for <a href="#ref-php-versions">recent PHP versions</a> are provided with built-in Apache or PHP-FPM for running the application as a service.
 </p>
@@ -1477,13 +1486,28 @@ The easiest way to run a PHP application with Docker is to use Apache so the app
 <p>
 The MySQL server would be started in a separate instance, so an additional Dockerfile for MySQL is needed and then needs to be linked with the container running the PHP application. To simplify this Docker Compose can be used. It's a tool that can start multiple Docker instances based on a configuration file.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R02 Java applications</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R02 Java applications</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 For Tomcat official images published are available from the Docker Hub Repository as well. Multiple versions with for Java 7 and 8 are available.
 </p>
@@ -1491,13 +1515,28 @@ For Tomcat official images published are available from the Docker Hub Repositor
 <p>
 Configuration and the application code can be copied to the working directory of Tomcat and are read and started automatically. Multiple applications can be bundled into one container or one container per application can be used. Again as with PHP, a MySQL server would be started in a separate instance.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R03 Server configuration</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R03 Server configuration</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 To guarantee reproducible containers configuration files are usually copied into the container at build time. This allows the container to be tested in a staging environment and making guarantees the same result in the production environment.
 </p>
@@ -1506,12 +1545,28 @@ To guarantee reproducible containers configuration files are usually copied into
 Docker provides the tools to build the image and upload it to a central repository, however it doesn't provide any tools to do an actual deployment of the image to a live environment out of the box.
 </p>
 
-<p class="affix">
-Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
-</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Fail <img src="images/sign-error.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<h4>R04 Application deployment</h4>
+<br/>
 
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R04 Application deployment</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 There are different ways how to implement this with Docker. One way would be to build a new image, deploy it separately and then route requests with a load balancer to the new image. However as noted before, Docker doesn't provide tools to do a deployment of the image nor the orchestration of running machines.
 </p>
@@ -1519,120 +1574,291 @@ There are different ways how to implement this with Docker. One way would be to 
 <p>
 Another possibility would be to use volumes to deploy the new application into the running container but this would require each application to have built-in support for zero downtime deployment, which is not always the case (Tomcat supports this with parallel deployment but not PHP).
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Fail <img src="images/sign-error.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R05 Staging area</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R05 Staging area</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Containers can easily be started quickly in a new environment (e.g. a new virtual server). Docker Compose can be used here for starting up multiple containers at once. Database fixtures can be loaded from additional containers which are linked to the database container.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R06 Hoster switch</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R06 Hoster switch</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Thanks to the virtualization the only requirement for a new hoster would be to run Docker. Transfer of the data is possible by launching additional containers on the old server and mounting the data volumes. The installation of Docker would need to be done manually if the hoster doesn't provide preinstalled Docker. But more importantly the configuration of the host machine (e.g. SSH keys, logging, security settings) could not be automated with Docker.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Fail <img src="images/sign-error.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R11 Configuration files</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R11 Configuration files</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 All configuration files can be stored in the code repository and then added to the container during build time.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R12 Change history</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R12 Change history</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 By storing all Dockerfiles and configuration files in a VCS and building the container images on a CI server each change can be traced back.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R13 Open Source</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R13 Open Source</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Both Docker and the registry server for Docker are Open Source on GitHub, they are licensed under the Apache License.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R14 Test environment</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R14 Test environment</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 As with the staging environment Docker Compose can be used for starting multiple containers quickly so tests can be executed.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R15 Encrypted passwords</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R15 Encrypted passwords</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Secret data is usually passed as environment variables to the Docker container. Docker doesn't provide functionality for encrypting information.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Fail <img src="images/sign-error.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R16 Superuser access</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R16 Superuser access</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Containers can be accessed from the outside with different methods and superuser access to the host system is required by Docker.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R17 Custom software</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R17 Custom software</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 There are some limitations of what can be run inside a container on the kernel level, but they are not affecting most use cases.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R18 Learning curve</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R18 Learning curve</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Immutable applications are a complex topic and Docker requires specific methods for normal tasks.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Fail <img src="images/sign-error.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R19 Horizontal scaling</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R19 Horizontal scaling</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Multiple instances of images can be started in parallel and Docker Swarm, a clustering tool for Docker, can be used to manage them.
 </p>
-
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
 <h4 class="break">Summary Software Containers</h4>
 
@@ -1729,8 +1955,17 @@ Generating chef JSON and uploading...
 Chef organizes commands in <em>recipes</em> and <em>cookbooks</em>
 </p>
 
-<h4>R01 PHP applications</h4>
+<h4>Requirements analysis</h4>
 
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R01 PHP applications</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Cookbooks for PHP are available in the <a href="#ref-supermarket">Supermarket</a>, the official repository for cookbooks. The PHP cookbook is published and maintained by the company behind Chef itself.
 </p>
@@ -1742,36 +1977,79 @@ However the functionality provided by the cookbook is mostly focused on PEAR, wh
 <p>
 For MySQL there's an official cookbook available as well which installs and starts a MySQL server as required.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-
-<h4>R02 Java applications</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R02 Java applications</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 The Supermarket also has an official cookbook for Tomcat. Java must be installed separately, again there's a <a href="#ref-java-cookbook">cookbook</a>
 available in the Supermarket. The same MySQL cookbook as mention before can be used.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-
-<h4>R03 Server configuration</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R03 Server configuration</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 With Chef configuration files are usually built from templates which are stored in the repository. Once uploaded to the Chef server the client receives them, replaces the variables in them and puts them to the targeted location. In addition the service using the file can be restarted.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R04 Application deployment</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R04 Application deployment</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 For Tomcat parallel deployment can be used here. The actual deployment to the server is done using the Tomcat Manager App.
 </p>
@@ -1779,123 +2057,295 @@ For Tomcat parallel deployment can be used here. The actual deployment to the se
 <p>
 The <code>deploy</code> directive can be used to update a PHP application to the latest revision without causing any downtime. It uses symlinks to make the latest version only active when all dependencies have been installed.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R05 Staging area</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R05 Staging area</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Chef can be used to setup a virtual machine with the needed environment. Once the virtual machine with the Chef client is running it can pull all information needed to setup the environment from the Chef server.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R06 Hoster switch</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R06 Hoster switch</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 The Chef client needs to be installed manually on a new virtual machine if the hoster doesn't provide machines with Chef preinstalled. Once the Chef client is installed it can install all required software and configure the machine as needed.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R11 Configuration files</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R11 Configuration files</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Configuration files can be stored as templates in the repository. They get compiled and written to their target destination by Chef.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R12 Change history</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R12 Change history</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 All cookbooks and templates can be stored in a VCS, a CI server uploads them to the Chef server for distribution to the clients.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R13 Open Source</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R13 Open Source</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Chef Client, Chef Server and Chef Development Kit (DK) are Open Source on GitHub, they are licensed under the Apache License.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R14 Test environment</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R14 Test environment</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 The cookbooks can also be used to configure the virtual machine the tests are running on.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R15 Encrypted passwords</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R15 Encrypted passwords</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Data bags allow to store variables for the Chef server. Confidential information can be stored in encrypted Data Bags. The secret key can be shared within the developers over other secure channels.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R16 Superuser access</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R16 Superuser access</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 No restrictions about access to the server are imposed by Chef.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R17 Custom software</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R17 Custom software</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Packages from the Linux distribution are easiest to install with Chef, but also custom software can be downloaded and installed.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R18 Learning curve</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R18 Learning curve</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Chef has a complex architecture and many dependencies on other libraries. Developers not familiar with Ruby also need to learn the syntax and its oddities first.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Fail <img src="images/sign-error.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Fail <img src="images/sign-error.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R19 Horizontal scaling</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R19 Horizontal scaling</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Multiple Chef clients can connect to the same Chef server and the same cookbooks can be installed on multiple hosts.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-
-<h4 class="break">Summary</h4>
+<h4 class="break">Summary Configuration Repository</h4>
 
 <p>
 The installation of the Chef DK was a bit troubled as it relies on overriding rbenv in the <code>PATH</code>. Some modifications to
@@ -1939,7 +2389,7 @@ many components rely on others and compatibility has to be figure out manually.
 </td>
 </tr>
 </table>
-<figcaption>Analysis Software Containers</figcaption>
+<figcaption>Analysis Configuration Repository</figcaption>
 </figure>
 
 
@@ -1986,8 +2436,17 @@ default                    : ok=1    changed=0
 <figcaption>Vagrant initialization with Ansible</figcaption>
 </figure>
 
-<h4>R01 PHP applications</h4>
+<h4>Requirements analysis</h4>
 
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R01 PHP applications</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Ansible includes already most tools needed for installing and configuring software using the OS mechanisms. Examples for how to use them are provided on GitHub by Ansible itself.
 </p>
@@ -1999,35 +2458,78 @@ Apache and mod_php can be installed with the OS packages, their configuration ca
 <p>
 MySQL can be installed and configured the same way as Apache.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-
-<h4>R02 Java applications</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R02 Java applications</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 In the examples provided by Ansible they also describe how to install a standalone instance of Tomcat. The installation package gets downloaded from the Tomcat download server, extracted to an appropriate location, the configuration files are created from templates and Tomcat is started as a service. MySQL can be installed with the OS packages.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-
-<h4>R03 Server configuration</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R03 Server configuration</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Configuration files can be either simply copied to the server from the local playbook or templates with variables can be used. Ansible checks if there were any changes in the configuration file and notifies a service to restart if needed. The playbook can also be run from an CI server.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R04 Application deployment</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R04 Application deployment</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 For Tomcat parallel deployment can be used here again. The actual deployment to the server can be done using the Tomcat Manager App or by using Ansible to copy the file to the server.
 </p>
@@ -2035,123 +2537,293 @@ For Tomcat parallel deployment can be used here again. The actual deployment to 
 <p>
 A combination of the <code>git</code> and <code>file</code> directives can be used to checkout the latest version of the application and activate it with a symlink as soon as all dependencies have been installed.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R05 Staging area</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R05 Staging area</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 As long as Ansible can connect via SSH to a machine it can set it up as needed. Ansible can also launch new virtual machines in the cloud which is useful for quickly starting a staging area.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R06 Hoster switch</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R06 Hoster switch</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 As mention before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differentiates between package management systems, so switching from Apt to YUM would require some code changes, but this switch is out of scope of this requirement.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R11 Configuration files</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R11 Configuration files</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 All configuration files can be stored as templates or raw files in the VCS repository of the playbook. Ansible copies them to the target server when executed.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R12 Change history</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R12 Change history</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 The playbook and all its files can be stored in the VCS. A CI server can run the playbook if a change has been made.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R13 Open Source</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R13 Open Source</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Ansible is Open Source on GitHub and licenced under GNU General Public License (GPL) v3.0.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R14 Test environment</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R14 Test environment</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 The playbook can also be executed locally to configure a test environment on the same machine.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R15 Encrypted passwords</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R15 Encrypted passwords</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Ansible provides a tool called Vault to encrypt files with variables. The encrypted file can automatically be encrypted when running the playbook. The password can be stored in a separate file and shared among developers.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R16 Superuser access</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R16 Superuser access</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Ansible doesn't restrict how the server can be accessed. In fact Ansible requires that the server can be access using SSH which is the preferred way for developers to access the server as well.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R17 Custom software</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R17 Custom software</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Operation system packages as well as custom downloaded software can be installed using Ansible.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R18 Learning curve</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R18 Learning curve</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Ansible files are easy to read and the concept can be understood quickly. Only the YAML syntax requires a bit of learning but most examples already give a good idea how it works.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
+<br/>
 
-<h4>R19 Horizontal scaling</h4>
-
+<figure>
+<table>
+<tr>
+<th>Requirement</th>
+<th>R19 Horizontal scaling</th>
+</tr>
+<tr>
+<th>Analysis</th>
+<td>
 <p>
 Ansible can connect to multiple servers and execute the defined commands there. Servers can also be grouped by their role so that only specific commands are executed on certain servers.
 </p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</table>
+</figure>
 
-<p class="affix">
-Verdict: Pass <img src="images/sign-check.svg" width="16" height="16" alt="">
-</p>
-
-
-<h4 class="break">Summary</h4>
+<h4 class="break">Summary Remote Command Execution</h4>
 
 <p>
 Ansible was easy to install with pip and was instantly ready to use. Because all servers are configured with SSH key authentication already, no additional setup is required to make Ansible usable on them.
@@ -2190,7 +2862,7 @@ It is basically just a thing layer above shell scripts but provides all the tool
 </td>
 </tr>
 </table>
-<figcaption>Analysis Software Containers</figcaption>
+<figcaption>Analysis Remote Command Execution</figcaption>
 </figure>
 
 <h3 class="break">Conclusion</h3>

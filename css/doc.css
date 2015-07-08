@@ -177,6 +177,11 @@ table td.level-3 {
     padding-left: 4.4em;
 }
 
+table p {
+    margin-top: 0;
+    padding-left: 0;
+}
+
 table ul {
     margin: 0;
     padding-left: 16px;
