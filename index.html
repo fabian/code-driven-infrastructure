@@ -4760,6 +4760,171 @@ localhost                  : ok=5    changed=0    unreachable=0    failed=0   </
 <figcaption>Output system tests</figcaption>
 </figure>
 
+<h3 class="break">Verification</h3>
+
+<p>
+The requirements outlined for the proof-of-concept are verified manually against the running proof-of-concept infrastructure.
+</p>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R01 PHP applications</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+The website is running at http://www.worldskills.ch/ and displays information from the Events web service. Clicking on Login redirects to http://auth.worldskills.ch/ where the Auth application is running as expected.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R02 Java applications</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+The Auth and the Events web service are running. Events are listed when accessing http://api.worldskills.ch/events and organizational groups are listed on https://api.worldskills.org/auth/ws_entities/1.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R03 Server configuration</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+After increasing the value of <code>query_cache_size</code> in the file <code>roles/mysql/templates/my.cnf.j2</code> and pushing the change to GitHub, the playbook is executed and the change is deployed to the server. The MySQL server automatically gets restarted because of the configuration file change.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R04 Application deployment</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+The <code>favicon.ico</code> of the main website is changed and pushed to GitHub. The unit tests are executed on Codeship and the Ansible playbook is checked out. With a separate playbook the changed file gets deployed to the server.
+</p>
+<p>
+The new Favicon is only visible after the new version of the website has is completely ready.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R05 Staging area</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+A new branch called <em>staging-timetable</em> is created for the Events web service and pushed to GitHub. The unit tests are executed on Codeship and the Ansible playbook is checked out. A new staging environment is created on DigitalOcean and all applications are installed.
+</p>
+<p>
+The new staging environment can be used at http://staging-timetable.worldskills.ch/ after 34 minutes.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
 </div>
 
 
