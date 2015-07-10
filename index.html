@@ -1011,7 +1011,7 @@ As a developer, I want to test a new version of a web service in a staging area 
 Acceptance Criteria
 </th>
 <td>
-A new version of a web service is pushed in a separate branch, the functionality is available for testing in a staging environment within 1&nbsp;hour from the push.
+A new version of a web service is pushed in a separate branch, the functionality is available for testing in a staging environment within 30&nbsp;minutes from the push.
 </td>
 </tr>
 <tr>
@@ -4595,7 +4595,7 @@ If a task in an Ansible playbook fails, the execution of the whole playbook stop
 <h3 class="break">Test Results</h3>
 
 <p>
-The whole proof-of-concept infrastructure can be created in 27 minutes. The output of the execution can be found below.
+The whole proof-of-concept infrastructure can be created in 18 minutes. The output of the execution can be found below.
 </p>
 
 <figure>
@@ -4735,7 +4735,7 @@ After the playbook has been executed the WorldSkills website can be accessed on 
 </figure>
 
 <p>
-As the whole playbook is idempotent, it can be executed repeatedly without making any changes. Executing it without making any modifications takes 8 minutes.
+As the whole playbook is idempotent, it can be executed repeatedly without making any changes. Executing it without making any modifications takes 3 minutes.
 </p>
 
 <p>
@@ -4911,7 +4911,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 A new branch called <em>staging-timetable</em> is created for the Events web service and pushed to GitHub. The unit tests are executed on Codeship and the Ansible playbook is checked out. A new staging environment is created on DigitalOcean and all applications are installed.
 </p>
 <p>
-The new staging environment can be used at http://staging-timetable.worldskills.ch/ after 34 minutes.
+The new staging environment can be used at http://staging-timetable-www.worldskills.ch/ after 19 minutes.
 </p>
 </td>
 </tr>
