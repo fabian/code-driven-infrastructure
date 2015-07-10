@@ -4925,6 +4925,254 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 </table>
 </figure>
 
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R11 Configuration files</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+Configuration files are part of the Ansible playbook and stored in the code repository.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R12 Change history</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+Every change gets commited to the code repository. An explanation is included in the commit comment.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R13 Open Source</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+The playbook can be executed with Ansible which is Open Source. The required Python dependencies <em>dopy</em> and <em>httplib2</em> are Open Source too.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R14 Test environment</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+The playbook can be executed locally with Vagrant. Automated tests can be executed locally too.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R15 Encrypted passwords</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+Sensitive data is stored inside the Ansible Vault file.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R16 Superuser access</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+The servers on DigitalOcean can be accessed directly with SSH.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R17 Custom software</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+Any software for Linux can be installed on the servers. As an example, <em>rsync</em> was installed on the servers to get data files for the website from the existing infrastructure.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
+<br/>
+
+<figure>
+<table class="full">
+<colgroup>
+    <col class="col-twenty" />
+    <col />
+</colgroup>
+<tbody>
+<tr>
+<th>Requirement</th>
+<th>R18 Learning curve</th>
+</tr>
+<tr>
+<th>Verification</th>
+<td>
+<p>
+Ansible can be understood within one day. The development of the Ansible playbook took about about 2 weeks.
+</p>
+</td>
+</tr>
+<tr>
+<th>Verdict</th>
+<td>
+Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon">
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+
 </div>
 
 
