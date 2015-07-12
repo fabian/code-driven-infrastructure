@@ -357,7 +357,7 @@ figcaption[title]:after::footnote-call {
 }
 
 .front .cover {
-    margin-bottom: 14em;
+    margin-bottom: 12.5em;
 }
 
 #toc,
