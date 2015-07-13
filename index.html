@@ -383,7 +383,7 @@ The following requirements were established by analysing the existing infrastruc
 <h3>Stakeholders</h3>
 
 <p>
-The following stakeholders have been found for the current infrastructure. They have a direct or indirect influence on the requirements. Theses stakeholders are also used in the system context diagram.
+The following stakeholders have been found for the current infrastructure. They have a direct or indirect influence on the requirements. These stakeholders are also used in the system context diagram.
 </p>
 
 <figure>
@@ -951,7 +951,7 @@ As a developer I want to change a server configuration file to optimize a settin
 Acceptance Criteria
 </th>
 <td>
-A configuration file get modified and the change is pushed to the repository. The new configuration file is automatically deployed to the server and the affected applications loads the new configuration.
+A configuration file gets modified and the change is pushed to the repository. The new configuration file is automatically deployed to the server and the affected applications loads the new configuration.
 </td>
 </tr>
 <tr>
@@ -1017,7 +1017,7 @@ A new version of an application gets pushed to the repository. Automated tests o
 Description
 </th>
 <td>
-As a developer, I want to test a new version of a web service in a staging area so I can make sure if works as expected.
+As a developer, I want to test a new version of a web service in a staging area so I can make sure it works correctly with all other components of the system.
 </td>
 </tr>
 <tr>
@@ -1368,7 +1368,7 @@ Learnability
 Description
 </th>
 <td>
-How the software system to install and configure the infrastructure can be learned quickly so all developers can make changes to the infrastructure without spending days studying it.
+How to use the software system to install and configure the infrastructure can be learned quickly so all developers can make changes to the infrastructure without spending weeks studying it.
 </td>
 </tr>
 <tr>
@@ -1536,11 +1536,11 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-For Tomcat official images published are available from the Docker Hub Repository as well. Multiple versions with for Java 7 and 8 are available.
+For Tomcat official images are available from the Docker Hub Repository as well. Multiple versions with for Java 7 and 8 are available.
 </p>
 
 <p>
-Configuration and the application code can be copied to the working directory of Tomcat and are read and started automatically. Multiple applications can be bundled into one container or one container per application can be used. Again as with PHP, a MySQL server would be started in a separate instance.
+Configuration and the application code can be copied to the working directory of Tomcat - the application is then started automatically. Multiple applications can be bundled into one container or one container per application can be used. Again as with PHP, a MySQL server would be started in a separate instance.
 </p>
 </td>
 </tr>
@@ -1571,7 +1571,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-To guarantee reproducible containers configuration files are usually copied into the container at build time. This allows the container to be tested in a staging environment and making guarantees the same result in the production environment.
+To guarantee reproducible containers, configuration files are usually copied into the container at build time. This allows the container to be tested in a staging environment and guarantees the same results in the production environment.
 </p>
 
 <p>
@@ -1642,7 +1642,7 @@ Fail <img src="images/sign-error.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-Containers can easily be started quickly in a new environment (e.g. a new virtual server). Docker Compose can be used here for starting up multiple containers at once. Database fixtures can be loaded from additional containers which are linked to the database container.
+Containers can be started quickly in a new environment (e.g. a new virtual server). Docker Compose can be used here for starting up multiple containers at once. Database fixtures can be loaded from additional containers which are linked to the database container.
 </p>
 </td>
 </tr>
@@ -1673,7 +1673,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-Thanks to the virtualization the only requirement for a new hoster would be to run Docker. Transfer of the data is possible by launching additional containers on the old server and mounting the data volumes. The installation of Docker would need to be done manually if the hoster doesn't provide preinstalled Docker. But more importantly the configuration of the host machine (e.g. SSH keys, logging, security settings) could not be automated with Docker.
+Thanks to the virtualization the only requirement for a new hoster would be to run Docker. Transfer of the data is possible by launching additional containers on the old server and mounting the data volumes. The installation of Docker would need to be done manually if Docker is not preinstalled by the hoster. But more importantly the configuration of the host machine (e.g. SSH keys, logging, security settings) could not be automated with Docker.
 </p>
 </td>
 </tr>
@@ -1735,7 +1735,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-By storing all Dockerfiles and configuration files in a VCS and building the container images on a CI server each change can be traced back.
+By storing all Dockerfiles and configuration files in a code repository and building the container images on a CI server each change can be traced back.
 </p>
 </td>
 </tr>
@@ -2309,7 +2309,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-All cookbooks and templates can be stored in a VCS, a CI server uploads them to the Chef server for distribution to the clients.
+All cookbooks and templates can be stored in a code repository, a CI server uploads them to the Chef server for distribution to the clients.
 </p>
 </td>
 </tr>
@@ -2849,7 +2849,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-All configuration files can be stored as templates or raw files in the VCS repository of the playbook. Ansible copies them to the target server when executed.
+All configuration files can be stored as templates or raw files in the code repository of the playbook. Ansible copies them to the target server when executed.
 </p>
 </td>
 </tr>
@@ -2880,7 +2880,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-The playbook and all its files can be stored in the VCS. A CI server can run the playbook if a change has been made.
+The playbook and all its files can be stored in the code repository. A CI server can run the playbook if a change has been made.
 </p>
 </td>
 </tr>
@@ -5491,8 +5491,8 @@ The following versions of software were used on the server:
 <dd>PHP FastCGI Process Manager: An way to run PHP so a webserver can execute PHP applications.</dd>
 <dt>Git</dt>
 <dd>A distributed version control system.</dd>
-<dt>VCS</dt>
-<dd>Version control system: used to store and manage source code.</dd>
+<dt>Code repository</dt>
+<dd>Used to store and manage source code in a version control system.</dd>
 <dt>Deployment</dt>
 <dd>Installing or updating a software on a server.</dd>
 <dt>Symlink</dt>
