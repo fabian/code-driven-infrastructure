@@ -4022,7 +4022,7 @@ This view explains the dynamic aspects of the playbook execution. In particular 
 </figure>
 
 <p>
-While running the playbook, the first role that gets executed is the <em>servers</em> role. This role doesn't execute any remote commands but runs locally to connect to the DigitalOcean API. It either creates and boots the servers if they don't exist yet or just fetches their information. The returned IP addresses are added to the dynamic inventory so following commands can be executed on the servers.
+While running the playbook, the first role that gets executed is the <em>servers</em> role. This role doesn't execute any remote commands but runs locally to connect to the web service provided by the hoster. It either creates and boots the servers if they don't exist yet or just fetches their information. The returned IP addresses are added to the dynamic inventory so following commands can be executed on the servers.
 </p>
 
 <p>
