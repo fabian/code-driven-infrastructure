@@ -83,7 +83,7 @@ WorldSkills International is a non-profit membership association which organizes
 </figure>
 
 <p>
-All web software is running on rented virtual servers running Linux. They are managed manually using a web control panel (Parallels Plesk). Changes to the infrastructure are done by one of the four internal software developers manually.
+All web software is running on rented virtual servers running Linux. They are managed manually using a web control panel (<a href="#ref-plesk">Parallels Plesk</a>). Changes to the infrastructure are done by one of the four internal software developers manually.
 </p>
 
 <p>
@@ -101,9 +101,9 @@ To achieve this goal, manual steps to build or change the infrastructure should 
 </p>
 
 <ul>
-    <li>Software containers: all software needed to run an application is encapsulated and run in operating system-level virtualization (e.g. Docker, Rocket)</li>
-    <li>Configuration repository: A centralized repository with configuration files and software is used to configure servers (e.g. Chef, Puppet, CFEngine)</li>
-    <li>Remote command execution: Installation commands and configuration files are transmitted in a coordinated manner to a remote server (e.g. Ansible, Salt, Rex)</li>
+    <li>Software containers: all software needed to run an application is encapsulated and run in operating system-level virtualization (e.g. <a href="#ref-docker">Docker</a>, <a href="#ref-rkt">rkt</a>)</li>
+    <li>Configuration repository: A centralized repository with configuration files and software is used to configure servers (e.g. <a href="#ref-chef">Chef</a>, <a href="#ref-puppet">Puppet</a>, <a href="#ref-cfengine">CFEngine</a>)</li>
+    <li>Remote command execution: Installation commands and configuration files are transmitted in a coordinated manner to a remote server (e.g. <a href="#ref-ansible">Ansible</a>, <a href="#ref-saltstack">SaltStack</a>, <a href="#ref-rex">Rex</a>)</li>
 </ul>
 
 <p>
@@ -118,7 +118,7 @@ The following tasks will be completed by the student as part of the Bachelor the
 
 <ol>
     <li>Analyze infrastructure requirements</li>
-    <li>Test requirements with popular representatives for each type of provisioning software (Docker, Ansible, Chef)</li>
+    <li>Test requirements with popular representatives for each type of provisioning software</li>
     <li>Evaluate provisioning software</li>
     <li>Write architecture documentation</li>
     <li>Develop test concept</li>
@@ -5270,6 +5270,12 @@ As the setup of a staging environment takes some time it's questionable how usef
     (retrieved&nbsp;18.&nbsp;April&nbsp;2015)
 </p>
 
+<p id="ref-rkt" class="reference-item">
+    <span class="ref">CoreOS, Inc. (2015): rkt Documentation</span>.
+    <a href="https://coreos.com/rkt/docs/0.5.6" target="_blank">https://coreos.com/rkt/docs/0.5.6</a>
+    (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
 <p id="ref-chef" class="reference-item">
     <span class="ref">Chef Software, Inc. (2015): Chef</span>.
     <a href="https://www.chef.io/" target="_blank">https://www.chef.io/</a>
@@ -5280,6 +5286,36 @@ As the setup of a staging environment takes some time it's questionable how usef
     <span class="ref">Ansible, Inc. (2015): Ansible</span>.
     <a href="http://www.ansible.com/" target="_blank">http://www.ansible.com/</a>
     (retrieved&nbsp;20.&nbsp;April&nbsp;2015)
+</p>
+
+<p id="ref-puppet" class="reference-item">
+    <span class="ref">Puppet Labs (2015): Open Source Puppet</span>.
+    <a href="https://puppetlabs.com/puppet/puppet-open-source" target="_blank">https://puppetlabs.com/puppet/puppet-open-source</a>
+    (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-cfengine" class="reference-item">
+    <span class="ref">CFEngine AS (2015): CFEngine</span>.
+    <a href="http://cfengine.com/" target="_blank">http://cfengine.com/</a>
+    (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-plesk" class="reference-item">
+    <span class="ref">Parallels IP Holdings GmbH (2015): Plesk</span>.
+    <a href="http://parallels.com/en/products/plesk" target="_blank">http://parallels.com/en/products/plesk</a>
+    (retrieved&nbsp;7.&nbsp;April&nbsp;2015)
+</p>
+
+<p id="ref-saltstack" class="reference-item">
+    <span class="ref">SaltStack (2015): SaltStack automation for CloudOps, ITOps &amp; DevOps at scale</span>.
+    <a href="http://saltstack.com/" target="_blank">http://saltstack.com/</a>
+    (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-rex" class="reference-item">
+    <span class="ref">(R)?ex - A simple framework to simplify system administration and datacenter automation</span>.
+    <a href="http://www.rexify.org/" target="_blank">http://www.rexify.org/</a>
+    (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
 </p>
 
 <p id="ref-ansible-github-9877" class="reference-item">
