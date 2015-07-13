@@ -2026,7 +2026,7 @@ Chef and Puppet are the most popular representatives for this type of software. 
 </figure>
 
 <p>
-Chef is used here because of the already existing knowledge of Ruby and its popularity. It is usually running on a Linux machine, so for development a virtual machine with Linux is required. To simplify the setup of the virtual machine, <a href="#ref-vagrant">Vagrant</a> (a software to run virtual machines based on a configuration file) can be used. After installing Vagrant, a virtual machine can be started with a Linux image provided by Chef with all required software pre-installed:
+Chef is used here because of the already existing knowledge of Ruby and its popularity. It is usually running on a Linux machine, so for development a virtual machine with Linux is required. To simplify the setup of the virtual machine, <a href="#ref-vagrant">Vagrant</a> can be used. Vagrant is a software to run virtual machines based on a configuration file. After installing Vagrant, a virtual machine can be started with a Linux image provided by Chef which already has all the required software pre-installed:
 </p>
 
 <figure>
@@ -2083,7 +2083,7 @@ Cookbooks for PHP are available in the <a href="#ref-supermarket">Supermarket</a
 </p>
 
 <p>
-However the functionality provided by the cookbook is mostly focused on PEAR, which is not a requirement. A more popular alternative is the <a href="#ref-apache2-cookbook">apache2 cookbook</a>. It not only provides the possibility to install Apache but also mod_php to run PHP together with a web server.
+However the functionality provided by the cookbook is mostly focused on the PHP extension repository <a href="#ref-pear">PEAR</a>, which is not a requirement. A more popular alternative is the <a href="#ref-apache2-cookbook">apache2 cookbook</a>. It provides the possibility to install Apache with mod_php to run PHP together with a web server.
 </p>
 
 <p>
@@ -2185,7 +2185,7 @@ For Tomcat parallel deployment can be used here. The actual deployment to the se
 </p>
 
 <p>
-The <code>deploy</code> directive can be used to update a PHP application to the latest revision without causing any downtime. It uses symlinks to make the latest version only active when all dependencies have been installed.
+The <code>deploy</code> directive can be used to update a PHP application to the latest revision without causing any downtime. It keeps a copy of the current version running and uses symlinks to make the latest version active once all dependencies have been installed.
 </p>
 </td>
 </tr>
@@ -2278,7 +2278,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-Configuration files can be stored as templates in the repository. They get compiled and written to their target destination by Chef.
+Configuration files can be stored as templates in the code repository. They get compiled and written to their target destination by Chef.
 </p>
 </td>
 </tr>
@@ -2371,7 +2371,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-The cookbooks can also be used to configure the virtual machine the tests are running on.
+The cookbooks can also be used to configure the virtual machine on which the tests are running on.
 </p>
 </td>
 </tr>
@@ -2402,7 +2402,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-Data bags allow to store variables for the Chef server. Confidential information can be stored in encrypted Data Bags. The secret key can be shared within the developers over other secure channels.
+<em>Data bags</em> can store variables for the Chef server. Confidential information can be stored in encrypted Data Bags. The secret key can be shared within the developers over other secure channels.
 </p>
 </td>
 </tr>
@@ -2464,7 +2464,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-Packages from the Linux distribution are easiest to install with Chef, but also custom software can be downloaded and installed.
+Packages from the Linux distribution are simple to install with Chef, but also custom software can be downloaded and installed.
 </p>
 </td>
 </tr>
@@ -2495,7 +2495,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-Chef has a complex architecture and many dependencies on other libraries. Developers not familiar with Ruby also need to learn the syntax and its oddities first.
+Chef has a complex architecture and many dependencies on other libraries. Developers not familiar with Ruby also need to learn the syntax first.
 </p>
 </td>
 </tr>
@@ -2550,7 +2550,7 @@ The installation of the Chef DK was a bit troubled as it relies on overriding rb
 </p>
 
 <p>
-The possibility to test the cookbooks locally inside a virtual machine with VirtualBox proved handy. However a few times the cookbook failed unexpectedly (e.g. because a wrong package was accidentally installed first) - a complete reinstall then solved the problem but took quite some time.
+The possibility to test the cookbooks locally inside a virtual machine with VirtualBox proved handy. However a few times the cookbook failed unexpectedly (e.g. because a wrong package was accidentally installed first) - a complete reinstall solved the problem but took quite some time.
 </p>
 
 <p>
@@ -2594,7 +2594,7 @@ many components rely on others and compatibility has to be figure out manually.
 <h3 class="break">Remote Command Execution</h3>
 
 <p>
-This is similar to the Configuration Repository, software to be installed and commands to be executed are defined in text files. The main difference is that instead of having a central server where everything is available to be pulled, everything gets pushed to the hosts. In fact Configuration Repository software like Chef also supports this kind of operation mode with Chef Solo.
+This is similar to the Configuration Repository described in the last chapter: Software to be installed and commands to be executed are defined in text files. The main difference is that instead of having a central server where everything is available to get pulled, everything gets pushed to the hosts. In fact Configuration Repository software like Chef also supports this kind of operation mode with Chef Solo.
 </p>
 
 <p>
@@ -2818,7 +2818,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-As mention before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differentiates between package management systems, so switching from Apt to YUM would require some code changes, but this switch is out of scope of this requirement.
+As mention before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differentiates between package management systems, so switching from <a href="#ref-apt">Apt</a> (used by Debian) to <a href="#ref-yum">Yum</a> (used by SUSE Linux) would require some code changes, but this switch is out of scope of this requirement.
 </p>
 </td>
 </tr>
@@ -3114,11 +3114,11 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <h4 class="break">Summary Remote Command Execution</h4>
 
 <p>
-Ansible was easy to install with pip and was instantly ready to use. Because all servers are configured with SSH key authentication already, no additional setup is required to make Ansible usable on them.
+Ansible was easy to install with the Python package manager <a href="#ref-pip">pip</a> and was instantly ready to use. Because all servers are configured with SSH key authentication already, no additional setup is required to make Ansible usable on them.
 </p>
 
 <p>
-It is basically just a thing layer above shell scripts but provides all the tools needed for provisioning and maintaining a server (commands, services, config files). It lacks a few advanced features for highly complex setups, but the fact that it's easy to learn is useful in a small team with shared responsibilities.
+It is basically just a thin layer above shell scripts but provides all the tools needed for provisioning and maintaining a server (commands, services, config files). It lacks a few advanced features for highly complex setups, but the fact that it's easy to learn is useful in a small team with shared responsibilities.
 </p>
 
 <figure>
@@ -3143,9 +3143,9 @@ It is basically just a thing layer above shell scripts but provides all the tool
 </td>
 <td>
 <ul>
-<li>Not distribution independent</li>
 <li>Limited reusability of playbooks</li>
 <li>No programming in playbooks possible</li>
+<li>System package installation not distribution independent</li>
 </ul>
 </td>
 </tr>
@@ -5274,6 +5274,30 @@ As the setup of a staging environment takes some time it's questionable how usef
 <p id="ref-vagrant" class="reference-item">
     <span class="ref">HashiCorp (2015): Vagrant</span>.
     <a href="https://www.vagrantup.com/" target="_blank">https://www.vagrantup.com/</a>
+    (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-pear" class="reference-item">
+    <span class="ref">The PHP Group (2015): PEAR</span>.
+    <a href="http://pear.php.net/" target="_blank">http://pear.php.net/</a>
+    (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-apt" class="reference-item">
+    <span class="ref">SPI (2015): Apt, Advanced Package Tool</span>.
+    <a href="https://wiki.debian.org/Apt" target="_blank">https://wiki.debian.org/Apt</a>
+    (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-yum" class="reference-item">
+    <span class="ref">Yum Package Manager</span>.
+    <a href="http://yum.baseurl.org/" target="_blank">http://yum.baseurl.org/</a>
+    (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-pip" class="reference-item">
+    <span class="ref">PyPA (2014): pip</span>.
+    <a href="https://pip.pypa.io/en/stable/" target="_blank">https://pip.pypa.io/en/stable/</a>
     (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
 </p>
 
