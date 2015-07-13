@@ -4157,7 +4157,7 @@ After testing is completed and the branch has been merged into the master branch
 <h4>System tests</h4>
 
 <p>
-Simple system tests can be done with the <em>uri</em> module of Ansible. The module allows to send HTTP requests and store the response in a varible. The response can then be checked for certain content.
+Simple system tests can be done with the <em>uri</em> module of Ansible. The module allows to send HTTP requests and store the response in a variable. The response can then be checked for certain content.
 </p>
 
 <figure>
@@ -4379,7 +4379,7 @@ Self-developed applications are installed by checking out the source code and th
 <h4 class="break">Data synchronization</h4>
 
 <p>
-As the CMS of the website heavily depends on content in the database for working properly, the database must be synced from the current infrastructure to the proof-of-concept infrastructure. Additionally this synchronization must be done when creating a staging environment.
+As the CMS of the website heavily depends on content in the database to work properly, the database must be synced from the current infrastructure to the proof-of-concept infrastructure. Additionally this synchronization must be done when creating a staging environment.
 </p>
 
 <p>
@@ -4437,7 +4437,7 @@ Every commit is also display in Slack, the chat application used by WorldSkills.
 <h4 class="break">Codeship setup</h4>
 
 <p>
-Codeship knows setup, test and deployment commands. Setup and test commands are always executed, deployment commands can be different for each branch. Deployment commands are only executed if the test commands succeed. If there's a syntax error in the Ansible playbook, the deployment commands are not executed.
+Codeship knows setup, test and deployment commands. Setup and test commands are always executed, deployment commands can be different for each branch. Deployment commands are only executed if the test commands succeeded. If there's a syntax error in the Ansible playbook, the deployment commands are not executed.
 </p>
 
 <p>
@@ -4472,7 +4472,7 @@ With the deployment commands, the master branch gets deployed to the production 
 </figure>
 
 <p>
-All branches starting with <code>staging-</code> are deployed to a environment with the branch name. Codeship provides the current branch name as environment variable <code>$CI_BRANCH</code>. The variable <code>digital_ocean_droplet_prefix</code> gets overridden from the command line with the option <code>-e</code> (additional variables).
+All branches starting with <code>staging-</code> are deployed to an environment with the branch name. Codeship provides the current branch name as environment variable <code>$CI_BRANCH</code>. The variable <code>digital_ocean_droplet_prefix</code> gets overridden from the command line with the option <code>-e</code> (additional variables).
 </p>
 
 <figure>
@@ -4549,7 +4549,7 @@ After running the servers role the servers are visible in the DigitalOcean web i
 <h3 class="break">Challenges</h3>
 
 <p>
-During the implementation the following problems occurred and had to be fixed. Outlined are descriptions of the problem, the steps taken and the final solutions.
+During the implementation the following problems occurred and had to be fixed. Outlined are descriptions of the problems, the steps taken, and the final solutions.
 </p>
 
 <h4>Hierarchy of group_vars</h4>
@@ -5204,7 +5204,7 @@ One learning of this project is that idempotence is hard. This not only applies 
 </p>
 
 <p>
-The promise of idempotence is also not true in every case with Ansible as some attributes require more attention to be changed. Changing the physical server location inside the <em>digital_ocean</em> module for example won't move the server from one location to another - the attribute is only used during creation of the server. Another example is the <em>copy</em> module which makes sure that a file exists in the specified location. The module checks this with every execution, however when the file path is changed (e.g. because it had a typo in it) it only makes sure the file exists in the new location. To delete the old file a separate task has to be written in Ansible. So the developers always have to be aware what the module exactly does and take care of cleanup operations by themselve.
+The promise of idempotence is also not true in every case with Ansible as some attributes require more attention to be changed. Changing the physical server location inside the <em>digital_ocean</em> module for example won't move the server from one location to another - the attribute is only used during creation of the server. Another example is the <em>copy</em> module which makes sure that a file exists in the specified location. The module checks this with every execution, however when the file path is changed (e.g. because it had a typo in it) it only makes sure the file exists in the new location. To delete the old file a separate task has to be written in Ansible. So the developers always have to be aware of what the module exactly does and they need to take care of cleanup operations by themselves.
 </p>
 
 <p>
