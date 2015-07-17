@@ -3709,6 +3709,21 @@ A playbook can also be described as a better structured shell script that tells 
 </p>
 
 <p class="break">
+Different environment variables can be grouped in <em>inventory</em> files. An inventory can contain a list of server addresses of an environment as well as configuration variables specific to that environment.
+</p>
+
+<figure>
+<pre><code>[webservers]
+foo.example.org
+bar.example.org
+
+[webservers:vars]
+proxy_host=proxy.example.org
+</code></pre>
+<figcaption>Example inventory</figcaption>
+</figure>
+
+<p>
 The <a href="#ref-yaml">YAML</a> syntax is used in playbooks for defining variables and commands to execute. The following is an example of a file for setting up a webserver.
 </p>
 
@@ -3724,21 +3739,6 @@ The <a href="#ref-yaml">YAML</a> syntax is used in playbooks for defining variab
     apt: name=apache2 state=latest
 </code></pre>
 <figcaption>Example Ansible file</figcaption>
-</figure>
-
-<p>
-Different environment variables can be grouped in <em>inventory</em> files. An inventory can contain a list of server addresses of an environment as well as configuration variables specific to that environment.
-</p>
-
-<figure>
-<pre><code>[webservers]
-foo.example.org
-bar.example.org
-
-[webservers:vars]
-proxy_host=proxy.example.org
-</code></pre>
-<figcaption>Example inventory</figcaption>
 </figure>
 
 <h3>Solution Strategy</h3>
