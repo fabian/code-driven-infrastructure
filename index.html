@@ -4376,6 +4376,24 @@ Self-developed applications are installed by checking out the source code and th
 <figcaption>Role Events application tasks</figcaption>
 </figure>
 
+<h4 class="break">Ansible Vault</h4>
+
+<p>
+As environment specific variables contain sensitive data like database passwords, they are encrypted with Ansible Vault. The password for the Vault is stored in the file <em>vault_password.txt</em> which is not inside the code repository but shared manually between developers. To prevent the password file from accidentaly being added to the code repository it is explicitly excluded in the file <em>.gitignore</em>.
+</p>
+
+<p>
+The encrypted file in the inventory can be edited with the following command which uses the password file and opens the configured text editor with the content of the file.
+</p>
+
+<figure class="affix">
+<pre><code>$ ansible-vault \
+    edit \
+    --vault-password-file=vault_password.txt \
+    inventories/prod/group_vars/all
+</code></pre>
+</figure>
+
 <h4 class="break">Data synchronization</h4>
 
 <p>
@@ -4441,7 +4459,7 @@ Codeship knows setup, test and deployment commands. Setup and test commands are 
 </p>
 
 <p>
-The setup commands on Codeship install Ansible and other required software. The vault password is stored as an environment variable on Codeship. During setup the variable is written to a Vault password file. This approach prevents it from being displayed in the execution logs.
+The setup commands on Codeship install Ansible and other required software. The Vault password is stored as an environment variable on Codeship. During setup the variable is written to a Vault password file. This approach prevents it from being displayed in the execution logs.
 </p>
 
 <figure>
