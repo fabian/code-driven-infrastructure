@@ -4254,7 +4254,7 @@ The following Could requirements are not explicitly tested with the proof-of-con
 <li>R19 Horizontal scaling</li>
 </ul>
 
-<h4 class="break">Ansible playbook</h4>
+<h3 class="break">Ansible Playbook</h3>
 
 <p>
 The playbook repository is organized with roles. Each role is responible for the installation and configuration of the applications. The main playbook delegates the roles for execution to the servers.
@@ -4421,7 +4421,7 @@ The encrypted file in the inventory can be edited with the following command whi
 </code></pre>
 </figure>
 
-<h4 class="break">Data synchronization</h4>
+<h3 class="break">Data Synchronization</h3>
 
 <p>
 As the CMS of the website heavily depends on content in the database to work properly, the database must be synced from the current infrastructure to the proof-of-concept infrastructure. Additionally this synchronization must be done when creating a staging environment.
@@ -4431,7 +4431,7 @@ As the CMS of the website heavily depends on content in the database to work pro
 Because Ansible is using SSH the server which the new database is running on can get an export of the database directly from the production database server.
 </p>
 
-<h4 class="break">Vagrant setup</h4>
+<h3 class="break">Vagrant Setup</h3>
 
 <p>
 For local development the playbook can be executed in Vagrant. Ansible is configured as provisioner in Vagrant and point to the main playbook. As the Ubuntu image used by Vagrant has the root user disabled by default, the playbook is executed with the user <em>vagrant</em> and with superuser permissions (<code>sudo</code>). Environment specific variables like URLs are overridden with the <code>extra_vars</code> parameter. To simplify things all server groups are mapped to the default server, so only one virtual machine is needed to run the infrastructure locally.
@@ -4459,7 +4459,7 @@ end
 <figcaption>Vagrant provisioner configuration</figcaption>
 </figure>
 
-<h4 class="break">GitHub setup</h4>
+<h3 class="break">GitHub Setup</h3>
 
 <p>
 An independent GitHub organization is used to keep the proof-of-concept separated from existing WorldSkills projects. All projects which are part of the proof-of-concept have been replicated as private repositories in this organization. Most notably is the new repository <em>worldskills-playbook</em> which contains the Ansible playbook.
@@ -4479,7 +4479,7 @@ Every commit is also display in Slack, the chat application used by WorldSkills.
 <figcaption>Screenshot commit in Slack</figcaption>
 </figure>
 
-<h4 class="break">Codeship setup</h4>
+<h3 class="break">Codeship Setup</h3>
 
 <p>
 Codeship knows setup, test and deployment commands. Setup and test commands are always executed, deployment commands can be different for each branch. Deployment commands are only executed if the test commands succeeded. If there's a syntax error in the Ansible playbook, the deployment commands are not executed.
@@ -4551,7 +4551,7 @@ With a webhook the status of every build is also displayed in Slack.
 The danger of a race condition with multiple playbooks running at the same time is avoided by the Codeship plan which allows only one concurrent build.
 </p>
 
-<h4 class="break">DigitalOcean setup</h4>
+<h3 class="break">DigitalOcean Setup</h3>
 
 <p>
 The servers for the infrastructure are created by the <em>servers</em> role with Ansible on DigitalOcean. The servers are identified by their name, their IP address is stored for usage in other roles (e.g. <code>digital_ocean_ip_web</code>).
