@@ -4376,6 +4376,33 @@ Self-developed applications are installed by checking out the source code and th
 <figcaption>Role Events application tasks</figcaption>
 </figure>
 
+<p class="break">
+Java applications are deployed using the <a href="#ref-tomcat-maven">Tomcat Maven Plugin</a>. This plugin builds the application and uploads it to the Tomcat server. Again the old version of the application is kept running until the new application has been started and is ready. For Tomcat this is achieved with the built-in functionality for parallel deployment as described in the <a href="#ref-tomcat-documentation">Tomcat Documentation</a>.
+</p>
+
+<p>
+The current build timestamp is used as a substitute for the version number of the application and configured in the Maven file <em>pom.xml</em>.
+</p>
+
+<figure class="affix">
+<pre><code>&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;
+    &lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;2.2&lt;/version&gt;
+    &lt;configuration&gt;
+        &lt;port&gt;9090&lt;/port&gt;
+        &lt;contextFile&gt;src/test/resources/context.xml&lt;/contextFile&gt;
+        &lt;url&gt;http://api.worldskills.ch/manager/text&lt;/url&gt;
+        &lt;path&gt;/events##${maven.build.timestamp}&lt;/path&gt;
+        &lt;server&gt;tomcat&lt;/server&gt;
+        &lt;update&gt;true&lt;/update&gt;
+        &lt;mode&gt;war&lt;/mode&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;
+</code></pre>
+<figcaption>Tomcat Maven Plugin configuration</figcaption>
+</figure>
+
 <h4 class="break">Ansible Vault</h4>
 
 <p>
@@ -5468,6 +5495,18 @@ As the setup of a staging environment takes some time it's questionable how usef
     <span class="ref">Oren Ben-Kiki, Clark Evans, Ingy döt Net (2009): YAML Ain’t Markup Language</span>.
     <a href="http://www.yaml.org/spec/1.2/spec.html" target="_blank">http://www.yaml.org/spec/1.2/spec.html</a>
     (retrieved&nbsp;31.&nbsp;May&nbsp;2015)
+</p>
+
+<p id="ref-tomcat-documentation" class="reference-item">
+    <span class="ref">Apache Software Foundation (2015): Apache Tomcat 7 Configuration Reference - The Context Container</span>. June 2015. Version&nbsp;7.0.63.
+    <a href="https://tomcat.apache.org/tomcat-7.0-doc/config/context.html" target="_blank">https://tomcat.apache.org/tomcat-7.0-doc/config/context.html</a>
+    (retrieved&nbsp;18.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-tomcat-maven" class="reference-item">
+    <span class="ref">Apache Software Foundation (2013): Apache Tomcat Maven Plugin</span>. November 2013. Version&nbsp;2.2.
+    <a href="https://tomcat.apache.org/maven-plugin-2.2/" target="_blank">https://tomcat.apache.org/maven-plugin-2.2/</a>
+    (retrieved&nbsp;18.&nbsp;July&nbsp;2015)
 </p>
 
 <p id="ref-github-security" class="reference-item">
