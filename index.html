@@ -432,7 +432,7 @@ Provides virtual Linux servers for the infrastructure. As they are in a highly c
 </tr>
 <tr>
 <th>
-GitHub
+<a href="#ref-github">GitHub</a>
 </th>
 <td>
 <p>
@@ -442,7 +442,7 @@ Hosts Git code repositories for WorldSkills International. Provides a web interf
 </tr>
 <tr>
 <th>
-Codeship
+<a href="#ref-codeship">Codeship</a>
 </th>
 <td>
 <p>
@@ -723,7 +723,7 @@ Dicussion forums
 Portal
 </th>
 <td>
-Website with information about Skills and Competitors
+Website with information about WorldSkills Competition participants
 </td>
 <td>
 </td>
@@ -810,7 +810,7 @@ PHP application for sending emails to groups of people
 SMP
 </th>
 <td>
-Skill Management Plan for planning the Skill competitions
+Skill Management Plan for planning the skill competitions
 </td>
 <td>
 </td>
@@ -1435,14 +1435,14 @@ Only specific attributes of the approaches and their software is analyzed, many 
 </p>
 
 <p>
-Cloud solutions for managing applications exist, but are usually locked in on the vendor and targeted at high volumes. Our scaling requirements are low as the infrastructure needs to serve mainly the Competition and the Members and they are both limited by other resources.
+Cloud solutions for managing applications exist, but are usually locked in on the vendor and targeted at high volumes. Our scaling requirements are low as the infrastructure needs to serve mainly the Competition and the Members and they are both limited by other resources (e.g. Member budgets).
 </p>
 
 
 <h3>Software Containers</h3>
 
 <p>
-This type of software has recently became popular with Docker. The idea is to use the advantages of a virtual machine (isolation, portability, efficiency) while sharing resources. Docker has been chosen as it has been perceived as the most active project. A similar projects is Rocket by CoreOS.
+This type of software has recently became popular with Docker. The idea is to use the advantages of a virtual machine (isolation, portability, efficiency) while sharing resources. Docker has been chosen as it has been perceived as the most active project. A similar projects is <a href="#ref-rkt">rkt (Rocket) by CoreOS</a>.
 </p>
 
 <figure>
@@ -1501,7 +1501,7 @@ Docker publishes official images for certain applications and programming langua
 </p>
 
 <p>
-The easiest way to run a PHP application with Docker is to use Apache so the application itself and static files (JavaScript, CSS, etc.) can both be served from one process.
+The easiest way to run a PHP application with Docker is to the use <a href="#ref-apache-http">Apache web server</a> so the application itself and static files (JavaScript, CSS, etc.) can both be served from one process.
 </p>
 
 <p>
@@ -2083,7 +2083,7 @@ Cookbooks for PHP are available in the <a href="#ref-supermarket">Supermarket</a
 </p>
 
 <p>
-However the functionality provided by the cookbook is mostly focused on the PHP extension repository <a href="#ref-pear">PEAR</a>, which is not a requirement. A more popular alternative is the <a href="#ref-apache2-cookbook">apache2 cookbook</a>. It provides the possibility to install Apache with mod_php to run PHP together with a web server.
+However the functionality provided by the cookbook is mostly focused on the PHP extension repository <a href="#ref-pear">PEAR</a>, which is not a requirement. A more popular alternative is the <a href="#ref-apache2-cookbook">apache2 cookbook</a>. It provides the possibility to install the Apache web server with mod_php to run PHP together within a web server.
 </p>
 
 <p>
@@ -2594,7 +2594,7 @@ many components rely on others and compatibility has to be figure out manually.
 <h3 class="break">Remote Command Execution</h3>
 
 <p>
-This is similar to the Configuration Repository described in the last chapter: Software to be installed and commands to be executed are defined in text files. The main difference is that instead of having a central server where everything is available to get pulled, everything gets pushed to the hosts. In fact Configuration Repository software like Chef also supports this kind of operation mode with Chef Solo.
+This is similar to the Configuration Repository described in the previous chapter: Software to be installed and commands to be executed are defined in text files. The main difference is that instead of having a central server where everything is available to get pulled, everything gets pushed to the hosts. In fact Configuration Repository software like Chef also supports this kind of operation mode with Chef Solo.
 </p>
 
 <p>
@@ -2655,7 +2655,7 @@ Ansible includes already most tools needed for installing and configuring softwa
 </p>
 
 <p>
-Apache and mod_php can be installed with the OS packages, their configuration can be created with the Ansible template directive and the service directive makes sure Apache is running. The source code of the PHP application can either be copied to the host or cloned from Git.
+The Apache web server and mod_php can be installed with the OS packages, their configuration can be created with the Ansible template directive and the service directive makes sure Apache is running. The source code of the PHP application can either be copied to the host or cloned from Git.
 </p>
 
 <p>
@@ -3118,7 +3118,7 @@ Ansible was easy to install with the Python package manager <a href="#ref-pip">p
 </p>
 
 <p>
-It is basically just a thin layer above shell scripts but provides all the tools needed for provisioning and maintaining a server (commands, services, config files). It lacks a few advanced features for highly complex setups, but the fact that it's easy to learn is useful in a small team with shared responsibilities.
+It is basically just a thin layer above shell scripts but provides all the tools needed for provisioning and maintaining a server (commands, services, configuration files). It lacks a few advanced features for highly complex setups, but the fact that it's easy to learn is useful in a small team with shared responsibilities.
 </p>
 
 <figure>
@@ -4045,7 +4045,7 @@ Source code is stored in Git repositories on GitHub. The playbook and each appli
 </p>
 
 <p>
-Each application pipeline uses the playbook to provision the infrastructure and then deploys the application to the targeted infrastructure. The servers required for the production and staging environment are running with the hoster DigitalOcean.
+Each application pipeline uses the playbook to provision the infrastructure and then deploys the application to the targeted environment. The servers required for the production and staging environment are running with the hoster DigitalOcean.
 </p>
 
 <p>
@@ -4172,7 +4172,7 @@ Simple system tests can be done with the <em>uri</em> module of Ansible. The mod
 </figure>
 
 <p>
-Testing the web interface of the applications also verifies that all underlying software like Apache and PHP are running properly. For each self-developed application at least one system should be created to make sure they are running as expected.
+Testing the web interface of the applications also verifies that all underlying software like the Apache web server and PHP are running properly. For each self-developed application at least one system should be created to make sure they are running as expected.
 </p>
 
 <h3 class="break">Migration</h3>
@@ -4287,7 +4287,7 @@ The playbook repository is organized with roles. Each role is responible for the
 </figure>
 
 <p>
-The PHP role is an example of software that gets installed with the package manager of the system (<em>apt</em>). The template module of Ansible is used to create the required configuration files. The same approach is used for the installation of MySQL, RabbitMQ, Tomcat and Apache.
+The PHP role is an example of software that gets installed with the package manager of the system (<em>apt</em>). The template module of Ansible is used to create the required configuration files. The same approach is used for the installation of MySQL, RabbitMQ, Tomcat and the Apache web server.
 </p>
 
 <figure class="affix">
@@ -4309,7 +4309,7 @@ The PHP role is an example of software that gets installed with the package mana
 </figure>
 
 <p>
-Virtual hosts in Apache are also created with the template module and by linking the configuration files to <code>/etc/apache2/sites-available</code>.
+Virtual hosts in the Apache web server are also created with the template module and by linking the configuration files to <code>/etc/apache2/sites-available</code>.
 </p>
 
 <figure class="affix">
@@ -4471,7 +4471,7 @@ An independent GitHub organization is used to keep the proof-of-concept separate
 </figure>
 
 <p>
-Every commit is also display in Slack, the chat application used by WorldSkills. This guarantees that all developers are aware of the change.
+Every commit is also display in <a href="#ref-slack">Slack</a>, the chat application used by WorldSkills. This guarantees that all developers are aware of the change.
 </p>
 
 <figure>
@@ -5066,7 +5066,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-The playbook can be executed with Ansible which is Open Source. The required Python dependencies <em>dopy</em> and <em>httplib2</em> are Open Source too.
+The playbook can be executed with Ansible which is Open Source. The required Python dependencies <a href="#ref-dopy">dopy</a> and <a href="#ref-httplib2">httplib2</a> are Open Source too.
 </p>
 </td>
 </tr>
@@ -5277,7 +5277,7 @@ Using Ansible for provisioning and deployment of the infrastructure makes sense.
 </p>
 
 <p>
-As the setup of a staging environment takes some time it's questionable how useful it is for small features. Investing into unit tests that can be executed locally is recommended here. Being able to replicate the complete infrastructure is useful for bigger features which join multiple services. The staging environment suits well for end-user tests and automated tests with tools like Selenium. It is recommended to implement the staging environment as described in the architecture documentation but use it only if needed and further invest in automated system tests.
+As the setup of a staging environment takes some time it's questionable how useful it is for small features. Investing into unit tests that can be executed locally is recommended here. Being able to replicate the complete infrastructure is useful for bigger features which join multiple services. The staging environment suits well for end-user tests and automated tests with tools like <a href="#ref-selenium">Selenium</a>. It is recommended to implement the staging environment as described in the architecture documentation but use it only if needed and further invest in automated system tests.
 </p>
 
 </div>
@@ -5347,6 +5347,18 @@ As the setup of a staging environment takes some time it's questionable how usef
     <span class="ref">PyPA (2014): pip</span>.
     <a href="https://pip.pypa.io/en/stable/" target="_blank">https://pip.pypa.io/en/stable/</a>
     (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-dopy" class="reference-item">
+    <span class="ref">Vincent Viallet (2015): dopy</span>.
+    <a href="https://pypi.python.org/pypi/dopy" target="_blank">https://pypi.python.org/pypi/dopy</a>
+    (retrieved&nbsp;19.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-httplib2" class="reference-item">
+    <span class="ref">Joe Gregorio (2015): httplib2</span>.
+    <a href="https://pypi.python.org/pypi/httplib2" target="_blank">https://pypi.python.org/pypi/httplib2</a>
+    (retrieved&nbsp;19.&nbsp;July&nbsp;2015)
 </p>
 
 <p id="ref-arc42" class="reference-item">
@@ -5509,10 +5521,40 @@ As the setup of a staging environment takes some time it's questionable how usef
     (retrieved&nbsp;18.&nbsp;July&nbsp;2015)
 </p>
 
+<p id="ref-apache-http" class="reference-item">
+    <span class="ref">Apache Software Foundation (2015): Apache HTTP Server Project</span>.
+    <a href="https://httpd.apache.org/" target="_blank">https://httpd.apache.org/</a>
+    (retrieved&nbsp;19.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-slack" class="reference-item">
+    <span class="ref">Slack Technologies, Inc. (2015): Slack</span>.
+    <a href="https://slack.com/" target="_blank">https://slack.com/</a>
+    (retrieved&nbsp;19.&nbsp;July&nbsp;2015)
+</p>
+
 <p id="ref-github-security" class="reference-item">
     <span class="ref">GitHub Inc. (2015): GitHub Security</span>.
     <a href="https://help.github.com/articles/github-security/" target="_blank">https://help.github.com/articles/github-security/</a>
     (retrieved&nbsp;4.&nbsp;June&nbsp;2015)
+</p>
+
+<p id="ref-github" class="reference-item">
+    <span class="ref">GitHub, Inc. (2015): GitHub</span>.
+    <a href="https://github.com/" target="_blank">https://github.com/</a>
+    (retrieved&nbsp;19.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-codeship" class="reference-item">
+    <span class="ref">Codeship (2015): Codeship</span>.
+    <a href="https://codeship.com/" target="_blank">https://codeship.com/</a>
+    (retrieved&nbsp;19.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-selenium" class="reference-item">
+    <span class="ref">Selenium Project (2015): Selenium</span>.
+    <a href="http://docs.seleniumhq.org/" target="_blank">http://docs.seleniumhq.org/</a>
+    (retrieved&nbsp;19.&nbsp;July&nbsp;2015)
 </p>
 
 <p id="ref-codeship-security" class="reference-item">
@@ -5563,6 +5605,8 @@ The make the results of this thesis reproducible, the following list shows the v
 <li>Ansible 1.9.0.1</li>
 <li>Python 2.7.9</li>
 <li>pip 6.0.6</li>
+<li>dopy 0.3.6</li>
+<li>httplib2 0.9.1</li>
 <li>Atom 0.211.0</li>
 <li>Slack 1.0.5</li>
 </ul>
@@ -5589,6 +5633,8 @@ The following versions of software were used on the server:
 <dl>
 <dt>Mac OS X</dt>
 <dd>An operating system by Apple Inc.</dd>
+<dt>PHP</dt>
+<dd>A programming language used mostly on the world wide web.</dd>
 <dt>PHP-FPM</dt>
 <dd>PHP FastCGI Process Manager: An way to run PHP so a webserver can execute PHP applications.</dd>
 <dt>Git</dt>
@@ -5605,6 +5651,92 @@ The following versions of software were used on the server:
 <dd>Hypertext Markup Language: A markup language used on the world wide web.</dd>
 <dt>PDF</dt>
 <dd>Portable Document Format: A portable file format for documents.</dd>
+<dt>SSH</dt>
+<dd>Secure Shell: An encrypted protocol for executing commands on a remote server.</dd>
+<dt>Java</dt>
+<dd>Programming language used for different purposes.</dd>
+<dt>Linux</dt>
+<dd>Open Source operating system.</dd>
+<dt>Secretariat</dt>
+<dd>People working for the organization WorldSkills International.</dd>
+<dt>Member</dt>
+<dd>Member organization of WorldSkills International.</dd>
+<dt>Competition</dt>
+<dd>WorldSkills Competition: Biennial skills competition for youth.</dd>
+<dt>CI</dt>
+<dd>Continuous integration: Automated testing and deployment of code changes.</dd>
+<dt>JavaScript</dt>
+<dd>Programming language which can be executed in a web browser.</dd>
+<dt>Web service</dt>
+<dd>Interface to provide programmatic access to data and functionality over the web.</dd>
+<dt>Tomcat</dt>
+<dd>A web server to run Java applications.</dd>
+<dt>MySQL</dt>
+<dd>A relational database management system.</dd>
+<dt>HTTP</dt>
+<dd>Hypertext Transfer Protocol: A protocol for transfering data of the world wide web.</dd>
+<dt>MySQL Query Cache</dt>
+<dd>A cache of MySQL used to reduce the time required to parse the query.</dd>
+<dt>Servlet container</dt>
+<dd>An application to run Java web applications.</dd>
+<dt>Branch</dt>
+<dd>A method for making parallel code changes in a code repository.</dd>
+<dt>Staging</dt>
+<dd>A dedicated environment to test software applications.</dd>
+<dt>OSS</dt>
+<dd>Open source software: Software where the source code is licensed in a way that it can be viewed and changed.</dd>
+<dt>Environment</dt>
+<dd>Logical group of servers.</dd>
+<dt>Horizontal scaling</dt>
+<dd>Extending the capacity of a service by distributing the load over multiple servers.</dd>
+<dt>Virtual machine</dt>
+<dd>Emulation of a computer system used to run multiple machines on the same hardware.</dd>
+<dt>CSS</dt>
+<dd>Cascading Style Sheets: Language used to style websites</dd>
+<dt>Database fixtures</dt>
+<dd>Initial data for a database.</dd>
+<dt>Superuser</dt>
+<dd>Special user account on a system with unrestricted access.</dd>
+<dt>Kernel</dt>
+<dd>Component of an operation system responsible for executing system commands.</dd>
+<dt>mod_php</dt>
+<dd>Apache web server module for running PHP.</dd>
+<dt>Template file</dt>
+<dd>File with placeholders that gets compiled into its final form by replacing those placeholders with variable values.</dd>
+<dt>Python</dt>
+<dd>Dynamic programming language used for various purposes.</dd>
+<dt>OS</dt>
+<dd>Operating system: Software running on a computer and providing the possibility to run other software.</dd>
+<dt>Git</dt>
+<dd>Distributed revision control system.</dd>
+<dt>Cloud</dt>
+<dd>Running dynamic computer software without detailed knowledge of the physical hardware.</dd>
+<dt>Debian</dt>
+<dd>Variation of Linux maintained by a group of volunteers.</dd>
+<dt>SUSE Linux</dt>
+<dd>Variation of Linux supported by Novell.</dd>
+<dt>YAML</dt>
+<dd>YAML Ain't Markup Language: File format for writting structured data.</dd>
+<dt>IP address</dt>
+<dd>Numerical identifier of a computer within a network.</dd>
+<dt>DNS</dt>
+<dd>Domain Name System: Software used to resolve domain names.</dd>
+<dt>RabbitMQ</dt>
+<dd>Open source message queue software.</dd>
+<dt>Maven</dt>
+<dd>Dependency and build automation software for Java applications.</dd>
+<dt>CMS</dt>
+<dd>Content management system: Software to edit websites.</dd>
+<dt>Ubuntu</dt>
+<dd>Variation of Linux maintained by Canonical Ltd.</dd>
+<dt>URL</dt>
+<dd>Uniform resource locator: Reference to a document in a network.</dd>
+<dt>Race condition</dt>
+<dd>Unintended dependency of the ouput of a system on time.</dd>
+<dt>Favicon</dt>
+<dd>Small icon used by web browsers to represent a website.</dd>
+<dt>Idempotence</dt>
+<dd>Operation that can be executed multiple times without changing the state after an initial change.</dd>
 </dl>
 
 </div>
