@@ -4419,6 +4419,7 @@ The encrypted file in the inventory can be edited with the following command whi
     --vault-password-file=vault_password.txt \
     inventories/prod/group_vars/all
 </code></pre>
+<figcaption>Ansible Vault edit command</figcaption>
 </figure>
 
 <h3 class="break">Data Synchronization</h3>
@@ -4493,6 +4494,7 @@ The setup commands on Codeship install Ansible and other required software. The 
 <pre><code>pip install ansible dopy httplib2
 echo $VAULT_PASSWORD > vault_password.txt
 </code></pre>
+<figcaption>Codeship setup commands</figcaption>
 </figure>
 
 <p>
@@ -4502,6 +4504,7 @@ The test command then runs the syntax check of the main Ansible playbook file lo
 <figure>
 <pre><code>ansible-playbook -i localhost, site.yml --syntax-check
 </code></pre>
+<figcaption>Codeship test commands</figcaption>
 </figure>
 
 <p>
@@ -4514,6 +4517,7 @@ With the deployment commands, the master branch gets deployed to the production 
     --vault-password-file=vault_password.txt \
     site.yml
 </code></pre>
+<figcaption>Codeship deployment commands</figcaption>
 </figure>
 
 <p>
@@ -4527,6 +4531,7 @@ All branches starting with <code>staging-</code> are deployed to an environment 
     -e "digital_ocean_droplet_prefix=$CI_BRANCH" \
     site.yml
 </code></pre>
+<figcaption>Codeship deployment commands for staging environment</figcaption>
 </figure>
 
 <p>
@@ -4614,8 +4619,10 @@ A problem that occurred during testing with DigitalOcean was that sometimes the 
 </p>
 
 <figure>
-<pre><code>ssh root@46.101.135.160 Connection closed by 46.101.135.160
+<pre><code>ssh root@46.101.135.160
+Connection closed by 46.101.135.160
 </code></pre>
+<figcaption>SSH error message closed connection</figcaption>
 </figure>
 
 <p>
@@ -4632,6 +4639,7 @@ Another similar SSH problem was the sometimes the SSH connection was reset while
 <pre><code>ssh: connect to host 46.101.255.100 port 22: Connection timed out
 Couldn't read packet: Connection reset by peer
 </code></pre>
+<figcaption>SSH error message timed out connection</figcaption>
 </figure>
 
 <p>
