@@ -5270,6 +5270,16 @@ The time required to create the staging environment is considered a potential pr
 Another option of speeding up the creation of the staging environment would be to clone the server completely (on system level) instead of recreating it every time with Ansible. However this only works within the same hoster (not even with all hosters) and one of the targets of this projects was to be independent from the hoster. By recreating the servers each time the developers can be sure that the playbook is ready to be used with a different hoster.
 </p>
 
+<h3>Software Containers</h3>
+
+<p>
+The Evaluation showed that software containers have potential in abstracting the deployment by bundling applications into their own unit and separating the infrastructure and applications. However adopting this technology requires some changes to the applications and the deployment needs to be orchestrated with another software increasing the complexity of the whole system in total.
+</p>
+
+<p>
+Applications can more easily be moved between servers and are less error prone to configuration mistakes. The advantages need to be carefully weighted in each case and testing new approaches before implementing them in production is recommended.
+</p>
+
 <h3>Recommendations</h3>
 
 <p>
