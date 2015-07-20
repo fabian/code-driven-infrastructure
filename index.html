@@ -83,7 +83,7 @@ WorldSkills International is a non-profit membership association which organizes
 </figure>
 
 <p>
-All web software is running on rented virtual servers running Linux. They are managed manually using a web control panel (<a href="#ref-plesk">Parallels Plesk</a>). Changes to the infrastructure are done by one of the four internal software developers manually.
+All web software is running on rented virtual servers with Linux. They are managed manually using a web control panel (<a href="#ref-plesk">Parallels Plesk</a>). Changes to the infrastructure are done by the four internal software developers manually.
 </p>
 
 <p>
@@ -5278,6 +5278,10 @@ The time required to create the staging environment is considered a potential pr
 Another option of speeding up the creation of the staging environment would be to clone the server completely (on system level) instead of recreating it every time with Ansible. However this only works within the same hoster (not even with all hosters) and one of the targets of this projects was to be independent from the hoster. By recreating the servers each time the developers can be sure that the playbook is ready to be used with a different hoster.
 </p>
 
+<p>
+The staging environment also suits well for more end-user tests and automated tests with tools like <a href="#ref-selenium">Selenium</a>.
+</p>
+
 <h3>Software Containers</h3>
 
 <p>
@@ -5288,6 +5292,12 @@ The Evaluation showed that software containers have potential in abstracting the
 Applications can more easily be moved between servers and are less error prone to configuration mistakes. The advantages need to be carefully weighted in each case and testing new approaches before implementing them in production is recommended.
 </p>
 
+<h3>Objectives</h3>
+
+<p>
+The objectives of creating a versioned, testable and reproducible where all changes are visible to the whole IT team has been fully achieved. The combination of multiple technologies and services allows quick modifications and the results are visible for everyone.
+</p>
+
 <h3>Recommendations</h3>
 
 <p>
@@ -5295,7 +5305,11 @@ Using Ansible for provisioning and deployment of the infrastructure makes sense.
 </p>
 
 <p>
-As the setup of a staging environment takes some time it's questionable how useful it is for small features. Investing into unit tests that can be executed locally is recommended here. Being able to replicate the complete infrastructure is useful for bigger features which join multiple services. The staging environment suits well for end-user tests and automated tests with tools like <a href="#ref-selenium">Selenium</a>. It is recommended to implement the staging environment as described in the architecture documentation but use it only if needed and further invest in automated system tests.
+As the setup of a staging environment takes some time it's questionable how useful it is for small features. Investing into unit tests that can be executed locally is recommended here. Being able to replicate the complete infrastructure is useful for bigger features which join multiple services. It is recommended to implement the staging environment as described in the architecture documentation but use it only if needed and further invest in automated system tests.
+</p>
+
+<p>
+It is recommended to keep an eye on the development of software containers and reevaluate their usage in six months.
 </p>
 
 </div>
