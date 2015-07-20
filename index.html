@@ -54,6 +54,15 @@ All sources are numbered [<em>n</em>] and listed in the bibliography in the appe
 <h2 class="break nonr">Abstract</h2>
 
 <p>
+WorldSkills International manages its web infrastructure manually with a small team of developers. Target of the thesis is to develop a concept for a testable and reproducible infrastructure where all changes are done within a revision control system. This increases visibility of changes within the IT team and makes the change tracable.
+</p>
+
+<p>
+The current infrastructure requirements were analyzed and documented. Three different type of software for provisioning of servers and deployment of applications were considered for solving the problem. Each type was evaluated with a popular representative according to the requirements. The automation software Ansible was choosen as a best fitting for the requirements.
+</p>
+
+<p>
+An architecture concept for an automated infrastructure was developed and successfully verified in a proof-of-concept. All software and configuration files required are defined in structured text files that can be read and transmitted to the server with Ansible. Local development and testing can be done in a virtual machine on the developers computer. The whole infrastructure can easily be cloned by running the provisioning scripts against new servers. The automated process of setting up a new infrastructure environment for testing is simply initiated by creating a new branch adhering to a naming scheme.
 </p>
 
 </div>
@@ -5701,6 +5710,8 @@ The following versions of software were used on the server:
 <dd>Operation that can be executed multiple times without changing the state after an initial change.</dd>
 <dt>IP address</dt>
 <dd>Numerical identifier of a computer within a network.</dd>
+<dt>IT</dt>
+<dd>Information technology: Management of data using computers.</dd>
 <dt>Java</dt>
 <dd>Programming language used for different purposes.</dd>
 <dt>JavaScript</dt>
