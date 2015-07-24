@@ -58,11 +58,11 @@ WorldSkills International manages its web infrastructure manually with a small t
 </p>
 
 <p>
-The current infrastructure requirements were analyzed and documented. Three different type of software for provisioning of servers and deployment of applications were considered for solving the problem. Each type was evaluated with a popular representative according to the requirements. The automation software Ansible was choosen as a best fitting for the requirements.
+The current infrastructure requirements were analyzed and documented. Three different types of software for provisioning of servers and deployment of applications were considered for solving the problem. Each type was evaluated with a popular representative according to the requirements. The automation software Ansible was choosen as best fitting for the requirements.
 </p>
 
 <p>
-An architecture concept for an automated infrastructure was developed and successfully verified in a proof-of-concept. All software and configuration files required are defined in structured text files that can be read and transmitted to the server with Ansible. Local development and testing can be done in a virtual machine on the developers computer. The whole infrastructure can easily be cloned by running the provisioning scripts against new servers. The automated process of setting up a new infrastructure environment for testing is simply initiated by creating a new branch adhering to a naming scheme.
+An architecture concept for an automated infrastructure was developed and successfully verified in a proof-of-concept. All software and configuration files required are defined in structured text files that can be read and transmitted to the server with Ansible. Local development and testing can be done in a virtual machine on the developers’ computer. The whole infrastructure can easily be cloned by running the provisioning scripts against new servers. The automated process of setting up a new infrastructure environment for testing is simply initiated by creating a new branch adhering to a naming scheme.
 </p>
 
 </div>
@@ -92,7 +92,7 @@ WorldSkills International is a non-profit membership association which organizes
 </figure>
 
 <p>
-All web software is running on rented virtual servers with Linux. They are managed manually using a web control panel (<a href="#ref-plesk">Parallels Plesk</a>). Changes to the infrastructure are done by the four internal software developers manually.
+All web software is running on rented virtual servers with a Linux operating system. They are managed manually using a web control panel (<a href="#ref-plesk">Parallels Plesk</a>). Changes to the infrastructure are done by the four internal software developers manually.
 </p>
 
 <p>
@@ -412,7 +412,7 @@ Developer
 </th>
 <td>
 <p>
-Works at WorldSkills International and is responsible for the development and maintenance of the infrastructure. There are four developers working full-time for WorldSkills International, there is no designated system administrator. Developers have different backgrounds and therefore different knowledge about specific components of the instrastructure but they all share the responsibility for keeping the infrastructure running.
+Works at WorldSkills International and is responsible for the development and maintenance of the infrastructure. There are four developers working full-time for WorldSkills International. There is no designated system administrator. Developers have different backgrounds and therefore different knowledge about specific components of the instrastructure but they all share the responsibility for keeping the infrastructure running.
 </p>
 <p>
 All developers are using Mac OS X for development. They work from three different time zones.
@@ -431,11 +431,11 @@ Interacts with applications running on the WorldSkills infrastructure. This incl
 </tr>
 <tr>
 <th>
-Hoster
+Hosting provider
 </th>
 <td>
 <p>
-Provides virtual Linux servers for the infrastructure. As they are in a highly competitive and fast moving market they can become obsolete and need to be replaced with another hoster with a better offering.
+Provides virtual Linux servers for the infrastructure. As they are in a highly competitive and fast moving market they can become obsolete and need to be replaced with another hosting provider with a better offering.
 </p>
 </td>
 </tr>
@@ -477,14 +477,14 @@ Both Developer and User need to interact with the infrastructure or the applicat
 </p>
 
 <p>
-The source code of most applications is stored on GitHub. Codeship is used for running automated tests and executing the deployment of new versions. The hoster provides the servers for running the infrastructure. All three vendors influence the requirements indirectly with the constraints of their services. They are outside of the system context as they cannot be influenced.
+The source code of most applications is stored on GitHub. Codeship is used for running automated tests and executing the deployment of new versions. The hosting provider provides the servers for running the infrastructure. All three vendors influence the requirements indirectly with the constraints of their services. They are outside of the system context as they cannot be influenced.
 </p>
 
 
 <h3 class="break">Applications</h3>
 
 <p>
-The current infrastructure consists of multiple applications deployed on three servers. There is no requirement to keep them on separate servers. The following diagram gives an overview over all applications. A detailed description of each applications follows.
+The current infrastructure consists of multiple applications deployed on three servers. There is no requirement to keep them on separate servers. The following diagram gives an overview of all applications. A detailed description of each applications follows.
 </p>
 
 <figure>
@@ -698,11 +698,12 @@ PHP application for managing organization personnel
 Registrations
 </th>
 <td>
-PHP application for registering people
+PHP application for registering people and a web service
 </td>
 <td>
 </td>
 <td>
+<img src="images/sign-check.svg" width="16" height="16" alt="Yes">
 </td>
 <td>
 </td>
@@ -923,7 +924,7 @@ As a developer I want to run multiple Java applications on a Tomcat server so us
 Acceptance Criteria
 </th>
 <td>
-All Java applications are running and can be accessed over HTTP.
+All Java applications are running and can be accessed over HTTP/S.
 </td>
 </tr>
 <tr>
@@ -1056,14 +1057,14 @@ A new version of a web service is pushed in a separate branch, the functionality
 <tbody>
 <tr>
 <th>Name</th>
-<th>R06 Hoster switch</th>
+<th>R06 Hosting provider switch</th>
 </tr>
 <tr>
 <th>
 Description
 </th>
 <td>
-As a developer I want to switch the server hoster so I can profit from a better offer. Another reason could be that the current hoster shuts down or its no longer justifiable because of his actions (e.g. security problems).
+As a developer I want to switch the server hosting provider so I can profit from a better offer. Another reason could be that the current hosting provider shuts down or its no longer justifiable because of his actions (e.g. security problems).
 </td>
 </tr>
 <tr>
@@ -1464,7 +1465,7 @@ Docker only works on Linux, so for development on Mac OS X the software Boot2Doc
 </p>
 
 <p>
-After the installation the virtual machine with the Linux running Docker is then launched with the following two commands.
+After installation the virtual machine with Linux running Docker is then launched with the following two commands.
 </p>
 
 <figure>
@@ -1486,7 +1487,7 @@ To connect the Docker client to the Docker daemon, please set:
 </figure>
 
 <p>
-Another useful tool is Docker Compose which allows multiple instances to be started based on a configuration file. However it's usage in production is not recommended at the moment as it's missing some features for managing running instances.
+Another useful tool is Docker Compose which allows multiple instances to be started based on a configuration file. However its usage in production is not recommended at the moment as it's missing some features for managing running instances.
 </p>
 
 <h4>Requirements verification</h4>
@@ -1545,7 +1546,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-For Tomcat official images are available from the Docker Hub Repository as well. Multiple versions with for Java 7 and 8 are available.
+For Tomcat official images are available from the Docker Hub Repository as well. Multiple versions for Java 7 and 8 are available.
 </p>
 
 <p>
@@ -1616,7 +1617,7 @@ Fail <img src="images/sign-error.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-There are different ways how to implement this with Docker. One way would be to build a new image, deploy it separately and then route requests with a load balancer to the new image. However as noted before, Docker doesn't provide tools to do a deployment of the image nor the orchestration of running machines.
+There are different ways to implement this with Docker. One way would be to build a new image, deploy it separately and then route requests with a load balancer to the new image. However as noted before, Docker doesn't provide tools to do a deployment of the image nor the orchestration of running machines.
 </p>
 
 <p>
@@ -1676,13 +1677,13 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tbody>
 <tr>
 <th>Requirement</th>
-<th>R06 Hoster switch</th>
+<th>R06 Hosting provider switch</th>
 </tr>
 <tr>
 <th>Verification</th>
 <td>
 <p>
-Thanks to the virtualization the only requirement for a new hoster would be to run Docker. Transfer of the data is possible by launching additional containers on the old server and mounting the data volumes. The installation of Docker would need to be done manually if Docker is not preinstalled by the hoster. But more importantly the configuration of the host machine (e.g. SSH keys, logging, security settings) could not be automated with Docker.
+Thanks to virtualization the only requirement for a new hosting provider would be to run Docker. Transfer of the data is possible by launching additional containers on the old server and mounting the data volumes. The installation of Docker would need to be done manually if Docker is not preinstalled by the hosting provider. But more importantly the configuration of the host machine (e.g. SSH keys, logging, security settings) could not be automated with Docker.
 </p>
 </td>
 </tr>
@@ -1978,7 +1979,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <h4 class="break">Summary Software Containers</h4>
 
 <p>
-One notable property of Software Containers is their iteration speed. Due to the way how file changes are saved by the file system, setup commands don't need to be repeated each time but the resulting files can be restored within seconds. This makes experimenting with the container much faster than setting up a complete virtual machine each time.
+One notable property of Software Containers is their iteration speed. Due to how file changes are saved by the file system, setup commands don't need to be repeated each time but the resulting files can be restored within seconds. This makes experimenting with the container much faster than setting up a complete virtual machine each time.
 </p>
 
 <p>
@@ -2026,7 +2027,7 @@ A comparison of all requirements can be found after the analysis of the three di
 <h3 class="break">Configuration Repository</h3>
 
 <p>
-Chef and Puppet are the most popular representatives for this type of software. It exists for a few years now and has the target to provide a central repository for infrastructure configuration from which server clients regularly pull their changes. This kind of software type usually also provides a way to use it without a central server but that loses the advantage of having a central point to coordinate changes.
+Chef and Puppet are the most popular representatives for this type of software. It has existed for a few years now and has the target to provide a central repository for infrastructure configuration from which server clients regularly pull their changes. This kind of software type usually also provides a way to use it without a central server but that loses the advantage of having a central point to coordinate changes.
 </p>
 
 <figure>
@@ -2035,7 +2036,7 @@ Chef and Puppet are the most popular representatives for this type of software. 
 </figure>
 
 <p>
-Chef is used here because of the already existing knowledge of Ruby and its popularity. It is usually running on a Linux machine, so for development a virtual machine with Linux is required. To simplify the setup of the virtual machine, <a href="#ref-vagrant">Vagrant</a> can be used. Vagrant is a software to run virtual machines based on a configuration file. After installing Vagrant, a virtual machine can be started with a Linux image provided by Chef which already has all the required software pre-installed:
+Chef is used here because of the already existing knowledge of Ruby and its popularity. It is usually running on a Linux machine, so for development a virtual machine with Linux is required. To simplify the setup of the virtual machine, <a href="#ref-vagrant">Vagrant</a> can be used. Vagrant is software to run virtual machines based on a configuration file. After installing Vagrant, a virtual machine can be started with a Linux image provided by Chef which already has all the required software pre-installed:
 </p>
 
 <figure>
@@ -2128,7 +2129,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <td>
 <p>
 The Supermarket also has an official cookbook for Tomcat. Java must be installed separately, again there's a <a href="#ref-java-cookbook">cookbook</a>
-available in the Supermarket. The same MySQL cookbook as mention before can be used.
+available in the Supermarket. The same MySQL cookbook as mentioned before can be used.
 </p>
 </td>
 </tr>
@@ -2250,13 +2251,13 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tbody>
 <tr>
 <th>Requirement</th>
-<th>R06 Hoster switch</th>
+<th>R06 Hosting provider switch</th>
 </tr>
 <tr>
 <th>Verification</th>
 <td>
 <p>
-The Chef client needs to be installed manually on a new virtual machine if the hoster doesn't provide machines with Chef preinstalled. Once the Chef client is installed it can install all required software and configure the machine as needed.
+The Chef client needs to be installed manually on a new virtual machine if the hosting provider doesn't provide machines with Chef preinstalled. Once the Chef client is installed it can install all required software and configure the machine as needed.
 </p>
 </td>
 </tr>
@@ -2554,7 +2555,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <h4 class="break">Summary Configuration Repository</h4>
 
 <p>
-The installation of the Chef DK was a bit troubled as it relies on overriding rbenv in the <code>PATH</code>. Some modifications to
+The installation of the Chef DK was difficult as it relies on overriding rbenv in the <code>PATH</code>. Some modifications to
 <code>.bash_profile</code> were needed to get it running properly.
 </p>
 
@@ -2564,7 +2565,7 @@ The possibility to test the cookbooks locally inside a virtual machine with Virt
 
 <p>
 A popular cookbook that was initially selected for deploying Java applications turned out to be incompatible with the latest version of the official Tomcat cookbook for no obvious reason. In general the whole system seemed complex:
-many components rely on others and compatibility has to be figure out manually.
+many components rely on others and compatibility has to be figured out manually.
 </p>
 
 <figure>
@@ -2765,7 +2766,7 @@ For Tomcat parallel deployment can be used here again. The actual deployment to 
 </p>
 
 <p>
-A combination of the <code>git</code> and <code>file</code> directives can be used to checkout the latest version of the application and activate it with a symlink as soon as all dependencies have been installed.
+A combination of the <code>git</code> and <code>file</code> directives can be used to checkout the latest version of the PHP application and activate it with a symlink as soon as all dependencies have been installed.
 </p>
 </td>
 </tr>
@@ -2821,13 +2822,13 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tbody>
 <tr>
 <th>Requirement</th>
-<th>R06 Hoster switch</th>
+<th>R06 Hosting provider switch</th>
 </tr>
 <tr>
 <th>Verification</th>
 <td>
 <p>
-As mention before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differentiates between package management systems, so switching from <a href="#ref-apt">Apt</a> (used by Debian) to <a href="#ref-yum">Yum</a> (used by SUSE Linux) would require some code changes, but this switch is out of scope of this requirement.
+As mentioned before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differentiates between package management systems, so switching from <a href="#ref-apt">Apt</a> (used by Debian) to <a href="#ref-yum">Yum</a> (used by SUSE Linux) would require some code changes, but this switch is out of scope of this requirement.
 </p>
 </td>
 </tr>
@@ -3044,7 +3045,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-Operation system packages as well as custom downloaded software can be installed using Ansible.
+Operating system packages as well as custom downloaded software can be installed using Ansible.
 </p>
 </td>
 </tr>
@@ -3252,7 +3253,7 @@ R05 Staging area
 </tr>
 <tr>
 <td>
-R06 Hoster switch
+R06 Hosting provider switch
 </td>
 <td>
 <img src="images/sign-error.svg" width="16" height="16" alt="">
@@ -4031,7 +4032,7 @@ This view explains the dynamic aspects of the playbook execution. In particular 
 </figure>
 
 <p>
-While running the playbook, the first role that gets executed is the <em>servers</em> role. This role doesn't execute any remote commands but runs locally to connect to the web service provided by the hoster. It either creates and boots the servers if they don't exist yet or just fetches their information. The returned IP addresses are added to the dynamic inventory so following commands can be executed on the servers.
+While running the playbook, the first role that gets executed is the <em>servers</em> role. This role doesn't execute any remote commands but runs locally to connect to the web service provided by the hosting provider. It either creates and boots the servers if they don't exist yet or just fetches their information. The returned IP addresses are added to the dynamic inventory so following commands can be executed on the servers.
 </p>
 
 <p>
@@ -4054,7 +4055,7 @@ Source code is stored in Git repositories on GitHub. The playbook and each appli
 </p>
 
 <p>
-Each application pipeline uses the playbook to provision the infrastructure and then deploys the application to the targeted environment. The servers required for the production and staging environment are running with the hoster DigitalOcean.
+Each application pipeline uses the playbook to provision the infrastructure and then deploys the application to the targeted environment. The servers required for the production and staging environment are running with the hosting provider DigitalOcean.
 </p>
 
 <p>
@@ -4090,7 +4091,7 @@ This approach has the advantage that temporary environments (like staging) can e
 <h4>Ansible Tower</h4>
 
 <p>
-The company behind Ansible distributes also a commercial software called <a href="#ref-ansible-tower">Ansible Tower</a> for running playbooks with a user interface. The software provides a web interface with permission management, an audit trail and visualizations.
+The company behind Ansible distributes also commercial software called <a href="#ref-ansible-tower">Ansible Tower</a> for running playbooks with a user interface. The software provides a web interface with permission management, an audit trail and visualizations.
 </p>
 
 <figure class="affix">
@@ -4113,7 +4114,7 @@ One disadvantage of automating the server setup is that the executor needs full 
 </p>
 
 <p>
-As the staging environment is always built by syncing databases from production the risk of data leakage increases as staging environments are often regarded as non-critical. By treating the staging environment as confidential as the production environment (e.g. encrypting staging passwords), incidents can be prevented.
+As the staging environment is always built by syncing databases from production the risk of data leakage increases as staging environments are often regarded as non-critical. By treating the staging environment as confidentially as the production environment (e.g. encrypting staging passwords), incidents can be prevented.
 </p>
 
 <h3 class="break">Testing</h3>
@@ -4187,7 +4188,7 @@ Testing the web interface of the applications also verifies that all underlying 
 <h3 class="break">Migration</h3>
 
 <p>
-To migrate the existing infrastructure to the new automated infrastructure multiple steps need to be taken. Not only need all applications to be installed and configured on the new infrastructure but existing data needs to be transferred and DNS entries need to be updated.
+To migrate the existing infrastructure to the new automated infrastructure multiple steps need to be taken. Not only do all applications need to be installed and configured on the new infrastructure but existing data needs to be transferred and DNS entries need to be updated.
 </p>
 
 <p>
@@ -4259,7 +4260,7 @@ The following Could requirements are not explicitly tested with the proof-of-con
 </p>
 
 <ul>
-<li>R06 Hoster switch</li>
+<li>R06 Hosting provider switch</li>
 <li>R19 Horizontal scaling</li>
 </ul>
 
@@ -4481,7 +4482,7 @@ An independent GitHub organization is used to keep the proof-of-concept separate
 </figure>
 
 <p>
-Every commit is also display in <a href="#ref-slack">Slack</a>, the chat application used by WorldSkills. This guarantees that all developers are aware of the change.
+Every commit is also displayed in <a href="#ref-slack">Slack</a>, the chat application used by WorldSkills. This guarantees that all developers are aware of the change.
 </p>
 
 <figure>
@@ -4635,7 +4636,7 @@ Connection closed by 46.101.135.160
 </figure>
 
 <p>
-After resetting the root password of the server via the DigitalOcean web interface and connecting via their remote control interface it turned out the server was missing the SSH keys required to successfully connect to it. Contacting the support of DigitalOcean didn't bring any new information, they assured that they are not aware of any software problem. As this problem only occurs sometimes it is most likely related to a race condition when deleting a server an creating a new one with the same name. Waiting at least 5 minutes before trying to create the same servers again solved the problem.
+After resetting the root password of the server via the DigitalOcean web interface and connecting via their remote control interface it turned out the server was missing the SSH keys required to successfully connect to it. Contacting the support of DigitalOcean didn't bring any new information, they assured that they are not aware of any software problem. As this problem only occurs sometimes it is most likely related to a race condition when deleting a server and creating a new one with the same name. Waiting at least 5 minutes before trying to create the same servers again solved the problem.
 </p>
 
 <h4>Problem SSH connection timeout</h4>
@@ -4668,7 +4669,7 @@ The main issue is that Ansible isn't using the correct restart command, so inste
 <h4>Missed handlers when task failed</h4>
 
 <p>
-If a task in an Ansible playbook fails, the execution of the whole playbook stops. Queued handlers are lost if this happens and in the next run the handlers might not get notified again. Because of this a required restart easily gets forgotten and can caused unexpected server states (e.g. configuration file has been updated but a restart is required for loading the updated configuration). Luckily Ansible can be forced to always run handlers, even if a task fails with the setting <code>force_handlers:&nbsp;True</code>. This solved the problem of missed application restarts.
+If a task in an Ansible playbook fails, the execution of the whole playbook stops. Queued handlers are lost if this happens and in the next run the handlers might not get notified again. Because of this a required restart easily gets forgotten and can cause unexpected server states (e.g. configuration file has been updated but a restart is required for loading the updated configuration). Luckily Ansible can be forced to always run handlers, even if a task fails with the setting <code>force_handlers:&nbsp;True</code>. This solved the problem of missed application restarts.
 </p>
 
 <h3 class="break">Test Results</h3>
@@ -4891,7 +4892,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-The Auth and the Events web service are running. Events are listed when accessing http://api.worldskills.ch/events and organizational groups are listed on https://api.worldskills.org/auth/ws_entities/1.
+The Auth and the Events web service are running. Events are listed when accessing http://api.worldskills.ch/events and organizational groups are listed on http://api.worldskills.ch/auth/ws_entities/1.
 </p>
 </td>
 </tr>
@@ -4956,7 +4957,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 The <code>favicon.ico</code> of the main website is changed and pushed to GitHub. The unit tests are executed on Codeship and the Ansible playbook is checked out. With a separate playbook the changed file gets deployed to the server.
 </p>
 <p>
-The new Favicon is only visible after the new version of the website has is completely ready.
+The new Favicon is only visible after the new version of the website is completely ready.
 </p>
 </td>
 </tr>
@@ -5262,7 +5263,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <h3>Ansible and Idempotence</h3>
 
 <p>
-One learning of this project is that idempotence is hard. This not only applies to Ansible but to every server management software. There are always multiple sources for changes on a modern computer system and almost infinite states exist. Reducing the configuration of the whole system to one repository (the Ansible playbook in this case) helps by reducing dependencies.
+The project has shown that idempotence on a computer system is hard. This not only applies to Ansible but to all server management software. There are always multiple sources for changes on a modern computer system and almost infinite states exist. Reducing the configuration of the whole system to one repository (the Ansible playbook in this case) helps by reducing dependencies.
 </p>
 
 <p>
@@ -5270,7 +5271,7 @@ The promise of idempotence is also not true in every case with Ansible as some a
 </p>
 
 <p>
-Given that the whole infrastructure can be duplicated automatically one could think of using this for automated testing of every change to the Ansible playbook. However as the creation of such a testing environment takes more than 20 minutes every little change to the infrastructure would also take at least that long - so this option is not considered useful. Instead the choice of creating a staging environment is left up to developer if a certain change needs to be tested more detailed. Further testing tools (e.g. Selenium) can also easily be integrated with Ansible.
+Given that the whole infrastructure can be duplicated automatically one could think of using this for automated testing of every change to the Ansible playbook. However as the creation of such a testing environment takes more than 20 minutes every little change to the infrastructure would also take at least that long - so this option is not considered useful. Instead the choice of creating a staging environment is left up to developer if a certain change needs to be tested in more detail. Further testing tools (e.g. Selenium) can also easily be integrated with Ansible.
 </p>
 
 <p>
@@ -5284,7 +5285,7 @@ The time required to create the staging environment is considered a potential pr
 </p>
 
 <p>
-Another option of speeding up the creation of the staging environment would be to clone the server completely (on system level) instead of recreating it every time with Ansible. However this only works within the same hoster (not even with all hosters) and one of the targets of this projects was to be independent from the hoster. By recreating the servers each time the developers can be sure that the playbook is ready to be used with a different hoster.
+Another option of speeding up the creation of the staging environment would be to clone the server completely (on system level) instead of recreating it every time with Ansible. However this only works within the same hosting provider (not even with all hosting providers) and one of the targets of this projects was to be independent from the hosting provider. By recreating the servers each time the developers can be sure that the playbook is ready to be used with a different hosting provider.
 </p>
 
 <p>
@@ -5298,13 +5299,13 @@ The Evaluation showed that software containers have potential in abstracting the
 </p>
 
 <p>
-Applications can more easily be moved between servers and are less error prone to configuration mistakes. The advantages need to be carefully weighted in each case and testing new approaches before implementing them in production is recommended.
+Applications can more easily be moved between servers and are less error prone to configuration mistakes. The advantages need to be carefully weighed in each case and testing new approaches before implementing them in production is recommended.
 </p>
 
 <h3>Objectives</h3>
 
 <p>
-The objectives of creating a versioned, testable and reproducible where all changes are visible to the whole IT team has been fully achieved. The combination of multiple technologies and services allows quick modifications and the results are visible for everyone.
+The objectives of creating a versioned, testable and reproducible infrastructure where all changes are visible to the whole IT team has been fully achieved. The combination of multiple technologies and services allows quick modifications and the results are visible for everyone.
 </p>
 
 <h3>Recommendations</h3>
@@ -5626,7 +5627,7 @@ It is recommended to keep an eye on the development of software containers and r
 <h3 class="break">Software</h3>
 
 <p>
-The make the results of this thesis reproducible, the following list shows the version of the software used on the development machine:
+To make the results of this thesis reproducible, the following list shows the version of the software used on the development machine:
 </p>
 
 <ul>
@@ -5706,6 +5707,8 @@ The following versions of software were used on the server:
 <dd>Hypertext Markup Language: A markup language used on the world wide web.</dd>
 <dt>HTTP</dt>
 <dd>Hypertext Transfer Protocol: A protocol for transfering data of the world wide web.</dd>
+<dt>HTTPS</dt>
+<dd>HTTP Secure: Protocol for using HTTP in a secure way with an added encryption layer.</dd>
 <dt>Idempotence</dt>
 <dd>Operation that can be executed multiple times without changing the state after an initial change.</dd>
 <dt>IP address</dt>
