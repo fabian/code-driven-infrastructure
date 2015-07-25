@@ -102,10 +102,10 @@ var doc = doc || {};
 
         var reference = $(href),
             link = reference.find('a'),
-            ref = reference.find('a'),
+            ref = reference.find('.ref'),
             footnote;
 
-        if (link) {
+        if (link.length > 0) {
             footnote = link.text();
         } else {
             footnote = ref.text();
