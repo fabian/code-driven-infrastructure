@@ -113,7 +113,10 @@ var doc = doc || {};
 
         return footnote;
     };
-    Prince.addScriptFunc('ref-footnote', doc.refFootnote);
+
+    if (typeof Prince != 'undefined') {
+        Prince.addScriptFunc('ref-footnote', doc.refFootnote);
+    }
 
     $(function () {
 
