@@ -312,27 +312,6 @@ h3.nonr:before {
 
 /* references */
 
-[title]:after {
-    content: attr(title);
-    float: footnote;
-    counter-increment: footnote;
-    font-size: 0.75em;
-    footnote-style-position: inside;
-    padding-left: 90px;
-}
-
-[title]:after::footnote-call {
-    vertical-align: super;
-    line-height: none;
-}
-
-[title]:after::footnote-marker {
-    content: counter(footnote) " ";
-    font-size: 0.75em;
-    vertical-align: super;
-    line-height: none;
-}
-
 a[href^="#ref-"]:before {
     content: prince-script(ref-footnote, attr(href));
     float: footnote;
@@ -370,11 +349,6 @@ a[href^="#ref-"]:after {
 
 *[id^="ref-"]:before {
     content: "[" counter(reference) "] ";
-}
-
-figcaption[title]:after,
-figcaption[title]:after::footnote-call {
-    font-size: 1em;
 }
 
 
