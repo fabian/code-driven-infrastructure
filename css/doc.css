@@ -50,6 +50,7 @@ h2 {
     }
 
     @footnotes {
+        padding-top: 1em;
         margin-bottom: -13mm;
     }
 }
@@ -330,6 +331,33 @@ h3.nonr:before {
     font-size: 0.75em;
     vertical-align: super;
     line-height: none;
+}
+
+a[href^="#ref-"]:before {
+    content: prince-script(ref-footnote, attr(href));
+    float: footnote;
+    footnote-style-position: inside;
+    font-size: 0.75em;
+    padding-left: 90px;
+}
+
+a[href^="#ref-"]:before::footnote-call {
+    content: "";
+}
+
+a[href^="#ref-"]:before::footnote-marker {
+    content: "[" target-counter(attr(href), reference) "] ";
+}
+
+table td a[href^="#ref-"]:before,
+table th a[href^="#ref-"]:before {
+    font-size: 0.85em;
+    font-weight: normal;
+}
+
+figcaption a[href^="#ref-"]:before {
+    font-size: 1em;
+    text-align: left;
 }
 
 a[href^="#ref-"]:after {

@@ -98,6 +98,23 @@ var doc = doc || {};
         });
     };
 
+    doc.refFootnote = function (href) {
+
+        var reference = $(href),
+            link = reference.find('a'),
+            ref = reference.find('a'),
+            footnote;
+
+        if (link) {
+            footnote = link.text();
+        } else {
+            footnote = ref.text();
+        }
+
+        return footnote;
+    };
+    Prince.addScriptFunc('ref-footnote', doc.refFootnote);
+
     $(function () {
 
         var document = new doc.Document();
