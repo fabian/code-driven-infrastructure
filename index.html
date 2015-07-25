@@ -2128,15 +2128,12 @@ Generating chef JSON and uploading...
 ==> default: […] INFO: Running start handlers
 ==> default: […] INFO: Start handlers complete.
 ==> default: […] INFO: Chef Run complete in 0.017230899 seconds
-==> default: […] INFO: Skipping removal of unused files from the cache
-==> default: […] INFO: Running report handlers
-==> default: […] INFO: Report handlers complete
 </code></pre>
 <figcaption>Vagrant initialization with Chef</figcaption>
 </figure>
 
 <p>
-Chef organizes commands in <em>recipes</em> and <em>cookbooks</em>. The books <a href="#ref-cooking-chef"><em>Cooking Infrastructure by Chef</em></a> and <a href="#ref-taste-test"><em>Taste Test</em></a> were used during the following verification.
+Chef organizes commands in <em>recipes</em> and <em>cookbooks</em>. Variables are stored in files called <em>data bags</em>. The books <a href="#ref-cooking-chef"><em>Cooking Infrastructure by Chef</em></a> and <a href="#ref-taste-test"><em>Taste Test</em></a> were used during the following verification.
 </p>
 
 <h4>Requirements verification</h4>
@@ -2479,7 +2476,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-<em>Data bags</em> can store variables for the Chef server. Confidential information can be stored in encrypted Data Bags. The secret key can be shared within the developers over other secure channels.
+Data bags can store variables for the Chef server. Confidential information can be stored in encrypted data bags. The secret key can be shared within the developers over other secure channels.
 </p>
 </td>
 </tr>
