@@ -5,7 +5,7 @@
 	 width="670px" height="526.812px" viewBox="0 0 670 526.812" enable-background="new 0 0 670 526.812" xml:space="preserve">
 <path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M13,13.812h108v27H13V13.812z"/>
 <text transform="matrix(1 0 0 1 42.9824 31.8125)" font-family="'Helvetica'" font-size="12">playbook</text>
-<text transform="matrix(1 0 0 1 455.3242 31.8125)" font-family="'Helvetica'" font-size="12">hoster</text>
+<text transform="matrix(1 0 0 1 430.3164 31.8125)" font-family="'Helvetica'" font-size="12">hosting provider</text>
 <line fill="none" stroke="#CCCCCC" stroke-miterlimit="10" stroke-dasharray="4,4" x1="67" y1="40.812" x2="67" y2="517.812"/>
 <text transform="matrix(1 0 0 1 170.6582 31.8125)" font-family="'Helvetica'" font-size="12">role servers</text>
 <path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M148,13.812h108v27H148V13.812z"/>
@@ -20,7 +20,7 @@
 		</g>
 	</g>
 </g>
-<path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M418,13.812h108v27H418V13.812z"/>
+<path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M418.008,13.812h108v27h-108V13.812z"/>
 <line fill="none" stroke="#CCCCCC" stroke-miterlimit="10" stroke-dasharray="4,4" x1="472" y1="40.816" x2="472" y2="517.812"/>
 <path fill="none" stroke="#BDC3C7" stroke-miterlimit="10" d="M553,13.812h108v27H553V13.812z"/>
 <text transform="matrix(1 0 0 1 584.6621 31.8125)" font-family="'Helvetica'" font-size="12">server X</text>
