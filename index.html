@@ -4187,7 +4187,7 @@ As the staging environment is always built by syncing databases from production 
 <h3 class="break">Testing</h3>
 
 <p>
-The testing is divided into multiple stages which all aim to find bugs in the Ansible playbook. Testing of the self-developed applications has to be done by each application individually. All automated tests are executed on a continuous integration server.
+The testing is divided into multiple stages which all aim to find bugs in the Ansible playbook. Testing of the self-developed applications has to be done by each application individually. All automated tests are executed on the continuous integration server.
 </p>
 
 <figure class="full">
@@ -4206,7 +4206,7 @@ Ansible provides two flags when running playbooks which are particularly useful 
 </p>
 
 <p>
-The flag <code>--check</code> runs the playbook in a special mode where a <em>dry run</em> is performed. In this mode no changes are made on remote systems, but all tasks are checked if they can be executed. Thanks to this it can easily be checked if the playbook would run or fail (e.g. because of some missing variables). Unfortunately this is not always possible as some modules require some dependencies to be installed (e.g. rabbitmq_plugins).
+The flag <code>--check</code> runs the playbook in a special mode where a <em>dry run</em> is performed. In this mode no changes are made on remote systems, but all tasks are checked if they can be executed. Thanks to this it can easily be checked if the playbook would run or fail (e.g. because of some missing variables). Unfortunately this is not possible in all cases as some modules require some dependencies to be installed (e.g. rabbitmq_plugins).
 </p>
 
 <p>
@@ -4228,7 +4228,7 @@ If another application creates a branch with the same name it will get deployed 
 </p>
 
 <p>
-After testing is completed and the branch has been merged into the master branch the staging environment can be removed with a separate Ansible task.
+After testing is completed and the branch has been merged into the master branch the staging environment can be removed with a separate Ansible script.
 </p>
 
 <h4>System tests</h4>
@@ -4273,7 +4273,7 @@ The following steps should be executed in the order outlined. Some have to be do
 </ol>
 
 <p>
-The first steps are reducing the time DNS entries are cached so the switch to the new server gets propagated faster. The new infrastructure is then created with the main Ansible playbook. Once the new infrastructure is ready the old one can be switch off so no changes can be made anymore by the user. To synchronize the database and user files from the existing infrastructure a separate Ansible playbook should be written so it can be executed on its own. After everything has been transferred to the new infrastructure the DNS entries can be changed to point to the new infrastructure and the DNS TTL can be increased again.
+The first steps are reducing the time DNS entries are cached so the switch to the new server gets propagated faster. The new infrastructure is then created with the main Ansible playbook. Once the new infrastructure is ready the old one can be switched off so no changes can be made anymore by users. To synchronize the database and user files from the existing infrastructure a separate Ansible playbook should be written so it can be executed on its own. After everything has been transferred to the new infrastructure the DNS entries can be changed to point to the new infrastructure and the DNS TTL can be increased again.
 </p>
 
 </div>
@@ -4286,7 +4286,7 @@ The first steps are reducing the time DNS entries are cached so the switch to th
 <h3>Proof-of-concept</h3>
 
 <p>
-For the proof-of-concept the following reduced infrastructure has been selected to test the feasibility of the concept focussing on the requirements. The proof-of-concept infrastructure includes a PHP application (R01), two Java applications (R02), one JavaScript application, multiple MySQL databases and RabbitMQ message queues.
+For the proof-of-concept the following reduced infrastructure has been selected to test the feasibility of the concept focussing on the requirements. The proof-of-concept infrastructure includes a PHP application (R01), two Java applications (R02), one JavaScript application, multiple MySQL databases and the RabbitMQ message queue.
 </p>
 
 <figure>
@@ -4299,7 +4299,7 @@ The proof-of-concept also includes the dynamic generation of staging environment
 </p>
 
 <p>
-To prepare for horizontal scaling (R19) the databases are deployed to a separate server. Initial data fixtures are imported from the existing WorldSkills infrastructure (using an SSH connection).
+To prepare for horizontal scaling (R19) databases are installed on a separate server. Initial data fixtures are imported from the existing WorldSkills infrastructure (using an SSH connection).
 </p>
 
 <p>
@@ -4363,8 +4363,10 @@ The playbook code repository is organized with roles. Each role is responible fo
 <figcaption>Main playbook</figcaption>
 </figure>
 
+<h4>System Packages</h4>
+
 <p>
-The PHP role is an example of software that gets installed with the package manager of the system (<em>apt</em>). The template module of Ansible is used to create the required configuration files. The same approach is used for the installation of MySQL, RabbitMQ, Tomcat and the Apache web server.
+The PHP role is an example of software that gets installed with the package manager of the operating system. The <em>template</em> module of Ansible is used to create the required configuration files. The same approach is used for the installation of MySQL, RabbitMQ, Tomcat and the Apache web server.
 </p>
 
 <figure class="affix">
@@ -4385,8 +4387,10 @@ The PHP role is an example of software that gets installed with the package mana
 <figcaption>Role php tasks</figcaption>
 </figure>
 
+<h4>Virtual Hosts</h4>
+
 <p>
-Virtual hosts in the Apache web server are also created with the template module and by linking the configuration files to <code>/etc/apache2/sites-available</code>.
+Virtual hosts in the Apache web server are also created with the <em>template</em> module and by linking the configuration files to <code>/etc/apache2/sites-available</code>.
 </p>
 
 <figure class="affix">
@@ -4406,6 +4410,8 @@ Virtual hosts in the Apache web server are also created with the template module
 </code></pre>
 <figcaption>Virtual hosts tasks</figcaption>
 </figure>
+
+<h4>PHP and JavaScript Applications</h4>
 
 <p>
 Self-developed applications are installed by checking out the source code and then installing all dependencies. To keep the existing application running the source code is installed in a new folder and a symlink pointing to the latest checkout is updated at the end of the installation process.
@@ -4453,7 +4459,9 @@ Self-developed applications are installed by checking out the source code and th
 <figcaption>Role Events application tasks</figcaption>
 </figure>
 
-<p class="break">
+<h4 class="break">Java Applications</h4>
+
+<p>
 Java applications are deployed using the <a href="#ref-tomcat-maven">Tomcat Maven Plugin</a>. This plugin builds the application and uploads it to the Tomcat server. Again the old version of the application is kept running until the new application has been started and is ready. For Tomcat this is achieved with the built-in functionality for parallel deployment as described in the <a href="#ref-tomcat-documentation">Tomcat Documentation</a>.
 </p>
 
@@ -4509,10 +4517,27 @@ As the CMS of the website heavily depends on content in the database to work pro
 Because Ansible is using SSH the server which the new database is running on can get an export of the database directly from the production database server.
 </p>
 
+<figure class="affix">
+<pre><code>- name: get worldskills_concrete5 dump from prod
+  command: >
+    rsync -ze "ssh -o StrictHostKeyChecking=no"
+    root@beuk.worldskills.org:/path/to/database/mysqldump.sql.gz
+    /usr/local/worldskills-playbook/worldskills_concrete5.sql.gz
+    creates=/usr/local/worldskills-playbook/worldskills_concrete5.sql.gz
+
+- name: import worldskills_concrete5 database
+  mysql_db: >
+    name="{{ worldskills_api_auth_database_name }}"
+    state=import
+    target=/usr/local/worldskills-playbook/worldskills_concrete5.sql.gz
+</code></pre>
+<figcaption>Data synchronization tasks</figcaption>
+</figure>
+
 <h3 class="break">Vagrant Setup</h3>
 
 <p>
-For local development the playbook can be executed in Vagrant. Ansible is configured as provisioner in Vagrant and point to the main playbook. As the Ubuntu image used by Vagrant has the root user disabled by default, the playbook is executed with the user <em>vagrant</em> and with superuser permissions (<code>sudo</code>). Environment specific variables like URLs are overridden with the <code>extra_vars</code> parameter. To simplify things all server groups are mapped to the default server, so only one virtual machine is needed to run the infrastructure locally.
+For local development the playbook can be executed in Vagrant. Ansible is configured as provisioner in Vagrant and points to the main playbook. As the Ubuntu image used by Vagrant has the root user disabled by default, the playbook is executed with the user <em>vagrant</em> and with superuser permissions (sudo). Environment specific variables like URLs are overridden with the <code>extra_vars</code> parameter. To simplify things all server groups are mapped to the default server, so only one virtual machine is needed to run the infrastructure locally.
 </p>
 
 <figure>
@@ -4601,7 +4626,7 @@ With the deployment commands, the master branch gets deployed to the production 
 All branches starting with <code>staging-</code> are deployed to an environment with the branch name. Codeship provides the current branch name as environment variable <code>$CI_BRANCH</code>. The variable <code>digital_ocean_droplet_prefix</code> gets overridden from the command line with the option <code>-e</code> (additional variables).
 </p>
 
-<figure>
+<figure class="affix">
 <pre><code>ansible-playbook \
     -i inventories/staging \
     --vault-password-file=vault_password.txt \
@@ -4636,7 +4661,7 @@ The danger of a race condition with multiple playbooks running at the same time 
 <h3 class="break">DigitalOcean Setup</h3>
 
 <p>
-The servers for the infrastructure are created by the <em>servers</em> role with Ansible on DigitalOcean. The servers are identified by their name, their IP address is stored for usage in other roles (e.g. <code>digital_ocean_ip_web</code>).
+The servers for the infrastructure are created by the <em>servers</em> role with Ansible on <a href="#ref-digital-ocean">DigitalOcean</a>. The servers are identified by their name, their IP address is stored for usage in other roles (e.g. <code>digital_ocean_ip_web</code>).
 </p>
 
 <figure>
@@ -4692,7 +4717,7 @@ The problem has been solved by moving the default values to the individual roles
 <h4>Problem SSH connection closed</h4>
 
 <p>
-A problem that occurred during testing with DigitalOcean was that sometimes the servers couldn't be created properly. When trying to connect to the just created server via SSH the connection was always declined.
+A problem that occurred during testing with DigitalOcean was that sometimes the servers couldn't be created properly. When trying to connect to the just created server via SSH the connection always failed.
 </p>
 
 <figure>
@@ -4709,7 +4734,7 @@ After resetting the root password of the server via the DigitalOcean web interfa
 <h4>Problem SSH connection timeout</h4>
 
 <p>
-Another similar SSH problem was the sometimes the SSH connection was reset while the Ansible playbook was running. A first part of the playbook was successfully executed on the database servers but the next part which was to be executed on the API servers failed with the following message.
+Another similar SSH problem was that sometimes the SSH connection was reset while the Ansible playbook was running. A first part of the playbook was successfully executed on the database servers but the next part which was to be executed on the API servers failed with the following message.
 </p>
 
 <figure class="affix">
@@ -4726,7 +4751,7 @@ Checking the SSH timeout variables (ClientAliveInterval, ClientAliveCountMax, Se
 <h4>Problem MySQL socket</h4>
 
 <p>
-After running the playbook repeatedly, the PHP was suddenly unable to connect to the MySQL database. Investigating the problem it turned out that the MySQL socket had disappeared. After debugging the issue the problem could be tracked down to a problem in Ubuntu when the command <code>/etc/init.d/mysql restart</code> was executed. Due to a recent change in Ubuntu to upstart scripts this is actually a legacy command and <code>service mysql restart</code> should be executed instead.
+After running the playbook repeatedly, PHP was suddenly unable to connect to the MySQL database. Investigating the problem it turned out that the MySQL socket had disappeared. After debugging the issue the problem could be tracked down to a problem in Ubuntu when the command <code>/etc/init.d/mysql restart</code> was executed. Due to a recent change in Ubuntu to upstart scripts this is actually a legacy command and <code>service mysql restart</code> should be executed instead.
 </p>
 
 <p>
@@ -5334,11 +5359,11 @@ The project has shown that idempotence on a computer system is hard. This not on
 </p>
 
 <p>
-The promise of idempotence is also not true in every case with Ansible as some attributes require more attention to be changed. Changing the physical server location inside the <em>digital_ocean</em> module for example won't move the server from one location to another - the attribute is only used during creation of the server. Another example is the <em>copy</em> module which makes sure that a file exists in the specified location. The module checks this with every execution, however when the file path is changed (e.g. because it had a typo in it) it only makes sure the file exists in the new location. To delete the old file a separate task has to be written in Ansible. So the developers always have to be aware of what the module exactly does and they need to take care of cleanup operations by themselves.
+The promise of idempotence is also not true in every case with Ansible as some attributes require additional manual actions after a change. Changing the physical server location inside the <em>digital_ocean</em> module for example won't move the server from one location to another - the attribute is only used during creation of the server. Another example is the <em>copy</em> module which makes sure that a file exists in the specified location. The module checks this with every execution, however when the file path is changed (e.g. because it had a typo in it) it only makes sure the file exists in the new location. To delete the old file a separate task has to be written in Ansible. So the developers always have to be aware of what the module exactly does and they need to take care of cleanup operations by themselves.
 </p>
 
 <p>
-Given that the whole infrastructure can be duplicated automatically one could think of using this for automated testing of every change to the Ansible playbook. However as the creation of such a testing environment takes more than 20 minutes every little change to the infrastructure would also take at least that long - so this option is not considered useful. Instead the choice of creating a staging environment is left up to developer if a certain change needs to be tested in more detail. Further testing tools (e.g. Selenium) can also easily be integrated with Ansible.
+Given that the whole infrastructure can be duplicated automatically one could think of using this for automated testing of every change to the Ansible playbook. However as the creation of such a testing environment takes around 20 minutes, every little change to the infrastructure would also take at least that long - so this option is not considered useful. Instead the choice of creating a staging environment is left up to developer if a certain change needs to be tested in more detail.
 </p>
 
 <p>
@@ -5378,7 +5403,7 @@ The objectives of creating a versioned, testable and reproducible infrastructure
 <h3>Recommendations</h3>
 
 <p>
-Using Ansible for provisioning and deployment of the infrastructure makes sense. It is recommended to extend the proof-of-concept playbook with all applications running on the current infrastructure. Once the setup of the new infrastructure is completed a migration to it can be done with Ansible as outlined.
+Using Ansible for provisioning and deployment of the infrastructure makes sense. It is recommended to extend the proof-of-concept playbook with all applications running on the current infrastructure. Once the setup of the new infrastructure is completed a migration to it can be done with Ansible as outlined before.
 </p>
 
 <p>
@@ -5489,6 +5514,12 @@ It is recommended to keep an eye on the development of software containers and r
     (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
 </p>
 
+<p id="ref-digital-ocean" class="reference-item">
+    <span class="ref">DigitalOcean, Inc. (2015): Digital Ocean</span>.
+    <a href="https://www.digitalocean.com/" target="_blank">https://www.digitalocean.com/</a>
+    (retrieved&nbsp;26.&nbsp;July&nbsp;2015)
+</p>
+
 <p id="ref-docker-docs" class="reference-item">
     <span class="ref">Docker, Inc. (2015): Docker Documentation</span>. Version&nbsp;v1.5.
     <a href="https://docs.docker.com/v1.5/" target="_blank">https://docs.docker.com/v1.5/</a>
@@ -5519,16 +5550,16 @@ It is recommended to keep an eye on the development of software containers and r
     (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
 </p>
 
-<p id="ref-github-security" class="reference-item">
-    <span class="ref">GitHub Inc. (2015): GitHub Security</span>.
-    <a href="https://help.github.com/articles/github-security/" target="_blank">https://help.github.com/articles/github-security/</a>
-    (retrieved&nbsp;4.&nbsp;June&nbsp;2015)
-</p>
-
 <p id="ref-github" class="reference-item">
     <span class="ref">GitHub, Inc. (2015): GitHub</span>.
     <a href="https://github.com/" target="_blank">https://github.com/</a>
     (retrieved&nbsp;19.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-github-security" class="reference-item">
+    <span class="ref">GitHub, Inc. (2015): GitHub Security</span>.
+    <a href="https://help.github.com/articles/github-security/" target="_blank">https://help.github.com/articles/github-security/</a>
+    (retrieved&nbsp;4.&nbsp;June&nbsp;2015)
 </p>
 
 <p id="ref-vagrant" class="reference-item">
