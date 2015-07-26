@@ -5404,18 +5404,22 @@ Applications can more easily be moved between servers and are less error prone t
 The objectives of creating a versioned, testable and reproducible infrastructure where all changes are visible to the whole IT team has been fully achieved. The combination of multiple technologies and services allows quick modifications and the results are visible for everyone.
 </p>
 
-<h3>Recommendations</h3>
+<p>
+Handling changes to infrastructure the same way as changes to application helps the developers in their daily work as the processes and feedback loops are aligned. They get notified about modifications to the infrastructure in the chat application Slack, can review the diff on GitHub and give feedback there. The testing and deployment status is displayed in Slack as well and correction of failed changes can be organized right there with the developers online.
+</p>
+
+<h3 class="break">Recommendations</h3>
 
 <p>
-Using Ansible for provisioning and deployment of the infrastructure makes sense. It is recommended to extend the proof-of-concept playbook with all applications running on the current infrastructure. Once the setup of the new infrastructure is completed a migration to it can be done with Ansible as outlined before.
+It is recommended to keep an eye on the development of software containers and reevaluate their usage in six months. Suitable applications should then be migrated within three months if the software containers would bring reasonable advantages.
+</p>
+
+<p>
+Using Ansible for provisioning and deployment of the infrastructure makes sense. It is recommended to extend the proof-of-concept playbook with all applications running on the current infrastructure. Once the setup of the new infrastructure is completed a migration to it can be done with Ansible as outlined before. The targeted time for this migration is fall 2015.
 </p>
 
 <p>
 As the setup of a staging environment takes some time it's questionable how useful it is for small features. Investing into unit tests that can be executed locally is recommended here. Being able to replicate the complete infrastructure is useful for bigger features which join multiple services. It is recommended to implement the staging environment as described in the architecture documentation but use it only if needed and further invest in automated system tests.
-</p>
-
-<p>
-It is recommended to keep an eye on the development of software containers and reevaluate their usage in six months.
 </p>
 
 </div>
