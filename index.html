@@ -3835,7 +3835,7 @@ For application deployment the playbook is downloaded by the continuous integrat
 <h3 class="break">Building Block View</h3>
 
 <p>
-This chapter explains the files and their organization within the playbook used to maintain the WorldSkills infrastructure. The most important parts of the playbook are the inventories and the roles, they are displayed in the following overview diagram.
+The files and their organization within the playbook used to maintain the WorldSkills infrastructure are explained below. The most important parts of the playbook are the inventories and the roles, they are displayed in the following overview diagram.
 </p>
 
 <figure class="full">
@@ -3844,7 +3844,7 @@ This chapter explains the files and their organization within the playbook used 
 </figure>
 
 <p>
-Environment specific variables are stored in different inventories. There are two inventories: <em>prod</em> (for production) and <em>staging</em> (for system tests). The actual inventory file only lists localhost, as the servers are dynamically created. As environment specific variables often contain sensitive information they are encrypted with Ansible Vault.
+Environment specific variables are stored in different inventories. There are two inventories: <em>prod</em> (for production) and <em>staging</em> (for system tests). As environment specific variables often contain sensitive information they are encrypted with Ansible Vault.
 </p>
 
 <p>
@@ -4099,7 +4099,7 @@ This view explains the dynamic aspects of the playbook execution. In particular 
 </figure>
 
 <p>
-While running the playbook, the first role that gets executed is the <em>servers</em> role. This role doesn't execute any remote commands but runs locally to connect to the web service provided by the hosting provider. It either creates and boots the servers if they don't exist yet or just fetches their information. The returned IP addresses are added to the dynamic inventory so following commands can be executed on the servers.
+While running the playbook, the first role that gets executed is the <em>servers</em> role. This role doesn't execute any remote commands but runs locally to connect to the web service of the hosting provider. It either creates and boots the servers if they don't exist yet or just fetches their information. The returned IP addresses are added to the dynamic inventory so following commands can be executed on the servers.
 </p>
 
 <p>
