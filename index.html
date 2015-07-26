@@ -122,7 +122,7 @@ These types of software should be evaluated and an architecture documentation as
 <h3>Tasks</h3>
 
 <p>
-The following tasks will be completed by the student as part of the Bachelor thesis:
+The following tasks will be completed by the student as part of the bachelor thesis:
 </p>
 
 <ol>
@@ -137,7 +137,7 @@ The following tasks will be completed by the student as part of the Bachelor the
 <h3 class="break">Project Management</h3>
 
 <p>
-The following gantt diagram shows an overview of the timeline during the project as well as the dates of the most important milestones.
+The following gantt diagram shows an overview of the actual timeline during the project as well as the dates of the most important milestones.
 </p>
 
 <figure class="full">
@@ -377,11 +377,11 @@ The following gantt diagram shows an overview of the timeline during the project
 </figure>
 
 <p>
-According to the <a href="#ref-rules-bachelor-thesis">rules for the bachelor thesis</a> at least 360 hours have to be invested into the bachelor thesis. The planning was done according to those hours. WorldSkills International provided 2 days per week to work on the thesis.
+According to the <a href="#ref-rules-bachelor-thesis">rules</a> at least 360 hours have to be invested into the bachelor thesis. The planning was done according to those hours.
 </p>
 
 <p>
-Both the requirements analysis and the software evaluation took longer than expected as many aspects had to be studied in detail. In return the architecture  concept could be done faster. The proof-of-concept also took less time then expected as without many problems. Writing the documentation was slightly underestimated as well.
+Both the requirements analysis and the software evaluation took longer than expected as many aspects had to be studied in detail. In return the architecture  concept could be done faster. The proof-of-concept also took less time then expected as only a small number of problems occured during development. Writing the documentation was slightly underestimated.
 </p>
 
 <figure>
@@ -455,7 +455,7 @@ The following requirements were established by analysing the existing infrastruc
 <h3>Stakeholders</h3>
 
 <p>
-The following stakeholders have been found for the current infrastructure. They have a direct or indirect influence on the requirements. These stakeholders are also used in the system context diagram.
+The table below shows the stakeholders which have been found for the current infrastructure. They have a direct or indirect influence on the requirements. These stakeholders are also used in the system context diagram.
 </p>
 
 <figure>
@@ -475,7 +475,10 @@ Developer
 </th>
 <td>
 <p>
-Works at WorldSkills International and is responsible for the development and maintenance of the infrastructure. There are four developers working full-time for WorldSkills International. There is no designated system administrator. Developers have different backgrounds and therefore different knowledge about specific components of the instrastructure but they all share the responsibility for keeping the infrastructure running.
+Works at WorldSkills International and is responsible for the development and maintenance of the infrastructure. There are four developers working full-time for WorldSkills International. There is no designated system administrator.
+</p>
+<p>
+Developers have different backgrounds and therefore different knowledge about specific components of the instrastructure. They all share the responsibility for keeping the infrastructure running.
 </p>
 <p>
 All developers are using Mac OS X for development. They work from three different time zones.
@@ -488,7 +491,7 @@ User
 </th>
 <td>
 <p>
-Interacts with applications running on the WorldSkills infrastructure. This includes the Secretariat, Members, Competition personnel and website visitors. Most of them are registered users. Their expectations for fast and continuously running services influence the requirements.
+Interacts with applications running on the WorldSkills infrastructure. This includes the Secretariat, Members, competition personnel and website visitors. Most of them are registered users. Their expectations for fast and continuously running services influence the requirements.
 </p>
 </td>
 </tr>
@@ -540,14 +543,14 @@ Both Developer and User need to interact with the infrastructure or the applicat
 </p>
 
 <p>
-The source code of most applications is stored on GitHub. Codeship is used for running automated tests and executing the deployment of new versions. The hosting provider provides the servers for running the infrastructure. All three vendors influence the requirements indirectly with the constraints of their services. They are outside of the system context as they cannot be influenced.
+The source code of most applications is stored on GitHub. Codeship is used for running automated tests and executing the deployment of new versions. The hosting provider supplies the servers for running the infrastructure. All three vendors influence the requirements indirectly with the constraints of their services. They are outside of the system context as they cannot be influenced.
 </p>
 
 
 <h3 class="break">Applications</h3>
 
 <p>
-The current infrastructure consists of multiple applications deployed on three servers. There is no requirement to keep them on separate servers. The following diagram gives an overview of all applications. A detailed description of each applications follows.
+The current infrastructure is composed of multiple applications deployed on three servers. There is no requirement to keep them on separate servers. The following diagram gives an overview of all applications. A short description of each application can be found in appended table.
 </p>
 
 <figure>
@@ -923,7 +926,7 @@ Competition Planning Timetable with important deadlines
 <h3 class="break">User Stories</h3>
 
 <p>
-To describe the functional requirements for the new infrastructure user stories are used. They are prioritized in agreement with all developers in three levels: Must, Should, Could.
+To describe the functional requirements for the new infrastructure user stories are used in this chapter. They are prioritized in agreement with the developers in three levels: Must, Should, Could.
 </p>
 
 <figure>
@@ -942,7 +945,7 @@ To describe the functional requirements for the new infrastructure user stories 
 Description
 </th>
 <td>
-As a developer I want to run multiple PHP applications so users can access them. A PHP application usually needs a MySQL database and the source code is stored on GitHub.
+As a developer I want to run multiple PHP applications so users can access them. A PHP application usually needs a MySQL database, the source code is stored on GitHub.
 </td>
 </tr>
 <tr>
@@ -950,7 +953,7 @@ As a developer I want to run multiple PHP applications so users can access them.
 Acceptance Criteria
 </th>
 <td>
-All PHP applications are running and can be accessed with a web browser.
+Each PHP application is running and can be accessed with a web browser.
 </td>
 </tr>
 <tr>
@@ -987,7 +990,7 @@ As a developer I want to run multiple Java applications on a Tomcat server so us
 Acceptance Criteria
 </th>
 <td>
-All Java applications are running and can be accessed over HTTP/S.
+Each Java application is running and can be accessed over HTTP/S.
 </td>
 </tr>
 <tr>
@@ -1016,7 +1019,7 @@ All Java applications are running and can be accessed over HTTP/S.
 Description
 </th>
 <td>
-As a developer I want to change a server configuration file to optimize a setting. For example the MySQL Query Cache size needs to be increased. Another example would be that the servlet container configuration needs a new variable due to a change in the application.
+As a developer I might want to change a server configuration file to optimize a setting. For example the MySQL Query Cache size needs to be increased. Another example would be that the servlet container configuration needs a new variable due to a change in the application.
 </td>
 </tr>
 <tr>
@@ -1024,7 +1027,7 @@ As a developer I want to change a server configuration file to optimize a settin
 Acceptance Criteria
 </th>
 <td>
-A configuration file gets modified and the change is pushed to the repository. The new configuration file is automatically deployed to the server and the affected applications loads the new configuration.
+A configuration file gets modified and the change is pushed to the code repository. The new configuration file is automatically deployed to the server and the affected applications loads the new configuration.
 </td>
 </tr>
 <tr>
@@ -1053,7 +1056,7 @@ A configuration file gets modified and the change is pushed to the repository. T
 Description
 </th>
 <td>
-As a developer I want to deploy a new version of an application so users can benefit from new features or fixes. The deployment causes no downtime.
+As a developer I want to deploy a new version of an application so users can benefit from new features or bug fixes. The deployment causes no downtime of the application.
 </td>
 </tr>
 <tr>
@@ -1061,7 +1064,7 @@ As a developer I want to deploy a new version of an application so users can ben
 Acceptance Criteria
 </th>
 <td>
-A new version of an application gets pushed to the repository. Automated tests of the application are executed and if they pass the application gets deployed to the server. The old version keeps responding to requests until the new version is ready.
+A new version of an application gets pushed to the code repository. Automated tests of the application are executed and if they pass the application gets deployed to the server. The old version keeps responding to requests until the new version is ready.
 </td>
 </tr>
 <tr>
@@ -1083,14 +1086,14 @@ A new version of an application gets pushed to the repository. Automated tests o
 <tbody>
 <tr>
 <th>Name</th>
-<th>R05 Staging area</th>
+<th>R05 Staging environment</th>
 </tr>
 <tr>
 <th>
 Description
 </th>
 <td>
-As a developer, I want to test a new version of a web service in a staging area so I can make sure it works correctly with all other components of the system.
+As a developer, I want to test a new version of a web service in a staging environment so I can make sure it works correctly with all other components of the system.
 </td>
 </tr>
 <tr>
@@ -1150,7 +1153,7 @@ The infrastructure can be ported to a different provider within 48 hours. All ne
 <h3 class="break">Non-functional Requirements</h3>
 
 <p>
-The following non-functional requirements are not conclusive but they are the most critical ones. They are classified according to quality model of <a href="#ref-iso-25010">ISO/IEC 25010:2011</a> and prioritized in three levels: Must, Should, Could.
+The following non-functional requirements are not conclusive but they are the most critical ones. They are classified according to quality model of <a href="#ref-iso-25010">ISO/IEC 25010:2011</a> and prioritized in agreement with the developers in three levels: Must, Should, Could.
 </p>
 
 <p>
@@ -1219,7 +1222,7 @@ Accountability
 Description
 </th>
 <td>
-Every change must be traceable to a developer. Associated with every change is an explanation.
+Every change must be traceable by a developer. Associated with every change is an explanation.
 </td>
 </tr>
 <tr>
@@ -1330,7 +1333,7 @@ Confidentiality
 Description
 </th>
 <td>
-Server passwords should be stored only encrypted on third-party systems. The advantage of storing encrypted passwords in the code repository and sharing a key file instead of sharing the passwords in a file is that the file doesn't need to be updated for everyone each time a password is added.
+Server passwords should be stored only encrypted on third-party systems. The advantage of storing encrypted passwords in the code repository and sharing a key file instead of sharing the passwords in a file, is that the file doesn't need to be updated for everyone each time a password is added.
 </td>
 </tr>
 <tr>
@@ -1478,7 +1481,7 @@ Changeability
 Description
 </th>
 <td>
-Applications - that can be horizontally scaled - can be installed on multiple servers and served through a load balancer.
+Horizontal scalable applications can be installed on multiple servers and served through a load balancer.
 </td>
 </tr>
 <tr>
@@ -1504,7 +1507,7 @@ Based on the given requirements the following evaluation defines the guiding pri
 </p>
 
 <p>
-Only specific attributes of the approaches and their software is analyzed, many general comparisons have been written <a href="#ref-infoworld-comparison">before</a>.
+Only specific attributes of the approaches and their software is analyzed, general comparisons have been written <a href="#ref-infoworld-comparison">before</a>.
 </p>
 
 <p>
@@ -1515,7 +1518,7 @@ Cloud solutions for managing applications exist, but are usually locked in on th
 <h3>Software Containers</h3>
 
 <p>
-This type of software has recently became popular with <a href="#ref-docker">Docker</a>. The idea is to use the advantages of a virtual machine (isolation, portability, efficiency) while sharing resources. Docker has been chosen as it has been perceived as the most active project. A similar projects is <a href="#ref-rkt">rkt (Rocket) by CoreOS</a>.
+This type of software recently became popular with <a href="#ref-docker">Docker</a>. The idea is to use the advantages of a virtual machine (isolation, portability, efficiency) while sharing resources. Docker has been chosen as it has been perceived as the most active project. A similar project is <a href="#ref-rkt">rkt (Rocket) by CoreOS</a>.
 </p>
 
 <figure>
@@ -1528,7 +1531,7 @@ Docker only works on Linux, so for development on Mac OS X the software Boot2Doc
 </p>
 
 <p>
-After installation the virtual machine with Linux running Docker is then launched with the following two commands.
+After installation the virtual machine with Linux running Docker is launched with the following two commands.
 </p>
 
 <figure>
@@ -1550,11 +1553,11 @@ To connect the Docker client to the Docker daemon, please set:
 </figure>
 
 <p>
-Another useful tool is Docker Compose which allows multiple instances to be started based on a configuration file. However its usage in production is not recommended at the moment as it's missing some features for managing running instances.
+Another useful tool provided by Docker is Docker Compose which allows multiple instances to be started based on a configuration file. However its usage in production is not recommended at the moment as it's missing some features for managing running instances.
 </p>
 
 <p>
-<a href="#ref-docker-book"><em>The Docker Book</em></a> was used during the following verification.
+During the following verification <a href="#ref-docker-book"><em>The Docker Book</em></a> was used as a reference.
 </p>
 
 <h4>Requirements verification</h4>
@@ -1713,13 +1716,13 @@ Fail <img src="images/sign-error.svg" width="16" height="16" alt="" class="icon"
 <tbody>
 <tr>
 <th>Requirement</th>
-<th>R05 Staging area</th>
+<th>R05 Staging environment</th>
 </tr>
 <tr>
 <th>Verification</th>
 <td>
 <p>
-Containers can be started quickly in a new environment (e.g. a new virtual server). Docker Compose can be used here for starting up multiple containers at once. Database fixtures can be loaded from additional containers which are linked to the database container.
+Containers can be started quickly in a new environment (e.g. a new virtual server). Database fixtures can be loaded from additional containers which are linked to the database container.
 </p>
 </td>
 </tr>
@@ -1750,7 +1753,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-Thanks to virtualization the only requirement for a new hosting provider would be to run Docker. Transfer of the data is possible by launching additional containers on the old server and mounting the data volumes. The installation of Docker would need to be done manually if Docker is not preinstalled by the hosting provider. But more importantly the configuration of the host machine (e.g. SSH keys, logging, security settings) could not be automated with Docker.
+Thanks to virtualization the only requirement for a new hosting provider would be to run Docker. Transfer of the data is possible by launching additional containers on the old server and mounting the data volumes. The installation of Docker would need to be done manually if Docker is not preinstalled by the hosting provider. But more importantly the configuration of the host machine (e.g. SSH keys, logging, security settings) could not be automated with Docker alone.
 </p>
 </td>
 </tr>
@@ -1874,7 +1877,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-As with the staging environment Docker Compose can be used for starting multiple containers quickly so tests can be executed.
+Multiple containers can be launched locally so tests can be executed.
 </p>
 </td>
 </tr>
@@ -2088,7 +2091,7 @@ It became clear that Docker itself is a great tool for reducing the overhead of 
 </figure>
 
 <p>
-A comparison of all requirements can be found after the analysis of the three different approaches.
+A comparison of all requirements can be found after the evaluation of the three different software types.
 </p>
 
 <h3 class="break">Configuration Repository</h3>
@@ -2103,7 +2106,7 @@ A comparison of all requirements can be found after the analysis of the three di
 </figure>
 
 <p>
-Chef is used here because of the already existing knowledge of Ruby and its popularity. It is usually running on a Linux machine, so for development a virtual machine with Linux is required. To simplify the setup of the virtual machine, <a href="#ref-vagrant">Vagrant</a> can be used. Vagrant is software to run virtual machines based on a configuration file. After installing Vagrant, a virtual machine can be started with a Linux image provided by Chef which already has all the required software pre-installed:
+Chef is used here because of the already existing knowledge of Ruby and its popularity. It is usually running on a Linux machine, so for development a virtual machine with Linux is required. To simplify the setup of the virtual machine, <a href="#ref-vagrant">Vagrant</a> can be used. Vagrant is software to run virtual machines based on a configuration file. After installing Vagrant, a virtual machine can be started with a Linux image provided by Chef which already has all the required software pre-installed.
 </p>
 
 <figure>
@@ -2224,7 +2227,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-With Chef configuration files are usually built from templates which are stored in the repository. Once uploaded to the Chef server the client receives them, replaces the variables in them and puts them to the targeted location. In addition the service using the file can be restarted.
+With Chef configuration files are usually built from templates which are stored in the code repository. Once uploaded to the Chef server the client receives them, replaces the variables in them and puts them to the targeted location. In addition the service using the file can be restarted.
 </p>
 </td>
 </tr>
@@ -2284,7 +2287,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tbody>
 <tr>
 <th>Requirement</th>
-<th>R05 Staging area</th>
+<th>R05 Staging environment</th>
 </tr>
 <tr>
 <th>Verification</th>
@@ -2619,12 +2622,12 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <h4 class="break">Summary Configuration Repository</h4>
 
 <p>
-The installation of the Chef DK was difficult as it relies on overriding rbenv in the <code>PATH</code>. Some modifications to
+The installation of the Chef DK was difficult as it relies on overriding <a href="#ref-rbenv">rbenv</a>, a tool for managing Ruby versions, in the <code>PATH</code> variable. Some modifications to
 <code>.bash_profile</code> were needed to get it running properly.
 </p>
 
 <p>
-The possibility to test the cookbooks locally inside a virtual machine with VirtualBox proved handy. However a few times the cookbook failed unexpectedly (e.g. because a wrong package was accidentally installed first) - a complete reinstall solved the problem but took quite some time.
+The possibility to test the cookbooks locally inside a virtual machine with Vagrant proved handy. However a few times the cookbook failed unexpectedly (e.g. because a wrong package was accidentally installed first) - a complete reinstall solved the problem but took quite some time.
 </p>
 
 <p>
@@ -2668,7 +2671,7 @@ many components rely on others and compatibility has to be figured out manually.
 <h3 class="break">Remote Command Execution</h3>
 
 <p>
-This is similar to the Configuration Repository described in the previous chapter: Software to be installed and commands to be executed are defined in text files. The main difference is that instead of having a central server where everything is available to get pulled, everything gets pushed to the hosts. In fact Configuration Repository software like Chef also supports this kind of operation mode with Chef Solo.
+This type of software is similar to the Configuration Repository described in the previous chapter: Software to be installed and commands to be executed are defined in text files. The main difference is that instead of having a central server where everything is available to get pulled, everything gets pushed to the hosts. In fact Configuration Repository software like Chef also supports this kind of operation mode with Chef Solo.
 </p>
 
 <p>
@@ -2685,7 +2688,7 @@ Ansible is a Python application and can be installed on a development machine as
 </p>
 
 <p>
-Again Vagrant can be used to simplify the setup of a remote host and test the playbook. As Ansible requires no specific software on the host any Linux distribution can be used within VirtualBox. The following snippet shows the initialization process of VirtualBox with Ansible:
+Again Vagrant can be used to simplify the setup of a remote host and test the playbook. As Ansible requires no specific software on the host any Linux distribution can be used with Vagrant. The following snippet shows the initialization process of Vagrant with Ansible:
 </p>
 
 <figure>
@@ -2725,11 +2728,11 @@ The book <a href="#ref-taste-test"><em>Taste Test</em></a> was used during the f
 <th>Verification</th>
 <td>
 <p>
-Ansible includes already most tools needed for installing and configuring software using the OS mechanisms. Examples for how to use them are provided on GitHub by Ansible itself.
+Ansible includes already most tools needed for installing and configuring software using the OS mechanisms. Examples for how to use them are provided on <a href="#ref-ansible-github">GitHub by Ansible itself</a>.
 </p>
 
 <p>
-The Apache web server and mod_php can be installed with the OS packages, their configuration can be created with the Ansible template directive and the service directive makes sure Apache is running. The source code of the PHP application can either be copied to the host or cloned from Git.
+The Apache web server and mod_php can be installed with the OS packages, their configuration can be created with the Ansible <em>template</em> directive and the <em>service</em> directive makes sure Apache is running. The source code of the PHP application can either be copied to the host or cloned from Git.
 </p>
 
 <p>
@@ -2855,13 +2858,13 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tbody>
 <tr>
 <th>Requirement</th>
-<th>R05 Staging area</th>
+<th>R05 Staging environment</th>
 </tr>
 <tr>
 <th>Verification</th>
 <td>
 <p>
-As long as Ansible can connect via SSH to a machine it can set it up as needed. Ansible can also launch new virtual machines in the cloud which is useful for quickly starting a staging area.
+As long as Ansible can connect via SSH to a machine it can set it up as needed. Ansible can also launch new virtual machines in the cloud which is useful for quickly starting a staging environment.
 </p>
 </td>
 </tr>
@@ -2892,7 +2895,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-As mentioned before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differentiates between package management systems, so switching from <a href="#ref-apt">Apt</a> (used by Debian) to <a href="#ref-yum">Yum</a> (used by SUSE Linux) would require some code changes, but this switch is out of scope of this requirement.
+As mentioned before the only requirement on the host machine is the ability for Ansible to connect to it. Once this is provided Ansible can setup the new server as required. The only limitation is that Ansible differentiates between package management systems, so switching from <a href="#ref-apt">Apt</a> (used by Debian) to <a href="#ref-yum">Yum</a> (used by SUSE Linux) would require some code changes, but this switch is outside of the scope of this requirement.
 </p>
 </td>
 </tr>
@@ -2923,7 +2926,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>Verification</th>
 <td>
 <p>
-All configuration files can be stored as templates or raw files in the code repository of the playbook. Ansible copies them to the target server when executed.
+All configuration files can be stored as templates or raw files in the code repository of the playbook. Ansible copies them to the target server when being executed.
 </p>
 </td>
 </tr>
@@ -3303,7 +3306,7 @@ R04 Application deployment
 </tr>
 <tr>
 <td>
-R05 Staging area
+R05 Staging environment
 </td>
 <td>
 <img src="images/sign-check.svg" width="16" height="16" alt="">
@@ -3465,7 +3468,7 @@ Software Containers don't comply with all <em>Must</em> requirements, a Configur
 </p>
 
 <p>
-Even though Software Containers don't comply with all requirements it is still considered a useful concept if it gets combined with a Configuration Repository or Remote Command Execution for orchestration.
+Even though Software Containers don't comply with all requirements it is still considered a useful concept if it gets combined with a Configuration Repository or Remote Command Execution for orchestration. The next chapter evaluates the possibility of combining Software Containers with another Configuration Repository or Remote Command Execution.
 </p>
 
 <h4>Software Containers in Combination</h4>
@@ -3749,11 +3752,11 @@ The introduction of an orchestration software together with Software Containers 
 <h4>Recommendation</h4>
 
 <p>
-Software Containers add additional complexity and their advantages are not urgently needed for a team of four developers. One of them being able to quickly setting up a development environment, which is not as important as no new developers are expected to join the team within the next four years. The initial concept will focus only on phase one based on the requirements and the time available.
+Software Containers add additional complexity and their advantages are not urgently needed for a team of four developers. One of them being able to quickly setting up a development environment, which is not as important as no new developers are expected to join the team within the next four years. The initial architecture concept of this thesis will focus only on phase one based on the requirements and the time available.
 </p>
 
 <p>
-The evaluation has shown that Remote Command Execution is easier to understand and maintain than a Configuration Repository. Understanding the system easily is crucial as all developers need to be able to make quick changes to the infrastructure. Based on this the infrastructure concept will use Remote Command Execution software (Ansible) to describe phase one mentioned above.
+The evaluation has shown that Remote Command Execution is easier to understand and maintain than a Configuration Repository. Understanding the system easily is crucial as all developers need to be able to make quick changes to the infrastructure. Based on this the infrastructure concept will use Remote Command Execution software to describe phase one mentioned above. The software Ansible will be used based on its popularity and the good experience during the evaluation.
 </p>
 
 </div>
@@ -3766,17 +3769,17 @@ The evaluation has shown that Remote Command Execution is easier to understand a
 <h3>Introduction</h3>
 
 <p>
-The following concept is based on the <a href="#ref-arc42">arc42 template</a>, which provides a guideline for documenting software architecture. Goals, constraints and the scope (requirements related information) have already been documented in the previous chapters. For easier understanding some core concepts of Ansible are outlined in this introduction.
+The following architecture concept is based on the <a href="#ref-arc42">arc42 template</a>, which provides a guideline for documenting software architecture. Goals, constraints and the scope (requirements related information) have already been documented in the previous chapters. For easier understanding some core concepts of Ansible are outlined in this introduction.
+</p>
+
+<p>
+Ansible uses the term <em>playbook</em> to describe the collective of configuration files, deployment instructions, and environment specific variables. Each playbook can have multiple <em>roles</em> which allow modular grouping of related files. Best practices how to organize playbooks and roles are provided in the <a href="#ref-ansible-docs">Ansible documentation</a>.
 </p>
 
 <figure>
 <img src="images/ansible-explained.svg" />
 <figcaption>Playbook structure</figcaption>
 </figure>
-
-<p>
-Ansible uses the term <em>playbook</em> to describe the collective of configuration files, deployment instructions, and environment specific variables. Each playbook can have multiple <em>roles</em> which allow modular grouping of related files. Best practices how to organize playbooks and roles are provided in the <a href="#ref-ansible-docs">Ansible documentation</a>.
-</p>
 
 <p>
 A playbook can also be described as a better structured shell script that tells the server which commands to execute in which order. Before the commands are executed however, it checks if the command is still required or if it is redundant. For configuration files it can check if the file needs to be updated by comparing the desired content to the actual content on the server.
@@ -3818,11 +3821,11 @@ The <a href="#ref-yaml">YAML</a> syntax is used in playbooks for defining variab
 <h3>Solution Strategy</h3>
 
 <p>
-The whole infrastructure is described in an Ansible playbook which is shared with a Git repository on GitHub. Different services are split up into roles. Inside the roles provisioning and deployment are separate tasks and can be executed independently.
+The whole infrastructure is described in an Ansible playbook which is shared with a code repository on <a href="#ref-github">GitHub</a>. Different services are split up into roles. Inside the roles provisioning and deployment are separate tasks and can be executed independently.
 </p>
 
 <p>
-Changes to the infrastructure are pushed to the Git repository and then Ansible runs on the continuous integration sytem Codeship to deploy the changes to the servers. Confidential information like passwords and encryption keys are stored in encrypted Ansible Vaults.
+Changes to the infrastructure are pushed to the code repository and then Ansible runs on the continuous integration sytem <a href="#ref-codeship">Codeship</a> to deploy the changes to the servers. Confidential information like passwords and encryption keys are stored in encrypted Ansible Vaults.
 </p>
 
 <p>
@@ -4115,7 +4118,7 @@ In the bigger context the playbook is not executed manually on the developer mac
 </figure>
 
 <p>
-Source code is stored in Git repositories on GitHub. The playbook and each application have all their own private repository. The continuous integration server Codeship has a build pipeline for each Git repository. For each pipeline Codeship has a unique private SSH key. The public keys for those private keys can be exported from the web interface and are deployed to GitHub to guarantee access to the source code. They are also copied to the virtual servers to allow Ansible to connect to the servers via SSH.
+Source code is stored in Git repositories on GitHub. The playbook and each application have all their own private code repository. The continuous integration server Codeship has a build pipeline for each code repository. For each pipeline Codeship has a unique private SSH key. The public keys for those private keys can be exported from the web interface and are deployed to GitHub to guarantee access to the source code. They are also copied to the virtual servers to allow Ansible to connect to the servers via SSH.
 </p>
 
 <p>
@@ -4131,11 +4134,11 @@ Each application pipeline uses the playbook to provision the infrastructure and 
 <h4>Playbook organization</h4>
 
 <p>
-A fundamental decision of the project is how to organize and structure the playbooks. Each application has it's own repository and allows actions to be executed after a push.
+A fundamental decision of the project is how to organize and structure the playbooks. Each application has it's own code repository and allows actions to be executed after a push.
 </p>
 
 <p>
-Two variations are possible: One repository with a playbook for the infrastructure and deployment, or a playbook in each application repository. The first approach has been chosen to easily allow sharing of variables from the infrastructure setup with the application deployment.
+Two variations are possible: One code repository with a playbook for the infrastructure and deployment, or a playbook in each application code repository. The first approach has been chosen to easily allow sharing of variables from the infrastructure setup with the application deployment.
 </p>
 
 <h4>Usage of inventories</h4>
@@ -4174,7 +4177,7 @@ The following paragraphs outlines potential technical risks of the architecture 
 </p>
 
 <p>
-One disadvantage of automating the server setup is that the executor needs full administration access to the servers. In the proposed concept the continuous integration server has superuser access to all servers. This leads to two attack scenarios: An attacker could compromise the continuous integration server to gain access to the servers. Or the attacker could compromise the source code repository and infiltrate the server through malicious commands. Both <a href="#ref-github-security">GitHub</a> and <a href="#ref-codeship-security">Codeship</a> take appropriate actions to prevent these kind of attacks.
+One disadvantage of automating the server setup is that the executor needs full administration access to the servers. In the proposed concept the continuous integration server has superuser access to all servers. This leads to two attack scenarios: An attacker could compromise the continuous integration server to gain access to the servers. Or the attacker could compromise the code repository and infiltrate the server through malicious commands. Both <a href="#ref-github-security">GitHub</a> and <a href="#ref-codeship-security">Codeship</a> take appropriate actions to prevent these kind of attacks.
 </p>
 
 <p>
@@ -4308,7 +4311,7 @@ All Must and Should requirements can be tested with the proof-of-concept infrast
 <li>R02 Java applications</li>
 <li>R03 Server configuration</li>
 <li>R04 Application deployment</li>
-<li>R05 Staging area</li>
+<li>R05 Staging environment</li>
 <li>R11 Configuration files</li>
 <li>R12 Change history</li>
 <li>R13 Open Source</li>
@@ -4331,7 +4334,7 @@ The following Could requirements are not explicitly tested with the proof-of-con
 <h3 class="break">Ansible Playbook</h3>
 
 <p>
-The playbook repository is organized with roles. Each role is responible for the installation and configuration of the applications. The main playbook delegates the roles for execution to the servers.
+The playbook code repository is organized with roles. Each role is responible for the installation and configuration of the applications. The main playbook delegates the roles for execution to the servers.
 </p>
 
 <figure class="affix">
@@ -4537,7 +4540,7 @@ end
 <h3 class="break">GitHub Setup</h3>
 
 <p>
-An independent GitHub organization is used to keep the proof-of-concept separated from existing WorldSkills projects. All projects which are part of the proof-of-concept have been replicated as private repositories in this organization. Most notably is the new repository <em>worldskills-playbook</em> which contains the Ansible playbook.
+An independent GitHub organization is used to keep the proof-of-concept separated from existing WorldSkills projects. All projects which are part of the proof-of-concept have been replicated as private repositories in this organization. Most notably is the new code repository <em>worldskills-playbook</em> which contains the Ansible playbook.
 </p>
 
 <figure class="full">
@@ -5046,7 +5049,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tbody>
 <tr>
 <th>Requirement</th>
-<th>R05 Staging area</th>
+<th>R05 Staging environment</th>
 </tr>
 <tr>
 <th>Verification</th>
@@ -5327,7 +5330,7 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <h3>Ansible and Idempotence</h3>
 
 <p>
-The project has shown that idempotence on a computer system is hard. This not only applies to Ansible but to all server management software. There are always multiple sources for changes on a modern computer system and almost infinite states exist. Reducing the configuration of the whole system to one repository (the Ansible playbook in this case) helps by reducing dependencies.
+The project has shown that idempotence on a computer system is hard. This not only applies to Ansible but to all server management software. There are always multiple sources for changes on a modern computer system and almost infinite states exist. Reducing the configuration of the whole system to one code repository (the Ansible playbook in this case) helps by reducing dependencies.
 </p>
 
 <p>
@@ -5567,6 +5570,12 @@ It is recommended to keep an eye on the development of software containers and r
     (retrieved&nbsp;7.&nbsp;April&nbsp;2015)
 </p>
 
+<p id="ref-ansible-github" class="reference-item">
+    <span class="ref">Michael DeHaan (2014): Ansible GitHub</span>.
+    <a href="https://github.com/ansible/ansible" target="_blank">https://github.com/ansible/ansible</a>
+    (retrieved&nbsp;26.&nbsp;July&nbsp;2015)
+</p>
+
 <p id="ref-ansible-github-9877" class="reference-item">
     <span class="ref">Michael DeHaan (2014): Ansible GitHub issue #9877</span>.
     <a href="https://github.com/ansible/ansible/issues/9877" target="_blank">https://github.com/ansible/ansible/issues/9877</a>
@@ -5613,6 +5622,12 @@ It is recommended to keep an eye on the development of software containers and r
     <span class="ref">(R)?ex - A simple framework to simplify system administration and datacenter automation</span>.
     <a href="http://www.rexify.org/" target="_blank">http://www.rexify.org/</a>
     (retrieved&nbsp;13.&nbsp;July&nbsp;2015)
+</p>
+
+<p id="ref-rbenv" class="reference-item">
+    <span class="ref">Sam Stephenson (2013): rbenv</span>. July 2014.
+    <a href="https://github.com/sstephenson/rbenv" target="_blank">https://github.com/sstephenson/rbenv</a>
+    (retrieved&nbsp;26.&nbsp;July&nbsp;2015)
 </p>
 
 <p id="ref-apt" class="reference-item">
@@ -5826,6 +5841,8 @@ The following versions of software were used on the server:
 <dd>Open source message queue software.</dd>
 <dt>Race condition</dt>
 <dd>Unintended dependency of the ouput of a system on time.</dd>
+<dt>Ruby</dt>
+<dd>A dynamic programming language used on the web and on the command line.</dd>
 <dt>Secretariat</dt>
 <dd>People working for the organization WorldSkills International.</dd>
 <dt>Servlet container</dt>
