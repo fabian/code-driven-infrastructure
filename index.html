@@ -4118,11 +4118,11 @@ In the bigger context the playbook is not executed manually on the developer mac
 </figure>
 
 <p>
-Source code is stored in Git repositories on GitHub. The playbook and each application have all their own private code repository. The continuous integration server Codeship has a build pipeline for each code repository. For each pipeline Codeship has a unique private SSH key. The public keys for those private keys can be exported from the web interface and are deployed to GitHub to guarantee access to the source code. They are also copied to the virtual servers to allow Ansible to connect to the servers via SSH.
+Source code is stored in Git repositories. The playbook and each application have all their own private code repository. The continuous integration server  has a build pipeline for each code repository. For each pipeline a unique private SSH key is used. The public keys for those private keys can be exported and are deployed to the code repository provider to guarantee access to the source code. They are also copied to the virtual servers to allow Ansible to connect to the servers via SSH.
 </p>
 
 <p>
-Each application pipeline uses the playbook to provision the infrastructure and then deploys the application to the targeted environment. The servers required for the production and staging environment are running with the hosting provider DigitalOcean.
+Each application pipeline uses the playbook to provision the infrastructure and then deploys the application to the targeted environment. The servers required for the production and staging environment are supplied by the hosting provider.
 </p>
 
 <p>
