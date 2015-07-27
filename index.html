@@ -5374,7 +5374,7 @@ Given that the whole infrastructure can be duplicated automatically one could th
 In summary the usage of Ansible makes the infrastructure more structured and changes more visible while keeping it flexible for future developments (like the integration of Docker).
 </p>
 
-<h3>Staging Environment</h3>
+<h3 class="break">Staging Environment</h3>
 
 <p>
 The time required to create the staging environment is considered a potential problem, especially as it gets worse with every additional application. The most time is used by the build of JavaScript and PHP applications. Storing compiled versions of these applications on a central server would improve the build time of a new staging environment but requires more development outside the scope of this project.
@@ -5404,8 +5404,17 @@ Applications can more easily be moved between servers and are less error prone t
 The objectives of creating a versioned, testable and reproducible infrastructure where all changes are visible to the whole IT team has been fully achieved. The combination of multiple technologies and services allows quick modifications and the results are visible for everyone.
 </p>
 
+<figure class="affix">
+<img src="images/before-after.svg" />
+<figcaption>Comparison before and after infrastructure concept</figcaption>
+</figure>
+
 <p>
-Handling changes to infrastructure the same way as changes to application helps the developers in their daily work as the processes and feedback loops are aligned. They get notified about modifications to the infrastructure in the chat application Slack, can review the diff on GitHub and give feedback there. The testing and deployment status is displayed in Slack as well and correction of failed changes can be organized right there with the developers online.
+Comparing the deployment pipeline before and after the infrastructure concept shows that both infrastructure changes and application deployments follow now the same steps. Manual actions on the server and custom application deployment scripts have been replaced with Ansible.
+</p>
+
+<p>
+Handling changes to the infrastructure the same way as changes to application helps the developers in their daily work as the processes and feedback loops are aligned. They get notified about modifications to the infrastructure in the chat application Slack, can review the diff on GitHub and give feedback there. The testing and deployment status is displayed in Slack as well and correction of failed changes can be organized right there with the developers online.
 </p>
 
 <h3 class="break">Recommendations</h3>
