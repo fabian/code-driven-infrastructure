@@ -4954,6 +4954,14 @@ The requirements outlined for the proof-of-concept are verified manually against
 <th>R01 PHP applications</th>
 </tr>
 <tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+Each PHP application is running and can be accessed with a web browser.
+</td>
+</tr>
+<tr>
 <th>Verification</th>
 <td>
 <p>
@@ -4983,6 +4991,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tr>
 <th>Requirement</th>
 <th>R02 Java applications</th>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+Each Java application is running and can be accessed over HTTP/S.
+</td>
 </tr>
 <tr>
 <th>Verification</th>
@@ -5016,6 +5032,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>R03 Server configuration</th>
 </tr>
 <tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+A configuration file gets modified and the change is pushed to the code repository. The new configuration file is automatically deployed to the server and the affected applications loads the new configuration.
+</td>
+</tr>
+<tr>
 <th>Verification</th>
 <td>
 <p>
@@ -5045,6 +5069,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tr>
 <th>Requirement</th>
 <th>R04 Application deployment</th>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+A new version of an application gets pushed to the code repository. Automated tests of the application are executed and if they pass the application gets deployed to the server. The old version keeps responding to requests until the new version is ready.
+</td>
 </tr>
 <tr>
 <th>Verification</th>
@@ -5081,6 +5113,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>R05 Staging environment</th>
 </tr>
 <tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+A new version of a web service is pushed in a separate branch, the functionality is available for testing in a staging environment within 30&nbsp;minutes from the push.
+</td>
+</tr>
+<tr>
 <th>Verification</th>
 <td>
 <p>
@@ -5115,6 +5155,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>R11 Configuration files</th>
 </tr>
 <tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+All configuration files are stored in a code repository.
+</td>
+</tr>
+<tr>
 <th>Verification</th>
 <td>
 <p>
@@ -5144,6 +5192,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tr>
 <th>Requirement</th>
 <th>R12 Change history</th>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+Every change must be traceable by a developer. Associated with every change is an explanation.
+</td>
 </tr>
 <tr>
 <th>Verification</th>
@@ -5177,6 +5233,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>R13 Open Source</th>
 </tr>
 <tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+All software used for infrastructure has to be built on open-source software. This guarantees that components can easily be ported to different providers or maintainers. It also allows other Members to easily copy parts of the infrastructure.
+</td>
+</tr>
+<tr>
 <th>Verification</th>
 <td>
 <p>
@@ -5206,6 +5270,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tr>
 <th>Requirement</th>
 <th>R14 Test environment</th>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+To test configuration changes to it, the whole or part of the infrastructure can be started in a test environment. This is different from the staging environment in that the test environment can be local and automated tests are executed against it.
+</td>
 </tr>
 <tr>
 <th>Verification</th>
@@ -5239,6 +5311,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>R15 Encrypted passwords</th>
 </tr>
 <tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+Server passwords should be stored only encrypted on third-party systems. The advantage of storing encrypted passwords in the code repository and sharing a key file instead of sharing the passwords in a file, is that the file doesn't need to be updated for everyone each time a password is added.
+</td>
+</tr>
+<tr>
 <th>Verification</th>
 <td>
 <p>
@@ -5268,6 +5348,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <tr>
 <th>Requirement</th>
 <th>R16 Superuser access</th>
+</tr>
+<tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+In case of a problem that only occurs in a certain environment, a developer needs unrestricted access to the server to debug the error and try out different solutions.
+</td>
 </tr>
 <tr>
 <th>Verification</th>
@@ -5301,6 +5389,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>R17 Custom software</th>
 </tr>
 <tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+New software can be installed without restrictions. New features or analytics tools might require the installation of additional software.
+</td>
+</tr>
+<tr>
 <th>Verification</th>
 <td>
 <p>
@@ -5332,6 +5428,14 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 <th>R18 Learning curve</th>
 </tr>
 <tr>
+<th>
+Acceptance Criteria
+</th>
+<td>
+How to use the software system to install and configure the infrastructure can be learned quickly so all developers can make changes to the infrastructure without spending weeks studying it.
+</td>
+</tr>
+<tr>
 <th>Verification</th>
 <td>
 <p>
@@ -5348,6 +5452,10 @@ Pass <img src="images/sign-check.svg" width="16" height="16" alt="" class="icon"
 </tbody>
 </table>
 </figure>
+
+<p>
+The proof-of-concept passes all 13 requirements that were defined for it. The proof-of-concept covers all Must and Should requirements of the infrastructure.
+</p>
 
 </div>
 
