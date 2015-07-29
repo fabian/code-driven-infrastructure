@@ -3829,7 +3829,7 @@ The whole infrastructure is described in an Ansible playbook which is shared wit
 </p>
 
 <p>
-Changes to the infrastructure are pushed to the code repository and then Ansible runs on the continuous integration sytem <a href="#ref-codeship">Codeship</a> to deploy the changes to the servers. Confidential information like passwords and encryption keys are stored in encrypted Ansible Vaults.
+Changes to the infrastructure are pushed to the code repository and then Ansible runs on the continuous integration system <a href="#ref-codeship">Codeship</a> to deploy the changes to the servers. Confidential information like passwords and encryption keys are stored in encrypted Ansible Vaults.
 </p>
 
 <p>
@@ -4138,7 +4138,7 @@ Each application pipeline uses the playbook to provision the infrastructure and 
 <h4>Playbook organization</h4>
 
 <p>
-A fundamental decision of the project is how to organize and structure the playbooks. Each application has it's own code repository and allows actions to be executed after a push.
+A fundamental decision of the project is how to organize and structure the playbooks. Each application has its own code repository and allows actions to be executed after a push.
 </p>
 
 <p>
@@ -4290,7 +4290,7 @@ The first steps are reducing the time DNS entries are cached so the switch to th
 <h3>Proof-of-concept</h3>
 
 <p>
-For the proof-of-concept the following reduced infrastructure has been selected to test the feasibility of the concept focussing on the requirements. The proof-of-concept infrastructure includes a PHP application (R01), two Java applications (R02), one JavaScript application, multiple MySQL databases and the RabbitMQ message queue.
+For the proof-of-concept the following reduced infrastructure has been selected to test the feasibility of the concept focusing on the requirements. The proof-of-concept infrastructure includes a PHP application (R01), two Java applications (R02), one JavaScript application, multiple MySQL databases and the RabbitMQ message queue.
 </p>
 
 <figure>
@@ -4338,7 +4338,7 @@ The following Could requirements are not explicitly tested with the proof-of-con
 <h3 class="break">Ansible Playbook</h3>
 
 <p>
-The playbook code repository is organized with roles. Each role is responible for the installation and configuration of the applications. The main playbook delegates the roles for execution to the servers.
+The playbook code repository is organized with roles. Each role is responsible for the installation and configuration of the applications. The main playbook delegates the roles for execution to the servers.
 </p>
 
 <figure class="affix">
@@ -5528,7 +5528,7 @@ Handling changes to the infrastructure the same way as changes to application he
 <h3 class="break">Recommendations</h3>
 
 <p>
-It is recommended to keep an eye on the development of software containers and reevaluate their usage in six months. Suitable applications should then be migrated within three months if the software containers would bring reasonable advantages.
+It is recommended to keep an eye on the development of software containers and re-evaluate their usage in six months. Suitable applications should then be migrated within three months if the software containers would bring reasonable advantages.
 </p>
 
 <p>
