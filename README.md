@@ -4,12 +4,7 @@
 
 * Install [Prince](http://www.princexml.com)
 * `npm install`
-
-## Optimize SVGs
-
-```
-./node_modules/.bin/svgo --pretty --folder images/
-```
+* `cp js/build.js.dist js/build.js`
 
 ## Validate HTMl
 
